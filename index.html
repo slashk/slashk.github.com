@@ -13,11 +13,11 @@
 	     repoList();
 	}
 
-	function repoList() {	
+	function repoList() {
 		var username = "slashk";
-		var url = 'http://github.com/api/v1/json/' + username;
+		var url = "http://github.com/api/v1/json/" + username;
 		//var pars = 'callback=?';
-		var target = 'repo-list';	
+		var target = "repo-list";	
 		
 		myAjax = new Ajax.Updater(target, url, {method: 'get', parameters: pars});
 		$(target).innerHTML = myAjax.toString;
@@ -27,6 +27,9 @@
  
 <body>
  
+<!-- github badge -->
+<a href="http://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
+
 <div id="container">
  
     <div id="header">
