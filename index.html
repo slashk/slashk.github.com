@@ -11,18 +11,15 @@
 	    // thanks to http://atmos.github.com/ where I saw this first
             var limit = 10        // how many repos to list
             var login = 'slashk'   // your username
- 
             var repos = [], list = $('#projects ul')
  
             $.getJSON('http://github.com/api/v1/json/' + login + '?callback=?', function(data) {
                 $.each(data.user.repositories, function() {
                     if (!this.fork) repos.push(this)
                     })
- 
                 repos.sort(function(a, b) {
                     return b.watchers - a.watchers
                     })
- 
                 $.each(repos.slice(0, limit), function() {
                     list.append('<li><a href="' + this.url + '">' + this.name + '</a></li>')
                     })
@@ -30,12 +27,16 @@
             })
 </script>
 <style type="text/css" media="screen">
-  	body { font-family: Courier, monospaced; background-color: #fff; overflow: auto; color: #ccc; text-align: center;}
+  	body { font-family: Courier, monospaced; background-color: #fff; overflow: auto; color: #ccc; text-align: center; font-size: 12px;}
   	h1 { font-weight: bold; margin-bottom: 5px; color: #222; font-size: 20px; font-family:"Trebuchet MS",Trebuchet,Ariel,sans-serif;}
   	a { text-decoration: none; color: #777; }
     	a:hover { color: green; }
 	#photo {position: absolute; top:40%; left:40%; margin-top: -130px; margin-left: -150px;}
-  	#projects li { display: inline; list-style-type: none; font-size: 12px; padding-right: 20px;}
+  	li { display: inline; list-style-type: none; padding-right: 15px;}
+  	ul { display: inline; }
+	#projects { text-align:left;}
+	#websites { text-align:left;}
+	#blogs { text-align:left;}
 </style>
 </head>
  
@@ -45,10 +46,19 @@
 <a href="http://github.com/slashk"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
 
 <div id="photo">
-   	<a href="http://www.mtbcalendar.com"><img src="images/pin_gondola.png" border="0"/></a>
+   	<a href="http://github.com/slashk"><img src="images/pin_gondola.png" border="0"/></a>
 	<h1>/k</h1>
 	<div id="projects">
-		<ul></ul>
+		repos: <ul></ul>
+	</div>
+	<div id="websites">
+		sites: <ul><li><a href="http://www.mtbcalendar.com/">MTBcalender.com</a></li></ul>
+	</div>
+	<div id="blogs">
+		blogs: <ul><li><a href="http://blog.mtbcalendar.com/">Racing on Rails</a></li>
+		<li><a href="http://norcalmtnbikeracing.blogspot.com/">NorCal MTB Racing</a></li>
+		<li><a href="http://sunbear.blogspot.com/">Wander</a></li>
+		</ul>
 	</div>
 </div>
 
