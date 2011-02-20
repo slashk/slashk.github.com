@@ -1,0 +1,14 @@
+markdown: rdiscount
+auto: true
+permalink: pretty
+pygments: true
+less: true
+exclude:
+  - start.sh
+  - Rakefile
+  - pids
+  - stop.sh
+  - README.markdown
+  - LICENSE
+description: "the personal tech blog of Ken Pepple"
+root_desc: "Ken Pepple"

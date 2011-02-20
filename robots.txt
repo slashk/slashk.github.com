@@ -1,0 +1,4 @@
+Sitemap: http://ken.rabbityard.com/sitemap.xml
+
+User-agent: *
+Disallow: /images/
