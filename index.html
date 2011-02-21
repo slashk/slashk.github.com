@@ -1,51 +1,70 @@
 ---
 layout: default
 title: rabbityard
+meta_keywords: cloud, code, ruby, python, mtb
+meta_description: Ken Pepple's site for code
 ---
 
-
-<div id="bio-box">
-    <ul class="infolinks">
-        <li>Ken Pepple</li> 
-        <li>Technologist :: Cyclist :: Zombie Slayer </li>
-        <li>irc: kpepple on freenode </li>
-        <li><img src="images/email.png">&nbsp;ken.pepple@rabbityard.com</li> 
-        <li>twitter: <a href="https://twitter.com/ken_pepple">@ken_pepple</a></li>
-        <li>github: <a href="http://github.com/slashk">slashk</a></li>
-        <li>launchpad: <a href="">ken-pepple</a></li>
-        <li>linkedin: <a href="http://www.linkedin.com/in/kenpepple">http://www.linkedin.com/in/kenpepple</a></li>
-        <li>irc: kpepple on freenode </li>
-        </ul>
+<div id="left">
+  <div class="photo">
+    <img src="images/headphones-and-hoodie-pushpin.png">
     </div>
+  <div id="contact">
+    <p class="myname">Ken Pepple</p>
+    <p class="tagline">Technologist :: Cyclist :: Zombie Slayer</p>
+    <p>
+        <a href="https://twitter.com/ken_pepple" alt="Twitter">
+        <img src="images/twitter.png">&nbsp;twitter.com/ken_pepple</a>
+        </p>
+    <p>
+        <a href="http://www.linkedin.com/in/kenpepple" alt="LinkedIn">
+        <img src="images/linkedin.png">&nbsp;linkedin.com/in/kenpepple</a>
+        </p>
+    <p>
+        <a href="https://launchpad.net/~ken-pepple" alt="Launchpad">
+        <img src="images/bazaar.png">&nbsp;launchpad.net/~ken-pepple</a>
+        </p>
+    <p>
+        <a href="http://github.com/slashk"  alt="GitHub">
+        <img src="images/github.png">&nbsp;github.com/slashk</a>
+        </p>
+    <p><img src="images/irc.png"  alt="IRC">&nbsp;kpepple (#freenode) </p>
+    <p><img src="images/email.png"  alt="Email">&nbsp;ken.pepple@rabbityard.com</p> 
+    </div>
+</div>
 
-<div class="sitelinks">
+<div id="right">
+  <div id="projects" class="pagelist">
+    <h1>Projects</h1>
     <ul>
-        <li>About</li>
-        <li>Projects</li>
-        <li>Blog</li>
-        <li>Publications</li>
+      <li class="postlink"><a href="projects/mtbcalendar/">MTBcalendar</a></li>
+      <li class="postlink"><a href="projects/mtbcal-dashboard-widget/">MTBcalendar dashboard widget</a></li>
+      <li class="postlink"><a href="projects/openstack/">OpenStack</a></li>
+      <li class="postlink"><a href="projects/warroom/">WarRoom</a></li>
+    </ul>
+  </div>
+  <div id="posts" class="pagelist">
+      <h1>Recent Posts</h1>
+          <ul class="pagelist">
+              {% for post in site.posts limit:5 %}
+                  <li class="postlink">
+                      > <a href="{{ post.url }}">{{ post.title }} ({{ post.date | date_to_string }})</a>
+                  </li>
+              {% endfor %}
+              <li class="postlink"><a href="/archives">> All Posts</a></li>
+              </ul>
+      </div>
+  <div id="publications" class="pagelist">
+    <h1>Recent Publications & Presentations</h1>
+    <ul>
+        {% for pub in site.publications limit:10 %}
+            <li class="postlink">
+                <a href="{{ pub.url }}">{{ pub.title }}</a>
+            </li>
+        {% endfor %}
         </ul>
     </div>
-
-<div class="intro">
-    </div>
-
-<div class="projects">
-    </div>
-
-<div class="posts">
-        <ul>
-            {% for post in site.posts limit:5 %}
-                <li class="postlink">
-                    {{ post.date | date_to_string }}<a href="{{ post.url }}">{{ post.title }}</a>
-                </li>
-            {% endfor %}
-            </ul>
-    </div>
-
-<div class="publications">
-    </div>
-
+</div>
 
 </body>
 </html>

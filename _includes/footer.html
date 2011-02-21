@@ -1,0 +1,25 @@
+  <div id="footer" class="clearfix">
+    <div class="inner">
+        <div class="archives">
+            <h3>Archives</h3>
+            <table>
+            {% for post in site.posts %}
+                <tr>
+                    <td class="date">{{ post.date | date_to_string }}</td>
+                    <td><a href="{{ post.url }}">{{ post.title }}</a></td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+        <div class="about">
+            <h3><a href="/about/">About Me</a></h3>
+            
+            <a href="/about/"><img src="/images/me_small.png" alt="ME" /></a>
+            <div>
+                This is yet a short description of myself. Try to keep it short. <a href="/about/">Read more</a>
+            </div>
+        </div>
+      </div>
+  </div>
+</body>
+</html>

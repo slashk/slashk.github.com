@@ -10,5 +10,4 @@ exclude:
   - stop.sh
   - README.markdown
   - LICENSE
-description: "the personal tech blog of Ken Pepple"
-root_desc: "Ken Pepple"
+permalink:   /:categories/:title
