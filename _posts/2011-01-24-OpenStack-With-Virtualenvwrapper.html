@@ -1,6 +1,10 @@
 --- 
 layout: post
 title: OpenStack Development with virtualenvwrapper 
+categories:
+- openstack
+- python
+- development
 ---
 
 <p>Coming from the ruby/ruby on rails world, i’ve been a bit lost when it comes to the python development process used in the openstack project. One of the biggest hurdles has been the usage of virtualenv in the workflow. Basically, virtualenv lets you create a stable configuration of python libraries (eggs) much like freezing gems in your rails application. The pitfalls here is that you need to integrate it’s usage into your development flow (activate/deactivate environments), it can take some time to recreate environments if you use a lot of eggs (like nova does) and it seems pretty fragile (it lives in repo and takes some chicanery to avoid duplicating in each bzr branch).</p>

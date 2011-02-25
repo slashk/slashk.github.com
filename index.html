@@ -6,12 +6,12 @@ meta_description: Ken Pepple's site for code
 ---
 
 <div id="left">
-  <div class="photo">
+  <!-- <div class="photo">
     <img src="images/headphones-and-hoodie-pushpin.png">
-    </div>
+    </div> -->
   <div id="contact">
     <p class="myname">Ken Pepple</p>
-    <p class="tagline">Technologist :: Cyclist :: Zombie Slayer</p>
+    <p class="tagline">Technologist :: Cyclist :: Zombie Sl&auml;yer</p>
     <p>
         <a href="https://twitter.com/ken_pepple" alt="Twitter">
         <img src="images/twitter.png">&nbsp;twitter.com/ken_pepple</a>
@@ -59,7 +59,7 @@ meta_description: Ken Pepple's site for code
           <ul class="pagelist">
               {% for post in site.posts limit:5 %}
                   <li class="postlink">
-                      > <a href="{{ post.url }}">{{ post.title }} ({{ post.date | date_to_string }})</a>
+                      > <a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date | date_to_string }})
                   </li>
               {% endfor %}
               <li class="postlink"><a href="/archives">> All Posts</a></li>

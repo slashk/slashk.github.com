@@ -9,7 +9,12 @@ layout: default
     </div>
     
     <div class="meta">
-        Posted on <a href="{{ page.url }}">{{ page.date | date_to_string }}</a>
+        <p>
+          Posted on <a href="{{ page.url }}">{{ page.date | date_to_string }}</a>
+          {% unless page.categories == empty %}
+            in {{page.categories | array_to_sentence_string}}
+          {% endunless %}
+        </p>
     </div>
     
     <div id="disqus_thread"></div>
