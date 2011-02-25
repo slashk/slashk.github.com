@@ -1,6 +1,53 @@
 ---
 ---
 
+/* less variables and mixins */
+
+/*  LESS examples
+	@brand_color: #4D926F; variable
+	MIXIN examples
+	.rounded_corners (@radius: 5px) {
+	  -moz-border-radius: @radius;
+	  -webkit-border-radius: @radius;
+	  border-radius: @radius;
+	}
+	#footer {  .rounded_corners(10px);}    */
+
+/* Colors */
+@default_color: #004000; /* dark green  */
+@hover_color: #007400; /* hilite green  */
+@active_color: #005E00; /* mid green  */
+@contract_color: #6687C2; /* lite blue  */
+@body_background: white;
+@inactive_color: #BBBBBB;
+@background_color: #CCCCCC;
+@highlight: #FFFF66;
+
+.sans {
+  font-family: 'Driod Sans', arial, sans;
+}
+.serif {
+  font-family: 'Droid Serif', times, serif;
+}
+.mono {
+  font-family: 'Droid Sans Mono', courier, monospace;
+}
+
+
+/* rounded corners */
+/*@radius: 8px;
+.rounded_corners (@radius: 8px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+.shadow {
+  -webkit-box-shadow: 10px 10px 25px #ccc;
+  -moz-box-shadow: 10px 10px 25px #ccc;
+  box-shadow: 10px 10px 25px #ccc;
+}
+*/
+
 /* @override http://localhost:4000/css/main.css */
 
 html { padding: 0 0 5px 0; }
@@ -8,13 +55,13 @@ html { padding: 0 0 5px 0; }
 /* @group standard */
 
 body {
+  .serif;
   text-align: left;
-  font-family: 'Droid Serif', times, serif;
   font-size: 12px;
   color: #666666;
 }
 #header {
-  font-family: 'Driod Sans', arial, sans;
+  .sans;
   padding: 18px;
   background: silver;
   margin-bottom: 45px;
@@ -64,12 +111,12 @@ body {
 }
 h1 { 
   font-size: 18pt;
-  font-family: "Droid Sans", arial, sans; 
+  .sans; 
 }
 .post { margin-bottom: 55px; }
 .post h3 {
   font-size: 29px;
-  font-family: 'Lato';
+  .sans;
   font-weight: normal;
   margin-bottom: 25px;
 }
@@ -90,7 +137,7 @@ h1 {
   color: #999999;
 }
 #footer {
-  font-family: 'Lato';
+  .sans;
   background: #e4d4a3;
   padding: 25px;
   color: #333333;
@@ -201,10 +248,10 @@ code-inline {
   background-color: #cceeff;
   font-weight: normal;
   padding: 1px 3px;
-  font-family: "Droid Sans Mono", courier, monospace;
+  .mono;
 }
 code {
-  font-family: "Droid Sans Mono", courier, monospace;
+  .mono;
 }
 blockquote {
   background-color: #faebbc;
@@ -225,7 +272,7 @@ blockquote {
 
 .myname {
   font-size: 14pt;
-  font-family: "Droid Sans", arial, sans;
+  .sans;
 }
 
 .tagline {
