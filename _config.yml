@@ -1,8 +1,7 @@
 markdown: rdiscount
 auto: true
-permalink: pretty
 pygments: true
-less: true
+permalink: pretty
 exclude:
   - start.sh
   - Rakefile
@@ -10,4 +9,3 @@ exclude:
   - stop.sh
   - README.markdown
   - LICENSE
-permalink:   /:categories/:title
