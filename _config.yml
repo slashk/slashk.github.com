@@ -10,3 +10,4 @@ exclude:
   - README.markdown
   - LICENSE
   - _exclude
+  - _drafts
