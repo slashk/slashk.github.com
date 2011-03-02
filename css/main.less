@@ -1,74 +1,29 @@
 ---
 ---
 
-/* less variables and mixins */
-
-/*  LESS examples
-	@brand_color: #4D926F; variable
-	MIXIN examples
-	.rounded_corners (@radius: 5px) {
-	  -moz-border-radius: @radius;
-	  -webkit-border-radius: @radius;
-	  border-radius: @radius;
-	}
-	#footer {  .rounded_corners(10px);}    */
-
-/* Colors */
-@default_color: #004000; /* dark green  */
-@hover_color: #007400; /* hilite green  */
-@active_color: #005E00; /* mid green  */
-@contract_color: #6687C2; /* lite blue  */
-@body_background: white;
-@inactive_color: #BBBBBB;
-@background_color: #CCCCCC;
-@highlight: #FFFF66;
-
-.sans {
-  font-family: 'Driod Sans', arial, sans;
-}
-.serif {
-  font-family: 'Droid Serif', times, serif;
-}
-.mono {
-  font-family: 'Droid Sans Mono', courier, monospace;
-}
-
-
-/* rounded corners */
-/*@radius: 8px;
-.rounded_corners (@radius: 8px) {
-  -moz-border-radius: @radius;
-  -webkit-border-radius: @radius;
-  border-radius: @radius;
-}
-.shadow {
-  -webkit-box-shadow: 10px 10px 25px #ccc;
-  -moz-box-shadow: 10px 10px 25px #ccc;
-  box-shadow: 10px 10px 25px #ccc;
-}
-*/
-
+/* Ported from james work */
 /* @override http://localhost:4000/css/main.css */
 
-html { padding: 0 0 5px 0; }
-
-/* @group standard */
-
+html { padding: 0 0 0 0; }
+a {
+	color: #727497;
+}
 body {
-  .serif;
-  text-align: left;
-  font-size: 12px;
+  text-align: center;
+  font-family: 'Helvetica Neue', Helvetica;
+  font-size: 14px;
   color: #666666;
 }
 #header {
-  .sans;
-  padding: 18px;
-  background: silver;
-  margin-bottom: 45px;
+  font-family: 'Lato';
+  padding: 15px;
+  background: #cdd6ee;
+  margin-bottom: 15px;
   color: #333333;
 }
 #header .inner {
   text-align: left;
+  width: 725px;
   margin: auto;
 }
 #header ul {
@@ -79,69 +34,91 @@ body {
   float: right;
   margin-left: 18px;
   margin-top: 10px;
-  font-size: 23px;
+  font-size: 16px;
   font-weight: 300;
 }
 #header ul li a {
   color: #333333;
   text-decoration: none;
 }
-#header ul li a:hover {
-  color: red;
-  font-style: bold;
-}
+#header ul li a:hover { text-decoration: underline; }
 #header h1 {
-  font-size: 59px;
+  font-size: 48px;
   font-weight: bold;
 }
 #header h1 a {
   text-decoration: none;
   color: #333333;
+  font-family: 'Rock Salt', serif;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: 2px 2px 2px #aaa;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: -0.015em;
+  word-spacing: -0.04em;
+  line-height: 1.2;
 }
 #header h2 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
-  font-style: italics;
+  margin-left: 20px;
 }
 #header h2 img { margin-left: 3px; }
 #content .inner {
   text-align: left;
-  width: 725px;
+  width: 750px;
   margin: auto;
 }
-h1 { 
-  font-size: 18pt;
-  .sans; 
+.pagelist { padding: 10px; }
+.pagelist h2 {
+  font-size: 24px;
+  font-family: 'Lato';
+}
+.pagelist a {
+	font-size: 18px;
+	text-decoration: none;
 }
 .post { margin-bottom: 55px; }
 .post h3 {
   font-size: 29px;
-  .sans;
+  font-family: 'Lato';
   font-weight: normal;
-  margin-bottom: 25px;
+  margin-bottom: 7px;
 }
 .post h3 a { text-decoration: none; }
 .post h3 a:hover { text-decoration: underline; }
-.post .body { font-size: 14px; }
+.post .body { font-size: 17px; }
 .post .body p { margin-bottom: 1em; }
 .post ul { margin-bottom: 1em; }
 .post ul li { margin-bottom: 0.5em; }
-.postlink { 
-  list-style-type: none;
-  font-size: 13pt; 
-}
 .post .meta {
-  margin-top: 25px;
-  border-top: 3px double #dddddd;
-  padding-top: 25px;
   color: #999999;
+  margin-bottom: 25px;
 }
+
+pre {
+	background: #e2e2e2;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+blockquote {
+  background-color: #faebbc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  padding-left: 15px;
+  border-left: 3px solid #cccccc;
+}
+
 #footer {
-  .sans;
-  background: #e4d4a3;
+  font-family: 'Lato';
+  background: #cdd6ee;
   padding: 25px;
   color: #333333;
-  clear: both;
+  margin-top: 15px;
 }
 #footer .inner {
   text-align: left;
@@ -176,7 +153,7 @@ h1 {
   padding-left: 94px;
   width: 140px;
 }
-
+.my_pic { float: right; }
 .about_head {
   width: 550px;
   margin-bottom: 45px;
@@ -216,69 +193,3 @@ table.projects td.desc { padding-left: 45px; }
 .bubble a:hover { text-decoration: underline; }
 #disqus_thread { margin-top: 45px; }
 #disqus_thread h3 { font-size: 19px; }
-
-
-
-/* @end */
-
-/* @group My Group */
-
-a {
-  text-decoration: none;
-}
-#left {
-  float: left;
-  width: 300px;
-  margin-right: 10px;
-  text-align: left;
-  margin-left: 20px;
-}
-#right {
-  float: right;
-  width: 600px;
-  text-align: left;
-  margin-left: 25px;
-  margin-top: 20px;
-}
-#contact ul { 
-  list-style-type: none;
-  margin-left: 1px;
-}
-code-inline {
-  background-color: #cceeff;
-  font-weight: normal;
-  padding: 1px 3px;
-  .mono;
-}
-code {
-  .mono;
-}
-blockquote {
-  background-color: #faebbc;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 25px;
-  padding-left: 15px;
-  border-left: 3px solid #cccccc;
-}
-.pagelist {
-  margin-top: 15px;
-}
-#contact {
-  text-align: left;
-  margin-left: 40px;
-  margin-bottom: 20px;
-}
-
-.myname {
-  font-size: 14pt;
-  .sans;
-}
-
-.tagline {
-  font-size: 10pt;
-  font-style: italics;
-  margin-bottom: 10px;
-}
-
-/* @end */

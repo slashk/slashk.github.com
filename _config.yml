@@ -9,3 +9,4 @@ exclude:
   - stop.sh
   - README.markdown
   - LICENSE
+  - _exclude
