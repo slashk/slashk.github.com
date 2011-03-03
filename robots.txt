@@ -1,4 +1,4 @@
-Sitemap: http://ken.rabbityard.com/sitemap.xml
+Sitemap: http://slashk.github.com/sitemap.xml
 
 User-agent: *
 Disallow: /images/

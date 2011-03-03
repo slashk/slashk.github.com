@@ -1,7 +1,7 @@
 Ken's Blog
 ===========
 
-This is the Jekyll based blog template for my personal blog at [ken.rabbityard.com](http://www.rabbityard.com/). You are free to use this template under the MIT license.
+This is the Jekyll based blog template for my personal blog at [slashk.github.com](http://slashk.github.com/). You are free to use this template under the MIT license.
 
 License and Copyright
 ---------------------
@@ -15,4 +15,4 @@ Following directories and their contents are licensed under the Creative Commons
 
 _posts/
 
-All other files and directories are licensed under the MIT unless explicitly stated. If you do use them, a link back to http://blog.rabbityard.com would be appreciated but is not required.
+All other files and directories are licensed under the MIT unless explicitly stated. If you do use them, a link back to http://slashk.github.com would be appreciated but is not required.
