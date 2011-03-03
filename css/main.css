@@ -15,12 +15,12 @@ a:hover {
 }
 body {
   text-align: center;
-  font-family: 'Helvetica Neue', Helvetica;
+  font-family: 'Helvetica Neue', Helvetica, sans;
   font-size: 14px;
   color: #666666;
 }
 #header {
-  font-family: 'Helvetica Neue', Helvetica, 'Lato';
+  font-family: 'Helvetica Neue', Helvetica, sans;
   padding: 15px;
   background: #cdd6ee;
   margin-bottom: 15px;
@@ -81,7 +81,7 @@ body {
 .pagelist { padding: 10px; }
 .pagelist h2 {
   font-size: 24px;
-  font-family: 'Helvetica Neue', Helvetica;
+  font-family: 'Helvetica Neue', Helvetica, sans;
 }
 .pagelist a {
   font-size: 18px;
@@ -89,7 +89,7 @@ body {
 .post { margin-bottom: 55px; }
 .post h3 {
   font-size: 29px;
-  font-family: 'Helvetica Neue', Helvetica;
+  font-family: 'Helvetica Neue', Helvetica, sans;
   font-weight: normal;
   margin-bottom: 7px;
 }
@@ -116,6 +116,7 @@ pre {
   background: #eeeeee;
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 blockquote {
   background-color: #faebbc;
@@ -126,7 +127,7 @@ blockquote {
   border-left: 7px solid #cccccc;
 }
 #footer {
-  font-family: 'Helvetica Neue', Helvetica, 'Lato';
+  font-family: 'Helvetica Neue', Helvetica, sans;
   background: #cdd6ee;
   padding: 25px;
   color: #333333;
@@ -141,7 +142,7 @@ blockquote {
   font-size: 24px;
   margin-bottom: 15px;
   font-weight: 300;
-  font-family: "Rock Salt";
+  font-family: "Rock Salt", serif;
 }
 #footer h3 a {
   color: #333333;
