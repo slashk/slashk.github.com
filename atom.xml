@@ -4,19 +4,19 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>rabbityardtitle>
- <link href="http://slashk.github.com/atom.xml" rel="self"/>
- <link href="http://slashk.github.com"/>
+ <title>rabbityard<title>
+ <link href="http://ken.pepple.info/atom.xml" rel="self"/>
+ <link href="http://ken.pepple.info"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>BLOG_URL</id>
+ <id>http://ken.pepple.info/</id>
  <author>
-   <name>BLOG_NAME</name>
+   <name>rabbityard</name>
  </author>
 
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://slashk.github.com{{ post.url }}"/>
+   <link href="http://ken.pepple.info{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>BLOG_URL{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>

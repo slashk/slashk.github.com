@@ -5,8 +5,8 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Ken Pepple</title>
- <link href="http://slashk.github.com/feed.atom" rel="self"/>
- <link href="http://slashk.github.com"/>
+ <link href="http://ken.pepple.info/feed.atom" rel="self"/>
+ <link href="http://ken.pepple.info/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>RENAME</id>
  <author>
@@ -15,10 +15,10 @@ layout: nil
  {% for post in site.posts limit: 15 %}
  <entry>
    <title type="html">{{ post.title | xml_escape }}</title>
-   <link rel="alternate" href="http://slashk.github.com/{{ post.url }}"/>
+   <link rel="alternate" href="http://ken.pepple.info/{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>{{ post.id }}</id>
-   <content type="xhtml" xml:lang="{% if post.lang %}{{ post.lang }}{% else %}en{% endif %}" xml:base="http://slashk.github.com">
+   <content type="xhtml" xml:lang="{% if post.lang %}{{ post.lang }}{% else %}en{% endif %}" xml:base="http://ken.pepple.info">
     <div xmlns="http://www.w3.org/1999/xhtml">
      {{ post.content }}
     </div>

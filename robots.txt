@@ -1,4 +1,4 @@
-Sitemap: http://slashk.github.com/sitemap.xml
+Sitemap: http://ken.pepple.info/sitemap.xml
 
 User-agent: *
 Disallow: /images/
