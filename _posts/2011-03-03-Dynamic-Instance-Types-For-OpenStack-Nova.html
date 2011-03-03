@@ -1,0 +1,74 @@
+--- 
+layout: post
+title: Configurable Instance Types For OpenStack Nova 
+categories:
+- openstack
+---
+
+<p>Over the past three weeks, new Nova core developer Josh Kearney (<em>congrats <a href="http://twitter.com/#!/jk0">@jk0</a></em>) and I have been working on adding runtime configuration of instance types (<a href="http://wiki.openstack.org/ConfigureInstanceTypesDynamically">read the full specification</a>) to the <a href="https://launchpad.net/nova">OpenStack Nova compute service</a>.  Instance types (or "flavors" as Rackspace calls them) are resources granted to virtual machines ("instances") in the Nova cloud. In more specific terms, this is the size of the instance (vCPUs, RAM, Storage, etc.) that you will be launching. You may recognize these by the names "m1.large" or "m1.tiny" in AWS EC2 parlance. The Rackspace's API (<a href="http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf">PDF</a>) calls these "flavors" and they tend to have names like "256 MB Server" and such.</p>
+
+<p>In the released version of OpenStack Nova (Bexar), instance types are defined statically in the nova/instance_types.py file (which corresponds to the initial Amazon EC2 instance types) before run-time. This change, which will be part of the upcoming version of Nova (Cactus), instance types can be created by the Nova administrator during run-time through the nova-manage command. If you are following the Nova trunk (or just impatient), you can find this merged in at <a href="http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/revision/757">revision number 757</a>.</p>
+
+<h4>Basic Management</h4>
+
+<p>Instance types / flavor are managed through the <span class="code-inline">nova-manage</span> binary with the <span class="code-inline">instance_type</span> command and an appropriate subcommand. As we are using the <span class="code-inline">nova-manage</span> command, we need to be on the nova database server to configure instance types. Right now, instance type manipulation isn't exposed through the APIs nor the adminclient.</p>
+  
+<p>Note that you can also use the <span class="code-inline">flavor</span> command as a synonym for <span class="code-inline">instance_types</span> for any of these examples.</p>
+
+<p>To see all currently active instance types, use the list subcommand:</p>
+
+{% highlight bash %}
+$ nova-manage instance_type list
+m1.medium: Memory: 4096MB, VCPUS: 2, Storage: 40GB, FlavorID: 3, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.large: Memory: 8192MB, VCPUS: 4, Storage: 80GB, FlavorID: 4, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.tiny: Memory: 512MB, VCPUS: 1, Storage: 0GB, FlavorID: 1, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.xlarge: Memory: 16384MB, VCPUS: 8, Storage: 160GB, FlavorID: 5, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.small: Memory: 2048MB, VCPUS: 1, Storage: 20GB, FlavorID: 2, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+{% endhighlight %}
+
+<p>Again, and just to emphasis, you could just have easily used the <span class="code-inline">flavor</span> subcommand to get the exact same output:</p>
+
+{% highlight bash %}
+$ nova-manage flavor list
+m1.medium: Memory: 4096MB, VCPUS: 2, Storage: 40GB, FlavorID: 3, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.large: Memory: 8192MB, VCPUS: 4, Storage: 80GB, FlavorID: 4, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.tiny: Memory: 512MB, VCPUS: 1, Storage: 0GB, FlavorID: 1, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.xlarge: Memory: 16384MB, VCPUS: 8, Storage: 160GB, FlavorID: 5, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.small: Memory: 2048MB, VCPUS: 1, Storage: 20GB, FlavorID: 2, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+{% endhighlight %}
+
+<p>To create an instance type, use the <span class="code-inline">create</span> subcommand with the following positional arguments:</p>
+<ul style="list-style-type: disc;">
+<li>memory (expressed in megabytes)</li>
+<li>vcpu(s) (integer)</li>
+<li>local storage (expressed in gigabytes)</li>
+<li>flavorid (unique integer)</li>
+<li>swap space (expressed in megabytes, defaults to zero, optional)</li>
+<li>RXTX quotas (expressed in gigabytes, defaults to zero, optional)</li>
+<li>RXTX cap (expressed in gigabytes, defaults to zero, optional)</li>
+</ul>
+<p>The following example creates an instance type named "m1.xxlarge":</p>
+
+{% highlight bash %}
+$ nova-manage instance_type create m1.xxlarge 32768 16 320 0 0 0
+m1.xxlarge created
+{% endhighlight %}
+
+<p>To delete an instance type, use the <span class="code-inline">delete</span> subcommand and specify the name:</p>
+
+{% highlight bash %}
+$ nova-manage instance_type delete m1.xxlarge
+m1.xxlarge deleted
+{% endhighlight %}
+
+<p>Please note that the <span class="code-inline">delete</span> command only marks the instance type as inactive in the database; it does not actually remove the instance type. This is done to preserve the instance type definition for long running instances (which may not terminate for months or years). If you are sure that you want to delete this instance type from the database, pass the <span class="code-inline">--purge</span> flag after the name:</p>
+
+{% highlight bash %}
+$ nova-manage instance_type delete m1.xxlarge --purge
+m1.xxlarge purged
+{% endhighlight %}
+
+<p>Be careful with deleting instance types, you might need this information later. Unless you truly need to prune the size of your instance_types table you are much safer to just <span class="code-inline">delete</span> the instance type.</p>
+
+<h4>Implementation</h4>
+<p>This feature is implemented with an additional database table (instance_types), which has rows for each instance type/flavor. The <span class="code-inline">nova-manage</span> command allows you to manipulate this table. At installation time (actually when the <span class="code-inline">nova-manage db sync</span> command is run), the database table is seeded with instance type values for the five default types: x1.small, x1.tiny, x1.medium, x1.large and x1.xlarge.</p>
