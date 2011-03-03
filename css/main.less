@@ -1,12 +1,17 @@
----
+--- 
 ---
 
-/* Ported from james work */
 /* @override http://localhost:4000/css/main.css */
 
 html { padding: 0 0 0 0; }
-a {
-	color: #727497;
+a { 
+  color: #727497;
+  text-decoration: none;
+}
+a:hover {
+  color: red;
+  font-style: bold;
+  text-decoration: none;
 }
 body {
   text-align: center;
@@ -15,7 +20,7 @@ body {
   color: #666666;
 }
 #header {
-  font-family: 'Lato';
+  font-family: 'Helvetica Neue', Helvetica, 'Lato';
   padding: 15px;
   background: #cdd6ee;
   margin-bottom: 15px;
@@ -41,7 +46,9 @@ body {
   color: #333333;
   text-decoration: none;
 }
-#header ul li a:hover { text-decoration: underline; }
+#header ul li a:hover { 
+  text-decoration: none; 
+}
 #header h1 {
   font-size: 48px;
   font-weight: bold;
@@ -53,7 +60,7 @@ body {
   font-size: 44px;
   font-style: normal;
   font-weight: 400;
-  text-shadow: 2px 2px 2px #aaa;
+  /* text-shadow: 2px 2px 2px #aaaaaa; */
   text-decoration: none;
   text-transform: none;
   letter-spacing: -0.015em;
@@ -74,16 +81,16 @@ body {
 .pagelist { padding: 10px; }
 .pagelist h2 {
   font-size: 24px;
-  font-family: 'Lato';
+  font-family: 'Helvetica Neue', Helvetica;
 }
 .pagelist a {
-	font-size: 18px;
-	text-decoration: none;
+  font-size: 18px;
+  text-decoration: none;
 }
 .post { margin-bottom: 55px; }
 .post h3 {
   font-size: 29px;
-  font-family: 'Lato';
+  font-family: 'Helvetica Neue', Helvetica;
   font-weight: normal;
   margin-bottom: 7px;
 }
@@ -97,24 +104,21 @@ body {
   color: #999999;
   margin-bottom: 25px;
 }
-
 pre {
-	background: #e2e2e2;
-	margin-top: 10px;
-	margin-bottom: 10px;
+  background: #eee;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-
 blockquote {
   background-color: #faebbc;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 25px;
   padding-left: 15px;
-  border-left: 3px solid #cccccc;
+  border-left: 7px solid #cccccc;
 }
-
 #footer {
-  font-family: 'Lato';
+  font-family: 'Helvetica Neue', Helvetica, 'Lato';
   background: #cdd6ee;
   padding: 25px;
   color: #333333;
@@ -129,6 +133,7 @@ blockquote {
   font-size: 24px;
   margin-bottom: 15px;
   font-weight: 300;
+  font-family: "Rock Salt";
 }
 #footer h3 a {
   text-decoration: none;
@@ -152,6 +157,7 @@ blockquote {
 #footer .about div {
   padding-left: 94px;
   width: 140px;
+  font-weight: 300;
 }
 .my_pic { float: right; }
 .about_head {
@@ -171,7 +177,7 @@ table.projects td.img {
 table.projects td.desc { padding-left: 45px; }
 .bubble {
   color: #ffffff;
-  font-size: 13px;
+  font-size: 16px;
   background: #607890;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
