@@ -1,17 +1,38 @@
---- 
----
+/* @override http://ken.pepple.info/css/main.css */
 
-/* @override http://localhost:4000/css/main.css */
+/* color palette
+reds
+#E1CCD0 (225,204,208) 
+#C69FA7 (198,159,167) 
+#B37F89 (179,127,137) 
+** #77555B (119,85,91) link
+#362629 (54,38,41) 
+
+aquas 
+#CBDAE0 (203,218,224) 
+#9EB9C5 (158,185,197) 
+#7EA2B2 (126,162,178) 
+#546C77 (84,108,119) 
+#263135 (38,49,53) 
+
+browns
+#E1DCCC (225,220,204) 
+#C6BE9F (198,190,159) 
+#B3A87F (179,168,127) 
+#777055 (119,112,85) 
+#363226 (54,50,38)
+*/
 
 html { padding: 0 0 0 0; }
 a {
-  color: #727497;
   text-decoration: none;
+  color: #77555B;
+  font-weight: 600;
 }
 a:hover {
   font-style: bold;
   text-decoration: none;
-  background-color: #eaeaea;
+  background-color: #E1CCD0;
 }
 body {
   text-align: center;
@@ -22,7 +43,7 @@ body {
 #header {
   font-family: 'Helvetica Neue', Helvetica, sans;
   padding: 15px;
-  background: #cdd6ee;
+  background: #CBDAE0;
   margin-bottom: 15px;
   color: #333333;
 }
@@ -43,10 +64,10 @@ body {
   font-weight: 300;
 }
 #header ul li a {
-  color: #333333;
+  color: #77555B;
 }
 #header ul li a:hover { 
-	background-color: #eaeaea; 
+	/* background-color: #eaeaea; */
 }
 #header h1 {
   font-size: 48px;
@@ -63,6 +84,7 @@ body {
   letter-spacing: -0.015em;
   word-spacing: -0.04em;
   line-height: 1.2;
+  text-shadow: 2px 2px 2px #fff;
 }
 #header h1 a:hover {
   background-color: transparent;
@@ -92,15 +114,12 @@ body {
   font-family: 'Helvetica Neue', Helvetica, sans;
   font-weight: normal;
   margin-bottom: 7px;
+  color: #546C77;
 }
 
 div.post h4 {
   font-size: 22px;
   font-weight: normal;
-}
-.post h3 a { text-decoration: none; }
-.post h3 a:hover { 
-	background-color: #eaeaea;
 }
 .post .body { font-size: 17px; }
 .post .body p { margin-bottom: 1em; }
@@ -113,22 +132,23 @@ div.post h4 {
   margin-bottom: 25px;
 }
 pre {
-  background: #eeeeee;
+  background: #ECF1F3;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 14px;
+  color: black;
 }
 blockquote {
-  background-color: #faebbc;
+  background-color: #F4ECED;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 25px;
   padding-left: 15px;
-  border-left: 7px solid #cccccc;
+  border-left: 7px solid #363226;
 }
 #footer {
   font-family: 'Helvetica Neue', Helvetica, sans;
-  background: #cdd6ee;
+  background: #CBDAE0;
   padding: 25px;
   color: #333333;
   margin-top: 15px;
@@ -145,7 +165,7 @@ blockquote {
   font-family: "Rock Salt", serif;
 }
 #footer h3 a {
-  color: #333333;
+  color: black;
 }
 #footer h3 a:hover { 
 	background-color: transparent;	 
@@ -157,7 +177,7 @@ blockquote {
 }
 #footer table tr td a { text-decoration: none; }
 #footer table tr td a:hover { 
-	background-color: #eaeaea; 
+	/* background-color: #eaeaea; */
 }
 #footer table tr td.date { text-align: right; }
 #footer .archives {
@@ -191,7 +211,7 @@ table.projects td.desc {
 .bubble {
   color: #ffffff;
   font-size: 16px;
-  background: #607890;
+  background: #7EA2B2;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   padding: 10px;
@@ -209,11 +229,11 @@ table.projects td.desc {
   text-decoration: none;
   color: #ffffff;
 }
-.bubble a:hover { background-color: #eaeaea; }
+.bubble a:hover { /* background-color: #eaeaea; */ }
 #disqus_thread { margin-top: 45px; }
 #disqus_thread h3 { font-size: 19px; }
 .code-inline {
-  background-color: #cceeff;
+  background-color: #CBDAE0;
   font-weight: normal;
   padding: 1px 3px;
   font-family: courier, mono;
