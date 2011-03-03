@@ -4,14 +4,14 @@
 /* @override http://localhost:4000/css/main.css */
 
 html { padding: 0 0 0 0; }
-a { 
+a {
   color: #727497;
   text-decoration: none;
 }
 a:hover {
-  color: red;
   font-style: bold;
   text-decoration: none;
+  background-color: #eaeaea;
 }
 body {
   text-align: center;
@@ -44,28 +44,28 @@ body {
 }
 #header ul li a {
   color: #333333;
-  text-decoration: none;
 }
 #header ul li a:hover { 
-  text-decoration: none; 
+	background-color: #eaeaea; 
 }
 #header h1 {
   font-size: 48px;
   font-weight: bold;
 }
 #header h1 a {
-  text-decoration: none;
   color: #333333;
   font-family: 'Rock Salt', serif;
   font-size: 44px;
   font-style: normal;
   font-weight: 400;
-  /* text-shadow: 2px 2px 2px #aaaaaa; */
   text-decoration: none;
   text-transform: none;
   letter-spacing: -0.015em;
   word-spacing: -0.04em;
   line-height: 1.2;
+}
+#header h1 a:hover {
+  background-color: transparent;
 }
 #header h2 {
   font-size: 14px;
@@ -85,7 +85,6 @@ body {
 }
 .pagelist a {
   font-size: 18px;
-  text-decoration: none;
 }
 .post { margin-bottom: 55px; }
 .post h3 {
@@ -94,18 +93,27 @@ body {
   font-weight: normal;
   margin-bottom: 7px;
 }
+
+div.post h4 {
+  font-size: 22px;
+  font-weight: normal;
+}
 .post h3 a { text-decoration: none; }
-.post h3 a:hover { text-decoration: underline; }
+.post h3 a:hover { 
+	background-color: #eaeaea;
+}
 .post .body { font-size: 17px; }
 .post .body p { margin-bottom: 1em; }
-.post ul { margin-bottom: 1em; }
+.post ul { margin-bottom: 1em;
+	list-style-type: none;
+}
 .post ul li { margin-bottom: 0.5em; }
 .post .meta {
   color: #999999;
   margin-bottom: 25px;
 }
 pre {
-  background: #eee;
+  background: #eeeeee;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -136,17 +144,20 @@ blockquote {
   font-family: "Rock Salt";
 }
 #footer h3 a {
-  text-decoration: none;
   color: #333333;
 }
-#footer h3 a:hover { text-decoration: underline; }
+#footer h3 a:hover { 
+	background-color: transparent;	 
+}
 #footer table { font-weight: 300; }
 #footer table tr td {
   padding-bottom: 3px;
   padding-right: 15px;
 }
 #footer table tr td a { text-decoration: none; }
-#footer table tr td a:hover { text-decoration: underline; }
+#footer table tr td a:hover { 
+	background-color: #eaeaea; 
+}
 #footer table tr td.date { text-align: right; }
 #footer .archives {
   float: left;
@@ -165,8 +176,6 @@ blockquote {
   margin-bottom: 45px;
 }
 .projects_container {
-  border-top: #dddddd double 3px;
-  border-bottom: #dddddd double 3px;
   padding: 35px 0 0 0;
 }
 table.projects td { padding-bottom: 35px; }
@@ -174,7 +183,10 @@ table.projects td.img {
   text-align: center;
   vertical-align: middle;
 }
-table.projects td.desc { padding-left: 45px; }
+table.projects td.desc { 
+	padding-left: 45px;
+	vertical-align: middle;
+}
 .bubble {
   color: #ffffff;
   font-size: 16px;
@@ -196,6 +208,6 @@ table.projects td.desc { padding-left: 45px; }
   text-decoration: none;
   color: #ffffff;
 }
-.bubble a:hover { text-decoration: underline; }
+.bubble a:hover { background-color: #eaeaea; }
 #disqus_thread { margin-top: 45px; }
 #disqus_thread h3 { font-size: 19px; }
