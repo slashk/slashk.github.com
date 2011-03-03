@@ -212,3 +212,9 @@ table.projects td.desc {
 .bubble a:hover { background-color: #eaeaea; }
 #disqus_thread { margin-top: 45px; }
 #disqus_thread h3 { font-size: 19px; }
+.code-inline {
+  background-color: #cceeff;
+  font-weight: normal;
+  padding: 1px 3px;
+  font-family: courier, mono;
+}
