@@ -1,5 +1,5 @@
 ---
-layout: project
+layout: page
 title: NorCal MTB Racing
 ---
 
