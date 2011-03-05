@@ -1,5 +1,3 @@
-/* @override http://localhost:4000/css/main.css */
-
 /* color palette
 reds
 #E1CCD0 (225,204,208) 
@@ -26,12 +24,12 @@ browns
 html { padding: 0 0 0 0; }
 a:link {
   text-decoration: none;
-  color: #77555B;
+  color: #546C77;
   font-weight: 600;
 }
 a:visited {
   text-decoration: none;
-  color: #77555B;
+  color: #546C77;
   font-weight: 600;
 }
 a:hover {
@@ -41,7 +39,7 @@ a:hover {
 }
 a:active {
   text-decoration: none;
-  color: #77555B;
+  color: #546C77;
   font-weight: 600;
 } 
 body {
@@ -74,7 +72,7 @@ body {
   font-weight: 300;
 }
 #header ul li a {
-  color: #77555B;
+  color: #546C77;
 }
 #header ul li a:hover { 
 	/* background-color: #eaeaea; */
@@ -84,7 +82,7 @@ body {
   font-weight: bold;
 }
 #header h1 a {
-  color: #333333;
+  color: #546C77;
   font-family: 'Rock Salt', serif;
   font-size: 44px;
   font-style: normal;
@@ -94,15 +92,17 @@ body {
   letter-spacing: -0.015em;
   word-spacing: -0.04em;
   line-height: 1.2;
-  text-shadow: 2px 2px 2px #fff;
+  text-shadow: 2px 2px 2px #263135;
 }
 #header h1 a:hover {
   background-color: transparent;
 }
 #header h2 {
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 500;
   margin-left: 20px;
+  color: white;
+  text-shadow: 1px 1px 1px #263135;
 }
 #header h2 img { margin-left: 3px; }
 #content .inner {
@@ -265,6 +265,6 @@ p.bookmeta {
 	line-height: 10px;
 }
 
-div.bubble p.booktitle a {
+p.booktitle a {
   font-size: 18px;
 }
