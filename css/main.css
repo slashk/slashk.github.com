@@ -213,7 +213,7 @@ blockquote {
 table.projects td { padding-bottom: 35px; }
 table.projects td.img {
   text-align: center;
-  vertical-align: middle;
+  vertical-align: top;
 }
 table.projects td.desc { 
 	padding-left: 45px;
@@ -252,4 +252,19 @@ table.projects td.desc {
   font-weight: normal;
   padding: 1px 3px;
   font-family: courier, mono;
+}
+
+p.bookauthors {
+	font-size: 14px;
+	font-style: italic;
+	line-height: 10px;
+}
+
+p.bookmeta {
+	font-size: 12px;
+	line-height: 10px;
+}
+
+div.bubble p.booktitle a {
+  font-size: 18px;
 }
