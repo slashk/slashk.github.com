@@ -227,6 +227,9 @@ table.projects td.desc {
   -webkit-border-radius: 5px;
   padding: 10px;
   position: relative;
+  -moz-box-shadow: 3px 3px 4px #CBDAE0;
+  -webkit-box-shadow: 3px 3px 4px #CBDAE0;
+  box-shadow: 3px 3px 4px #CBDAE0;
 }
 .bubble .tip {
   background: url(/images/triangle.png) no-repeat 0 0;
@@ -235,6 +238,7 @@ table.projects td.desc {
   position: absolute;
   top: 19px;
   left: -10px;
+  vertical-align: middle;
 }
 .bubble a {
   text-decoration: none;
