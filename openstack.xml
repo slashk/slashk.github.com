@@ -4,7 +4,7 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>Ken Pepple >> OpenStack</title>
+ <title>Ken Pepple on OpenStack</title>
  <link href="http://ken.pepple.info/openstack.atom" rel="self"/>
  <link href="http://ken.pepple.info"/>
  <language>en</language> 
