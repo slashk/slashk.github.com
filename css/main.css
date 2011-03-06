@@ -268,3 +268,6 @@ p.bookmeta {
 p.booktitle a {
   font-size: 18px;
 }
+.tags {
+  margin-top: 16px;
+}
