@@ -7,12 +7,12 @@ layout: nil
  <title>Ken Pepple >> OpenStack</title>
  <link href="http://ken.pepple.info/openstack.atom" rel="self"/>
  <link href="http://ken.pepple.info"/>
- <language>en</language>
- 
+ <language>en</language> 
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://ken.pepple.info/</id>
  <author>
    <name>Ken Pepple</name>
+   <email>ken.pepple@rabbityard.com</email>
  </author>
 
  {% for post in site.posts %}
