@@ -1,8 +1,7 @@
 --- 
 layout: post
 title: Configurable Instance Types For OpenStack Nova 
-categories:
-- openstack
+category: openstack
 ---
 
 <p>Over the past three weeks, new Nova core developer Josh Kearney (<em>congrats <a href="http://twitter.com/#!/jk0">@jk0</a></em>) and I have been working on adding runtime configuration of instance types (<a href="http://wiki.openstack.org/ConfigureInstanceTypesDynamically">read the full specification</a>) to the <a href="https://launchpad.net/nova">OpenStack Nova compute service</a>.  Instance types (or "flavors" as Rackspace calls them) are resources granted to virtual machines ("instances") in the Nova cloud. In more specific terms, this is the size of the instance (vCPUs, RAM, Storage, etc.) that you will be launching. You may recognize these by the names "m1.large" or "m1.tiny" in AWS EC2 parlance. The Rackspace's API (<a href="http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf">PDF</a>) calls these "flavors" and they tend to have names like "256 MB Server" and such.</p>

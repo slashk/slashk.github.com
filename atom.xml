@@ -4,13 +4,14 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>rabbityard<title>
+ <title>Ken Pepple</title>
  <link href="http://ken.pepple.info/atom.xml" rel="self"/>
  <link href="http://ken.pepple.info"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://ken.pepple.info/</id>
  <author>
-   <name>rabbityard</name>
+   <name>Ken Pepple</name>
+   <email>ken.pepple@rabbityard.com</email>
  </author>
 
  {% for post in site.posts %}
