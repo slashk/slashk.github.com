@@ -3,7 +3,6 @@ def create_new_file(path, title)
 --- 
 layout: post
 title: "TITLE"
-date: DATE
 categories:
 - example
 ---
