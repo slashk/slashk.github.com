@@ -11,7 +11,7 @@ layout: nil
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://ken.pepple.info/about.html</loc>
+    <loc>http://ken.pepple.info/about/</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
