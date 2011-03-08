@@ -3,8 +3,7 @@ def create_new_file(path, title)
 --- 
 layout: post
 title: "TITLE"
-categories:
-- example
+category: example
 ---
 
 HTML
