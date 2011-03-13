@@ -86,13 +86,14 @@ body {
   font-family: 'Rock Salt', serif;
   font-size: 44px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   text-decoration: none;
   text-transform: none;
   letter-spacing: -0.015em;
   word-spacing: -0.04em;
   line-height: 1.2;
-  text-shadow: 2px 2px 2px #263135;
+  /* text-shadow: 2px 2px 2px #263135; */
+  text-shadow: 2px 2px 2px #FFF;
 }
 #header h1 a:hover {
   background-color: transparent;
