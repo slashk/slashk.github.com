@@ -127,10 +127,13 @@ body {
   margin-bottom: 7px;
   color: #546C77;
 }
-
 div.post h4 {
   font-size: 22px;
   font-weight: normal;
+}
+div.post h5 {
+  font-size: 16px;
+  font-weight: bold;
 }
 .post .body { font-size: 17px; }
 .post .body p { margin-bottom: 1em; }
@@ -148,6 +151,7 @@ pre {
   margin-bottom: 10px;
   font-size: 14px;
   color: black;
+  white-space: pre;
 }
 blockquote {
   background-color: #F4ECED;
