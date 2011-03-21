@@ -283,3 +283,6 @@ p.booktitle a {
   font-size: 10px;
   text-align: center;
 }
+#content div.body img {
+	padding: 10px;
+}
