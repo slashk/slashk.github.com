@@ -272,3 +272,10 @@ p.booktitle a {
 .tags {
   margin-top: 16px;
 }
+
+#footer div.powered {
+  clear: both;
+  padding-top: 20px;
+  font-size: 10px;
+  text-align: center;
+}
