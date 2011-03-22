@@ -1,0 +1,11 @@
+/* TEAM */
+	Zombie Killer: Ken Pepple
+	Contact: ken.pepple [at] rabbityard.com
+	Twitter: @ken_pepple
+	From: NorCal
+
+/* SITE */
+	Language: English
+	Doctype: HTML4 with CSS3
+	Tools: Jekyll, GitHub Pages
+	IDE: Textmate
