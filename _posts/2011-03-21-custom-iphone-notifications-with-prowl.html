@@ -4,15 +4,18 @@ title: "Custom iPhone Notifications with Prowl"
 category: iphone
 ---
 
-<img style="float: right;" src="/images/prowl_empty.jpg"><p>On of my favorite iPhone feature is <a href="http://en.wikipedia.org/wiki/Apple_Push_Notification_Service" target="_blank">push notifications</a>. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I've always wished I could write my own without creating a full blown iPhone application. Enter a simple application called <a href="http://www.prowlapp.com/" target="_blank">Prowl</a>. Prowl is a <a href="http://growl.info/" target="_blank">Growl</a> client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.</p>
+<img style="float: right;" src="/images/prowl_empty.jpg" /><p>On of my favorite iPhone feature is <a href="http://en.wikipedia.org/wiki/Apple_Push_Notification_Service" target="_blank">push notifications</a>. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I've always wished I could write my own without creating a full blown iPhone application. Enter a simple application called <a href="http://www.prowlapp.com/" target="_blank">Prowl</a>. Prowl is a <a href="http://growl.info/" target="_blank">Growl</a> client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.</p>
+
 <p>To send yourself custom push notifications, you'll first need to buy <a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=320876271" target="_blank">Prowl</a> for your iPhone (around USD$2.99). Once you've downloaded and installed it on your iPhone, you need to <a href="https://www.prowlapp.com/api_settings.php" target="_blank">generate an API key</a>. With that completed, you are all set to receive Prowl alerts.</p>
 <p>Some desktop/server apps work with it out of the box (a semi-full list is at <a href="http://www.prowlapp.com/apps.php" target="_blank">http://www.prowlapp.com/apps.php</a>). Others like <a href="http://en.znc.in/wiki/Prowl" target="_blank">znc</a>, <a href="http://flexget.com/wiki/Plugins/prowl" target="_blank">flexget</a> or <a href="http://reluctanthacker.rollett.org/content/setting-nagios3-send-prowl-notifications" target="_blank">Nagios</a> require a plugin. To create you own custom alert, you'll need to write some scripting code. I prefer using Python or Ruby for this, but <a href="http://www.prowlapp.com/api.php#libraries" target="_blank">there are plenty of libraries available for other languages</a>.</p>
 
 
 <h4>Prowl API</h4>
 <p>The <a href="http://www.prowlapp.com/api.php" target="_blank">Prowl API</a> is very simple:</p>
-<ul style="list-style-type: disc;"><li><span class="code-inline">add</span> (POST) which sends notifications to your iPhone</li>
-    <li><span class="code-inline">verify</span> (GET) which checks the validity of your API key</li></ul>
+<ul style="list-style-type: disc;">
+  <li><span class="code-inline">add</span> (POST) which sends notifications to your iPhone</li>
+  <li><span class="code-inline">verify</span> (GET) which checks the validity of your API key</li>
+</ul>
 <p>Just recently the API was updated to version 1.2 which added two new methods - <span class="code-inline">retrieve/token</span> (GET) and <span class="code-inline">retrieve/apikey</span> (GET) - which appeal mostly to website operators. They facilitate giving people your API key in a secure manner.</p>
 <p>While the API is very simple, and you could certainly use it from the command line with a tool like curl, most people will want to use a library for their favorite programming language. I use two of these libraries, Prowly for Ruby and ProwlPy for Python.</p>
 
@@ -73,7 +76,7 @@ except Exception,msg:
 
 
 <h4>Creating Your Own Prowl Notifiers</h4>
-<img style="float: right;" src="/images/prowl_alert.jpg"><p>Once you've grokked the basics of using the Prowl API, it's time to actually put it to use. To do that, you'll need to create your own script (with whatever logic you need), have it execute at common intervals (usually via <span class="code-inline">cron</span>) and then just wait for prowl notifications to roll in.</p>
+<img style="float: right;" src="/images/prowl_alert.jpg" /><p>Once you've grokked the basics of using the Prowl API, it's time to actually put it to use. To do that, you'll need to create your own script (with whatever logic you need), have it execute at common intervals (usually via <span class="code-inline">cron</span>) and then just wait for prowl notifications to roll in.</p>
 <p>To get you started, I've created a repository of scripts that I use over at <a href="https://github.com/slashk/prowl-scripts" target="_blank">https://github.com/slashk/prowl-scripts</a>. There you'll see a few scripts to notify you of:</p>
 <ul style="list-style-type: disc;"><li><a href="https://www.transmissionbt.com/" target="_blank">transmission bit torrent</a> download completions</li>
     <li>daily and monthly Google AdSense balances</li>
