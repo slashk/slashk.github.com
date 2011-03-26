@@ -4,7 +4,7 @@ title: "Auto Blogging with Rake & Rails"
 category: rails
 ---
 
-I have a long running blog that I struggle to keep updated. The blog deals with with mountain bike racing scene here in Northern California, so the content needs to stay timely as their are races every weekend all year long. However, I haven't had a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend. You can see an example of what I wanted at <a href="http://norcalmtnbikeracing.blogspot.com/2011/03/norcal-mtb-racing-this-weekend-3-mar-8.html" target="_blank">NorCal MTB Racing blog</a>.
+I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every weekend all year long. Unfortunately, I don't have a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend. You can see an example of what I wanted at <a href="http://norcalmtnbikeracing.blogspot.com/2011/03/norcal-mtb-racing-this-weekend-3-mar-8.html" target="_blank">NorCal MTB Racing blog</a>.
 
 The basic idea was to create a <span class="code-inline">cron</span> job that pulls a list of races (with a link for details) from my rails application's database, plot the events on map, add some text and then post it to my blog on Blogger. Most of this is pretty standard rails stuff, but I did need some help for the map and posting.
 
