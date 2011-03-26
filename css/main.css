@@ -140,7 +140,14 @@ div.post h5 {
 .post ul { margin-bottom: 1em;
 	list-style-type: none;
 }
-.post ul li { margin-bottom: 0.5em; }
+.post ul li { 
+	margin-bottom: 0.5em;
+}
+
+#content div.inner div.post div.body div.about_head ul.nodot li img {
+	padding-bottom: 0px;
+	padding-right: 5px;
+}
 .post .meta {
   color: #999999;
   margin-bottom: 25px;
