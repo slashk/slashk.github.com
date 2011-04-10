@@ -14,7 +14,7 @@ For the maps, I used <a href="http://code.google.com/apis/maps/documentation/sta
 {% endhighlight %}
 Produces this map:
 
-<img alt="NorCal MTB Race Event Map" src="http://maps.google.com/maps/api/staticmap?size=600x200&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:blue|label:1|38.7067,-122.903&amp;markers=color:blue|label:2|37.7756,-122.438&amp;markers=color:blue|label:4|38.028,-121.885">
+<img alt="NorCal MTB Race Event Map" src="http://maps.google.com/maps/api/staticmap?size=600x200&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:blue|label:1|38.7067,-122.903&amp;markers=color:blue|label:2|37.7756,-122.438&amp;markers=color:blue|label:4|38.028,-121.885" />
   
 To post to Blogger, I used the <span class="code-inline">blogger gem</span> (<a href="http://blogger.rubyforge.org/" target="_blank">installation instructions</a>). There are other ruby gems out there that interface with Blogger, but this was by far the most straight forward. To use the gem, you need username, password and blog ID. I found my blog ID through an <a href="http://www.google.com/support/forum/p/blogger/thread?tid=44fc0d69e2a4f283&hl=en" target="_blank">answer in the blogger support forum</a>:
 <blockquote>
