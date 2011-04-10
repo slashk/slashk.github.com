@@ -10,7 +10,7 @@ The basic idea was to create a <span class="code-inline">cron</span> job that pu
 
 For the maps, I used <a href="http://code.google.com/apis/maps/documentation/staticmaps/" target="_blank">Google Static Maps</a>. This allows you to embed a Google Maps image on your webpage just like a normal image. All you need to do it feed it the right parameters. For example, this HTML code:
 {% highlight ruby %}
-<img alt="NorCal MTB Race Event Map" src="http://maps.google.com/maps/api/staticmap?size=600x200&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:blue|label:1|38.7067,-122.903&amp;markers=color:blue|label:2|37.7756,-122.438&amp;markers=color:blue|label:4|38.028,-121.885">
+<img alt="NorCal MTB Race Event Map" src="http://maps.google.com/maps/api/staticmap?size=600x200&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:blue|label:1|38.7067,-122.903&amp;markers=color:blue|label:2|37.7756,-122.438&amp;markers=color:blue|label:4|38.028,-121.885" />
 {% endhighlight %}
 Produces this map:
 
