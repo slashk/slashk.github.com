@@ -137,10 +137,12 @@ div.post h5 {
 }
 .post .body { font-size: 17px; }
 .post .body p { margin-bottom: 1em; }
-.post ul { margin-bottom: 1em;
-  list-style-type: none;
+.post ul ol { 
+  margin-bottom: 1em;
+  list-style-type: normal;
+  padding-left: 1em;
 }
-.post ul li { 
+.post li { 
 	margin-bottom: 0.5em;
 }
 #content div.inner div.post div.body div.about_head ul.nodot li img {
