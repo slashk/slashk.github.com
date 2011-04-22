@@ -294,3 +294,6 @@ p.booktitle a {
 #content div.body img {
 	padding: 10px;
 }
+.nodot {
+    list-style-type: none;
+}
