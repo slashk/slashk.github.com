@@ -137,6 +137,7 @@ div.post h5 {
 }
 .post .body { font-size: 17px; }
 .post .body p { margin-bottom: 1em; }
+.post .body img { text-align: center;}
 .post ul ol { 
   margin-bottom: 1em;
   list-style-type: normal;
