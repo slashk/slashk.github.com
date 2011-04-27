@@ -3,6 +3,7 @@
 	Contact: ken.pepple [at] rabbityard.com
 	Twitter: @ken_pepple
 	From: NorCal
+	Bio: ken.pepple.info/about/
 
 /* SITE */
 	Language: English
