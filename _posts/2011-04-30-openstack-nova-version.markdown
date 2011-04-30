@@ -9,7 +9,7 @@ _I just got back from the [OpenStack Developers Summit](http://summit.openstack.
 A slight annoyance in administering (and troubleshooting) OpenStack Nova is identifying your installed version. This information is actually readily (i.e. programmatically) available within the code (_and logged at the beginning of most logfiles_), but we hadn't exposed it to administrators on the command line until [Nova trunk revision #1036](http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/revision/1036). With this change, you can now simply type <span class="code-inline">nova-manage version list</span> to find which OpenStack Nova version is installed. For example:
 
 {% highlight bash %}
-$ bin/nova-manage version list
+$ nova-manage version list
 2011.3-dev (2011.3-workspace:tarmac-20110428165803-elcz2wp2syfzvxm8)
 {% endhighlight %}
 
