@@ -16,6 +16,9 @@
   <link href="/css/syntax.css" media="screen" rel="stylesheet" type="text/css" /> 
   <link rel="alternate" type="application/rss+xml" href="/atom.xml" title="RSS feed">
   <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
+  <script src="/javascript/jquery-1.5.2.min.js" type="text/javascript"></script>
+  <script src="/javascript/jquery.tipsy.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/css/tipsy.css" type="text/css" />
 </head> 
 
 <body> 
@@ -28,11 +31,14 @@
     <div id="header">
         <div class="inner">
             <ul>
-                <li><a href="/feed.atom"><img src="/images/rss.png"></a></li>
-                <li><a href="/tags/">Tags</a></li>
-                <li><a href="/books/">Books</a></li>
-                <li><a href="/projects/">Projects</a></li>
-                <li><a href="/about/">About</a></li>
+                <li class="toplinks" title="Subscribe to my RSS Feed"><a href="/feed.atom" >
+                      <img src="/images/rss.png">
+                    </a>
+                </li>
+                <li class="toplinks" title="Blog Posts Organized by Topic"><a href="/tags/">Tags</a></li>
+                <li class="toplinks" title="Books, Presentations and Interviews"><a href="/books/">Books</a></li>
+                <li class="toplinks" title="My Projects"><a href="/projects/">Projects</a></li>
+                <li class="toplinks" title="About Me"><a href="/about/">About</a></li>
             </ul>
             <h1><a href="/">Ken Pepple</a></h1>
             <h2>Technologist :: Cyclist :: Zombie H&uuml;nter</h2>
