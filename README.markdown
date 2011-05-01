@@ -1,14 +1,12 @@
 Ken's Blog
 ===========
 
-This is the Jekyll based blog template for my personal blog at [http://ken.pepple.info/](http://ken.pepple.info/). You are free to use this template under the MIT license.
+This is the Jekyll based blog template for my personal blog at [http://ken.pepple.info/](http://ken.pepple.info/). 
+
+You are free to use this template under the MIT license.
 
 License and Copyright
 ---------------------
-
-Following files, directories and their contents are copyright Ken Pepple. You may not reuse anything therein without my permission:
-
-  * about.html
 
 Following directories and their contents are licensed under the Creative Commons Attribution-Noncommercial-No Derivative Works 2.5:
 
