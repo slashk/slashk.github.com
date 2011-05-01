@@ -1,5 +1,6 @@
 markdown: rdiscount
 auto: true
+server: true
 pygments: true
 permalink: pretty
 exclude:
