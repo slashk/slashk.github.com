@@ -15,7 +15,7 @@ $ nova-manage version list
 
 As you can probably guess, this machine is installed with a post-Cactus / pre-Diablo version of Nova ("2011.3-dev") from the ppa:trunk packages ("tarmac-20110428165803"). Final released versions will report non-dev version numbers like `2011.1` (Bexar), `2011.2` (Cactus) or `2011.3` (upcoming Diablo). Releases from Launchpad's ppa/trunk or ppa/release repositories will report "tarmac" in the string.
 
-For those wanting to understand this deeper: In [nova/version.py](http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/view/head:/nova/version.py) there are two methods, `version_string()` and `version_string_with_vcs()`. You can see their use here in the python shell:
+For those who aren't following Nova trunk (cutting edge builds) or wanting to understand this deeper: In [nova/version.py](http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/view/head:/nova/version.py) there are two methods, `version_string()` and `version_string_with_vcs()`. You can see their use here in the python shell:
 
 {% highlight python %}
 $ nova-manage shell python
