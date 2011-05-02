@@ -6,11 +6,11 @@ category: openstack
 
 <p>Over the past three weeks, new Nova core developer Josh Kearney (<em>congrats <a href="http://twitter.com/#!/jk0">@jk0</a></em>) and I have been working on adding runtime configuration of instance types (<a href="http://wiki.openstack.org/ConfigureInstanceTypesDynamically">read the full specification</a>) to the <a href="https://launchpad.net/nova">OpenStack Nova compute service</a>.  Instance types (or "flavors" as Rackspace calls them) are resources granted to virtual machines ("instances") in the Nova cloud. In more specific terms, this is the size of the instance (vCPUs, RAM, Storage, etc.) that you will be launching. You may recognize these by the names "m1.large" or "m1.tiny" in AWS EC2 parlance. The Rackspace's API (<a href="http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf">PDF</a>) calls these "flavors" and they tend to have names like "256 MB Server" and such.</p>
 
-<p>In the released version of OpenStack Nova (Bexar), instance types are defined statically in the nova/instance_types.py file (which corresponds to the initial Amazon EC2 instance types) before run-time. This change, which will be part of the upcoming version of Nova (Cactus), instance types can be created by the Nova administrator during run-time through the nova-manage command. If you are following the Nova trunk (or just impatient), you can find this merged in at <a href="http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/revision/757">revision number 757</a>.</p>
+<p>In the released version of OpenStack Nova (Bexar), instance types are defined statically in the <code>nova/instance_types.py</code> file (which corresponds to the initial Amazon EC2 instance types) before run-time. This change, which will be part of the upcoming version of Nova (Cactus), instance types can be created by the Nova administrator during run-time through the <span class="code-inline">nova-manage</span> command. If you are following the Nova trunk (or just impatient), you can find this merged in at <a href="http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/revision/757">revision number 757</a>.</p>
 
 <h4>Basic Management</h4>
 
-<p>Instance types / flavor are managed through the <span class="code-inline">nova-manage</span> binary with the <span class="code-inline">instance_type</span> command and an appropriate subcommand. As we are using the <span class="code-inline">nova-manage</span> command, we need to be on the nova database server to configure instance types. Right now, instance type manipulation isn't exposed through the APIs nor the adminclient.</p>
+<p>Instance types / flavor are managed through the <span class="code-inline">nova-manage</span> binary with the <span class="code-inline">instance_type</span> command and an appropriate subcommand. As we are using the <span class="code-inline">nova-manage</span> command, we need to be on the Nova database server to configure instance types. Right now, instance type manipulation isn't exposed through the APIs nor the adminclient.</p>
   
 <p>Note that you can also use the <span class="code-inline">flavor</span> command as a synonym for <span class="code-inline">instance_types</span> for any of these examples.</p>
 
@@ -25,7 +25,7 @@ m1.xlarge: Memory: 16384MB, VCPUS: 8, Storage: 160GB, FlavorID: 5, Swap: 0GB, RX
 m1.small: Memory: 2048MB, VCPUS: 1, Storage: 20GB, FlavorID: 2, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
 {% endhighlight %}
 
-<p>Again, and just to emphasis, you could just have easily used the <span class="code-inline">flavor</span> subcommand to get the exact same output:</p>
+<p>Again, and just for emphasis, you could just have easily used the <span class="code-inline">flavor</span> subcommand to get the exact same output:</p>
 
 {% highlight bash %}
 $ nova-manage flavor list
