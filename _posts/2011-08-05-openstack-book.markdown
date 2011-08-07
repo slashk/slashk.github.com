@@ -22,7 +22,7 @@ The book is intended to provide an introduction to the OpenStack project (Glance
 * Understanding Nova
 * Obtaining Nova
 * Planning Nova Deployment
-* Installing Nova
+* Installing Nova (via packages and [StackOps](http://www.stackops.com/))
 * Using Nova 
 * Administering Nova
 
@@ -35,5 +35,14 @@ However, this book is not "*OpenStack: The Definitive Guide*" or any such tome:
 Most importantly, OpenStack now has an mascot. The humble tailless tenrec is an African mammal similar to hedgehogs (I prefer to believe that the cover picture is a [Greater Hedgehog Tenrec](http://en.wikipedia.org/wiki/Greater_Hedgehog_Tenrec)). Please commence creating  [plushy](http://www.thinkgeek.com/geektoys/plush/e5ac/) [toys](http://www.thinkgeek.com/geektoys/plush/288e/).
 
 If you are interested in this book, *I would highly recommend getting the Ebook version*. It is cheaper, it comes in almost any format ([ePub, Mobi, PDF](http://oreilly.com/store/ebooks.html)) and it will be updated. **Yes, updated**. You will see additional content come out for it, as it is written. For anyone that has been following the OpenStack community, you will realize that the code changes quickly. 
+
+I also wanted to send big thanks to my technical reviewers:
+
+* Josh Kearney ([jk0](http://jk0.org/))
+* Diego Parrilla (CEO of [StackOps](http://www.stackops.com/))
+* Brian Pepple (former chairman of the [Fedora Engineering Steering Committee](http://fedoraproject.org/wiki/Development/SteeringCommittee))
+* Su-hyung "Nick" Lee
+
+Their expertise made the book immeasurably better. 
 
 Oh yeah, [you can buy it here](http://oreilly.com/catalog/9781449311056/).
