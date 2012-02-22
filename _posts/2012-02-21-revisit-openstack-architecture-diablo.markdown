@@ -89,8 +89,8 @@ The swift architecture is very distributed to prevent any single point of failur
 
 * Proxy server accepts incoming requests via the OpenStack Object API or just raw HTTP. It accepts files to upload, modifications to metadata or container creation. In addition, it will also serve files or container listing to web browsers. The proxy server may utilize an optional cache (usually deployed with memcache) to improve performance.
 * Account servers manage accounts defined with the object storage service.
-* Container servers manages contains a mapping of containers (i.e folders) within the object store service.
-* Object servers manages actual objects (i.e. files) on the storage nodes.
+* Container servers manage a mapping of containers (i.e folders) within the object store service.
+* Object servers manage actual objects (i.e. files) on the storage nodes.
 * There are also a number of periodic process which run to perform housekeeping tasks on the large data store. The most important of these is the replication services, which ensures consistency and availability through the cluster. Other periodic processes include auditors, updaters and reapers.
 
 Authentication is handled through configurable WSGI middleware (which will usually be Keystone).
