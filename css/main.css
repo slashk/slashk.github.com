@@ -21,7 +21,9 @@ browns
 #363226 (54,50,38)
 */
 
-html { padding: 0 0 0 0; }
+html { 
+  padding: 0 0 0 0;
+}
 a:link {
   text-decoration: none;
   color: #546C77;
@@ -47,7 +49,8 @@ a:active {
   font-weight: 600;
 } 
 body {
-  text-align: center;
+/*  text-align: center;*/
+  text-align: left; 
   font-family: 'Helvetica Neue', Helvetica, sans;
   font-size: 14px;
   color: #666666;
