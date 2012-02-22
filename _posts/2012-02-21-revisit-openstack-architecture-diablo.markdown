@@ -4,7 +4,7 @@ title: "Revisiting OpenStack Architecture: Essex Edition"
 category: openstack
 ---
 
-While it is still [six weeks until OpenStack "Essex" (2012.1) officially is released](http://wiki.openstack.org/EssexReleaseSchedule), release candidates are just around the corner. With this in mind, I thought it would be a good chance to revisit my earlier blog post on [OpenStack Compute ("Nova") architecture](http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/). This time around, instead of detailing the architecture of just a single service, I'll look at all the pieces of the OpenStack project working together.
+While it is still [seven weeks until OpenStack "Essex" (2012.1) officially is released](http://wiki.openstack.org/EssexReleaseSchedule), release candidates are just around the corner. With this in mind, I thought it would be a good chance to revisit my earlier blog post on [OpenStack Compute ("Nova") architecture](http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/). This time around, instead of detailing the architecture of just a single service, I'll look at all the pieces of the OpenStack project working together.
 
 To level-set everyone's understanding, let's briefly review the OpenStack project components and history. Founded in 2010 by Rackspace and NASA, the project has [released four versions](http://wiki.openstack.org/Releases) and is set to release the fifth ("Essex" or 2012.1) [in April](http://wiki.openstack.org/EssexReleaseSchedule). Originally, it consisted of a trio of "core" services:
 
