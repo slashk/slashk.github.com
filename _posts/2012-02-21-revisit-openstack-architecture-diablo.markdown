@@ -17,7 +17,7 @@ The upcoming release promotes two new projects to "core" project status:
 * Dashboard (["Horizon"](http://horizon.openstack.org/)) provides a modular web-based user interface for all the OpenStack services.
 * Identity (["Keystone"](http://keystone.openstack.org/)) provides authentication and authorization for all the OpenStack services. It also provides a service catalog of services within a particular deployment.
 
-These two projects provide additional infrastructure to support the original three projects.
+These new projects provide additional infrastructure to support the original three projects.
 
 # Conceptual Architecture
 
@@ -40,9 +40,7 @@ This is a stylized and simplified view of the architecture, assuming that the im
 
 As you can imagine, the actual logical architecture is far more complicated than the conceptual architecture shown above. As with any service-oriented architecture, diagrams quickly become "messy" trying to illustrate all the possible combinations of service communications. In the diagram below, I illustrate what I believe will be the most common, "integrated" architecture of an OpenStack-based cloud.
 
-<figure>
-<img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg" alt="OpenStack Essex Logical Architecture" width="700px" />
-<figcaption>OpenStack Essex Logical Architecture</figcaption></figure>
+<figure><a href="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg" target="blank" ><img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg" alt="OpenStack Essex Logical Architecture" width="700px" /></a><figcaption>OpenStack Essex Logical Architecture (click to enlarge)</figcaption></figure>
 
 
 This picture is consistent with the description above in that:
