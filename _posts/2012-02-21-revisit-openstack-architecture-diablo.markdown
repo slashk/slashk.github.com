@@ -25,9 +25,7 @@ The OpenStack project as a whole is designed to "deliver(ing) a massively scalab
 
 Conceptually, you can picture the relationships between the services as so:
 
-<figure>
 <img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-concept-int-essex.jpg" alt="OpenStack Essex Conceptual Integration" width="700px" />
-<figcaption>OpenStack Essex Conceptual Integration</figcaption></figure>
 
 * Horizon provides a web front end to the other OpenStack services
 * Nova stores and retrieves virtual disks ("images") and associated metadata in Glance
@@ -40,8 +38,7 @@ This is a stylized and simplified view of the architecture, assuming that the im
 
 As you can imagine, the actual logical architecture is far more complicated than the conceptual architecture shown above. As with any service-oriented architecture, diagrams quickly become "messy" trying to illustrate all the possible combinations of service communications. In the diagram below, I illustrate what I believe will be the most common, "integrated" architecture of an OpenStack-based cloud.
 
-<figure><a href="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg" target="blank" ><img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg" alt="OpenStack Essex Logical Architecture" width="700px" /></a><figcaption>OpenStack Essex Logical Architecture (click to enlarge)</figcaption></figure>
-
+<a href="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg" target="blank" ><img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg" alt="OpenStack Essex Logical Architecture" width="700px" /></a>
 
 This picture is consistent with the description above in that:
 
@@ -55,10 +52,7 @@ In the sections below, we'll delve into the architecture for each of the service
 
 Horizon is a modular [Django web application](https://www.djangoproject.com/) that provides an end user and administrator interface to OpenStack services. 
 
-<figure>
 <img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/horizon-screenshot.jpg" alt="OpenStack Horizon Screenshot" width="700px" />
-<figcaption>OpenStack Horizon Screenshot</figcaption></figure>
-
 
 As with most web applications, the architecture is fairly simple:
 
