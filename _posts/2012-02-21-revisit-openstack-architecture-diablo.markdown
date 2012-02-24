@@ -73,7 +73,7 @@ Not much has really changed with Nova's architecture. They have added a few new 
 * The queue provides a central hub for passing messages between daemons. This is usually implemented with [RabbitMQ](http://www.rabbitmq.com/) today, but could be any AMPQ message queue (such as [Apache Qpid](http://qpid.apache.org/)).
 * The SQL database stores most of the build-time and run-time state for a cloud infrastructure. This includes the instance types that are available for use, instances in use, networks available and projects. Theoretically, OpenStack Nova can support any database supported by SQL-Alchemy but the only databases currently being widely used are sqlite3 (only appropriate for test and development work), MySQL and PostgreSQL.
 
-New to Nova in the intermediate releases are augmented console services. Console services allow end users to access their virtual instance's console through a proxy. This involves a pair of new daemons (nova-console and nova-consoleauth).
+During the last two releases, Nova has augmented it's console services. Console services allow end users to access their virtual instance's console through a proxy. This involves a pair of new daemons (nova-console and nova-consoleauth).
 
 Nova interacts with all of the usual suspects: Keystone for authentication, Glance for images and Horizon for web interface. The Glance interacts is interesting, though. The API process can upload and query Glance while nova-compute will download images for use in launching images.
 
