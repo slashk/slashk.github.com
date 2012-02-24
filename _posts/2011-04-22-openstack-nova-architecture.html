@@ -4,6 +4,8 @@ title: "OpenStack Nova Architecture"
 category: openstack
 ---
 
+<p><i>I've updated and expanded this blog post for the Essex release. <a href="/openstack/2012/02/21/revisit-openstack-architecture-diablo/">Click here to read the updated version</a>.</i></p>
+
 <p>One of the common refrains I hear from people getting started with <a href="http://www.openstack.org/">OpenStack</a> is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview. Now that <a href="http://www.openstack.org/blog/2011/04/openstack-announces-cactus-release/">Cactus</a> (OpenStack’s third version) has been released, I thought I’d take advantage of the lull in development to write up a quick architectural overview from my point of view. Since OpenStack is a fairly broad topic, I’ll break my thoughts into several posts. Today’s post will deal with OpenStack Nova’s (compute cloud) high level architecture. </p>
 
 <p>Before we dive into the conceptual and logic architecture, let’s take a second to explain the OpenStack project: </p>
