@@ -113,8 +113,8 @@ Most people will use this as a point of customization for their current authenti
 
 ## Future Projects
 
-The completes the tour of the OpenStack Essex architecture. However, OpenStack will not stopping there - the following OpenStack release ("Folsom") [will welcome another core service to the fold](http://eavesdrop.openstack.org/meetings/openstack-meeting/2012/openstack-meeting.2012-02-21-19.59.html):
+This completes the tour of the OpenStack Essex architecture. However, OpenStack will not be stopping here - the following OpenStack release ("Folsom") [will welcome another core service to the fold](http://eavesdrop.openstack.org/meetings/openstack-meeting/2012/openstack-meeting.2012-02-21-19.59.html):
 
-* Network ([Quantum](http://docs.openstack.org/incubation/openstack-network/admin/content/)) provides "network connectivity as a service" between interface devices managed by other Openstack services (most likely Nova).
+* Network ([Quantum](http://docs.openstack.org/incubation/openstack-network/admin/content/)) provides "network connectivity as a service" between interface devices managed by other Openstack services (most likely Nova). The service works by allowing users to create their own networks and then attach interfaces to them.
 
 Although the [release schedule for Folsom](http://www.openstack.org/conference/san-francisco-2012/) is not yet set (probably Fall 2012), I won't wait six months to update the picture for this.
