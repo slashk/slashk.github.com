@@ -103,7 +103,12 @@ body {
   text-shadow: 2px 2px 2px #FFF;
 }
 #header h1 a:hover {
-  background-color: transparent;
+  font-style: normal;
+  background-color: #E1CCD0;
+  border: none;
+  padding: 0px 0px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
 }
 #header h2 {
   font-size: 16px;
@@ -200,7 +205,13 @@ blockquote {
   font-weight: 300;  
 }
 #footer h3 a:hover { 
-	background-color: transparent;	 
+	background-color: transparent;
+  font-style: normal;
+  border: none;
+  padding: 0px 0px; 
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background-color: #E1CCD0;
 }
 #footer table { font-weight: 300; }
 #footer table tr td {
@@ -331,3 +342,4 @@ p.booktitle a {
   .tipsy-e .tipsy-arrow, .tipsy-w .tipsy-arrow { top: 50%; margin-top: -5px; }
   .tipsy-e .tipsy-arrow { right: 0; border-right: none; }
   .tipsy-w .tipsy-arrow { left: 0; border-left: none; }
+
