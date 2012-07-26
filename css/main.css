@@ -162,6 +162,9 @@ div.post h5 {
   padding-bottom: 0px;
   padding-right: 5px;
 }
+div.sharing {
+  text-align: right;
+}
 .post .meta {
   color: #999999;
   margin-bottom: 25px;

@@ -4,6 +4,12 @@ layout: default
 
 <div class="post">
     <h3><a href="{{ post.url }}">{{ page.title }}</a></h3>
+    <div class="sharing">
+      <span class='st_twitter_hcount' displayText='Tweet'></span>
+      <span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+      <span class='st_plusone_hcount' displayText='Google +1'></span>
+      <span class='st_email_hcount' displayText='Email'></span>
+    </div>
     <div class="meta">
         <p>
           Posted on <a href="{{ page.url }}">{{ page.date | date_to_string }}</a>
