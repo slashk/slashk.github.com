@@ -283,8 +283,11 @@ the above architecture, a simple Linux networking plug-in is shown.
   plugins and agents differ depending on the vendor and technologies used in the
   particular cloud. Quantum ships with plugins and agents for: Cisco virtual and
   physical switches, Nicira NVP product, NEC OpenFlow products, Open vSwitch,
-  Linux bridging and the Ryu Network Operating System. The common agents are L3
-  (layer 3), DHCP (dynamic host IP addressing) and the specific plug-in agent. 
+  Linux bridging and the Ryu Network Operating System. [Midokua also provides a
+  plug-in for Quantum
+  integration](https://github.com/midokura/midonet-openstack). The common agents
+  are L3 (layer 3), DHCP (dynamic host IP addressing) and the specific plug-in
+  agent.
 * Most Quantum installations will also make use of a messaging queue to route
   information between the `quantum-server` and various agents as well as a
   database to store networking state for particular plugins.
