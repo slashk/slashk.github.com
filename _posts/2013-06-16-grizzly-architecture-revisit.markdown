@@ -8,4 +8,4 @@ Back in April, I gave a presentation in Portland at the OpenStack Summit on the 
 
 Unfortunately, [work got in the way](http://www.solinea.com/).
 
-I have finally made good on my promise and posted the full in-depth article along with several clarifications over on my work blog at [http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/](http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/).
+I have finally made good on my promise and posted the full length article along with several clarifications over on my work blog at [http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/](http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/).
