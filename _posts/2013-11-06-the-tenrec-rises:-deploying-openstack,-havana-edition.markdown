@@ -6,7 +6,7 @@ category: openstack
 
 During the summer of 2011, I wrote a book for O'Reilly. The "tenrec" book was meant to be a short 50 page treatise on a new open source project called OpenStack.
 
-Afterwards, quickly swore to never to write another book again. [Three books was definitely enough](/books/).
+Afterwards, I swore to never to write another book again. [Three books was definitely enough](/books/).
 
 ![Deploying OpenStack, Havana Edition](/images/tenrec-large-2nd.jpg "Deploying OpenStack, Havana Edition")
 
