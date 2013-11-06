@@ -8,7 +8,7 @@ During the summer of 2011, I wrote a book for O'Reilly. The "tenrec" book was me
 
 Afterwards, quickly swore to never to write another book again. [Three books was definitely enough](/books/).
 
-![Deploying OpenStack, Havana Edition](images/tenrec-large-2nd.jpg "Deploying OpenStack, Havana Edition")
+![Deploying OpenStack, Havana Edition](/images/tenrec-large-2nd.jpg "Deploying OpenStack, Havana Edition")
 
 However, late last week I pushed the final change to the first half of the [second edition of "Deploying OpenStack"](http://shop.oreilly.com/product/0636920032601.do?green=8934771614&intcmp=af-mybuy-0636920032601.IP). This release of the book is different from the first edition:
 
