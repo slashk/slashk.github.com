@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: "The Tenrec Rises: Deploying OpenStack, Havana Edition"
-category: example
+category: openstack
 ---
 
 During the summer of 2011, I wrote a book for O'Reilly. The "tenrec" book was meant to be a short 50 page treatise on a new open source project called OpenStack.
