@@ -1,10 +1,9 @@
 markdown: rdiscount
-auto: true
-server: true
-pygments: true
+highlighter: pygments
 permalink: pretty
 exclude:
   - start.sh
+  - Gemfile
   - Rakefile
   - pids
   - stop.sh

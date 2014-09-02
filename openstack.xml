@@ -1,13 +1,13 @@
 ---
-layout: nil
+layout: null
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
- 
+
  <title>Ken Pepple on OpenStack</title>
  <link href="http://ken.pepple.info/openstack.atom" rel="self"/>
  <link href="http://ken.pepple.info"/>
- <language>en</language> 
+ <language>en</language>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://ken.pepple.info/</id>
  <author>
@@ -26,5 +26,5 @@ layout: nil
     </entry>
    {% endif %}
  {% endfor %}
- 
+
 </feed>
