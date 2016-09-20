@@ -935,11 +935,11 @@ p &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; prowlpy&lt;span styl
     </item>
     
     <item>
-      <title>Configurable Instance Types For OpenStack Nova</title>
-      <link>http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack-nova</link>
+      <title>Configurable Instance Types For OpenStack</title>
+      <link>http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack</link>
       <pubDate>Thu, 03 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack-nova</guid>
+      <guid>http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack</guid>
       <description>
 
 &lt;p&gt;Over the past three weeks, new Nova core developer Josh Kearney (&lt;em&gt;congrats &lt;a href=&#34;http://twitter.com/#!/jk0&#34;&gt;@jk0&lt;/a&gt;&lt;/em&gt;) and I have been working on adding runtime configuration of instance types (&lt;a href=&#34;http://wiki.openstack.org/ConfigureInstanceTypesDynamically&#34;&gt;read the full specification&lt;/a&gt;) to the &lt;a href=&#34;https://launchpad.net/nova&#34;&gt;OpenStack Nova compute service&lt;/a&gt;.  Instance types (or &amp;ldquo;flavors&amp;rdquo; as Rackspace calls them) are resources granted to virtual machines (&amp;ldquo;instances&amp;rdquo;) in the Nova cloud. In more specific terms, this is the size of the instance (vCPUs, RAM, Storage, etc.) that you will be launching. You may recognize these by the names &amp;ldquo;m1.large&amp;rdquo; or &amp;ldquo;m1.tiny&amp;rdquo; in AWS EC2 parlance. The Rackspace&amp;rsquo;s API (&lt;a href=&#34;http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf&#34;&gt;PDF&lt;/a&gt;) calls these &amp;ldquo;flavors&amp;rdquo; and they tend to have names like &amp;ldquo;256 MB Server&amp;rdquo; and such.&lt;/p&gt;
