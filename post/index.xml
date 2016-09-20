@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wander</title>
-    <link>https://ken.pepple.info/post/</link>
+    <link>http://ken.pepple.info/post/</link>
     <description>Recent content in Posts on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
     <lastBuildDate>Sun, 16 Jun 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://ken.pepple.info/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ken.pepple.info/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Grizzly Architecture Revisit</title>
-      <link>https://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit</link>
+      <link>http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit</link>
       <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit</guid>
+      <guid>http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit</guid>
       <description>&lt;p&gt;Back in April, I gave a presentation in Portland at the OpenStack Summit on the architecture of OpenStack Grizzly. As the presentation was limited to 45 minutes, I said I would post a more in-depth article about it (similar to my last Folsom OpenStack Archtecture post) shortly.&lt;/p&gt;
 
 &lt;p&gt;Unfortunately, &lt;a href=&#34;http://www.solinea.com/&#34;&gt;work got in the way&lt;/a&gt;.&lt;/p&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>OpenStack Folsom Architecture</title>
-      <link>https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture</link>
+      <link>http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture</link>
       <pubDate>Tue, 25 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture</guid>
+      <guid>http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture</guid>
       <description>
 
 &lt;p&gt;&lt;em&gt;As the Folsom release of OpenStack is due to be released this week, I&amp;rsquo;ve taken the time to update my &amp;ldquo;Intro to OpenStack Architecture 101&amp;rdquo; for the official documentation. It &lt;a href=&#34;https://review.openstack.org/#/c/13566/2&#34;&gt;merged into the repos yesterday&lt;/a&gt; and below is an &lt;strong&gt;expanded&lt;/strong&gt; version of it.&lt;/em&gt;&lt;/p&gt;
@@ -381,10 +381,10 @@ implementing standards such as AWS CloudFormation.&lt;/li&gt;
     
     <item>
       <title>Revisiting OpenStack Architecture: Essex Edition</title>
-      <link>https://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition</link>
+      <link>http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition</link>
       <pubDate>Tue, 21 Feb 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition</guid>
+      <guid>http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition</guid>
       <description>
 
 &lt;p&gt;While it is still &lt;a href=&#34;http://wiki.openstack.org/EssexReleaseSchedule&#34;&gt;seven weeks until OpenStack &amp;ldquo;Essex&amp;rdquo; (2012.1) officially is released&lt;/a&gt;, release candidates are just around the corner. With this in mind, I thought it would be a good chance to revisit my earlier blog post on &lt;a href=&#34;http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/&#34;&gt;OpenStack Compute (&amp;ldquo;Nova&amp;rdquo;) architecture&lt;/a&gt;. This time around, instead of detailing the architecture of just a single service, I&amp;rsquo;ll look at all the pieces of the OpenStack project working together.&lt;/p&gt;
@@ -526,11 +526,11 @@ implementing standards such as AWS CloudFormation.&lt;/li&gt;
     
     <item>
       <title>OpenStack Has A Mascot: The &#34;Tenrec&#34; Book</title>
-      <link>https://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book</link>
+      <link>http://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book</link>
       <pubDate>Fri, 05 Aug 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/tenrec.jpg&#34; alt=&#34;http://oreilly.com/catalog/9781449311056/&#34; /&gt;&lt;/p&gt;
+      <guid>http://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/tenrec.jpg&#34; alt=&#34;http://oreilly.com/catalog/9781449311056/&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You may have noticed that I have not posted anything in the last two months. And as you have probably guessed, it was because I was busy working on something else.&lt;/p&gt;
 
@@ -579,10 +579,10 @@ implementing standards such as AWS CloudFormation.&lt;/li&gt;
     
     <item>
       <title>Finding Your OpenStack Nova version</title>
-      <link>https://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version</link>
+      <link>http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version</link>
       <pubDate>Sat, 30 Apr 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version</guid>
+      <guid>http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version</guid>
       <description>&lt;p&gt;&lt;em&gt;I just got back from the &lt;a href=&#34;http://summit.openstack.org/&#34;&gt;OpenStack Developers Summit&lt;/a&gt; and while I am still trying to compile my thoughts on the event, I thought I&amp;rsquo;d dash off this little tidbit:&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;A slight annoyance in administering (and troubleshooting) OpenStack Nova is identifying your installed version. This information is actually readily (i.e. programmatically) available within the code (&lt;em&gt;and logged at the beginning of most logfiles&lt;/em&gt;), but we hadn&amp;rsquo;t exposed it to administrators on the command line until &lt;a href=&#34;http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/revision/1036&#34;&gt;Nova trunk revision #1036&lt;/a&gt;. With this change, you can now simply type &lt;span class=&#34;code-inline&#34;&gt;nova-manage version list&lt;/span&gt; to find which OpenStack Nova version is installed. For example:&lt;/p&gt;
@@ -616,11 +616,11 @@ u&#39;2011.3-workspace:tarmac-20110428165803-elcz2wp2syfzvxm8&#39;
     
     <item>
       <title>OpenStack Nova Architecture</title>
-      <link>https://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture</link>
+      <link>http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture</link>
       <pubDate>Fri, 22 Apr 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture</guid>
-      <description>&lt;p&gt;&lt;b&gt;NOTE&lt;/b&gt;: &lt;i&gt;I&amp;rsquo;ve updated and expanded this blog post for the Folsom release. &lt;a href=&#34;https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/&#34;&gt;Click here to read the updated version&lt;/a&gt;.&lt;/i&gt;&lt;/p&gt;
+      <guid>http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture</guid>
+      <description>&lt;p&gt;&lt;b&gt;NOTE&lt;/b&gt;: &lt;i&gt;I&amp;rsquo;ve updated and expanded this blog post for the Folsom release. &lt;a href=&#34;http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/&#34;&gt;Click here to read the updated version&lt;/a&gt;.&lt;/i&gt;&lt;/p&gt;
 
 &lt;p&gt;One of the common refrains I hear from people getting started with &lt;a href=&#34;http://www.openstack.org/&#34;&gt;OpenStack&lt;/a&gt; is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview. Now that &lt;a href=&#34;http://www.openstack.org/blog/2011/04/openstack-announces-cactus-release/&#34;&gt;Cactus&lt;/a&gt; (OpenStack’s third version) has been released, I thought I’d take advantage of the lull in development to write up a quick architectural overview from my point of view. Since OpenStack is a fairly broad topic, I’ll break my thoughts into several posts. Today’s post will deal with OpenStack Nova’s (compute cloud) high level architecture. &lt;/p&gt;
 
@@ -729,10 +729,10 @@ Putting this all together we get a picture like this:&lt;/p&gt;
     
     <item>
       <title>Auto Blogging with Rake &amp; Rails</title>
-      <link>https://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails</link>
+      <link>http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails</link>
       <pubDate>Sat, 26 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails</guid>
+      <guid>http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails</guid>
       <description>&lt;p&gt;I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every weekend all year long. Unfortunately, I don&amp;rsquo;t have a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend. You can see an example of what I wanted at &lt;a href=&#34;http://norcalmtnbikeracing.blogspot.com/2011/03/norcal-mtb-racing-this-weekend-3-mar-8.html&#34;&gt;NorCal MTB Racing blog&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The basic idea was to create a &lt;code&gt;cron&lt;/code&gt; job that pulls a list of races (with a link for details) from my rails application&amp;rsquo;s database, plot the events on map, add some text and then post it to my blog on Blogger. Most of this is pretty standard rails stuff, but I did need some help for the map and posting.&lt;/p&gt;
@@ -835,13 +835,13 @@ Putting this all together we get a picture like this:&lt;/p&gt;
     
     <item>
       <title>Custom iPhone Notifications with Prowl</title>
-      <link>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</link>
+      <link>http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</link>
       <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</guid>
+      <guid>http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</guid>
       <description>
 
-&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/prowl_empty.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/prowl_empty.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;On of my favorite iPhone feature is &lt;a href=&#34;http://en.wikipedia.org/wiki/Apple_Push_Notification_Service&#34;&gt;push notifications&lt;/a&gt;. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&amp;rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called &lt;a href=&#34;http://www.prowlapp.com/&#34;&gt;Prowl&lt;/a&gt;. Prowl is a &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt; client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.&lt;/p&gt;
 
@@ -918,7 +918,7 @@ p &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; prowlpy&lt;span styl
 
 &lt;h3 id=&#34;creating-your-own-prowl-notifiers&#34;&gt;Creating Your Own Prowl Notifiers&lt;/h3&gt;
 
-&lt;p&gt;&lt;img style=&#34;float: right;&#34; src=&#34;https://ken.pepple.info/images/prowl_alert.jpg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img style=&#34;float: right;&#34; src=&#34;http://ken.pepple.info/images/prowl_alert.jpg&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Once you&amp;rsquo;ve grokked the basics of using the Prowl API, it&amp;rsquo;s time to actually put it to use. To do that, you&amp;rsquo;ll need to create your own script (with whatever logic you need), have it execute at common intervals (usually via &lt;span class=&#34;code-inline&#34;&gt;cron&lt;/span&gt;) and then just wait for prowl notifications to roll in.&lt;/p&gt;
 
@@ -936,10 +936,10 @@ p &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; prowlpy&lt;span styl
     
     <item>
       <title>Configurable Instance Types For OpenStack Nova</title>
-      <link>https://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack-nova</link>
+      <link>http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack-nova</link>
       <pubDate>Thu, 03 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack-nova</guid>
+      <guid>http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack-nova</guid>
       <description>
 
 &lt;p&gt;Over the past three weeks, new Nova core developer Josh Kearney (&lt;em&gt;congrats &lt;a href=&#34;http://twitter.com/#!/jk0&#34;&gt;@jk0&lt;/a&gt;&lt;/em&gt;) and I have been working on adding runtime configuration of instance types (&lt;a href=&#34;http://wiki.openstack.org/ConfigureInstanceTypesDynamically&#34;&gt;read the full specification&lt;/a&gt;) to the &lt;a href=&#34;https://launchpad.net/nova&#34;&gt;OpenStack Nova compute service&lt;/a&gt;.  Instance types (or &amp;ldquo;flavors&amp;rdquo; as Rackspace calls them) are resources granted to virtual machines (&amp;ldquo;instances&amp;rdquo;) in the Nova cloud. In more specific terms, this is the size of the instance (vCPUs, RAM, Storage, etc.) that you will be launching. You may recognize these by the names &amp;ldquo;m1.large&amp;rdquo; or &amp;ldquo;m1.tiny&amp;rdquo; in AWS EC2 parlance. The Rackspace&amp;rsquo;s API (&lt;a href=&#34;http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf&#34;&gt;PDF&lt;/a&gt;) calls these &amp;ldquo;flavors&amp;rdquo; and they tend to have names like &amp;ldquo;256 MB Server&amp;rdquo; and such.&lt;/p&gt;
@@ -1012,10 +1012,10 @@ m1.xxlarge purged
     
     <item>
       <title>OpenStack Development with virtualenvwrapper</title>
-      <link>https://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper</link>
+      <link>http://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper</link>
       <pubDate>Mon, 24 Jan 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper</guid>
+      <guid>http://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper</guid>
       <description>&lt;p&gt;Coming from the ruby/ruby on rails world, i’ve been a bit lost when it comes to the python development process used in the openstack project. One of the biggest hurdles has been the usage of virtualenv in the workflow. Basically, virtualenv lets you create a stable configuration of python libraries (eggs) much like freezing gems in your rails application. The pitfalls here is that you need to integrate it’s usage into your development flow (activate/deactivate environments), it can take some time to recreate environments if you use a lot of eggs (like nova does) and it seems pretty fragile (it lives in repo and takes some chicanery to avoid duplicating in each bzr branch).&lt;/p&gt;
 
 &lt;p&gt;However, I recently found &lt;a href=&#34;http://www.doughellmann.com/projects/virtualenvwrapper/&#34; target=&#34;_blank&#34;&gt;virtualenvwrapper&lt;/a&gt; which has erased much of this heartache:&lt;/p&gt;
@@ -1106,14 +1106,14 @@ $ mkvirtualenv nova2
     
     <item>
       <title>Speaking at CommunityOne 2009</title>
-      <link>https://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone-2009</link>
+      <link>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone-2009</link>
       <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone-2009</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/C1W_170x93_Speaking_v2-1.gif&#34; border=&#34;0&#34; alt=&#34;C1W_170x93_Speaking_v2-1.gif&#34; width=&#34;170&#34; height=&#34;93&#34; align=&#34;right&#34; /&gt;Over the past few weeks, &lt;a href=&#34;http://blogs.sun.com/downstream/&#34;&gt;Scott Mattoon&lt;/a&gt;, &lt;a href=&#34;http://blogs.sun.com/stanford/&#34;&gt;John Stanford&lt;/a&gt; and I have been documenting infrastructure patterns to help application developers architect for cloud computing environments as part of a larger program around enabling cloud computing for our customers. It&#39;s been an interesting project, as cloud computing is both very new, but based on some very old concepts.&lt;/p&gt;
+      <guid>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone-2009</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/C1W_170x93_Speaking_v2-1.gif&#34; border=&#34;0&#34; alt=&#34;C1W_170x93_Speaking_v2-1.gif&#34; width=&#34;170&#34; height=&#34;93&#34; align=&#34;right&#34; /&gt;Over the past few weeks, &lt;a href=&#34;http://blogs.sun.com/downstream/&#34;&gt;Scott Mattoon&lt;/a&gt;, &lt;a href=&#34;http://blogs.sun.com/stanford/&#34;&gt;John Stanford&lt;/a&gt; and I have been documenting infrastructure patterns to help application developers architect for cloud computing environments as part of a larger program around enabling cloud computing for our customers. It&#39;s been an interesting project, as cloud computing is both very new, but based on some very old concepts.&lt;/p&gt;
 &lt;p&gt;On Monday, we will be presenting our work in progress at &lt;a href=&#34;http://developers.sun.com/events/communityone/2009/west/index.jsp&#34;&gt;CommunityOne West&lt;/a&gt; in San Francisco&#39;s Moscone Center. Around the same time, we hope to move our work into the public view on &lt;a href=&#34;http://wikis.sun.com/display/cloud/Patterns&#34;&gt;wikis.sun.com&lt;/a&gt; for comments and contributions. I&#39;ll post something here as soon as it happens.&lt;/p&gt;
 &lt;p&gt;Our talk will highlight three sets of pattern domains: provisioning, monitoring and resource administration. You can expect to hear talk of motivations and implementations, with sequence diagrams, architecture pictures and code snippets for illustration.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/puppet_example.png&#34; border=&#34;0&#34; alt=&#34;puppet_example.png&#34; width=&#34;338&#34; height=&#34;264&#34; /&gt;&lt;img src=&#34;https://ken.pepple.info/images/static-example-code.png&#34; border=&#34;0&#34; alt=&#34;static-example-code.png&#34; width=&#34;338&#34; height=&#34;264&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/puppet_example.png&#34; border=&#34;0&#34; alt=&#34;puppet_example.png&#34; width=&#34;338&#34; height=&#34;264&#34; /&gt;&lt;img src=&#34;http://ken.pepple.info/images/static-example-code.png&#34; border=&#34;0&#34; alt=&#34;static-example-code.png&#34; width=&#34;338&#34; height=&#34;264&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;If you are attending the conference (you can &lt;a href=&#34;http://developers.sun.com/events/communityone/2009/west/index.jsp&#34;&gt;still sign up for free here&lt;/a&gt;), our presentations will be:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;div id=&#34;hcalendar-Practical-Cloud-Computing-Patterns&#34; class=&#34;vevent&#34;&gt;&lt;br /&gt; &lt;abbr class=&#34;dtstart&#34; title=&#34;2009-06-01T14:40-07:0000&#34;&gt;June 1, 2009 from 2:40&lt;/abbr&gt; to &lt;abbr class=&#34;dtend&#34; title=&#34;2009-06-01T15:30-07:00&#34;&gt;3:30pm&lt;/abbr&gt; PDT &lt;br /&gt; &lt;a class=&#34;url&#34; href=&#34;http://developers.sun.com/events/communityone/2009/west/agenda.jsp&#34;&gt;&lt;span class=&#34;summary&#34;&gt;Practical Cloud Computing Patterns&lt;/span&gt;&lt;/a&gt; &lt;br /&gt; &lt;span class=&#34;location&#34;&gt;Gateway 104, Moscone Center, &lt;span class=&#34;adr&#34;&gt;&lt;span class=&#34;locality&#34;&gt;San Francisco&lt;/span&gt;, &lt;span class=&#34;region&#34;&gt;CA&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
@@ -1124,10 +1124,10 @@ $ mkvirtualenv nova2
     
     <item>
       <title>Open Group Beijing Kickoff</title>
-      <link>https://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff</link>
+      <link>http://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff</link>
       <pubDate>Tue, 26 May 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff</guid>
+      <guid>http://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff</guid>
       <description>&lt;p&gt;I had a great opportunity to revisit China, part of my old region (and now part of my new global responsibility), as part of The Open Group&amp;rsquo;s kickoff last week.&lt;/p&gt;
 
 &lt;blockquote&gt;

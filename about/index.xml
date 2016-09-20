@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Abouts on Wander</title>
-    <link>https://ken.pepple.info/about/</link>
+    <link>http://ken.pepple.info/about/</link>
     <description>Recent content in Abouts on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
-    <atom:link href="https://ken.pepple.info/about/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ken.pepple.info/about/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About Me</title>
-      <link>https://ken.pepple.info/about/</link>
+      <link>http://ken.pepple.info/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/about/</guid>
+      <guid>http://ken.pepple.info/about/</guid>
       <description>
 
-&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/llama-250.png&#34; alt=&#34;Ken Pepple&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/llama-250.png&#34; alt=&#34;Ken Pepple&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I build computing infrastructure.&lt;/p&gt;
 
@@ -25,7 +25,7 @@
 
 &lt;p&gt;I used to do this for clients of Cloud Technology Partners (cloudTP), where I led their open source cloud infrastructure efforts. Before I joined cloudTP, I served as Director of Cloud Development for a cloud service provider (&lt;a href=&#34;http://www.internap.com/&#34;&gt;Internap Network Services&lt;/a&gt;), where I led their initial engineering efforts for their OpenStack public cloud. In the distant past, I worked at &lt;a href=&#34;http://en.wikipedia.org/wiki/Sun_Microsystems&#34;&gt;Sun Microsystems&lt;/a&gt; as a Principal Engineer, Technical Director and Chief Technologist for various business units.&lt;/p&gt;
 
-&lt;p&gt;Along with my normal work duties, I have &lt;a href=&#34;https://www.amazon.com/author/kenpepple&#34;&gt;also authored a few books&lt;/a&gt;, written &lt;a href=&#34;https://github.com/slashk/&#34;&gt;some code&lt;/a&gt; and done a bit of &lt;a href=&#34;https://ken.pepple.info/about/#speaking&#34;&gt;public speaking and press interviews&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Along with my normal work duties, I have &lt;a href=&#34;https://www.amazon.com/author/kenpepple&#34;&gt;also authored a few books&lt;/a&gt;, written &lt;a href=&#34;https://github.com/slashk/&#34;&gt;some code&lt;/a&gt; and done a bit of &lt;a href=&#34;http://ken.pepple.info/about/#speaking&#34;&gt;public speaking and press interviews&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;
 
@@ -40,21 +40,21 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;
-&lt;img class=&#34;pure-img&#34; src=&#34;https://ken.pepple.info/images/tenrec.jpg&#34; alt=&#34;&#34;&gt;
+&lt;img class=&#34;pure-img&#34; src=&#34;http://ken.pepple.info/images/tenrec.jpg&#34; alt=&#34;&#34;&gt;
 &lt;br /&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://oreilly.com/catalog/9781449311056/&#34;&gt;Deploying OpenStack&lt;/a&gt;  &lt;br /&gt; &lt;em&gt;Ken Pepple&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;O&amp;rsquo;Reilly Media&lt;/em&gt; &lt;br /&gt; &lt;em&gt;August 3, 2011 (ISBN #978-1449311056)&lt;/em&gt;&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;
-&lt;img class=&#34;pure-img&#34; src=&#34;https://ken.pepple.info/images/mts.jpg&#34; alt=&#34;&#34;&gt;
+&lt;img class=&#34;pure-img&#34; src=&#34;http://ken.pepple.info/images/mts.jpg&#34; alt=&#34;&#34;&gt;
     &lt;br /&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://www.amazon.com/Migrating-Solaris-Operating-System-UNIX-/dp/0131502638/ref=sr_1_2?s=books&amp;amp;ie=UTF8&amp;amp;qid=1299136326&amp;amp;sr=1-2&#34;&gt;Migrating to the Solaris Operating System: The Discipline of UNIX-to-UNIX Migrations&lt;/a&gt;  &lt;br /&gt; &lt;em&gt;Ken Pepple, Brian Down and David A. Levy&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;Prentice Hall PTR&lt;/em&gt; &lt;br /&gt;  &lt;em&gt;November 15, 2003 (ISBN #978-0131502635)&lt;/em&gt;  &lt;br /&gt;&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;
-&lt;img class=&#34;pure-img&#34; src=&#34;https://ken.pepple.info/images/citdc.jpg&#34; alt=&#34;&#34;&gt;
+&lt;img class=&#34;pure-img&#34; src=&#34;http://ken.pepple.info/images/citdc.jpg&#34; alt=&#34;&#34;&gt;
    &lt;br /&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://www.amazon.com/Consolidation-Data-Center-Simplifying-Environments/dp/0130454958/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1299136326&amp;amp;sr=1-1&#34;&gt;Consolidation in the Data Center: Simplifying IT Environments to Reduce Total Cost of Ownership&lt;/a&gt;  &lt;br /&gt; &lt;em&gt;David Hornby and Ken Pepple&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;Prentice Hall PTR&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;September 29, 2002 (ISBN #978-0130454959)&lt;/em&gt;&lt;br /&gt;&lt;/td&gt;
 &lt;/tr&gt;

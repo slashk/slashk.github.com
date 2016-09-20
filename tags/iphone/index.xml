@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Iphone on Wander</title>
-    <link>https://ken.pepple.info/tags/iphone/</link>
+    <link>http://ken.pepple.info/tags/iphone/</link>
     <description>Recent content in Iphone on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
     <lastBuildDate>Mon, 21 Mar 2011 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://ken.pepple.info/tags/iphone/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ken.pepple.info/tags/iphone/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Custom iPhone Notifications with Prowl</title>
-      <link>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</link>
+      <link>http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</link>
       <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</guid>
+      <guid>http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</guid>
       <description>
 
-&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/prowl_empty.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/prowl_empty.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;On of my favorite iPhone feature is &lt;a href=&#34;http://en.wikipedia.org/wiki/Apple_Push_Notification_Service&#34;&gt;push notifications&lt;/a&gt;. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&amp;rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called &lt;a href=&#34;http://www.prowlapp.com/&#34;&gt;Prowl&lt;/a&gt;. Prowl is a &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt; client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.&lt;/p&gt;
 
@@ -95,7 +95,7 @@ p &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; prowlpy&lt;span styl
 
 &lt;h3 id=&#34;creating-your-own-prowl-notifiers&#34;&gt;Creating Your Own Prowl Notifiers&lt;/h3&gt;
 
-&lt;p&gt;&lt;img style=&#34;float: right;&#34; src=&#34;https://ken.pepple.info/images/prowl_alert.jpg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img style=&#34;float: right;&#34; src=&#34;http://ken.pepple.info/images/prowl_alert.jpg&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Once you&amp;rsquo;ve grokked the basics of using the Prowl API, it&amp;rsquo;s time to actually put it to use. To do that, you&amp;rsquo;ll need to create your own script (with whatever logic you need), have it execute at common intervals (usually via &lt;span class=&#34;code-inline&#34;&gt;cron&lt;/span&gt;) and then just wait for prowl notifications to roll in.&lt;/p&gt;
 
