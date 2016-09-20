@@ -11,11 +11,11 @@
     <atom:link href="http://ken.pepple.info/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Speaking at CommunityOne 2009</title>
-      <link>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone-2009</link>
+      <title>Speaking at CommunityOne</title>
+      <link>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone</link>
       <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
       
-      <guid>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone-2009</guid>
+      <guid>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone</guid>
       <description>&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/C1W_170x93_Speaking_v2-1.gif&#34; border=&#34;0&#34; alt=&#34;C1W_170x93_Speaking_v2-1.gif&#34; width=&#34;170&#34; height=&#34;93&#34; align=&#34;right&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Over the past few weeks, &lt;a href=&#34;http://blogs.sun.com/downstream/&#34;&gt;Scott Mattoon&lt;/a&gt;, &lt;a href=&#34;http://blogs.sun.com/stanford/&#34;&gt;John Stanford&lt;/a&gt; and I have been documenting infrastructure patterns to help application developers architect for cloud computing environments as part of a larger program around enabling cloud computing for our customers. It&amp;rsquo;s been an interesting project, as cloud computing is both very new, but based on some very old concepts.&lt;/p&gt;
