@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wander</title>
+    <link>https://ken.pepple.info/</link>
+    <description>Recent content on Wander</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 16 Jun 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ken.pepple.info/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Grizzly Architecture Revisit</title>
+      <link>https://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit</link>
+      <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit</guid>
+      <description>&lt;p&gt;Back in April, I gave a presentation in Portland at the OpenStack Summit on the architecture of OpenStack Grizzly. As the presentation was limited to 45 minutes, I said I would post a more in-depth article about it (similar to my last Folsom OpenStack Archtecture post) shortly.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, &lt;a href=&#34;http://www.solinea.com/&#34;&gt;work got in the way&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I have finally made good on my promise and posted the full length article along with several clarifications over on my work blog at &lt;a href=&#34;http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/&#34;&gt;http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenStack Folsom Architecture</title>
+      <link>https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture</link>
+      <pubDate>Tue, 25 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture</guid>
+      <description>
+
+&lt;p&gt;&lt;em&gt;As the Folsom release of OpenStack is due to be released this week, I&amp;rsquo;ve taken the time to update my &amp;ldquo;Intro to OpenStack Architecture 101&amp;rdquo; for the official documentation. It &lt;a href=&#34;https://review.openstack.org/#/c/13566/2&#34;&gt;merged into the repos yesterday&lt;/a&gt; and below is an &lt;strong&gt;expanded&lt;/strong&gt; version of it.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;openstack-components&#34;&gt;OpenStack Components&lt;/h2&gt;
+
+&lt;p&gt;There are currently seven core components of OpenStack: Compute, Object Storage,
+Identity, Dashboard, Block Storage, Network and Image Service. Let&amp;rsquo;s look at
+each in turn:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Object Store (codenamed &amp;ldquo;&lt;a href=&#34;http://swift.openstack.org&#34;&gt;Swift&lt;/a&gt;&amp;rdquo;) allows you to
+store or retrieve files (but not mount directories like a fileserver). Several
+companies provide commercial storage services based on Swift. These include
+KT, Rackspace (from which Swift originated) and Internap. Swift is also used
+internally at many large companies to store their data.&lt;/li&gt;
+&lt;li&gt;Image (codenamed &amp;ldquo;&lt;a href=&#34;http://glance.openstack.org&#34;&gt;Glance&lt;/a&gt;&amp;rdquo;) provides a catalog
+and repository for virtual disk images. These disk images are mostly commonly
+used in OpenStack Compute. While this service is technically optional, any
+cloud of size will require it.&lt;/li&gt;
+&lt;li&gt;Compute (codenamed &amp;ldquo;&lt;a href=&#34;http://nova.openstack.org/&#34;&gt;Nova&lt;/a&gt;&amp;rdquo;) provides virtual
+servers upon demand. &lt;a href=&#34;http://www.rackspace.com&#34;&gt;Rackspace&lt;/a&gt; and
+&lt;a href=&#34;https://www.hpcloud.com/&#34;&gt;HP&lt;/a&gt; provide commercial compute services built on
+Nova and it is used internally at companies like Mercado Libre and NASA (where
+it originated).&lt;/li&gt;
+&lt;li&gt;Dashboard (codenamed &amp;ldquo;&lt;a href=&#34;http://horizon.openstack.org/&#34;&gt;Horizon&lt;/a&gt;&amp;rdquo;) provides a
+modular web-based user interface for all the OpenStack services. With this web
+GUI, you can perform most operations on your cloud like launching an instance,
+assigning IP addresses and setting access controls.&lt;/li&gt;
+&lt;li&gt;Identity (codenamed &amp;ldquo;&lt;a href=&#34;http://keystone.openstack.org/&#34;&gt;Keystone&lt;/a&gt;&amp;rdquo;) provides
+authentication and authorization for all the OpenStack services. It also
+provides a service catalog of services within a particular OpenStack
+cloud.&lt;/li&gt;
+&lt;li&gt;Network (codenamed &amp;ldquo;&lt;a href=&#34;http://quantum.openstack.org/&#34;&gt;Quantum&lt;/a&gt;&amp;rdquo;) provides
+&amp;ldquo;network connectivity as a service&amp;rdquo; between interface devices managed by other
+OpenStack services (most likely Nova). The service works by allowing users to
+create their own networks and then attach interfaces to them. Quantum has a
+pluggable architecture to support many popular networking vendors and
+technologies. &lt;strong&gt;Quantum is new in the Folsom release&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Block Storage (codenamed &amp;ldquo;Cinder&amp;rdquo;) provides persistent block storage to guest
+VMs. This project was born from code originally in Nova (the &lt;code&gt;nova-volume&lt;/code&gt;
+service described below). Please note that this is block storage (or volumes)
+not filesystems like NFS or CIFS share. &lt;strong&gt;Cinder is new for the Folsom
+release&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In addition to these core projects, there are also a number of &amp;ldquo;incubation&amp;rdquo; projects that are being considered for future inclusion in the OpenStack core.&lt;/p&gt;
+
+&lt;h2 id=&#34;comparison-against-aws&#34;&gt;Comparison Against AWS&lt;/h2&gt;
+
+&lt;p&gt;Although all of the OpenStack services are made to stand on their own, many users want some form of AWS compatibility for tools, APIs or just familiarity:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Nova is conceptually similar to EC2. In fact, there is are a variety of ways to provide EC2 API compatibility to it.&lt;/li&gt;
+&lt;li&gt;Swift is conceptually similar to S3. It implements a subset of the S3 API in WSGI middleware.&lt;/li&gt;
+&lt;li&gt;Glance provides many of the same features as Amazon&amp;rsquo;s AMI catalog.&lt;/li&gt;
+&lt;li&gt;Cinder provides block services similar to EBS.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;conceptual-architecture&#34;&gt;Conceptual Architecture&lt;/h2&gt;
+
+&lt;p&gt;The OpenStack project as a whole is designed to &amp;ldquo;deliver(ing) a massively
+scalable cloud operating system.&amp;rdquo; To achieve this, each of the constituent
+services are designed to work together to provide a complete Infrastructure as a
+Service (IaaS). This integration is facilitated through public application
+programming interfaces (APIs) that each service offers (and in turn can
+consume). While these APIs allow each of the services to use another service, it
+also allows an implementer to switch out any service as long as they maintain
+the API. These are (mostly) the same APIs that are available to end users of the
+cloud.&lt;/p&gt;
+
+&lt;p&gt;Conceptually, you can picture the relationships between the services as so:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://26a0ff8ca8ba32139f7d-db711c577a50b6bdc946ea71aaca027d.r97.cf1.rackcdn.com/openstack-conceptual-arch-folsom.jpg&#34;&gt;&lt;img src=&#34;http://26a0ff8ca8ba32139f7d-db711c577a50b6bdc946ea71aaca027d.r97.cf1.rackcdn.com/openstack-conceptual-arch-folsom.jpg&#34; alt=&#34;OpenStack Folsom Conceptual Architecture&#34; width=&#34;700px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dashboard (&amp;ldquo;Horizon&amp;rdquo;) provides a web front end to the other OpenStack services&lt;/li&gt;
+&lt;li&gt;Compute (&amp;ldquo;Nova&amp;rdquo;) stores and retrieves virtual disks (&amp;ldquo;images&amp;rdquo;) and associated
+metadata in Image (&amp;ldquo;Glance&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;Network (&amp;ldquo;Quantum&amp;rdquo;) provides virtual networking for Compute.&lt;/li&gt;
+&lt;li&gt;Block Storage (&amp;ldquo;Cinder&amp;rdquo;) provides storage volumes for Compute.&lt;/li&gt;
+&lt;li&gt;Image (&amp;ldquo;Glance&amp;rdquo;) can store the actual virtual disk files in the Object
+Store(&amp;ldquo;Swift&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;All the services authenticate with Identity (&amp;ldquo;Keystone&amp;rdquo;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is a stylized and simplified view of the architecture, assuming that the
+implementer is using all of the services together in the most common
+configuration. It also only shows the &amp;ldquo;operator&amp;rdquo; side of the cloud &amp;ndash; it does
+not picture how consumers of the cloud may actually use it. For example, many
+users will access object storage heavily (and directly).&lt;/p&gt;
+
+&lt;h2 id=&#34;logical-architecture&#34;&gt;Logical Architecture&lt;/h2&gt;
+
+&lt;p&gt;As you can imagine, the logical architecture is far more complicated than the
+conceptual architecture shown above. As with any service-oriented architecture,
+diagrams quickly become &amp;ldquo;messy&amp;rdquo; trying to illustrate all the possible
+combinations of service communications. The diagram below, illustrates the most
+common architecture of an OpenStack-based cloud. However, as OpenStack supports
+a wide variety of technologies, it does not represent the only architecture
+possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://26a0ff8ca8ba32139f7d-db711c577a50b6bdc946ea71aaca027d.r97.cf1.rackcdn.com/openstack-logical-arch-folsom.jpg&#34;&gt;&lt;img src=&#34;http://26a0ff8ca8ba32139f7d-db711c577a50b6bdc946ea71aaca027d.r97.cf1.rackcdn.com/openstack-logical-arch-folsom.jpg&#34; alt=&#34;OpenStack Folsom Logical Architecture&#34; width=&#34;700px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This picture is consistent with the conceptual architecture above in that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;End users can interact through a common web interface (Horizon) or directly to
+each service through their API&lt;/li&gt;
+&lt;li&gt;All services authenticate through a common source (facilitated through
+Keystone)&lt;/li&gt;
+&lt;li&gt;Individual services interact with each other through their public APIs (except
+where privileged administrator commands are necessary)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the sections below, we&amp;rsquo;ll delve into the architecture for each of the
+services.&lt;/p&gt;
+
+&lt;h3 id=&#34;dashboard&#34;&gt;Dashboard&lt;/h3&gt;
+
+&lt;p&gt;Horizon is a modular &lt;a href=&#34;https://www.djangoproject.com/&#34;&gt;Django web application&lt;/a&gt;
+that provides an end user and administrator interface to OpenStack services.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/horizon-screenshot.jpg&#34; alt=&#34;OpenStack Horizon Screenshot&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As with most web applications, the architecture is fairly simple:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Horizon is usually deployed via &lt;a href=&#34;http://code.google.com/p/modwsgi/&#34;&gt;mod_wsgi&lt;/a&gt;
+in Apache. The code itself is separated into a reusable python module with
+most of the logic (interactions with various OpenStack APIs) and presentation
+(to make it easily customizable for different sites).&lt;/li&gt;
+&lt;li&gt;A database (configurable as to which one). As it relies mostly on the other
+services for data, it stores very little data of its own.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;From a network architecture point of view, this service will need to be customer
+accessible as well as be able to talk to each service&amp;rsquo;s public APIs. If you wish
+to use the administrator functionality (i.e. for other services), it will also
+need connectivity to their Admin API endpoints (which &lt;strong&gt;should not&lt;/strong&gt; be customer
+accessible).&lt;/p&gt;
+
+&lt;h3 id=&#34;compute&#34;&gt;Compute&lt;/h3&gt;
+
+&lt;p&gt;Nova is the most complicated and distributed component of OpenStack. A large
+number of processes cooperate to turn end user API requests into running virtual
+machines. Below is a list of these processes and their functions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nova-api&lt;/code&gt; accepts and responds to end user compute API calls. It supports
+OpenStack Compute API, Amazon&amp;rsquo;s EC2 API and a special Admin API (for
+privileged users to perform administrative actions). It also initiates most of
+the orchestration activities (such as running an instance) as well as enforces
+some policy (mostly quota checks).&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;nova-compute&lt;/code&gt; process is primarily a worker daemon that creates and
+terminates virtual machine instances via hypervisor&amp;rsquo;s APIs (XenAPI for
+XenServer/XCP, libvirt for KVM or QEMU, VMwareAPI for VMware, etc.). The
+process by which it does so is fairly complex but the basics are simple:
+accept actions from the queue and then perform a series of system commands
+(like launching a KVM instance) to carry them out while updating state in the
+database.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nova-volume&lt;/code&gt; manages the creation, attaching and detaching of persistent
+volumes to compute instances (similar functionality to Amazon’s Elastic Block
+Storage). It can use volumes from a variety of providers such as iSCSI or
+&lt;a href=&#34;http://ceph.newdream.net&#34;&gt;Rados Block Device in Ceph&lt;/a&gt;. A new OpenStack
+projects, Cinder, will eventually replace &lt;code&gt;nova-volume&lt;/code&gt; functionality. In the
+Folsom release, &lt;code&gt;nova-volume&lt;/code&gt; and the Block Storage service will have similar
+functionality.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;nova-network&lt;/code&gt; worker daemon is very similar to &lt;code&gt;nova-compute&lt;/code&gt; and
+&lt;code&gt;nova-volume&lt;/code&gt;. It accepts networking tasks from the queue and then performs
+tasks to manipulate the network (such as setting up bridging interfaces or
+changing iptables rules). This functionality is being migrated to Quantum, a
+separate OpenStack service. In the Folsom release, much of the functionality
+will be duplicated between &lt;code&gt;nova-network&lt;/code&gt; and Quantum.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;nova-schedule&lt;/code&gt; process is conceptually the simplest piece of code in
+OpenStack Nova: take a virtual machine instance request from the queue and
+determines where it should run (specifically, which compute server host it
+should run on).&lt;/li&gt;
+&lt;li&gt;The queue provides a central hub for passing messages between daemons. This is
+usually implemented with &lt;a href=&#34;http://www.rabbitmq.com/&#34;&gt;RabbitMQ&lt;/a&gt; today, but could
+be any AMPQ message queue (such as &lt;a href=&#34;http://qpid.apache.org/&#34;&gt;Apache Qpid&lt;/a&gt;).
+New to the Folsom release is support for &lt;a href=&#34;http://www.zeromq.org/&#34;&gt;Zero MQ&lt;/a&gt;
+(&lt;em&gt;note: I&amp;rsquo;ve only included this so that Eric Windisch won&amp;rsquo;t be hounding me
+mercilessly about it&amp;rsquo;s omission&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;The SQL database stores most of the build-time and run-time state for a cloud
+infrastructure. This includes the instance types that are available for use,
+instances in use, networks available and projects. Theoretically, OpenStack
+Nova can support any database supported by SQL-Alchemy but the only databases
+currently being widely used are sqlite3 (only appropriate for test and
+development work), MySQL and PostgreSQL.&lt;/li&gt;
+&lt;li&gt;Nova also provides console services to allow end users to access their virtual
+instance&amp;rsquo;s console through a proxy. This involves several daemons
+(&lt;code&gt;nova-console&lt;/code&gt;, &lt;code&gt;nova-vncproxy&lt;/code&gt; and &lt;code&gt;nova-consoleauth&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Nova interacts with many other OpenStack services: Keystone for authentication,
+Glance for images and Horizon for web interface. The Glance interactions are
+central. The API process can upload and query Glance while &lt;code&gt;nova-compute&lt;/code&gt; will
+download images for use in launching images.&lt;/p&gt;
+
+&lt;h3 id=&#34;object-store&#34;&gt;Object Store&lt;/h3&gt;
+
+&lt;p&gt;The swift architecture is very distributed to prevent any single point of
+failure as well as to scale horizontally. It includes the following components:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Proxy server (&lt;code&gt;swift-proxy-server&lt;/code&gt;) accepts incoming requests via
+the OpenStack Object API or just raw HTTP. It accepts files to upload,
+modifications to metadata or container creation. In addition, it will also
+serve files or container listing to web browsers. The proxy server may utilize
+an optional cache (usually deployed with memcache) to improve performance.&lt;/li&gt;
+&lt;li&gt;Account servers manage accounts defined with the object storage service.&lt;/li&gt;
+&lt;li&gt;Container servers manage a mapping of containers (i.e folders) within the
+object store service.&lt;/li&gt;
+&lt;li&gt;Object servers manage actual objects (i.e. files) on the storage nodes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are also a number of periodic process which run to perform housekeeping
+tasks on the large data store. The most important of these is the replication
+services, which ensures consistency and availability through the cluster. Other
+periodic processes include auditors, updaters and reapers.&lt;/p&gt;
+
+&lt;p&gt;The object store can also serve static web pages and objects via HTTP. In fact, the diagrams in this blog post are being served out of Rackspace Cloud&amp;rsquo;s Swift service.&lt;/p&gt;
+
+&lt;p&gt;Authentication is handled through configurable WSGI middleware (which will
+usually be Keystone).&lt;/p&gt;
+
+&lt;h3 id=&#34;image-store&#34;&gt;Image Store&lt;/h3&gt;
+
+&lt;p&gt;The Glance architecture has stayed relatively stable since the Cactus release.
+The biggest architectural change has been the addition of authentication, which
+was added in the Diablo release. Just as a quick reminder, Glance has four main
+parts to it:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;glance-api&lt;/code&gt; accepts Image API calls for image discovery, image retrieval and
+image storage.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;glance-registry&lt;/code&gt; stores, processes and retrieves metadata about images (size,
+type, etc.).&lt;/li&gt;
+&lt;li&gt;A database to store the image metadata. Like Nova, you can choose your
+database depending on your preference (but most people use MySQL or SQlite).&lt;/li&gt;
+&lt;li&gt;A storage repository for the actual image files. In the diagram above, Swift
+is shown as the image repository, but this is configurable. In addition to
+Swift, Glance supports normal filesystems, RADOS block devices, Amazon S3 and
+HTTP. Be aware that some of these choices are limited to read-only usage.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are also a number of periodic process which run on Glance to support
+caching. The most important of these is the replication services, which ensures
+consistency and availability through the cluster. Other periodic processes
+include auditors, updaters and reapers.&lt;/p&gt;
+
+&lt;p&gt;As you can see from the diagram in the Conceptual Architecture section, Glance
+serves a central role to the overall IaaS picture. It accepts API requests for
+images (or image metadata) from end users or Nova components and can store its
+disk files in the object storage service, Swift.&lt;/p&gt;
+
+&lt;p&gt;###Identity&lt;/p&gt;
+
+&lt;p&gt;Keystone provides a single point of integration for OpenStack policy, catalog,
+token and authentication.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;keystone&lt;/code&gt; handles API requests as well as providing configurable
+catalog, policy, token and identity services.&lt;/li&gt;
+&lt;li&gt;Each Keystone function has a pluggable backend which allows different ways to
+use the particular service. Most support standard backends like LDAP or SQL,
+as well as Key Value Stores (KVS).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most people will use this as a point of customization for their current
+authentication services.&lt;/p&gt;
+
+&lt;h3 id=&#34;network&#34;&gt;Network&lt;/h3&gt;
+
+&lt;p&gt;Quantum provides &amp;ldquo;network connectivity as a service&amp;rdquo; between interface devices
+managed by other OpenStack services (most likely Nova). The service works by
+allowing users to create their own networks and then attach interfaces to them.
+Like many of the OpenStack services, Quantum is highly configurable due to it&amp;rsquo;s
+plug-in architecture. These plug-ins accommodate different networking equipment
+and software. As such, the architecture and deployment can vary dramatically. In
+the above architecture, a simple Linux networking plug-in is shown.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;quantum-server&lt;/code&gt; accepts API requests and then routes them to the
+appropriate quantum plugin for action.&lt;/li&gt;
+&lt;li&gt;Quantum plugins and agents perform the actual actions such as plugging and
+unplugging ports, creating networks or subnets and IP addressing. These
+plugins and agents differ depending on the vendor and technologies used in the
+particular cloud. Quantum ships with plugins and agents for: Cisco virtual and
+physical switches, Nicira NVP product, NEC OpenFlow products, Open vSwitch,
+Linux bridging and the Ryu Network Operating System. &lt;a href=&#34;https://github.com/midokura/midonet-openstack&#34;&gt;Midokua also provides a
+plug-in for Quantum
+integration&lt;/a&gt;. The common agents
+are L3 (layer 3), DHCP (dynamic host IP addressing) and the specific plug-in
+agent.&lt;/li&gt;
+&lt;li&gt;Most Quantum installations will also make use of a messaging queue to route
+information between the &lt;code&gt;quantum-server&lt;/code&gt; and various agents as well as a
+database to store networking state for particular plugins.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quantum will interact mainly with Nova, where it will provide networks and
+connectivity for its instances.&lt;/p&gt;
+
+&lt;h3 id=&#34;block-storage&#34;&gt;Block Storage&lt;/h3&gt;
+
+&lt;p&gt;Cinder separates out the persistent block storage functionality that was
+previously part of Openstack Compute (in the form of &lt;code&gt;nova-volume&lt;/code&gt;) into it&amp;rsquo;s own
+service. The OpenStack Block Storage API allows for manipulation of volumes,
+volume types (similar to compute flavors) and volume snapshots.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cinder-api&lt;/code&gt; accepts API requests and routes them to cinder-volume
+for action.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cinder-volume&lt;/code&gt; acts upon the requests by reading or writing to the
+Cinder database to maintain state, interacting with other processes (like
+&lt;code&gt;cinder-scheduler&lt;/code&gt;) through a message queue and directly upon block
+storage providing hardware or software. It can interact with a variety of
+storage providers through a driver architecture. Currently, there are drivers
+for IBM, SolidFire, NetApp, Nexenta, Zadara, linux iSCSI and other storage
+providers.&lt;/li&gt;
+&lt;li&gt;Much like &lt;code&gt;nova-scheduler&lt;/code&gt;, the &lt;code&gt;cinder-scheduler&lt;/code&gt; daemon picks the optimal
+block storage provider node to create the volume on.&lt;/li&gt;
+&lt;li&gt;Cinder deployments will also make use of a messaging queue to route
+information between the cinder processes as well as a database to store volume
+state.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Like Quantum, Cinder will mainly interact with Nova, providing volumes for its
+instances.&lt;/p&gt;
+
+&lt;h2 id=&#34;future-projects&#34;&gt;Future Projects&lt;/h2&gt;
+
+&lt;p&gt;A number of projects are in the work for future versions of OpenStack. They include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ceilometer&lt;/strong&gt; is a metering project. The project offers metering information
+and the ability to code more ways to know what has happened on an OpenStack
+cloud. While it provides metering, it is not a billing project. A full billing
+solution requires metering, rating, and billing. Metering lets you know what
+actions have taken place, rating enables pricing and line items, and billing
+gathers the line items to create a bill to send to the consumer and collect
+payment. Ceilometer is available as a preview.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Heat&lt;/strong&gt; provides a REST API to orchestrate multiple cloud applications
+implementing standards such as AWS CloudFormation.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Revisiting OpenStack Architecture: Essex Edition</title>
+      <link>https://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition</link>
+      <pubDate>Tue, 21 Feb 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition</guid>
+      <description>
+
+&lt;p&gt;While it is still &lt;a href=&#34;http://wiki.openstack.org/EssexReleaseSchedule&#34;&gt;seven weeks until OpenStack &amp;ldquo;Essex&amp;rdquo; (2012.1) officially is released&lt;/a&gt;, release candidates are just around the corner. With this in mind, I thought it would be a good chance to revisit my earlier blog post on &lt;a href=&#34;http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/&#34;&gt;OpenStack Compute (&amp;ldquo;Nova&amp;rdquo;) architecture&lt;/a&gt;. This time around, instead of detailing the architecture of just a single service, I&amp;rsquo;ll look at all the pieces of the OpenStack project working together.&lt;/p&gt;
+
+&lt;p&gt;To level-set everyone&amp;rsquo;s understanding, let&amp;rsquo;s briefly review the OpenStack project components and history. Founded in 2010 by Rackspace and NASA, the project has &lt;a href=&#34;http://wiki.openstack.org/Releases&#34;&gt;released four versions&lt;/a&gt; and is set to release the fifth (&amp;ldquo;Essex&amp;rdquo; or 2012.1) &lt;a href=&#34;http://wiki.openstack.org/EssexReleaseSchedule&#34;&gt;in April&lt;/a&gt;. Originally, it consisted of a trio of &amp;ldquo;core&amp;rdquo; services:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Object Store (&lt;a href=&#34;http://swift.openstack.org&#34;&gt;&amp;ldquo;Swift&amp;rdquo;&lt;/a&gt;) provides object storage. It allows you to store or retrieve files (but not mount directories like a fileserver). Several companies provide commercial storage services based on Swift. These include KT, Rackspace (from which Swift originated) and my company   &lt;a href=&#34;http://www.internap.com/flexible-cloud-hosting-solutions/cloud-storage/&#34;&gt;Internap&lt;/a&gt;. In fact, the images for this blog post are being served via the Internap Swift implementation.&lt;/li&gt;
+&lt;li&gt;Image (&lt;a href=&#34;http://glance.openstack.org&#34;&gt;&amp;ldquo;Glance&amp;rdquo;&lt;/a&gt;) provides a catalog and repository for virtual disk images. These disk images are mostly commonly used in OpenStack Compute. While this service is technically optional, any cloud of size will require it.&lt;/li&gt;
+&lt;li&gt;Compute (&lt;a href=&#34;http://nova.openstack.org/&#34;&gt;&amp;ldquo;Nova&amp;rdquo;&lt;/a&gt;) provides virtual servers upon demand. Similar to Amazon&amp;rsquo;s EC2 service, it also provides volume services analogous to Elastic Block Services (EBS). &lt;a href=&#34;http://www.internap.com/flexible-cloud-hosting-solutions/enterprise-public-cloud-solutions/open-public-cloud-solutions/&#34;&gt;Internap&lt;/a&gt; provide a commercial compute service built on Nova and it is used internally at &lt;a href=&#34;http://openstack.org/user-stories/mercadolibre-inc/&#34;&gt;Mercado Libre&lt;/a&gt; and NASA (where it originated).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The upcoming release promotes two new projects to &amp;ldquo;core&amp;rdquo; project status:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dashboard (&lt;a href=&#34;http://horizon.openstack.org/&#34;&gt;&amp;ldquo;Horizon&amp;rdquo;&lt;/a&gt;) provides a modular web-based user interface for all the OpenStack services.&lt;/li&gt;
+&lt;li&gt;Identity (&lt;a href=&#34;http://keystone.openstack.org/&#34;&gt;&amp;ldquo;Keystone&amp;rdquo;&lt;/a&gt;) provides authentication and authorization for all the OpenStack services. It also provides a service catalog of services within a particular deployment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These new projects provide additional infrastructure to support the original three projects.&lt;/p&gt;
+
+&lt;h1 id=&#34;conceptual-architecture&#34;&gt;Conceptual Architecture&lt;/h1&gt;
+
+&lt;p&gt;The OpenStack project as a whole is designed to &amp;ldquo;deliver(ing) a massively scalable cloud operating system.&amp;rdquo; To achieve this, each of the constituent services are designed to work together to provide a complete Infrastructure as a Service (IaaS). This integration is facilitated through public application programming interfaces (APIs) that each service offers (and in turn can consume). While these APIs allow each of the services to use another service, it also allows an implementer to switch out any service as long as they maintain the API. These are (mostly) the same APIs that are available to end users of the cloud.&lt;/p&gt;
+
+&lt;p&gt;Conceptually, you can picture the relationships between the services as so:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-concept-int-essex.jpg&#34; alt=&#34;OpenStack Essex Conceptual Integration&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Horizon provides a web front end to the other OpenStack services&lt;/li&gt;
+&lt;li&gt;Nova stores and retrieves virtual disks (&amp;ldquo;images&amp;rdquo;) and associated metadata in Glance&lt;/li&gt;
+&lt;li&gt;Glance can store the actual virtual disk files in Swift&lt;/li&gt;
+&lt;li&gt;All the services (&lt;em&gt;will eventually&lt;/em&gt;) authenticate with Keystone&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is a stylized and simplified view of the architecture, assuming that the implementer is using all of the services together in the most common configuration. It also only shows the &amp;ldquo;operator&amp;rdquo; side of the cloud &amp;ndash; it does not picture how consumers of the cloud may actually use it. For example, many compute users will use object storage heavily (and directly).&lt;/p&gt;
+
+&lt;h1 id=&#34;logical-architecture&#34;&gt;Logical Architecture&lt;/h1&gt;
+
+&lt;p&gt;As you can imagine, the actual logical architecture is far more complicated than the conceptual architecture shown above. As with any service-oriented architecture, diagrams quickly become &amp;ldquo;messy&amp;rdquo; trying to illustrate all the possible combinations of service communications. In the diagram below, I illustrate what I believe will be the most common, &amp;ldquo;integrated&amp;rdquo; architecture of an OpenStack-based cloud.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg&#34; target=&#34;blank&#34; &gt;&lt;img src=&#34;http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg&#34; alt=&#34;OpenStack Essex Logical Architecture&#34; width=&#34;700px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This picture is consistent with the description above in that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;End users can interact through a common web interface (Horizon) or directly to each service through their API&lt;/li&gt;
+&lt;li&gt;All services authenticate through a common source (facilitated through Keystone)&lt;/li&gt;
+&lt;li&gt;Individual services interact with each other through their public APIs (except where privileged administrator commands are necessary)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the sections below, we&amp;rsquo;ll delve into the architecture for each of the services.&lt;/p&gt;
+
+&lt;h2 id=&#34;dashboard&#34;&gt;Dashboard&lt;/h2&gt;
+
+&lt;p&gt;Horizon is a modular &lt;a href=&#34;https://www.djangoproject.com/&#34;&gt;Django web application&lt;/a&gt; that provides an end user and administrator interface to OpenStack services.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/horizon-screenshot.jpg&#34; alt=&#34;OpenStack Horizon Screenshot&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As with most web applications, the architecture is fairly simple:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Horizon is usually deployed via &lt;a href=&#34;http://code.google.com/p/modwsgi/&#34;&gt;mod_wsgi&lt;/a&gt; in Apache. The code itself is seperated into a reusable python module with most of the logic (interactions with various OpenStack APIs) and presentation (to make it easily customizable for different sites).&lt;/li&gt;
+&lt;li&gt;A database (configurable to which one). As it relies mostly on the other services for data, it stores very little data of it&amp;rsquo;s own.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;From a network architecture point of view, this service will need to customer accessible as well as be able to talk to each services public APIs. If you wish to use the administrator functionality (i.e. for other services), it will also need connectivity to their Admin API endpoints (which should be non-customer accessible).&lt;/p&gt;
+
+&lt;h2 id=&#34;compute&#34;&gt;Compute&lt;/h2&gt;
+
+&lt;p&gt;Not much has really changed with Nova&amp;rsquo;s architecture. They have added a few new helper services for EC2 compatibility and console services.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nova-api&lt;/code&gt; accepts and responds to end user compute and volume API calls. It supports OpenStack API, Amazon&amp;rsquo;s EC2 API and a special Admin API (for privileged users to perform administrative actions). It also initiates most of the orchestration activities (such as running an instance) as well as enforces some policy (mostly quota checks). In the Essex release, nova-api has been modularized, allowing for implementers to run only specific APIs.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;nova-compute&lt;/code&gt; process is primarily a worker daemon that creates and terminates virtual machine instances via hypervisor&amp;rsquo;s APIs (XenAPI for XenServer/XCP, libvirt for KVM or QEMU, VMwareAPI for VMware, etc.). The process by which it does so is fairly complex but the basics are simple: accept actions from the queue and then perform a series of system commands (like launching a KVM instance) to carry them out while updating state in the database.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nova-volume&lt;/code&gt; manages the creation, attaching and detaching of persistent volumes to compute instances (similar functionality to Amazon’s Elastic Block Storage). It can use volumes from a variety of providers such as iSCSI or &lt;a href=&#34;http://ceph.newdream.net/&#34;&gt;Rados Block Device in Ceph&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;nova-networ&lt;/code&gt;k worker daemon is very similar to &lt;code&gt;nova-compute&lt;/code&gt; and &lt;code&gt;nova-volume&lt;/code&gt;. It accepts networking tasks from the queue and then performs tasks to manipulate the network (such as setting up bridging interfaces or changing iptables rules).&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;nova-schedule&lt;/code&gt; process is conceptually the simplest piece of code in OpenStack Nova: take a virtual machine instance request from the queue and determines where it should run (specifically, which compute server host it should run on).&lt;/li&gt;
+&lt;li&gt;The queue provides a central hub for passing messages between daemons. This is usually implemented with &lt;a href=&#34;http://www.rabbitmq.com/&#34;&gt;RabbitMQ&lt;/a&gt; today, but could be any AMPQ message queue (such as &lt;a href=&#34;http://qpid.apache.org/&#34;&gt;Apache Qpid&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The SQL database stores most of the build-time and run-time state for a cloud infrastructure. This includes the instance types that are available for use, instances in use, networks available and projects. Theoretically, OpenStack Nova can support any database supported by SQL-Alchemy but the only databases currently being widely used are sqlite3 (only appropriate for test and development work), MySQL and PostgreSQL.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;During the last two releases, Nova has augmented it&amp;rsquo;s console services. Console services allow end users to access their virtual instance&amp;rsquo;s console through a proxy. This involves a pair of new daemons (nova-console and nova-consoleauth).&lt;/p&gt;
+
+&lt;p&gt;Nova interacts with all of the usual suspects: Keystone for authentication, Glance for images and Horizon for web interface. The Glance interacts is interesting, though. The API process can upload and query Glance while nova-compute will download images for use in launching images.&lt;/p&gt;
+
+&lt;h2 id=&#34;object-store&#34;&gt;Object Store&lt;/h2&gt;
+
+&lt;p&gt;The swift architecture is very distributed to prevent any single point of failure as well as to scale horizontally. It includes the following components:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Proxy server accepts incoming requests via the OpenStack Object API or just raw HTTP. It accepts files to upload, modifications to metadata or container creation. In addition, it will also serve files or container listing to web browsers. The proxy server may utilize an optional cache (usually deployed with memcache) to improve performance.&lt;/li&gt;
+&lt;li&gt;Account servers manage accounts defined with the object storage service.&lt;/li&gt;
+&lt;li&gt;Container servers manage a mapping of containers (i.e folders) within the object store service.&lt;/li&gt;
+&lt;li&gt;Object servers manage actual objects (i.e. files) on the storage nodes.&lt;/li&gt;
+&lt;li&gt;There are also a number of periodic process which run to perform housekeeping tasks on the large data store. The most important of these is the replication services, which ensures consistency and availability through the cluster. Other periodic processes include auditors, updaters and reapers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Authentication is handled through configurable WSGI middleware (which will usually be Keystone).&lt;/p&gt;
+
+&lt;h2 id=&#34;image-store&#34;&gt;Image Store&lt;/h2&gt;
+
+&lt;p&gt;The Glance architecture has stayed relatively stable since the Cactus release. The biggest architectural change has been the addition of authentication, which was added in the Diablo release. Just as a quick reminder, Glance has four main parts to it:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;glance-api&lt;/code&gt; accepts Image API calls for image discovery, image retrieval and image storage&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;glance-registry&lt;/code&gt; stores, processes and retrieves metadata about images (size, type, etc.)&lt;/li&gt;
+&lt;li&gt;A database to store the image metadata. Like Nova, you can choose your database depending on your preference (but most people use MySQL or SQlite).&lt;/li&gt;
+&lt;li&gt;A storage repository for the actual image files. In the diagram, I have shown the most likely configuration (using Swift as the image repository), but this is configurable. In addition to Swift, Glance supports normal filesystems, RADOS block devices, Amazon S3 and HTTP. Be aware that some of these choices are limited to read-only usage.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are also a number of periodic process which run on Glance to support caching. The most important of these is the replication services, which ensures consistency and availability through the cluster. Other periodic processes include auditors, updaters and reapers.&lt;/p&gt;
+
+&lt;p&gt;As you can see from the diagram, Glance serves a central role to the overall IaaS picture. It accepts API requests for images (or image metadata) from end users or Nova components and can store it&amp;rsquo;s disk files in&lt;/p&gt;
+
+&lt;h2 id=&#34;identity&#34;&gt;Identity&lt;/h2&gt;
+
+&lt;p&gt;Keystone provides a single point of integration for OpenStack policy, catalog, token and authentication.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Keystone handles API requests as well as providing configurable catalog, policy, token and identity services.&lt;/li&gt;
+&lt;li&gt;Each keystone function has a pluggable backend which allows different ways to use the particular service. Most support standard backends like LDAP or SQL, as well as Key Value Stores (KVS).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most people will use this as a point of customization for their current authentication services.&lt;/p&gt;
+
+&lt;h2 id=&#34;future-projects&#34;&gt;Future Projects&lt;/h2&gt;
+
+&lt;p&gt;This completes the tour of the OpenStack Essex architecture. However, OpenStack will not be stopping here - the following OpenStack release (&amp;ldquo;Folsom&amp;rdquo;) &lt;a href=&#34;http://eavesdrop.openstack.org/meetings/openstack-meeting/2012/openstack-meeting.2012-02-21-19.59.html&#34;&gt;will welcome another core service to the fold&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Network (&lt;a href=&#34;http://docs.openstack.org/incubation/openstack-network/admin/content/&#34;&gt;Quantum&lt;/a&gt;) provides &amp;ldquo;network connectivity as a service&amp;rdquo; between interface devices managed by other Openstack services (most likely Nova). The service works by allowing users to create their own networks and then attach interfaces to them.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Although the &lt;a href=&#34;http://www.openstack.org/conference/san-francisco-2012/&#34;&gt;release schedule for Folsom&lt;/a&gt; is not yet set (probably Fall 2012), I won&amp;rsquo;t wait six months to update the picture for this.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenStack Has A Mascot: The &#34;Tenrec&#34; Book</title>
+      <link>https://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book</link>
+      <pubDate>Fri, 05 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/tenrec.jpg&#34; alt=&#34;http://oreilly.com/catalog/9781449311056/&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You may have noticed that I have not posted anything in the last two months. And as you have probably guessed, it was because I was busy working on something else.&lt;/p&gt;
+
+&lt;p&gt;That &amp;ldquo;something else&amp;rdquo; was writing &lt;a href=&#34;http://oreilly.com/catalog/9781449311056/&#34;&gt;Deploying OpenStack&lt;/a&gt; for O&amp;rsquo;Reilly Media.&lt;/p&gt;
+
+&lt;p&gt;The book is intended to provide an introduction to the OpenStack project (Glance, Swift and Nova) Cactus release, an architectural overview of each component and some best practices for their deployment. In particular, we wanted to go beyond the documentation to arm readers with information to make smart decisions for their installations. However, we also went step by step to describe the installation process using normal packages as well as the StackOps distribution. Here are the chapter listings:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The OpenStack Project&lt;/li&gt;
+&lt;li&gt;Understanding Swift&lt;/li&gt;
+&lt;li&gt;Understanding Glance&lt;/li&gt;
+&lt;li&gt;Understanding Nova&lt;/li&gt;
+&lt;li&gt;Obtaining Nova&lt;/li&gt;
+&lt;li&gt;Planning Nova Deployment&lt;/li&gt;
+&lt;li&gt;Installing Nova (via packages and &lt;a href=&#34;http://www.stackops.com/&#34;&gt;StackOps&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Using Nova&lt;/li&gt;
+&lt;li&gt;Administering Nova&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;However, this book is not &lt;em&gt;OpenStack: The Definitive Guide&lt;/em&gt; or any such tome:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It is a relatively short 80 pages.&lt;/li&gt;
+&lt;li&gt;It is also very heavily weighted towards Nova. That is not to say that we don&amp;rsquo;t cover Swift or Glance, just not to the same level of detail. For example, we don&amp;rsquo;t cover Swift installation, while we devote an entire chapter to Nova&amp;rsquo;s installation.&lt;/li&gt;
+&lt;li&gt;It only documents a single node installation in two controlled ways. It doesn&amp;rsquo;t cover every hardware variation or deployment scenario.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most importantly, OpenStack now has an mascot. The humble tailless tenrec is an African mammal similar to hedgehogs (I prefer to believe that the cover picture is a &lt;a href=&#34;http://en.wikipedia.org/wiki/Greater_Hedgehog_Tenrec&#34;&gt;Greater Hedgehog Tenrec&lt;/a&gt;). Please commence creating  &lt;a href=&#34;http://www.thinkgeek.com/geektoys/plush/e5ac/&#34;&gt;plushy&lt;/a&gt; &lt;a href=&#34;http://www.thinkgeek.com/geektoys/plush/288e/&#34;&gt;toys&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you are interested in this book, &lt;em&gt;I would highly recommend getting the Ebook version&lt;/em&gt;. It is cheaper, it comes in almost any format (&lt;a href=&#34;http://oreilly.com/store/ebooks.html&#34;&gt;ePub, Mobi, PDF&lt;/a&gt;) and it will be updated. &lt;strong&gt;Yes, updated&lt;/strong&gt;. You will see additional content come out for it, as it is written. For anyone that has been following the OpenStack community, you will realize that the code changes quickly.&lt;/p&gt;
+
+&lt;p&gt;I also wanted to send big thanks to my technical reviewers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Josh Kearney (&lt;a href=&#34;http://jk0.org/&#34;&gt;jk0&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Diego Parrilla (CEO of &lt;a href=&#34;http://www.stackops.com/&#34;&gt;StackOps&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Brian Pepple (former chairman of the &lt;a href=&#34;http://fedoraproject.org/wiki/Development/SteeringCommittee&#34;&gt;Fedora Engineering Steering Committee&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Su-hyung &amp;ldquo;Nick&amp;rdquo; Lee&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Their expertise made the book immeasurably better.&lt;/p&gt;
+
+&lt;p&gt;Oh yeah, &lt;a href=&#34;http://oreilly.com/catalog/9781449311056/&#34;&gt;you can buy it here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Finding Your OpenStack Nova version</title>
+      <link>https://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version</link>
+      <pubDate>Sat, 30 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version</guid>
+      <description>&lt;p&gt;&lt;em&gt;I just got back from the &lt;a href=&#34;http://summit.openstack.org/&#34;&gt;OpenStack Developers Summit&lt;/a&gt; and while I am still trying to compile my thoughts on the event, I thought I&amp;rsquo;d dash off this little tidbit:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;A slight annoyance in administering (and troubleshooting) OpenStack Nova is identifying your installed version. This information is actually readily (i.e. programmatically) available within the code (&lt;em&gt;and logged at the beginning of most logfiles&lt;/em&gt;), but we hadn&amp;rsquo;t exposed it to administrators on the command line until &lt;a href=&#34;http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/revision/1036&#34;&gt;Nova trunk revision #1036&lt;/a&gt;. With this change, you can now simply type &lt;span class=&#34;code-inline&#34;&gt;nova-manage version list&lt;/span&gt; to find which OpenStack Nova version is installed. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nova-manage version list
+2011.3-dev (2011.3-workspace:tarmac-20110428165803-elcz2wp2syfzvxm8)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can probably guess, this machine is installed with a post-Cactus / pre-Diablo version of Nova (&amp;ldquo;2011.3-dev&amp;rdquo;) from the ppa:trunk packages (&amp;ldquo;tarmac-20110428165803&amp;rdquo;). Final released versions will report non-dev version numbers like &lt;code&gt;2011.1&lt;/code&gt; (Bexar), &lt;code&gt;2011.2&lt;/code&gt; (Cactus) or &lt;code&gt;2011.3&lt;/code&gt; (upcoming Diablo). Releases from Launchpad&amp;rsquo;s ppa/trunk or ppa/release repositories will report &amp;ldquo;tarmac&amp;rdquo; in the string.&lt;/p&gt;
+
+&lt;p&gt;For those who aren&amp;rsquo;t following Nova trunk (cutting edge builds) or wanting to understand this deeper: In &lt;a href=&#34;http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/view/head:/nova/version.py&#34;&gt;nova/version.py&lt;/a&gt; there are two methods, &lt;code&gt;version_string()&lt;/code&gt; and &lt;code&gt;version_string_with_vcs()&lt;/code&gt;. You can see their use here in the python shell:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nova-manage shell python
+Python 2.6.6 (r266:84292, Sep 15 2010, 16:22:56)
+[GCC 4.4.5] on linux2
+Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.
+(InteractiveConsole)
+&amp;gt;&amp;gt;&amp;gt; from nova import version
+&amp;gt;&amp;gt;&amp;gt; version.version_string()
+&#39;2011.3-dev&#39;
+&amp;gt;&amp;gt;&amp;gt; version.version_string_with_vcs()
+u&#39;2011.3-workspace:tarmac-20110428165803-elcz2wp2syfzvxm8&#39;
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;version_string()&lt;/code&gt; pulls info straight from constants in the source code while &lt;code&gt;version_string_with_vcs()&lt;/code&gt; is generated at package creation time in the setup.py file (which basically writes the &lt;code&gt;nova/vcsversion.py&lt;/code&gt; file with &lt;span class=&#34;code-inline&#34;&gt;bzr version-info &amp;ndash;python&lt;/span&gt; output). Unless you have run setup.py (such as when you are developing a local branch), you&amp;rsquo;ll just see &lt;code&gt;2011.3-LOCALBRANCH:LOCALREVISION&lt;/code&gt; as your &lt;code&gt;vcsversion&lt;/code&gt; string.&lt;/p&gt;
+
+&lt;p&gt;I am working on adding more diagnostic, operational support features for Diablo (service versions, flag state, etc.) and will post as they merge into OpenStack Nova trunk.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenStack Nova Architecture</title>
+      <link>https://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture</link>
+      <pubDate>Fri, 22 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture</guid>
+      <description>&lt;p&gt;&lt;b&gt;NOTE&lt;/b&gt;: &lt;i&gt;I&amp;rsquo;ve updated and expanded this blog post for the Folsom release. &lt;a href=&#34;https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/&#34;&gt;Click here to read the updated version&lt;/a&gt;.&lt;/i&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the common refrains I hear from people getting started with &lt;a href=&#34;http://www.openstack.org/&#34;&gt;OpenStack&lt;/a&gt; is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview. Now that &lt;a href=&#34;http://www.openstack.org/blog/2011/04/openstack-announces-cactus-release/&#34;&gt;Cactus&lt;/a&gt; (OpenStack’s third version) has been released, I thought I’d take advantage of the lull in development to write up a quick architectural overview from my point of view. Since OpenStack is a fairly broad topic, I’ll break my thoughts into several posts. Today’s post will deal with OpenStack Nova’s (compute cloud) high level architecture. &lt;/p&gt;
+
+&lt;p&gt;Before we dive into the conceptual and logic architecture, let’s take a second to explain the OpenStack project: &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;OpenStack is a collection of open source technologies delivering a massively scalable cloud operating system.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You can think of it as software to power your own Infrastructure as a Service (IaaS) offering like &lt;a href=&#34;http://aws.amazon.com&#34;&gt;Amazon Web Services&lt;/a&gt;. It currently encompasses three main projects:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://launchpad.net/swift&#34;&gt;Swift&lt;/a&gt; which provides object/blob storage. This is roughly analogous to Rackspace Cloud Files (from which it is derived) or Amazon S3.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://launchpad.net/glance&#34;&gt;Glance&lt;/a&gt; which provides discovery, storage and retrieval of virtual machine images for OpenStack Nova.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://launchpad.net/nova&#34;&gt;Nova&lt;/a&gt; which provides virtual servers upon demand. This is similar to Rackspaces Cloud Servers or Amazon EC2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While these three projects provide the core of the cloud infrastructure, OpenStack is open and evolving — &lt;a href=&#34;http://wiki.openstack.org/Projects&#34;&gt;there will be more projects&lt;/a&gt; (there are already related projects for &lt;a href=&#34;https://launchpad.net/openstack-dashboard&#34;&gt;web interfaces&lt;/a&gt; and a &lt;a href=&#34;http://wiki.openstack.org/QueueService&#34;&gt;queue service&lt;/a&gt;). With that brief introduction, let’s delve into a conceptual architecture and then examine how OpenStack Nova could map to it.  &lt;/p&gt;
+
+&lt;h1 id=&#34;cloudproviderconceptualarchitecture&#34;&gt;Cloud Provider Conceptual Architecture&lt;/h1&gt;
+
+&lt;p&gt;Imagine that we are going to build our own IaaS cloud and offer it to customers. To achieve this, we would need to provide several high level features:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Allow application owners to register for our cloud services, view their usage and see their bill (basic customer relations management functionality)&lt;/li&gt;
+&lt;li&gt;Allow Developers/DevOps folks to create and store custom images for their applications (basic build-time functionality)&lt;/li&gt;
+&lt;li&gt;Allow DevOps/Developers to launch, monitor and terminate instances (basic run-time functionality)&lt;/li&gt;
+&lt;li&gt;Allow the Cloud Operator to configure and operate the cloud infrastructure&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;While there are certainly many, many other features that we would need to offer (especially if we were to follow are more complete industry framework like &lt;a href=&#34;http://www.tmforum.org/BusinessProcessFramework/1647/home.html&#34;&gt;eTOM&lt;/a&gt;), these four get to the very heart of providing IaaS. Now assuming that you agree with these four top level features, you might put together a conceptual architecture that looks something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img id=&#34;iaasconceptualarchitecture&#34; src=&#34;http://c204396.r96.cf1.rackcdn.com/nova-cactus-conceptual.gif&#34; alt=&#34;IaaS Conceptual Architecture&#34; title=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this model, I’ve imagined four sets of users (developers, devops, owners and operators) that need to interact with the cloud and then separated out the functionality needed for each. From there, I’ve followed a pretty common tiered approach to the architecture (presentation, logic and resources) with two orthogonal areas (integration and management). Let’s explore each a little further:    &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;As with presentation layers in more typical application architectures, components here interact with users to accept and present information. In this layer, you will find web portals to provide graphical interfaces for non-developers and API endpoints for developers. For more advanced architectures, you might find load balancing, console proxies, security and naming services present here also.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The logic tier would provide the intelligence and control functionality for our cloud. This tier would house orchestration (workflow for complex tasks), scheduling (determining mapping of jobs to resources), policy (quotas and such) , image registry (metadata about instance images), logging (events and metering).    &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;There will need to integration functions within the architecture. It is assumed that most service providers will already have a customer identity and billing systems. Any cloud architecture would need to integrate with these systems.  &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;As with any complex environment, we will need a management tier to operate the environment. This should include an API to access the cloud administration features as well as some forms of monitoring. It is likely that the monitoring functionality will take the form of integration into an existing tool. While I’ve highlighted monitoring and an admin API for our fictional provider, in a more complete architecture you would see a vast array of operational support functions like provisioning and configuration management.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Finally, since this is a compute cloud, we will need actual compute, network and storage resources to provide to our customers. This tier provides these services, whether they be servers, network switches, network attached storage or other resources.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With this model in place, let’s shift gears and look at OpenStack Nova’s logical architecture.&lt;/p&gt;
+
+&lt;h1 id=&#34;openstacknovalogicalarchitecture&#34;&gt;OpenStack Nova Logical Architecture&lt;/h1&gt;
+
+&lt;p&gt;Now that we’ve looked at a proposed conceptual architecture, let’s see how OpenStack Nova is logically architected. Since Cactus is the newest release, I will concentrate there (which means if you are viewing this after around July 2011, this will be out of date). There are several logical components of OpenStack Nova architecture but the majority of these components are custom written python daemons of two varieties:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;WSGI applications to receive and mediate API calls (&lt;span class=&#34;code-inline&#34;&gt;nova-api&lt;/span&gt;, &lt;span class=&#34;code-inline&#34;&gt;glance-api&lt;/span&gt;, etc.)&lt;/li&gt;
+&lt;li&gt;Worker daemons to carry out orchestration tasks (&lt;span class=&#34;code-inline&#34;&gt;nova-compute&lt;/span&gt;, &lt;span class=&#34;code-inline&#34;&gt;nova-network&lt;/span&gt;, &lt;span class=&#34;code-inline&#34;&gt;nova-schedule&lt;/span&gt;, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;However, there are two essential pieces of the logical architecture are neither custom written nor Python based: the messaging queue and the database. These two components facilitate the asynchronous orchestration of complex tasks through message passing and information sharing.
+Putting this all together we get a picture like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img id=&#34;openstacknovalogicalarchitecture&#34; src=&#34;http://c204396.r96.cf1.rackcdn.com/nova-cactus-logical.gif&#34; alt=&#34;OpenStack Nova Logical Architecture&#34; title=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This complicated, but not overly informative, diagram as it can be summed up in three sentences:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;End users (DevOps, Developers and even other OpenStack components) talk to &lt;span class=&#34;code-inline&#34;&gt;nova-api&lt;/span&gt; to interface with OpenStack Nova&lt;/li&gt;
+&lt;li&gt;OpenStack Nova daemons exchange info through the queue (actions) and database (information) to carry out API requests&lt;/li&gt;
+&lt;li&gt;OpenStack Glance is basically a completely separate infrastructure which OpenStack Nova interfaces through the Glance API&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now that we see the overview of the processes and their interactions, let’s take a closer look at each component.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The &lt;span class=&#34;code-inline&#34;&gt;nova-api&lt;/span&gt; daemon is the heart of the OpenStack Nova. You may see it illustrated on many pictures of OpenStack Nova as API and “Cloud Controller”. While this is partly true, cloud controller is really just a class (specifically the CloudController in trunk/nova/api/ec2/cloud.py) within the &lt;span class=&#34;code-inline&#34;&gt;nova-api&lt;/span&gt; daemon. It provides an endpoint for all API queries (either &lt;a href=&#34;http://docs.rackspacecloud.com/api/&#34;&gt;OpenStack API&lt;/a&gt; or &lt;a href=&#34;http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/&#34;&gt;EC2 API&lt;/a&gt;), initiates most of the orchestration activities (such as running an instance) and also enforces some policy (mostly quota checks).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The &lt;span class=&#34;code-inline&#34;&gt;nova-schedule&lt;/span&gt; process is conceptually the simplest piece of code in OpenStack Nova: take a virtual machine instance request from the queue and determines where it should run (specifically, which compute server host it should run on). In practice however, I am sure this will grow to be the most complex as it needs to factor in current state of the entire cloud infrastructure and apply complicated algorithm to ensure efficient usage. To that end, &lt;span class=&#34;code-inline&#34;&gt;nova-schedule&lt;/span&gt; implements a pluggable architecture that let’s you choose (or write) your own algorithm for scheduling. Currently, there are several to choose from (simple, chance, etc) and it is a area of hot development for the future releases of OpenStack Nova.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The &lt;span class=&#34;code-inline&#34;&gt;nova-compute&lt;/span&gt; process is primarily a worker daemon that creates and terminates virtual machine instances. The process by which it does so is fairly complex (&lt;a href=&#34;http://www.laurentluce.com/?p=227&#34;&gt;see this blog post by Laurence Luce for the gritty details&lt;/a&gt;) but the basics are simple: accept actions from the queue and then perform a series of system commands (like launching a KVM instance) to carry them out while updating state in the database.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;As you can gather by the name, &lt;span class=&#34;code-inline&#34;&gt;nova-volume&lt;/span&gt; manages the creation, attaching and detaching of persistent volumes  to compute instances (similar functionality to &lt;a href=&#34;http://aws.amazon.com/ebs/&#34;&gt;Amazon’s Elastic Block Storage&lt;/a&gt;).  It can use volumes from a variety of providers such as iSCSI or AoE.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The &lt;span class=&#34;code-inline&#34;&gt;nova-network&lt;/span&gt; worker daemon is very similar to &lt;span class=&#34;code-inline&#34;&gt;nova-compute&lt;/span&gt; and &lt;span class=&#34;code-inline&#34;&gt;nova-volume&lt;/span&gt;. It accepts networking tasks from the queue and then performs tasks to manipulate the network (such as setting up bridging interfaces or changing &lt;span class=&#34;code-inline&#34;&gt;iptables&lt;/span&gt; rules). &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The queue provides a central hub for passing messages between daemons. This is currently implemented with &lt;a href=&#34;http://www.rabbitmq.com/&#34;&gt;RabbitMQ&lt;/a&gt; today, but theoretically could be any &lt;a href=&#34;http://www.amqp.org/confluence/display/AMQP/Advanced+Message+Queuing+Protocol&#34;&gt;AMPQ message queue&lt;/a&gt; supported by the python &lt;a href=&#34;http://barryp.org/software/py-amqplib/&#34;&gt;ampqlib&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The &lt;a href=&#34;http://en.wikipedia.org/wiki/SQL&#34;&gt;SQL database&lt;/a&gt; stores most of the build-time and run-time state for a cloud infrastructure. This includes the instance types that are available for use, instances in use, networks available and projects. Theoretically, OpenStack Nova can support any database supported by &lt;a href=&#34;http://www.sqlalchemy.org/&#34;&gt;SQL-Alchemy&lt;/a&gt; but the only databases currently being widely used are &lt;a href=&#34;http://www.sqlite.org/&#34;&gt;sqlite3&lt;/a&gt; (only appropriate for test and development work), &lt;a href=&#34;http://mysql.com/&#34;&gt;MySQL&lt;/a&gt; and &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OpenStack Glance is a separate project from OpenStack Nova, but as shown above, complimentary. While it is an optional part of the overall compute architecture, I can’t imagine that most OpenStack Nova installation will not be using it (or a complimentary product). There are three pieces to Glance: &lt;span class=&#34;code-inline&#34;&gt;glance-api&lt;/span&gt;, &lt;span class=&#34;code-inline&#34;&gt;glance-registry&lt;/span&gt; and the image store. As you can probably guess, &lt;span class=&#34;code-inline&#34;&gt;glance-api&lt;/span&gt; accepts API calls, much like &lt;span class=&#34;code-inline&#34;&gt;nova-api&lt;/span&gt;, and the actual image blobs are placed in the image store. The &lt;span class=&#34;code-inline&#34;&gt;glance-registry&lt;/span&gt; stores and retrieves metadata about images. The image store can be a number of different object stores, including OpenStack Swift.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Finally, another optional project that we will need for our fictional service provider is an user dashboard. I have picked the OpenStack Dashboard here, but there are also several other web front ends available for OpenStack Nova. The OpenStack Dashboard provides a web interface into OpenStack Nova to give application developers and devops staff  similar functionality to the API. It is currently implemented as a &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; web application.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This logical architecture represents just one way to architect OpenStack Nova. With it’s pluggable architecture, we could easily swap out OpenStack Glance with another image service or use another dashboard. In the coming releases of OpenStack, expect to see more modularization of the code especially in the network and volume areas.&lt;/p&gt;
+
+&lt;h1 id=&#34;novaconceptualmapping&#34;&gt;Nova Conceptual Mapping&lt;/h1&gt;
+
+&lt;p&gt;Now that we’ve seen a conceptual architecture for a fictional cloud provider and examined the logical architecture of OpenStack Nova, it is fairly easy to map the OpenStack components to the conceptual areas to see what we are lacking:&lt;/p&gt;
+
+&lt;p&gt;&lt;img id=&#34;openstacknovaconceptualcoverage&#34; src=&#34;http://c204396.r96.cf1.rackcdn.com/nova-cactus-conceptual-coverage.gif&#34; alt=&#34;OpenStack Nova conceptual coverage&#34; title=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see from the illustration, I’ve overlaid logical components of OpenStack Nova, Glance and Dashboard to denote functional coverage. For each of the overlays, I’ve added the name of the logical component within the project that provides the functionality. While all of these judgements are highly subjective, you can see that we have a majority coverage of the functional areas with a few notable exceptions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The largest gap in our functional coverage is logging and billing. At the moment, OpenStack Nova doesn’t have a billing component that can mediate logging events, rate the logs and create/present bills. That being said, most service providers will already have one (or &lt;em&gt;many&lt;/em&gt;) of these so the focus is really on the logging and integration with billing. This could be remedied in a variety of ways: augmentations of the code (which should happen in the next release “Diablo”), integration with commercial products or services (perhaps &lt;a href=&#34;http://www.zuora.com/&#34;&gt;Zuora&lt;/a&gt;) or custom log parsing. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Identity is also a point which will likely need to be augmented. Unless we are running a stock LDAP for our identity system, we will need to integrate our solution with OpenStack Nova. Having said that, this is true of almost all cloud solutions.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;The customer portal will also be an integration point. While OpenStack Nova provides a user dashboard (to see running instance, launch new instances, etc.), it doesn’t provide an interface to allow application owners to signup for service, track their bills and lodge trouble tickets. Again, this is probably something that it is already in place at our imaginary service provider.  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ideally, the Admin API would replicate all functionality that we’d be able to do via the command line interface (which in this case is mostly the exposed through the nova-manage command). This will get better in the Diablo release with the &lt;a href=&#34;http://wiki.openstack.org/NovaAdminAPI&#34;&gt;Admin API&lt;/a&gt; work.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cloud monitoring and operations will be an important area of focus for our service provider. A key to any good operations approach is good tooling. While OpenStack Nova provides nova-instancemonitor, which tracks compute node utilization, we’re really going to need a number of third party tools for monitoring.  &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Policy is an extremely important area but very provider specific. Everything from quotas (which are supported) to quality of service (QoS) to privacy controls can fall under this. I’ve given OpenStack Nova partial coverage here, but that might vary depending on the intricacies of the providers needs. For the record, OpenStack Nova Cactus provides quotas for instances (number and cores used), volumes (size and number), floating IP addresses and metadata.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Scheduling within OpenStack Nova is fairly rudimentary for larger installations today. The pluggable scheduler supports chance (random host assignment), simple (least loaded) and zone (random nodes within an availability zone). As within most areas on this list, this will be greatly augmented in Diablo. In development are distributed schedulers and schedulers that understand heterogeneous hosts (for support of GPUs and differing CPU architectures).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As you can see, OpenStack Nova provides a fair basis for our mythical service provider, as long as we are willing to do some integration here and there. In my next post, I’ll dive deeper into OpenStack Nova with a discussion on deployment architecture choices.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Auto Blogging with Rake &amp; Rails</title>
+      <link>https://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails</link>
+      <pubDate>Sat, 26 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails</guid>
+      <description>&lt;p&gt;I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every weekend all year long. Unfortunately, I don&amp;rsquo;t have a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend. You can see an example of what I wanted at &lt;a href=&#34;http://norcalmtnbikeracing.blogspot.com/2011/03/norcal-mtb-racing-this-weekend-3-mar-8.html&#34;&gt;NorCal MTB Racing blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The basic idea was to create a &lt;code&gt;cron&lt;/code&gt; job that pulls a list of races (with a link for details) from my rails application&amp;rsquo;s database, plot the events on map, add some text and then post it to my blog on Blogger. Most of this is pretty standard rails stuff, but I did need some help for the map and posting.&lt;/p&gt;
+
+&lt;p&gt;For the maps, I used &lt;a href=&#34;http://code.google.com/apis/maps/documentation/staticmaps/&#34;&gt;Google Static Maps&lt;/a&gt;. This allows you to embed a Google Maps image on your webpage just like a normal image. All you need to do it feed it the right parameters. For example, this HTML code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;img&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;alt&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;NorCal MTB Race Event Map&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&amp;amp;zoom=13&amp;amp;size=600x300&amp;amp;maptype=roadmap&amp;amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284&amp;quot;&lt;/span&gt;
+/&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Produces this map:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn&amp;#43;Bridge,New&amp;#43;York,NY&amp;amp;zoom=13&amp;amp;size=600x300&amp;amp;maptype=roadmap&amp;amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;NorCal MTB Map&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;To post to Blogger, I used the &lt;code&gt;blogger gem&lt;/code&gt; (&lt;a href=&#34;http://blogger.rubyforge.org/&#34;&gt;installation instructions&lt;/a&gt;). There are other ruby gems out there that interface with Blogger, but this was by far the most straight forward. To use the gem, you need username, password and blog ID. I found my blog ID through an &lt;a href=&#34;http://www.google.com/support/forum/p/blogger/thread?tid=44fc0d69e2a4f283&amp;amp;hl=en&#34;&gt;answer in the blogger support forum&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Got to your dashboard and click Settings for the blog you want the ID of. In the address bar you should then see something like this:&lt;/em&gt;
+&lt;a href=&#34;http://www.blogger.com/blog-options-basic.g?blogID=9101099271220909428&#34;&gt;http://www.blogger.com/blog-options-basic.g?blogID=9101099271220909428&lt;/a&gt;
+&lt;em&gt;The long number at the end of the URL is your blog&amp;rsquo;s ID number.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I decided that this would be best implemented as a rake task, so I could full access to all the rails application environment (especially the database connection). Here is the complete rake task:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt; 1 &lt;/span&gt;namespace &lt;span style=&#34;color: #19177C&#34;&gt;:blogger&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;do&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt; 2 &lt;/span&gt;  desc &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;post weekend update to blogger&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt; 3 &lt;/span&gt;  task &lt;span style=&#34;color: #19177C&#34;&gt;:weekend_update&lt;/span&gt;  &lt;span style=&#34;color: #666666&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #19177C&#34;&gt;:environment&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;do&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt; 4 &lt;/span&gt;    &lt;span style=&#34;color: #008000&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;blogger&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt; 5 &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt; 6 &lt;/span&gt;    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# preferences for blogger login&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt; 7 &lt;/span&gt;    username &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;sample@gmail.com&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# change this to your username&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt; 8 &lt;/span&gt;    password &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;xxx129304xxxx&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# change this to your password&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt; 9 &lt;/span&gt;    blog_id &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;123456&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# change this to your blogid&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;10 &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;11 &lt;/span&gt;    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# my entry preferences&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;12 &lt;/span&gt;    days_ahead &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# how many days of events ?&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;13 &lt;/span&gt;    blog_entry &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;For those of you making your weekend plans,&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;14 &lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;                  here is quick rundown of this weekend&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;s MTB racing schedule&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;15 &lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;                  for NorCal:&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;16 &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;17 &lt;/span&gt;    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# google static map preferences&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;18 &lt;/span&gt;    base_url &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;http://maps.google.com/maps/api/staticmap?&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;19 &lt;/span&gt;    map_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;size=400x400&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;maptype=roadmap&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;sensor=false&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;20 &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;21 &lt;/span&gt;    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# find all events in the mtbcalendar.com db for this weekend&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;22 &lt;/span&gt;    &lt;span style=&#34;color: #19177C&#34;&gt;@events&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #880000&#34;&gt;Event&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;active&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;find_tagged_with(
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;23 &lt;/span&gt;        &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;norcal&amp;quot;&lt;/span&gt;,
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;24 &lt;/span&gt;        &lt;span style=&#34;color: #19177C&#34;&gt;:conditions&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;start_date &amp;gt;= CURRENT_DATE AND start_date &amp;lt; ?&amp;quot;&lt;/span&gt;,
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;25 &lt;/span&gt;                        days_ahead&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;days&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;from_now&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;,
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;26 &lt;/span&gt;        &lt;span style=&#34;color: #19177C&#34;&gt;:order&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;start_date asc&amp;quot;&lt;/span&gt;)
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;27 &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;28 &lt;/span&gt;    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# loop through events adding place markers to the google static map URL&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;29 &lt;/span&gt;    x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;30 &lt;/span&gt;    &lt;span style=&#34;color: #19177C&#34;&gt;@events&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;each &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt;marker&lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;31 &lt;/span&gt;      x &lt;span style=&#34;color: #666666&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;32 &lt;/span&gt;      map_params &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;markers=color:blue|label:&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;x&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;marker&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;lat&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;marker&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;lng&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;33 &lt;/span&gt;      blog_entry &lt;span style=&#34;color: #666666&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;x&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;. [&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;marker&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;name&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;](http://mtbcalendar.com/events/&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;marker&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;id&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;34 &lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;                    (&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;marker&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;start_date&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;to_s(&lt;span style=&#34;color: #19177C&#34;&gt;:compact&lt;/span&gt;)&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;35 &lt;/span&gt;    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;end&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# marker loop&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;36 &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;37 &lt;/span&gt;    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# add the google static map to post body&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;38 &lt;/span&gt;    map_pic_url &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; base_url &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; map_params&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;join(&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;&amp;amp;&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;39 &lt;/span&gt;    blog_entry &lt;span style=&#34;color: #666666&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;![NorCal MTB Race Event Map](&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; map_pic_url &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;)&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;40 &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;41 &lt;/span&gt;    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# create title for the post&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;42 &lt;/span&gt;    blog_title &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;NorCal MTB Racing This Weekend:&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;43 &lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;                  &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Date&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;today&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;to_s(&lt;span style=&#34;color: #19177C&#34;&gt;:short&lt;/span&gt;)&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt; -&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;44 &lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;                  &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;days_ahead&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;days&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;from_now&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;to_date&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;to_s(&lt;span style=&#34;color: #19177C&#34;&gt;:short&lt;/span&gt;)&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;,&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;45 &lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;                  &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Date&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;today&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;year&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;46 &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;47 &lt;/span&gt;    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# login into blogger and post this draft&lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;48 &lt;/span&gt;    account     &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #880000&#34;&gt;Blogger&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Account&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;new(username,password)
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;49 &lt;/span&gt;    new_post    &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #880000&#34;&gt;Blogger&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Post&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;new(&lt;span style=&#34;color: #19177C&#34;&gt;:title&lt;/span&gt;      &lt;span style=&#34;color: #666666&#34;&gt;=&amp;gt;&lt;/span&gt; blog_title,
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;50 &lt;/span&gt;                                    &lt;span style=&#34;color: #19177C&#34;&gt;:content&lt;/span&gt;    &lt;span style=&#34;color: #666666&#34;&gt;=&amp;gt;&lt;/span&gt; blog_entry,
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;51 &lt;/span&gt;                                    &lt;span style=&#34;color: #19177C&#34;&gt;:formatter&lt;/span&gt;  &lt;span style=&#34;color: #666666&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #19177C&#34;&gt;:rdiscount&lt;/span&gt;,
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;52 &lt;/span&gt;                                    &lt;span style=&#34;color: #19177C&#34;&gt;:draft&lt;/span&gt;      &lt;span style=&#34;color: #666666&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #008000&#34;&gt;true&lt;/span&gt;)
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;53 &lt;/span&gt;    account&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;post(blog_id,new_post)
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;54 &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;55 &lt;/span&gt;  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;end&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# task    &lt;/span&gt;
+&lt;span style=&#34;background-color: #f0f0f0; padding: 0 5px 0 5px&#34;&gt;56 &lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;end&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# namespace&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Although I did this with a rake task, you could also make it just a regular ruby script. However, then you would need to handle all of the database login and queries yourself.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Custom iPhone Notifications with Prowl</title>
+      <link>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/prowl_empty.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On of my favorite iPhone feature is &lt;a href=&#34;http://en.wikipedia.org/wiki/Apple_Push_Notification_Service&#34;&gt;push notifications&lt;/a&gt;. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&amp;rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called &lt;a href=&#34;http://www.prowlapp.com/&#34;&gt;Prowl&lt;/a&gt;. Prowl is a &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt; client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.&lt;/p&gt;
+
+&lt;p&gt;To send yourself custom push notifications, you&amp;rsquo;ll first need to buy &lt;a href=&#34;http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=320876271&#34;&gt;Prowl&lt;/a&gt; for your iPhone (around USD$2.99). Once you&amp;rsquo;ve downloaded and installed it on your iPhone, you need to &lt;a href=&#34;https://www.prowlapp.com/api_settings.php&#34;&gt;generate an API key&lt;/a&gt;. With that completed, you are all set to receive Prowl alerts.&lt;/p&gt;
+
+&lt;p&gt;Some desktop/server apps work with it out of the box (a semi-full list is at &lt;a href=&#34;http://www.prowlapp.com/apps.php&#34;&gt;http://www.prowlapp.com/apps.php&lt;/a&gt;. Others like &lt;a href=&#34;http://en.znc.in/wiki/Prowl&#34;&gt;znc&lt;/a&gt;, &lt;a href=&#34;http://flexget.com/wiki/Plugins/prowl&#34;&gt;flexget&lt;/a&gt; or &lt;a href=&#34;http://reluctanthacker.rollett.org/content/setting-nagios3-send-prowl-notifications&#34;&gt;Nagios&lt;/a&gt; require a plugin. To create you own custom alert, you&amp;rsquo;ll need to write some scripting code. I prefer using Python or Ruby for this, but &lt;a href=&#34;http://www.prowlapp.com/api.php#libraries&#34;&gt;there are plenty of libraries available for other languages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;prowl-api&#34;&gt;Prowl API&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://www.prowlapp.com/api.php&#34;&gt;Prowl API&lt;/a&gt; is very simple:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;add&lt;/code&gt; (POST) which sends notifications to your iPhone&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;verify&lt;/code&gt; (GET) which checks the validity of your API key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Just recently the API was updated to version 1.2 which added two new methods - &lt;code&gt;retrieve/token&lt;/code&gt; (GET) and &lt;code&gt;retrieve/apikey&lt;/code&gt; (GET) - which appeal mostly to website operators. They facilitate giving people your API key in a secure manner.&lt;/p&gt;
+
+&lt;p&gt;While the API is very simple, and you could certainly use it from the command line with a tool like curl, most people will want to use a library for their favorite programming language. I use two of these libraries, Prowly for Ruby and ProwlPy for Python.&lt;/p&gt;
+
+&lt;h3 id=&#34;prowly-for-ruby&#34;&gt;Prowly for Ruby&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://raflabs.com/blogs/silence-is-foo/2010/06/30/prowly-a-ruby-api-wrapper-for-prowl-the-growl-client-for-the-iphone/&#34;&gt;Prowly gem&lt;/a&gt; was written by Rafael Magana to make the Prowl API a bit more Ruby-friendly. It is dead simple to use. First, install the gem:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ sudo gem install prowly
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then create a simple script like the one below:&lt;/p&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;prowly&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# your api key from https://www.prowlapp.com/api_settings.php&lt;/span&gt;
+my_api_key &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;1234567890123456789012345678901234567890&amp;quot;&lt;/span&gt;
+
+&lt;span style=&#34;color: #880000&#34;&gt;Prowly&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;notify &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt;n&lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;apikey &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; my_api_key
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;priority &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #880000&#34;&gt;Prowly&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Notification&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Priority&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;MODERATE&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;application &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;Prowly&amp;quot;&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;event &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;Notification&amp;quot;&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;description &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;Your server is under attack!!!&amp;quot;&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;url &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;http://www.myserver.com&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# requires API 1.2 support&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That is basically all there is to it. Of course, you&amp;rsquo;ll want your script to actually do something (check a stock, parse a RSS feed, etc.), but sending the prowl is really that simple. Prowly also includes a command line script to send notifications without any scripting.&lt;/p&gt;
+
+&lt;p&gt;Right now, the current gem has not been updated to use version 1.2 of the API. I&amp;rsquo;ve put in a &lt;a href=&#34;https://github.com/rafmagana/prowly/pull/1&#34;&gt;pull request to get my upgrades merged in&lt;/a&gt; but in the meantime you can clone the updated one from my gtihub repository at  &lt;a href=&#34;https://github.com/slashk/prowly&#34;&gt;https://github.com/slashk/prowly&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;prowlpy-for-python&#34;&gt;ProwlPy for Python&lt;/h3&gt;
+
+&lt;p&gt;A corresponding Python library is called ProwlPy and was written by Jacob Burch and Olivier Hervieu. It is very similar to the Prowly. To use it, install the python library (which doesn&amp;rsquo;t appear to be on PyPi):&lt;/p&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/jacobb/prowlpy.git
+... snip ...
+$ &lt;span style=&#34;color: #008000&#34;&gt;cd&lt;/span&gt; prowlpy
+$ python setup.py install
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then just create a simple script like the ruby one above:&lt;/p&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;prowlpy&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# your api key from https://www.prowlapp.com/api_settings.php&lt;/span&gt;
+my_api_key &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;1234567890123456789012345678901234567890&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# your api key&lt;/span&gt;
+p &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; prowlpy&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;Prowl(my_api_key)
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;try&lt;/span&gt;:
+    p&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;add(&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;ProwlPy&amp;#39;&lt;/span&gt;,
+          &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;Notification&amp;#39;&lt;/span&gt;,
+          &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;Your server is under attack&amp;#39;&lt;/span&gt;,
+          &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,
+          &lt;span style=&#34;color: #008000&#34;&gt;None&lt;/span&gt;,
+          &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;http://www.myserver.com&amp;quot;&lt;/span&gt;)
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color: #D2413A; font-weight: bold&#34;&gt;Exception&lt;/span&gt;,msg:
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;print&lt;/span&gt; msg
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I also upgraded this library to version 1.2 of the API and my changes have already been merged into the main repository at &lt;a href=&#34;https://github.com/jacobb/prowlpy&#34;&gt;https://github.com/slashk/prowly&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;creating-your-own-prowl-notifiers&#34;&gt;Creating Your Own Prowl Notifiers&lt;/h3&gt;
+
+&lt;p&gt;&lt;img style=&#34;float: right;&#34; src=&#34;https://ken.pepple.info/images/prowl_alert.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve grokked the basics of using the Prowl API, it&amp;rsquo;s time to actually put it to use. To do that, you&amp;rsquo;ll need to create your own script (with whatever logic you need), have it execute at common intervals (usually via &lt;span class=&#34;code-inline&#34;&gt;cron&lt;/span&gt;) and then just wait for prowl notifications to roll in.&lt;/p&gt;
+
+&lt;p&gt;To get you started, I&amp;rsquo;ve created a repository of scripts that I use over at &lt;a href=&#34;https://github.com/slashk/prowl-scripts&#34;&gt;https://github.com/slashk/prowl-scripts&lt;/a&gt;. There you&amp;rsquo;ll see a few scripts to notify you of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.transmissionbt.com/&#34;&gt;transmission bit torrent&lt;/a&gt; download completions&lt;/li&gt;
+&lt;li&gt;daily and monthly Google AdSense balances&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woot.com/&#34;&gt;woot!&lt;/a&gt; deals&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;ll be adding more as I clean up my other scripts (weather, stock prices, steep and cheap, etc).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Configurable Instance Types For OpenStack Nova</title>
+      <link>https://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack-nova</link>
+      <pubDate>Thu, 03 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack-nova</guid>
+      <description>
+
+&lt;p&gt;Over the past three weeks, new Nova core developer Josh Kearney (&lt;em&gt;congrats &lt;a href=&#34;http://twitter.com/#!/jk0&#34;&gt;@jk0&lt;/a&gt;&lt;/em&gt;) and I have been working on adding runtime configuration of instance types (&lt;a href=&#34;http://wiki.openstack.org/ConfigureInstanceTypesDynamically&#34;&gt;read the full specification&lt;/a&gt;) to the &lt;a href=&#34;https://launchpad.net/nova&#34;&gt;OpenStack Nova compute service&lt;/a&gt;.  Instance types (or &amp;ldquo;flavors&amp;rdquo; as Rackspace calls them) are resources granted to virtual machines (&amp;ldquo;instances&amp;rdquo;) in the Nova cloud. In more specific terms, this is the size of the instance (vCPUs, RAM, Storage, etc.) that you will be launching. You may recognize these by the names &amp;ldquo;m1.large&amp;rdquo; or &amp;ldquo;m1.tiny&amp;rdquo; in AWS EC2 parlance. The Rackspace&amp;rsquo;s API (&lt;a href=&#34;http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf&#34;&gt;PDF&lt;/a&gt;) calls these &amp;ldquo;flavors&amp;rdquo; and they tend to have names like &amp;ldquo;256 MB Server&amp;rdquo; and such.&lt;/p&gt;
+
+&lt;p&gt;In the released version of OpenStack Nova (Bexar), instance types are defined statically in the &lt;code&gt;nova/instance_types.py&lt;/code&gt; file (which corresponds to the initial Amazon EC2 instance types) before run-time. This change, which will be part of the upcoming version of Nova (Cactus), instance types can be created by the Nova administrator during run-time through the &lt;span class=&#34;code-inline&#34;&gt;nova-manage&lt;/span&gt; command. If you are following the Nova trunk (or just impatient), you can find this merged in at &lt;a href=&#34;http://bazaar.launchpad.net/~hudson-openstack/nova/trunk/revision/757&#34;&gt;revision number 757&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;basic-management&#34;&gt;Basic Management&lt;/h3&gt;
+
+&lt;p&gt;Instance types / flavor are managed through the &lt;span class=&#34;code-inline&#34;&gt;nova-manage&lt;/span&gt; binary with the &lt;span class=&#34;code-inline&#34;&gt;instance_type&lt;/span&gt; command and an appropriate subcommand. As we are using the &lt;span class=&#34;code-inline&#34;&gt;nova-manage&lt;/span&gt; command, we need to be on the Nova database server to configure instance types. Right now, instance type manipulation isn&amp;rsquo;t exposed through the APIs nor the adminclient.&lt;/p&gt;
+
+&lt;p&gt;Note that you can also use the &lt;span class=&#34;code-inline&#34;&gt;flavor&lt;/span&gt; command as a synonym for &lt;span class=&#34;code-inline&#34;&gt;instance_types&lt;/span&gt; for any of these examples.&lt;/p&gt;
+
+&lt;p&gt;To see all currently active instance types, use the list subcommand:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nova-manage instance_type list
+m1.medium: Memory: 4096MB, VCPUS: 2, Storage: 40GB, FlavorID: 3, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.large: Memory: 8192MB, VCPUS: 4, Storage: 80GB, FlavorID: 4, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.tiny: Memory: 512MB, VCPUS: 1, Storage: 0GB, FlavorID: 1, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.xlarge: Memory: 16384MB, VCPUS: 8, Storage: 160GB, FlavorID: 5, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.small: Memory: 2048MB, VCPUS: 1, Storage: 20GB, FlavorID: 2, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Again, and just for emphasis, you could just have easily used the &lt;span class=&#34;code-inline&#34;&gt;flavor&lt;/span&gt; subcommand to get the exact same output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nova-manage flavor list
+m1.medium: Memory: 4096MB, VCPUS: 2, Storage: 40GB, FlavorID: 3, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.large: Memory: 8192MB, VCPUS: 4, Storage: 80GB, FlavorID: 4, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.tiny: Memory: 512MB, VCPUS: 1, Storage: 0GB, FlavorID: 1, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.xlarge: Memory: 16384MB, VCPUS: 8, Storage: 160GB, FlavorID: 5, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+m1.small: Memory: 2048MB, VCPUS: 1, Storage: 20GB, FlavorID: 2, Swap: 0GB, RXTX Quota: 0GB, RXTX Cap: 0MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To create an instance type, use the &lt;span class=&#34;code-inline&#34;&gt;create&lt;/span&gt; subcommand with the following positional arguments:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;memory (expressed in megabytes)&lt;/li&gt;
+&lt;li&gt;vcpu(s) (integer)&lt;/li&gt;
+&lt;li&gt;local storage (expressed in gigabytes)&lt;/li&gt;
+&lt;li&gt;flavorid (unique integer)&lt;/li&gt;
+&lt;li&gt;swap space (expressed in megabytes, defaults to zero, optional)&lt;/li&gt;
+&lt;li&gt;RXTX quotas (expressed in gigabytes, defaults to zero, optional)&lt;/li&gt;
+&lt;li&gt;RXTX cap (expressed in gigabytes, defaults to zero, optional)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The following example creates an instance type named &lt;code&gt;m1.xxlarge&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nova-manage instance_type create m1.xxlarge 32768 16 320 0 0 0
+m1.xxlarge created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To delete an instance type, use the &lt;code&gt;delete&lt;/code&gt; subcommand and specify the name:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nova-manage instance_type delete m1.xxlarge
+m1.xxlarge deleted
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Please note that the &lt;code&gt;delete&lt;/code&gt; command only marks the instance type as inactive in the database; it does not actually remove the instance type. This is done to preserve the instance type definition for long running instances (which may not terminate for months or years). If you are sure that you want to delete this instance type from the database, pass the &lt;code&gt;--purge&lt;/code&gt; flag after the name:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nova-manage instance_type delete m1.xxlarge --purge
+m1.xxlarge purged
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Be careful with deleting instance types, you might need this information later. Unless you truly need to prune the size of your instance_types table you are much safer to just &lt;code&gt;delete&lt;/code&gt; the instance type.&lt;/p&gt;
+
+&lt;h3 id=&#34;implementation&#34;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;This feature is implemented with an additional database table (instance_types), which has rows for each instance type/flavor. The &lt;code&gt;nova-manage&lt;/code&gt; command allows you to manipulate this table. At installation time (actually when the &lt;code&gt;nova-manage db sync&lt;/code&gt; command is run), the database table is seeded with instance type values for the five default types: m1.small, m1.tiny, m1.medium, m1.large and m1.xlarge.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenStack Development with virtualenvwrapper</title>
+      <link>https://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper</link>
+      <pubDate>Mon, 24 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper</guid>
+      <description>&lt;p&gt;Coming from the ruby/ruby on rails world, i’ve been a bit lost when it comes to the python development process used in the openstack project. One of the biggest hurdles has been the usage of virtualenv in the workflow. Basically, virtualenv lets you create a stable configuration of python libraries (eggs) much like freezing gems in your rails application. The pitfalls here is that you need to integrate it’s usage into your development flow (activate/deactivate environments), it can take some time to recreate environments if you use a lot of eggs (like nova does) and it seems pretty fragile (it lives in repo and takes some chicanery to avoid duplicating in each bzr branch).&lt;/p&gt;
+
+&lt;p&gt;However, I recently found &lt;a href=&#34;http://www.doughellmann.com/projects/virtualenvwrapper/&#34; target=&#34;_blank&#34;&gt;virtualenvwrapper&lt;/a&gt; which has erased much of this heartache:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;virtualenvwrapper is a set of extensions to Ian Bicking’s virtualenv tool. The extensions include wrappers for creating and deleting virtual environments and otherwise managing your development workflow, making it easier to work on more than one project at a time without introducing conflicts in their dependencies.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Basically, it centralizes the location of your virtual environments and gives you easy commands to manipulate them: mkvirtaulenv creates one, rmvirtaulenv deletes one and workon activates one. It also allows you to create per environment, user customizable hooks that automatically fire on all the operations. I have created a simple one that automagically changes my directory to my nova trunk directory when I activate my nova virtual environment.&lt;/p&gt;
+
+&lt;p&gt;With all that said, here is how I hack on OpenStack Nova on Ubuntu 10.10 (illustrated with nova bzr revno 604). First, install the pre-reqs for getting the code and your basic python environment:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install python-dev swig libssl-dev python-pip bzr
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This loads a ton of dependencies packages. Next, pull in our virtualenv eggs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo pip install virtualenv
+$ sudo pip install virtualenvwrapper
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, setup virtualenvwrapper for your account:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ echo &amp;quot;source /usr/local/bin/virtualenvwrapper.sh&amp;quot; &amp;gt;&amp;gt; .bashrc
+$ source /usr/local/bin/virtualenvwrapper.sh
+$ export WORKON_HOME=~/.virtualenv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With that done, we can start pulling down the source code. I’ve put my nova code branches in ~/src/nova/ :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ mkdir -p src
+$ cd src
+$ bzr init-repo nova
+$ cd nova/
+$ bzr branch lp:nova trunk
+$ cd trunk/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With that in place, let’s create our virtual environment and pull in our python requirements. This is where virtualenvwrapper shines - just one command and we have a portable virtual environment and another to fill it up for all of our branches:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ mkvirtualenv nova
+New python executable in nova/bin/python Installing setuptools............done. virtualenvwrapper.user_scripts creating /home/nova/.virtualenv/nova/bin/predeactivate virtualenvwrapper.user_scripts creating /home/nova/.virtualenv/nova/bin/postdeactivate virtualenvwrapper.user_scripts creating /home/nova/.virtualenv/nova/bin/preactivate virtualenvwrapper.user_scripts creating /home/nova/.virtualenv/nova/bin/postactivate virtualenvwrapper.user_scripts creating /home/nova/.virtualenv/nova/bin/get_env_details
+(nova)nova@openstack:~/src/nova/trunk$
+(nova)nova@openstack:~/src/nova/trunk$ pip install -r tools/pip-requires
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now that we got everything good to go, let’s run our tests to make sure everything is good (use -N option, otherwise the script wants to wrap everything with plain virtualenv commands):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(nova)nova@openstack:~/src/nova/trunk$ ./run_tests.sh -N
+AdminAPITest
+test_admin_disabled ok
+test_admin_enabled ok
+APITest
+test_exceptions_are_converted_to_faults ok
+…. SNIP …
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Perfect. When you are done, just deactivate:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(nova)nova@openstack:~/src/nova/trunk$ deactivate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While that makes everything nice and neat, the big win is when you decide to move your repo or create a new branch. To branch, just create the directory (which can be anywhere now), branch your code from trunk and activate your virtual environment (suing the workon command):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nova@openstack:~/src$ cd patch
+nova@openstack:~/src/patch$ bzr branch ../nova/trunk/ lp708221
+Branched 604 revision(s).
+nova@openstack:~/src/patch$ cd lp708221/
+nova@openstack:~/src/patch/lp708221$ workon nova
+(nova)nova@openstack:~/src/patch/lp708221$ ./run_tests.sh -N
+AdminAPITest
+test_admin_disabled ok
+test_admin_enabled ok
+.... snip ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you need to recreate your virtualenv (say after a big change in tools/pip-requires), you can just remove it and then recreate it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rmvirtualenv nova
+$ mkvirtualenv nova2
+(nova2)nova@openstack:~/src$ cd nova/trunk
+(nova2)nova@openstack:~/src/nova/trunk$ pip install -r tools/pip-requires
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All in all, virtualenvwrapper has made my hacking flow much better. Once I get a chance, I’ll document this same setup in Fedora and see if we can’t change some of the nova support scripts to better utilize virtualenvwrapper.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Speaking at CommunityOne 2009</title>
+      <link>https://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone-2009</link>
+      <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone-2009</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/C1W_170x93_Speaking_v2-1.gif&#34; border=&#34;0&#34; alt=&#34;C1W_170x93_Speaking_v2-1.gif&#34; width=&#34;170&#34; height=&#34;93&#34; align=&#34;right&#34; /&gt;Over the past few weeks, &lt;a href=&#34;http://blogs.sun.com/downstream/&#34;&gt;Scott Mattoon&lt;/a&gt;, &lt;a href=&#34;http://blogs.sun.com/stanford/&#34;&gt;John Stanford&lt;/a&gt; and I have been documenting infrastructure patterns to help application developers architect for cloud computing environments as part of a larger program around enabling cloud computing for our customers. It&#39;s been an interesting project, as cloud computing is both very new, but based on some very old concepts.&lt;/p&gt;
+&lt;p&gt;On Monday, we will be presenting our work in progress at &lt;a href=&#34;http://developers.sun.com/events/communityone/2009/west/index.jsp&#34;&gt;CommunityOne West&lt;/a&gt; in San Francisco&#39;s Moscone Center. Around the same time, we hope to move our work into the public view on &lt;a href=&#34;http://wikis.sun.com/display/cloud/Patterns&#34;&gt;wikis.sun.com&lt;/a&gt; for comments and contributions. I&#39;ll post something here as soon as it happens.&lt;/p&gt;
+&lt;p&gt;Our talk will highlight three sets of pattern domains: provisioning, monitoring and resource administration. You can expect to hear talk of motivations and implementations, with sequence diagrams, architecture pictures and code snippets for illustration.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/puppet_example.png&#34; border=&#34;0&#34; alt=&#34;puppet_example.png&#34; width=&#34;338&#34; height=&#34;264&#34; /&gt;&lt;img src=&#34;https://ken.pepple.info/images/static-example-code.png&#34; border=&#34;0&#34; alt=&#34;static-example-code.png&#34; width=&#34;338&#34; height=&#34;264&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;If you are attending the conference (you can &lt;a href=&#34;http://developers.sun.com/events/communityone/2009/west/index.jsp&#34;&gt;still sign up for free here&lt;/a&gt;), our presentations will be:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div id=&#34;hcalendar-Practical-Cloud-Computing-Patterns&#34; class=&#34;vevent&#34;&gt;&lt;br /&gt; &lt;abbr class=&#34;dtstart&#34; title=&#34;2009-06-01T14:40-07:0000&#34;&gt;June 1, 2009 from 2:40&lt;/abbr&gt; to &lt;abbr class=&#34;dtend&#34; title=&#34;2009-06-01T15:30-07:00&#34;&gt;3:30pm&lt;/abbr&gt; PDT &lt;br /&gt; &lt;a class=&#34;url&#34; href=&#34;http://developers.sun.com/events/communityone/2009/west/agenda.jsp&#34;&gt;&lt;span class=&#34;summary&#34;&gt;Practical Cloud Computing Patterns&lt;/span&gt;&lt;/a&gt; &lt;br /&gt; &lt;span class=&#34;location&#34;&gt;Gateway 104, Moscone Center, &lt;span class=&#34;adr&#34;&gt;&lt;span class=&#34;locality&#34;&gt;San Francisco&lt;/span&gt;, &lt;span class=&#34;region&#34;&gt;CA&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you can&#39;t be in San Francisco for the conference, I believe you can watch our presentation on a live webcast: &lt;a href=&#34;http://wikis.sun.com/display/CommunityOne/LiveWebcast&#34;&gt;Check here for details&lt;/a&gt;. We are &#34;&lt;strong&gt;2:40 - 3:30 pm | Practical Cloud Computing Patterns (Gateway 104)&lt;/strong&gt;&#34; under the Cloud Platforms topic.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Open Group Beijing Kickoff</title>
+      <link>https://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff</link>
+      <pubDate>Tue, 26 May 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff</guid>
+      <description>&lt;p&gt;I had a great opportunity to revisit China, part of my old region (and now part of my new global responsibility), as part of The Open Group&amp;rsquo;s kickoff last week.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;http://www.opengroup.org/&#34;&gt;The Open Group&lt;/a&gt;, which recently established a franchise in China with &lt;a href=&#34;http://kingdee.com/en/index.jsp&#34;&gt;Kingdee&lt;/a&gt;, is a vendor-neutral and technology-neutral consortium, which drives the creation of Boundaryless Information Flow™ that will enable access to integrated information within and between enterprises based on open standards and global interoperability.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I was there to speak about cloud computing, its challenges and opportunities to enterprise architects. Kingdee and TOG put on a great conference, which was well attended. Maybe I&amp;rsquo;ll go back in October when they have their practitioners conference in Hong Kong.&lt;/p&gt;
+
+&lt;p&gt;Learn more about the &lt;a href=&#34;http://www.opengroup.org/beijing2009/&#34;&gt;The Open Group Conference - Beijing&lt;/a&gt; at their website.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://ken.pepple.info/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/about/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/llama-250.png&#34; alt=&#34;Ken Pepple&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I build computing infrastructure.&lt;/p&gt;
+
+&lt;p&gt;I founded a company called &lt;a href=&#34;http://www.solinea.com&#34;&gt;Solinea&lt;/a&gt; that helps clients do this too. As you can imagine from my blog content, Solinea focuses on clouds, OpenStack and Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;I used to do this for clients of Cloud Technology Partners (cloudTP), where I led their open source cloud infrastructure efforts. Before I joined cloudTP, I served as Director of Cloud Development for a cloud service provider (&lt;a href=&#34;http://www.internap.com/&#34;&gt;Internap Network Services&lt;/a&gt;), where I led their initial engineering efforts for their OpenStack public cloud. In the distant past, I worked at &lt;a href=&#34;http://en.wikipedia.org/wiki/Sun_Microsystems&#34;&gt;Sun Microsystems&lt;/a&gt; as a Principal Engineer, Technical Director and Chief Technologist for various business units.&lt;/p&gt;
+
+&lt;p&gt;Along with my normal work duties, I have &lt;a href=&#34;https://www.amazon.com/author/kenpepple&#34;&gt;also authored a few books&lt;/a&gt;, written &lt;a href=&#34;https://github.com/slashk/&#34;&gt;some code&lt;/a&gt; and done a bit of &lt;a href=&#34;https://ken.pepple.info/about/#speaking&#34;&gt;public speaking and press interviews&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&amp;nbsp;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;img class=&#34;pure-img&#34; src=&#34;https://ken.pepple.info/images/tenrec.jpg&#34; alt=&#34;&#34;&gt;
+&lt;br /&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://oreilly.com/catalog/9781449311056/&#34;&gt;Deploying OpenStack&lt;/a&gt;  &lt;br /&gt; &lt;em&gt;Ken Pepple&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;O&amp;rsquo;Reilly Media&lt;/em&gt; &lt;br /&gt; &lt;em&gt;August 3, 2011 (ISBN #978-1449311056)&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;img class=&#34;pure-img&#34; src=&#34;https://ken.pepple.info/images/mts.jpg&#34; alt=&#34;&#34;&gt;
+    &lt;br /&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://www.amazon.com/Migrating-Solaris-Operating-System-UNIX-/dp/0131502638/ref=sr_1_2?s=books&amp;amp;ie=UTF8&amp;amp;qid=1299136326&amp;amp;sr=1-2&#34;&gt;Migrating to the Solaris Operating System: The Discipline of UNIX-to-UNIX Migrations&lt;/a&gt;  &lt;br /&gt; &lt;em&gt;Ken Pepple, Brian Down and David A. Levy&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;Prentice Hall PTR&lt;/em&gt; &lt;br /&gt;  &lt;em&gt;November 15, 2003 (ISBN #978-0131502635)&lt;/em&gt;  &lt;br /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;img class=&#34;pure-img&#34; src=&#34;https://ken.pepple.info/images/citdc.jpg&#34; alt=&#34;&#34;&gt;
+   &lt;br /&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://www.amazon.com/Consolidation-Data-Center-Simplifying-Environments/dp/0130454958/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1299136326&amp;amp;sr=1-1&#34;&gt;Consolidation in the Data Center: Simplifying IT Environments to Reduce Total Cost of Ownership&lt;/a&gt;  &lt;br /&gt; &lt;em&gt;David Hornby and Ken Pepple&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;Prentice Hall PTR&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;September 29, 2002 (ISBN #978-0130454959)&lt;/em&gt;&lt;br /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;speaking&#34;&gt;Conference Presentations and Panels&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://solinea.com/blog/solineas-ken-pepple-presents-openstack-day-ireland&#34;&gt;OpenStack Day Ireland&lt;/a&gt; &amp;ldquo;Managing OpenStack in the Enterprise&amp;rdquo;, June 2016 (Dublin, Ireland)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.openstack.org/summit/tokyo-2015/videos/presentation/the-media-talks-back-to-openstack&#34;&gt;OpenStack Summit Tokyo&lt;/a&gt; &amp;ldquo;The Media Talks Back to OpenStack&amp;rdquo;, October 2015 (Tokyo, Japan)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.openstack.org/summit/portland-2013/session-videos/presentation/openstack-grizzly-architecture-101&#34;&gt;OpenStack Summit Portland&lt;/a&gt;, &amp;ldquo;OpenStack Grizzly Architecture 101&amp;rdquo;, April 2013 (Portland)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://openstacksummitfall2012.sched.org/event/71f89bc5215c2d6dcade6e0702407733#.UIdGOWl24to&#34;&gt;OpenStack Summit San Diego&lt;/a&gt;, &amp;ldquo;Network Virtualization: The Next Big Thing ?&amp;ldquo;, October 2012 (San Diego)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://openstackconferencespring2012.sched.org/event/af1c8be41b6a0177f01815cc675aaf2d&#34;&gt;OpenStack Conference San Francisco&lt;/a&gt;, &amp;ldquo;Cloud Operators on OpenStack Networking&amp;rdquo;, April 2012 (San Francisco)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cowen.com/PastConferences.html&#34;&gt;Trend Spotting in Tech Conference&lt;/a&gt;, &amp;ldquo;Evolution of the Data Center in an Open World&amp;rdquo;, January 2012 (San Francisco)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://openstackconference2011.sched.org/event/ad238c01ca8b4cd218d110c4582328c2&#34;&gt;OpenStack Conference Boston&lt;/a&gt;, &amp;ldquo;Service Provider Discussion Panel&amp;rdquo;, October 2011 (Boston)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.idc.com.sg/CloudComputing2009/speakers.asp&#34;&gt;IDC Asia Pacific Cloud Computing Conference&lt;/a&gt;, &amp;ldquo;Preparing For The Enterprise Cloud&amp;rdquo;, March 2009 (Singapore and Seoul, South Korea)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.opengroup.org/beijing2009/&#34;&gt;The Open Group Conference&lt;/a&gt;, &amp;ldquo;Cloud Computing&amp;rdquo;, May 2009 (Beijing, China)&lt;/li&gt;
+&lt;li&gt;CommunityOne, &amp;ldquo;Practical Cloud Computing Patterns&amp;rdquo;, June 2009 (San Francisco)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Gartner Infrastructure, Operations &amp;amp; Data Centre Summit, &amp;ldquo;Transforming your Data Centre: It&amp;rsquo;s more than just reducing TCO&amp;rdquo;, April 2007 (Sydney, Australia)&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;interviews-amp-press&#34;&gt;Interviews &amp;amp; Press&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://searchcloudcomputing.techtarget.com/feature/OpenStack-infrastructure-embraces-containers-but-challenges-remain&#34;&gt;OpenStack infrastructure embraces containers, but challenges remain&lt;/a&gt; (TechTarget on June 2016)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.businesswire.com/news/home/20160421005399/en/Cloud-Management-Platform-Helps-Enterprises-Handle-Workload&#34;&gt;New Cloud Management Platform Helps Enterprises Handle Workload Onslaught as OpenStack Moves to Widespread Developer Adoption&lt;/a&gt; (BusinessWire on April 21, 2016)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://venturebeat.com/2015/10/21/solinea-closes-us4m-series-a-investment-with-translink-capital/&#34;&gt;Solinea Closes US$4m Series A Investment with Translink Capital&lt;/a&gt;(Venturebeat on October 21, 2015)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.datacenterknowledge.com/archives/2015/08/03/vendors-openstack-buying-decisions-moving-from-it-to-line-of-business/&#34;&gt;Vendors: OpenStack Buying Decisions Moving From IT to Line of Business&lt;/a&gt; (DataCenterKnowledge on August 3rd, 2015)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.networkworld.com/news/2012/082912-openstack-suse-262006.html&#34;&gt;SUSE jumps into OpenStack with its own distribution&lt;/a&gt; (Network World on August 29th, 2012)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.datacenterknowledge.com/archives/2012/05/10/openstack-networking-moving-ahead/&#34;&gt;OpenStack Networking Moving Ahead&lt;/a&gt; (Data Center Knowledge on May 10th, 2012)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gigaom.com/cloud/first-openstack-cloud-now-open-for-business/&#34;&gt;First OpenStack cloud now open for business&lt;/a&gt; (GigaOM on October 27th, 2011)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.zdnetasia.com/developers-wary-of-cloud-lock-in-62053471.htm&#34;&gt;Developers wary of cloud lock-in&lt;/a&gt; (ZDNet Asia on April 22, 2009)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.zdnetasia.com/firms-will-adopt-hybrid-software-cloud-62052062.htm&#34;&gt;Firms will adopt hybrid software cloud&lt;/a&gt; (ZDNet Asia on March 10, 2009)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.techrepublic.com/article/how-to-simplify-environments-and-cut-tco/1060294&#34;&gt;How to simplify environments and cut TCO&lt;/a&gt; (TechRepublic on February 26, 2003)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

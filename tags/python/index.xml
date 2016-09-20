@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Wander</title>
+    <link>https://ken.pepple.info/tags/python/</link>
+    <description>Recent content in Python on Wander</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 21 Mar 2011 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ken.pepple.info/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Custom iPhone Notifications with Prowl</title>
+      <link>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/prowl_empty.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On of my favorite iPhone feature is &lt;a href=&#34;http://en.wikipedia.org/wiki/Apple_Push_Notification_Service&#34;&gt;push notifications&lt;/a&gt;. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&amp;rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called &lt;a href=&#34;http://www.prowlapp.com/&#34;&gt;Prowl&lt;/a&gt;. Prowl is a &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt; client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.&lt;/p&gt;
+
+&lt;p&gt;To send yourself custom push notifications, you&amp;rsquo;ll first need to buy &lt;a href=&#34;http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=320876271&#34;&gt;Prowl&lt;/a&gt; for your iPhone (around USD$2.99). Once you&amp;rsquo;ve downloaded and installed it on your iPhone, you need to &lt;a href=&#34;https://www.prowlapp.com/api_settings.php&#34;&gt;generate an API key&lt;/a&gt;. With that completed, you are all set to receive Prowl alerts.&lt;/p&gt;
+
+&lt;p&gt;Some desktop/server apps work with it out of the box (a semi-full list is at &lt;a href=&#34;http://www.prowlapp.com/apps.php&#34;&gt;http://www.prowlapp.com/apps.php&lt;/a&gt;. Others like &lt;a href=&#34;http://en.znc.in/wiki/Prowl&#34;&gt;znc&lt;/a&gt;, &lt;a href=&#34;http://flexget.com/wiki/Plugins/prowl&#34;&gt;flexget&lt;/a&gt; or &lt;a href=&#34;http://reluctanthacker.rollett.org/content/setting-nagios3-send-prowl-notifications&#34;&gt;Nagios&lt;/a&gt; require a plugin. To create you own custom alert, you&amp;rsquo;ll need to write some scripting code. I prefer using Python or Ruby for this, but &lt;a href=&#34;http://www.prowlapp.com/api.php#libraries&#34;&gt;there are plenty of libraries available for other languages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;prowl-api&#34;&gt;Prowl API&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://www.prowlapp.com/api.php&#34;&gt;Prowl API&lt;/a&gt; is very simple:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;add&lt;/code&gt; (POST) which sends notifications to your iPhone&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;verify&lt;/code&gt; (GET) which checks the validity of your API key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Just recently the API was updated to version 1.2 which added two new methods - &lt;code&gt;retrieve/token&lt;/code&gt; (GET) and &lt;code&gt;retrieve/apikey&lt;/code&gt; (GET) - which appeal mostly to website operators. They facilitate giving people your API key in a secure manner.&lt;/p&gt;
+
+&lt;p&gt;While the API is very simple, and you could certainly use it from the command line with a tool like curl, most people will want to use a library for their favorite programming language. I use two of these libraries, Prowly for Ruby and ProwlPy for Python.&lt;/p&gt;
+
+&lt;h3 id=&#34;prowly-for-ruby&#34;&gt;Prowly for Ruby&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://raflabs.com/blogs/silence-is-foo/2010/06/30/prowly-a-ruby-api-wrapper-for-prowl-the-growl-client-for-the-iphone/&#34;&gt;Prowly gem&lt;/a&gt; was written by Rafael Magana to make the Prowl API a bit more Ruby-friendly. It is dead simple to use. First, install the gem:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ sudo gem install prowly
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then create a simple script like the one below:&lt;/p&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;prowly&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# your api key from https://www.prowlapp.com/api_settings.php&lt;/span&gt;
+my_api_key &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;1234567890123456789012345678901234567890&amp;quot;&lt;/span&gt;
+
+&lt;span style=&#34;color: #880000&#34;&gt;Prowly&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;notify &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt;n&lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;apikey &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; my_api_key
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;priority &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #880000&#34;&gt;Prowly&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Notification&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Priority&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;MODERATE&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;application &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;Prowly&amp;quot;&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;event &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;Notification&amp;quot;&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;description &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;Your server is under attack!!!&amp;quot;&lt;/span&gt;
+    n&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;url &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;http://www.myserver.com&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# requires API 1.2 support&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That is basically all there is to it. Of course, you&amp;rsquo;ll want your script to actually do something (check a stock, parse a RSS feed, etc.), but sending the prowl is really that simple. Prowly also includes a command line script to send notifications without any scripting.&lt;/p&gt;
+
+&lt;p&gt;Right now, the current gem has not been updated to use version 1.2 of the API. I&amp;rsquo;ve put in a &lt;a href=&#34;https://github.com/rafmagana/prowly/pull/1&#34;&gt;pull request to get my upgrades merged in&lt;/a&gt; but in the meantime you can clone the updated one from my gtihub repository at  &lt;a href=&#34;https://github.com/slashk/prowly&#34;&gt;https://github.com/slashk/prowly&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;prowlpy-for-python&#34;&gt;ProwlPy for Python&lt;/h3&gt;
+
+&lt;p&gt;A corresponding Python library is called ProwlPy and was written by Jacob Burch and Olivier Hervieu. It is very similar to the Prowly. To use it, install the python library (which doesn&amp;rsquo;t appear to be on PyPi):&lt;/p&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/jacobb/prowlpy.git
+... snip ...
+$ &lt;span style=&#34;color: #008000&#34;&gt;cd&lt;/span&gt; prowlpy
+$ python setup.py install
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then just create a simple script like the ruby one above:&lt;/p&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;prowlpy&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# your api key from https://www.prowlapp.com/api_settings.php&lt;/span&gt;
+my_api_key &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;1234567890123456789012345678901234567890&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# your api key&lt;/span&gt;
+p &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; prowlpy&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;Prowl(my_api_key)
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;try&lt;/span&gt;:
+    p&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;add(&lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;ProwlPy&amp;#39;&lt;/span&gt;,
+          &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;Notification&amp;#39;&lt;/span&gt;,
+          &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;#39;Your server is under attack&amp;#39;&lt;/span&gt;,
+          &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,
+          &lt;span style=&#34;color: #008000&#34;&gt;None&lt;/span&gt;,
+          &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;http://www.myserver.com&amp;quot;&lt;/span&gt;)
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color: #D2413A; font-weight: bold&#34;&gt;Exception&lt;/span&gt;,msg:
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;print&lt;/span&gt; msg
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I also upgraded this library to version 1.2 of the API and my changes have already been merged into the main repository at &lt;a href=&#34;https://github.com/jacobb/prowlpy&#34;&gt;https://github.com/slashk/prowly&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;creating-your-own-prowl-notifiers&#34;&gt;Creating Your Own Prowl Notifiers&lt;/h3&gt;
+
+&lt;p&gt;&lt;img style=&#34;float: right;&#34; src=&#34;https://ken.pepple.info/images/prowl_alert.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve grokked the basics of using the Prowl API, it&amp;rsquo;s time to actually put it to use. To do that, you&amp;rsquo;ll need to create your own script (with whatever logic you need), have it execute at common intervals (usually via &lt;span class=&#34;code-inline&#34;&gt;cron&lt;/span&gt;) and then just wait for prowl notifications to roll in.&lt;/p&gt;
+
+&lt;p&gt;To get you started, I&amp;rsquo;ve created a repository of scripts that I use over at &lt;a href=&#34;https://github.com/slashk/prowl-scripts&#34;&gt;https://github.com/slashk/prowl-scripts&lt;/a&gt;. There you&amp;rsquo;ll see a few scripts to notify you of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.transmissionbt.com/&#34;&gt;transmission bit torrent&lt;/a&gt; download completions&lt;/li&gt;
+&lt;li&gt;daily and monthly Google AdSense balances&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woot.com/&#34;&gt;woot!&lt;/a&gt; deals&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;ll be adding more as I clean up my other scripts (weather, stock prices, steep and cheap, etc).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on Wander</title>
+    <link>https://ken.pepple.info/about/</link>
+    <description>Recent content in Abouts on Wander</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <atom:link href="https://ken.pepple.info/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About Me</title>
+      <link>https://ken.pepple.info/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ken.pepple.info/about/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://ken.pepple.info/images/llama-250.png&#34; alt=&#34;Ken Pepple&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I build computing infrastructure.&lt;/p&gt;
+
+&lt;p&gt;I founded a company called &lt;a href=&#34;http://www.solinea.com&#34;&gt;Solinea&lt;/a&gt; that helps clients do this too. As you can imagine from my blog content, Solinea focuses on clouds, OpenStack and Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;I used to do this for clients of Cloud Technology Partners (cloudTP), where I led their open source cloud infrastructure efforts. Before I joined cloudTP, I served as Director of Cloud Development for a cloud service provider (&lt;a href=&#34;http://www.internap.com/&#34;&gt;Internap Network Services&lt;/a&gt;), where I led their initial engineering efforts for their OpenStack public cloud. In the distant past, I worked at &lt;a href=&#34;http://en.wikipedia.org/wiki/Sun_Microsystems&#34;&gt;Sun Microsystems&lt;/a&gt; as a Principal Engineer, Technical Director and Chief Technologist for various business units.&lt;/p&gt;
+
+&lt;p&gt;Along with my normal work duties, I have &lt;a href=&#34;https://www.amazon.com/author/kenpepple&#34;&gt;also authored a few books&lt;/a&gt;, written &lt;a href=&#34;https://github.com/slashk/&#34;&gt;some code&lt;/a&gt; and done a bit of &lt;a href=&#34;https://ken.pepple.info/about/#speaking&#34;&gt;public speaking and press interviews&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&amp;nbsp;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;img class=&#34;pure-img&#34; src=&#34;https://ken.pepple.info/images/tenrec.jpg&#34; alt=&#34;&#34;&gt;
+&lt;br /&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://oreilly.com/catalog/9781449311056/&#34;&gt;Deploying OpenStack&lt;/a&gt;  &lt;br /&gt; &lt;em&gt;Ken Pepple&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;O&amp;rsquo;Reilly Media&lt;/em&gt; &lt;br /&gt; &lt;em&gt;August 3, 2011 (ISBN #978-1449311056)&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;img class=&#34;pure-img&#34; src=&#34;https://ken.pepple.info/images/mts.jpg&#34; alt=&#34;&#34;&gt;
+    &lt;br /&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://www.amazon.com/Migrating-Solaris-Operating-System-UNIX-/dp/0131502638/ref=sr_1_2?s=books&amp;amp;ie=UTF8&amp;amp;qid=1299136326&amp;amp;sr=1-2&#34;&gt;Migrating to the Solaris Operating System: The Discipline of UNIX-to-UNIX Migrations&lt;/a&gt;  &lt;br /&gt; &lt;em&gt;Ken Pepple, Brian Down and David A. Levy&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;Prentice Hall PTR&lt;/em&gt; &lt;br /&gt;  &lt;em&gt;November 15, 2003 (ISBN #978-0131502635)&lt;/em&gt;  &lt;br /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;img class=&#34;pure-img&#34; src=&#34;https://ken.pepple.info/images/citdc.jpg&#34; alt=&#34;&#34;&gt;
+   &lt;br /&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://www.amazon.com/Consolidation-Data-Center-Simplifying-Environments/dp/0130454958/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1299136326&amp;amp;sr=1-1&#34;&gt;Consolidation in the Data Center: Simplifying IT Environments to Reduce Total Cost of Ownership&lt;/a&gt;  &lt;br /&gt; &lt;em&gt;David Hornby and Ken Pepple&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;Prentice Hall PTR&lt;/em&gt;  &lt;br /&gt; &lt;em&gt;September 29, 2002 (ISBN #978-0130454959)&lt;/em&gt;&lt;br /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;speaking&#34;&gt;Conference Presentations and Panels&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://solinea.com/blog/solineas-ken-pepple-presents-openstack-day-ireland&#34;&gt;OpenStack Day Ireland&lt;/a&gt; &amp;ldquo;Managing OpenStack in the Enterprise&amp;rdquo;, June 2016 (Dublin, Ireland)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.openstack.org/summit/tokyo-2015/videos/presentation/the-media-talks-back-to-openstack&#34;&gt;OpenStack Summit Tokyo&lt;/a&gt; &amp;ldquo;The Media Talks Back to OpenStack&amp;rdquo;, October 2015 (Tokyo, Japan)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.openstack.org/summit/portland-2013/session-videos/presentation/openstack-grizzly-architecture-101&#34;&gt;OpenStack Summit Portland&lt;/a&gt;, &amp;ldquo;OpenStack Grizzly Architecture 101&amp;rdquo;, April 2013 (Portland)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://openstacksummitfall2012.sched.org/event/71f89bc5215c2d6dcade6e0702407733#.UIdGOWl24to&#34;&gt;OpenStack Summit San Diego&lt;/a&gt;, &amp;ldquo;Network Virtualization: The Next Big Thing ?&amp;ldquo;, October 2012 (San Diego)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://openstackconferencespring2012.sched.org/event/af1c8be41b6a0177f01815cc675aaf2d&#34;&gt;OpenStack Conference San Francisco&lt;/a&gt;, &amp;ldquo;Cloud Operators on OpenStack Networking&amp;rdquo;, April 2012 (San Francisco)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cowen.com/PastConferences.html&#34;&gt;Trend Spotting in Tech Conference&lt;/a&gt;, &amp;ldquo;Evolution of the Data Center in an Open World&amp;rdquo;, January 2012 (San Francisco)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://openstackconference2011.sched.org/event/ad238c01ca8b4cd218d110c4582328c2&#34;&gt;OpenStack Conference Boston&lt;/a&gt;, &amp;ldquo;Service Provider Discussion Panel&amp;rdquo;, October 2011 (Boston)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.idc.com.sg/CloudComputing2009/speakers.asp&#34;&gt;IDC Asia Pacific Cloud Computing Conference&lt;/a&gt;, &amp;ldquo;Preparing For The Enterprise Cloud&amp;rdquo;, March 2009 (Singapore and Seoul, South Korea)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.opengroup.org/beijing2009/&#34;&gt;The Open Group Conference&lt;/a&gt;, &amp;ldquo;Cloud Computing&amp;rdquo;, May 2009 (Beijing, China)&lt;/li&gt;
+&lt;li&gt;CommunityOne, &amp;ldquo;Practical Cloud Computing Patterns&amp;rdquo;, June 2009 (San Francisco)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Gartner Infrastructure, Operations &amp;amp; Data Centre Summit, &amp;ldquo;Transforming your Data Centre: It&amp;rsquo;s more than just reducing TCO&amp;rdquo;, April 2007 (Sydney, Australia)&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;interviews-amp-press&#34;&gt;Interviews &amp;amp; Press&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://searchcloudcomputing.techtarget.com/feature/OpenStack-infrastructure-embraces-containers-but-challenges-remain&#34;&gt;OpenStack infrastructure embraces containers, but challenges remain&lt;/a&gt; (TechTarget on June 2016)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.businesswire.com/news/home/20160421005399/en/Cloud-Management-Platform-Helps-Enterprises-Handle-Workload&#34;&gt;New Cloud Management Platform Helps Enterprises Handle Workload Onslaught as OpenStack Moves to Widespread Developer Adoption&lt;/a&gt; (BusinessWire on April 21, 2016)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://venturebeat.com/2015/10/21/solinea-closes-us4m-series-a-investment-with-translink-capital/&#34;&gt;Solinea Closes US$4m Series A Investment with Translink Capital&lt;/a&gt;(Venturebeat on October 21, 2015)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.datacenterknowledge.com/archives/2015/08/03/vendors-openstack-buying-decisions-moving-from-it-to-line-of-business/&#34;&gt;Vendors: OpenStack Buying Decisions Moving From IT to Line of Business&lt;/a&gt; (DataCenterKnowledge on August 3rd, 2015)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.networkworld.com/news/2012/082912-openstack-suse-262006.html&#34;&gt;SUSE jumps into OpenStack with its own distribution&lt;/a&gt; (Network World on August 29th, 2012)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.datacenterknowledge.com/archives/2012/05/10/openstack-networking-moving-ahead/&#34;&gt;OpenStack Networking Moving Ahead&lt;/a&gt; (Data Center Knowledge on May 10th, 2012)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gigaom.com/cloud/first-openstack-cloud-now-open-for-business/&#34;&gt;First OpenStack cloud now open for business&lt;/a&gt; (GigaOM on October 27th, 2011)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.zdnetasia.com/developers-wary-of-cloud-lock-in-62053471.htm&#34;&gt;Developers wary of cloud lock-in&lt;/a&gt; (ZDNet Asia on April 22, 2009)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.zdnetasia.com/firms-will-adopt-hybrid-software-cloud-62052062.htm&#34;&gt;Firms will adopt hybrid software cloud&lt;/a&gt; (ZDNet Asia on March 10, 2009)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.techrepublic.com/article/how-to-simplify-environments-and-cut-tco/1060294&#34;&gt;How to simplify environments and cut TCO&lt;/a&gt; (TechRepublic on February 26, 2003)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

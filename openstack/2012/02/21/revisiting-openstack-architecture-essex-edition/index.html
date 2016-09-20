@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Revisiting OpenStack Architecture: Essex Edition &middot; Wander</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://ken.pepple.info/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://ken.pepple.info/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://ken.pepple.info/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://ken.pepple.info/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://ken.pepple.info/"><img src="https://ken.pepple.info/images/llama-small.png"></a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://ken.pepple.info/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://ken.pepple.info/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://ken.pepple.info/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://ken.pepple.info/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/ken_pepple" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="http://slideshare.net/ken-pepple" target="_blank"><i class="fa fa-slideshare fa-fw"></i>SlideShare</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/kenpepple" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/slashk" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small><a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png"></a></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Revisiting OpenStack Architecture: Essex Edition</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>21 Feb 2012</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://ken.pepple.info/tags/openstack">openstack</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>While it is still <a href="http://wiki.openstack.org/EssexReleaseSchedule">seven weeks until OpenStack &ldquo;Essex&rdquo; (2012.1) officially is released</a>, release candidates are just around the corner. With this in mind, I thought it would be a good chance to revisit my earlier blog post on <a href="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/">OpenStack Compute (&ldquo;Nova&rdquo;) architecture</a>. This time around, instead of detailing the architecture of just a single service, I&rsquo;ll look at all the pieces of the OpenStack project working together.</p>
+
+<p>To level-set everyone&rsquo;s understanding, let&rsquo;s briefly review the OpenStack project components and history. Founded in 2010 by Rackspace and NASA, the project has <a href="http://wiki.openstack.org/Releases">released four versions</a> and is set to release the fifth (&ldquo;Essex&rdquo; or 2012.1) <a href="http://wiki.openstack.org/EssexReleaseSchedule">in April</a>. Originally, it consisted of a trio of &ldquo;core&rdquo; services:</p>
+
+<ul>
+<li>Object Store (<a href="http://swift.openstack.org">&ldquo;Swift&rdquo;</a>) provides object storage. It allows you to store or retrieve files (but not mount directories like a fileserver). Several companies provide commercial storage services based on Swift. These include KT, Rackspace (from which Swift originated) and my company   <a href="http://www.internap.com/flexible-cloud-hosting-solutions/cloud-storage/">Internap</a>. In fact, the images for this blog post are being served via the Internap Swift implementation.</li>
+<li>Image (<a href="http://glance.openstack.org">&ldquo;Glance&rdquo;</a>) provides a catalog and repository for virtual disk images. These disk images are mostly commonly used in OpenStack Compute. While this service is technically optional, any cloud of size will require it.</li>
+<li>Compute (<a href="http://nova.openstack.org/">&ldquo;Nova&rdquo;</a>) provides virtual servers upon demand. Similar to Amazon&rsquo;s EC2 service, it also provides volume services analogous to Elastic Block Services (EBS). <a href="http://www.internap.com/flexible-cloud-hosting-solutions/enterprise-public-cloud-solutions/open-public-cloud-solutions/">Internap</a> provide a commercial compute service built on Nova and it is used internally at <a href="http://openstack.org/user-stories/mercadolibre-inc/">Mercado Libre</a> and NASA (where it originated).</li>
+</ul>
+
+<p>The upcoming release promotes two new projects to &ldquo;core&rdquo; project status:</p>
+
+<ul>
+<li>Dashboard (<a href="http://horizon.openstack.org/">&ldquo;Horizon&rdquo;</a>) provides a modular web-based user interface for all the OpenStack services.</li>
+<li>Identity (<a href="http://keystone.openstack.org/">&ldquo;Keystone&rdquo;</a>) provides authentication and authorization for all the OpenStack services. It also provides a service catalog of services within a particular deployment.</li>
+</ul>
+
+<p>These new projects provide additional infrastructure to support the original three projects.</p>
+
+<h1 id="conceptual-architecture">Conceptual Architecture</h1>
+
+<p>The OpenStack project as a whole is designed to &ldquo;deliver(ing) a massively scalable cloud operating system.&rdquo; To achieve this, each of the constituent services are designed to work together to provide a complete Infrastructure as a Service (IaaS). This integration is facilitated through public application programming interfaces (APIs) that each service offers (and in turn can consume). While these APIs allow each of the services to use another service, it also allows an implementer to switch out any service as long as they maintain the API. These are (mostly) the same APIs that are available to end users of the cloud.</p>
+
+<p>Conceptually, you can picture the relationships between the services as so:</p>
+
+<p><img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-concept-int-essex.jpg" alt="OpenStack Essex Conceptual Integration" width="700px" /></p>
+
+<ul>
+<li>Horizon provides a web front end to the other OpenStack services</li>
+<li>Nova stores and retrieves virtual disks (&ldquo;images&rdquo;) and associated metadata in Glance</li>
+<li>Glance can store the actual virtual disk files in Swift</li>
+<li>All the services (<em>will eventually</em>) authenticate with Keystone</li>
+</ul>
+
+<p>This is a stylized and simplified view of the architecture, assuming that the implementer is using all of the services together in the most common configuration. It also only shows the &ldquo;operator&rdquo; side of the cloud &ndash; it does not picture how consumers of the cloud may actually use it. For example, many compute users will use object storage heavily (and directly).</p>
+
+<h1 id="logical-architecture">Logical Architecture</h1>
+
+<p>As you can imagine, the actual logical architecture is far more complicated than the conceptual architecture shown above. As with any service-oriented architecture, diagrams quickly become &ldquo;messy&rdquo; trying to illustrate all the possible combinations of service communications. In the diagram below, I illustrate what I believe will be the most common, &ldquo;integrated&rdquo; architecture of an OpenStack-based cloud.</p>
+
+<p><a href="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg" target="blank" ><img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/nova-logical-arch-essex.jpg" alt="OpenStack Essex Logical Architecture" width="700px" /></a></p>
+
+<p>This picture is consistent with the description above in that:</p>
+
+<ul>
+<li>End users can interact through a common web interface (Horizon) or directly to each service through their API</li>
+<li>All services authenticate through a common source (facilitated through Keystone)</li>
+<li>Individual services interact with each other through their public APIs (except where privileged administrator commands are necessary)</li>
+</ul>
+
+<p>In the sections below, we&rsquo;ll delve into the architecture for each of the services.</p>
+
+<h2 id="dashboard">Dashboard</h2>
+
+<p>Horizon is a modular <a href="https://www.djangoproject.com/">Django web application</a> that provides an end user and administrator interface to OpenStack services.</p>
+
+<p><img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/horizon-screenshot.jpg" alt="OpenStack Horizon Screenshot" width="700px" /></p>
+
+<p>As with most web applications, the architecture is fairly simple:</p>
+
+<ul>
+<li>Horizon is usually deployed via <a href="http://code.google.com/p/modwsgi/">mod_wsgi</a> in Apache. The code itself is seperated into a reusable python module with most of the logic (interactions with various OpenStack APIs) and presentation (to make it easily customizable for different sites).</li>
+<li>A database (configurable to which one). As it relies mostly on the other services for data, it stores very little data of it&rsquo;s own.</li>
+</ul>
+
+<p>From a network architecture point of view, this service will need to customer accessible as well as be able to talk to each services public APIs. If you wish to use the administrator functionality (i.e. for other services), it will also need connectivity to their Admin API endpoints (which should be non-customer accessible).</p>
+
+<h2 id="compute">Compute</h2>
+
+<p>Not much has really changed with Nova&rsquo;s architecture. They have added a few new helper services for EC2 compatibility and console services.</p>
+
+<ul>
+<li><code>nova-api</code> accepts and responds to end user compute and volume API calls. It supports OpenStack API, Amazon&rsquo;s EC2 API and a special Admin API (for privileged users to perform administrative actions). It also initiates most of the orchestration activities (such as running an instance) as well as enforces some policy (mostly quota checks). In the Essex release, nova-api has been modularized, allowing for implementers to run only specific APIs.</li>
+<li>The <code>nova-compute</code> process is primarily a worker daemon that creates and terminates virtual machine instances via hypervisor&rsquo;s APIs (XenAPI for XenServer/XCP, libvirt for KVM or QEMU, VMwareAPI for VMware, etc.). The process by which it does so is fairly complex but the basics are simple: accept actions from the queue and then perform a series of system commands (like launching a KVM instance) to carry them out while updating state in the database.</li>
+<li><code>nova-volume</code> manages the creation, attaching and detaching of persistent volumes to compute instances (similar functionality to Amazon’s Elastic Block Storage). It can use volumes from a variety of providers such as iSCSI or <a href="http://ceph.newdream.net/">Rados Block Device in Ceph</a>.</li>
+<li>The <code>nova-networ</code>k worker daemon is very similar to <code>nova-compute</code> and <code>nova-volume</code>. It accepts networking tasks from the queue and then performs tasks to manipulate the network (such as setting up bridging interfaces or changing iptables rules).</li>
+<li>The <code>nova-schedule</code> process is conceptually the simplest piece of code in OpenStack Nova: take a virtual machine instance request from the queue and determines where it should run (specifically, which compute server host it should run on).</li>
+<li>The queue provides a central hub for passing messages between daemons. This is usually implemented with <a href="http://www.rabbitmq.com/">RabbitMQ</a> today, but could be any AMPQ message queue (such as <a href="http://qpid.apache.org/">Apache Qpid</a>).</li>
+<li>The SQL database stores most of the build-time and run-time state for a cloud infrastructure. This includes the instance types that are available for use, instances in use, networks available and projects. Theoretically, OpenStack Nova can support any database supported by SQL-Alchemy but the only databases currently being widely used are sqlite3 (only appropriate for test and development work), MySQL and PostgreSQL.</li>
+</ul>
+
+<p>During the last two releases, Nova has augmented it&rsquo;s console services. Console services allow end users to access their virtual instance&rsquo;s console through a proxy. This involves a pair of new daemons (nova-console and nova-consoleauth).</p>
+
+<p>Nova interacts with all of the usual suspects: Keystone for authentication, Glance for images and Horizon for web interface. The Glance interacts is interesting, though. The API process can upload and query Glance while nova-compute will download images for use in launching images.</p>
+
+<h2 id="object-store">Object Store</h2>
+
+<p>The swift architecture is very distributed to prevent any single point of failure as well as to scale horizontally. It includes the following components:</p>
+
+<ul>
+<li>Proxy server accepts incoming requests via the OpenStack Object API or just raw HTTP. It accepts files to upload, modifications to metadata or container creation. In addition, it will also serve files or container listing to web browsers. The proxy server may utilize an optional cache (usually deployed with memcache) to improve performance.</li>
+<li>Account servers manage accounts defined with the object storage service.</li>
+<li>Container servers manage a mapping of containers (i.e folders) within the object store service.</li>
+<li>Object servers manage actual objects (i.e. files) on the storage nodes.</li>
+<li>There are also a number of periodic process which run to perform housekeeping tasks on the large data store. The most important of these is the replication services, which ensures consistency and availability through the cluster. Other periodic processes include auditors, updaters and reapers.</li>
+</ul>
+
+<p>Authentication is handled through configurable WSGI middleware (which will usually be Keystone).</p>
+
+<h2 id="image-store">Image Store</h2>
+
+<p>The Glance architecture has stayed relatively stable since the Cactus release. The biggest architectural change has been the addition of authentication, which was added in the Diablo release. Just as a quick reminder, Glance has four main parts to it:</p>
+
+<ul>
+<li><code>glance-api</code> accepts Image API calls for image discovery, image retrieval and image storage</li>
+<li><code>glance-registry</code> stores, processes and retrieves metadata about images (size, type, etc.)</li>
+<li>A database to store the image metadata. Like Nova, you can choose your database depending on your preference (but most people use MySQL or SQlite).</li>
+<li>A storage repository for the actual image files. In the diagram, I have shown the most likely configuration (using Swift as the image repository), but this is configurable. In addition to Swift, Glance supports normal filesystems, RADOS block devices, Amazon S3 and HTTP. Be aware that some of these choices are limited to read-only usage.</li>
+</ul>
+
+<p>There are also a number of periodic process which run on Glance to support caching. The most important of these is the replication services, which ensures consistency and availability through the cluster. Other periodic processes include auditors, updaters and reapers.</p>
+
+<p>As you can see from the diagram, Glance serves a central role to the overall IaaS picture. It accepts API requests for images (or image metadata) from end users or Nova components and can store it&rsquo;s disk files in</p>
+
+<h2 id="identity">Identity</h2>
+
+<p>Keystone provides a single point of integration for OpenStack policy, catalog, token and authentication.</p>
+
+<ul>
+<li>Keystone handles API requests as well as providing configurable catalog, policy, token and identity services.</li>
+<li>Each keystone function has a pluggable backend which allows different ways to use the particular service. Most support standard backends like LDAP or SQL, as well as Key Value Stores (KVS).</li>
+</ul>
+
+<p>Most people will use this as a point of customization for their current authentication services.</p>
+
+<h2 id="future-projects">Future Projects</h2>
+
+<p>This completes the tour of the OpenStack Essex architecture. However, OpenStack will not be stopping here - the following OpenStack release (&ldquo;Folsom&rdquo;) <a href="http://eavesdrop.openstack.org/meetings/openstack-meeting/2012/openstack-meeting.2012-02-21-19.59.html">will welcome another core service to the fold</a>:</p>
+
+<ul>
+<li>Network (<a href="http://docs.openstack.org/incubation/openstack-network/admin/content/">Quantum</a>) provides &ldquo;network connectivity as a service&rdquo; between interface devices managed by other Openstack services (most likely Nova). The service works by allowing users to create their own networks and then attach interfaces to them.</li>
+</ul>
+
+<p>Although the <a href="http://www.openstack.org/conference/san-francisco-2012/">release schedule for Folsom</a> is not yet set (probably Fall 2012), I won&rsquo;t wait six months to update the picture for this.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book">OpenStack Has A Mascot: The &#34;Tenrec&#34; Book</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture">OpenStack Folsom Architecture</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'kenpepple';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="https://ken.pepple.info/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-2210525-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+
