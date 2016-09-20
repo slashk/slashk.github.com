@@ -1110,15 +1110,21 @@ $ mkvirtualenv nova2
       <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
       
       <guid>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone-2009</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/C1W_170x93_Speaking_v2-1.gif&#34; border=&#34;0&#34; alt=&#34;C1W_170x93_Speaking_v2-1.gif&#34; width=&#34;170&#34; height=&#34;93&#34; align=&#34;right&#34; /&gt;Over the past few weeks, &lt;a href=&#34;http://blogs.sun.com/downstream/&#34;&gt;Scott Mattoon&lt;/a&gt;, &lt;a href=&#34;http://blogs.sun.com/stanford/&#34;&gt;John Stanford&lt;/a&gt; and I have been documenting infrastructure patterns to help application developers architect for cloud computing environments as part of a larger program around enabling cloud computing for our customers. It&#39;s been an interesting project, as cloud computing is both very new, but based on some very old concepts.&lt;/p&gt;
-&lt;p&gt;On Monday, we will be presenting our work in progress at &lt;a href=&#34;http://developers.sun.com/events/communityone/2009/west/index.jsp&#34;&gt;CommunityOne West&lt;/a&gt; in San Francisco&#39;s Moscone Center. Around the same time, we hope to move our work into the public view on &lt;a href=&#34;http://wikis.sun.com/display/cloud/Patterns&#34;&gt;wikis.sun.com&lt;/a&gt; for comments and contributions. I&#39;ll post something here as soon as it happens.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/C1W_170x93_Speaking_v2-1.gif&#34; border=&#34;0&#34; alt=&#34;C1W_170x93_Speaking_v2-1.gif&#34; width=&#34;170&#34; height=&#34;93&#34; align=&#34;right&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Over the past few weeks, &lt;a href=&#34;http://blogs.sun.com/downstream/&#34;&gt;Scott Mattoon&lt;/a&gt;, &lt;a href=&#34;http://blogs.sun.com/stanford/&#34;&gt;John Stanford&lt;/a&gt; and I have been documenting infrastructure patterns to help application developers architect for cloud computing environments as part of a larger program around enabling cloud computing for our customers. It&amp;rsquo;s been an interesting project, as cloud computing is both very new, but based on some very old concepts.&lt;/p&gt;
+
+&lt;p&gt;On Monday, we will be presenting our work in progress at &lt;a href=&#34;http://developers.sun.com/events/communityone/2009/west/index.jsp&#34;&gt;CommunityOne West&lt;/a&gt; in San Francisco&amp;rsquo;s Moscone Center. Around the same time, we hope to move our work into the public view on &lt;a href=&#34;http://wikis.sun.com/display/cloud/Patterns&#34;&gt;wikis.sun.com&lt;/a&gt; for comments and contributions. I&amp;rsquo;ll post something here as soon as it happens.&lt;/p&gt;
+
 &lt;p&gt;Our talk will highlight three sets of pattern domains: provisioning, monitoring and resource administration. You can expect to hear talk of motivations and implementations, with sequence diagrams, architecture pictures and code snippets for illustration.&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/puppet_example.png&#34; border=&#34;0&#34; alt=&#34;puppet_example.png&#34; width=&#34;338&#34; height=&#34;264&#34; /&gt;&lt;img src=&#34;http://ken.pepple.info/images/static-example-code.png&#34; border=&#34;0&#34; alt=&#34;static-example-code.png&#34; width=&#34;338&#34; height=&#34;264&#34; /&gt;&lt;/p&gt;
+
 &lt;p&gt;If you are attending the conference (you can &lt;a href=&#34;http://developers.sun.com/events/communityone/2009/west/index.jsp&#34;&gt;still sign up for free here&lt;/a&gt;), our presentations will be:&lt;/p&gt;
-&lt;blockquote&gt;
+
 &lt;div id=&#34;hcalendar-Practical-Cloud-Computing-Patterns&#34; class=&#34;vevent&#34;&gt;&lt;br /&gt; &lt;abbr class=&#34;dtstart&#34; title=&#34;2009-06-01T14:40-07:0000&#34;&gt;June 1, 2009 from 2:40&lt;/abbr&gt; to &lt;abbr class=&#34;dtend&#34; title=&#34;2009-06-01T15:30-07:00&#34;&gt;3:30pm&lt;/abbr&gt; PDT &lt;br /&gt; &lt;a class=&#34;url&#34; href=&#34;http://developers.sun.com/events/communityone/2009/west/agenda.jsp&#34;&gt;&lt;span class=&#34;summary&#34;&gt;Practical Cloud Computing Patterns&lt;/span&gt;&lt;/a&gt; &lt;br /&gt; &lt;span class=&#34;location&#34;&gt;Gateway 104, Moscone Center, &lt;span class=&#34;adr&#34;&gt;&lt;span class=&#34;locality&#34;&gt;San Francisco&lt;/span&gt;, &lt;span class=&#34;region&#34;&gt;CA&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;If you can&#39;t be in San Francisco for the conference, I believe you can watch our presentation on a live webcast: &lt;a href=&#34;http://wikis.sun.com/display/CommunityOne/LiveWebcast&#34;&gt;Check here for details&lt;/a&gt;. We are &#34;&lt;strong&gt;2:40 - 3:30 pm | Practical Cloud Computing Patterns (Gateway 104)&lt;/strong&gt;&#34; under the Cloud Platforms topic.&lt;/p&gt;
+
+&lt;p&gt;If you can&amp;rsquo;t be in San Francisco for the conference, I believe you can watch our presentation on a live webcast: &lt;a href=&#34;http://wikis.sun.com/display/CommunityOne/LiveWebcast&#34;&gt;Check here for details&lt;/a&gt;. We are &amp;ldquo;&lt;strong&gt;2:40 - 3:30 pm | Practical Cloud Computing Patterns (Gateway 104)&lt;/strong&gt;&amp;rdquo; under the Cloud Platforms topic.&lt;/p&gt;
 </description>
     </item>
     
