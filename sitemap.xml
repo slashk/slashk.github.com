@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://ken.pepple.info/kubernetes/2017/02/09/kubernetes-the-easy-way</loc>
-    <lastmod>2017-02-09T11:23:00-08:00</lastmod>
+    <loc>http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way</loc>
+    <lastmod>2017-02-14T11:23:00-08:00</lastmod>
   </url>
   
   <url>
@@ -83,7 +83,7 @@
   
   <url>
     <loc>http://ken.pepple.info/tags/devops/</loc>
-    <lastmod>2017-02-09T11:23:00-08:00</lastmod>
+    <lastmod>2017-02-14T11:23:00-08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -95,19 +95,19 @@
   
   <url>
     <loc>http://ken.pepple.info/tags/kubernetes/</loc>
-    <lastmod>2017-02-09T11:23:00-08:00</lastmod>
+    <lastmod>2017-02-14T11:23:00-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://ken.pepple.info/tags/openstack/</loc>
-    <lastmod>2017-02-09T11:23:00-08:00</lastmod>
+    <lastmod>2017-02-14T11:23:00-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://ken.pepple.info/post/</loc>
-    <lastmod>2017-02-09T11:23:00-08:00</lastmod>
+    <lastmod>2017-02-14T11:23:00-08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -130,13 +130,13 @@
   
   <url>
     <loc>http://ken.pepple.info/tags/terraform/</loc>
-    <lastmod>2017-02-09T11:23:00-08:00</lastmod>
+    <lastmod>2017-02-14T11:23:00-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://ken.pepple.info/</loc>
-    <lastmod>2017-02-09T11:23:00-08:00</lastmod>
+    <lastmod>2017-02-14T11:23:00-08:00</lastmod>
     <priority>0</priority>
   </url>
   

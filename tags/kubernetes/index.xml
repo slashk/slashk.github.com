@@ -11,10 +11,10 @@
     
     <item>
       <title>Kubernetes The Easy Way</title>
-      <link>http://ken.pepple.info/kubernetes/2017/02/09/kubernetes-the-easy-way</link>
-      <pubDate>Thu, 09 Feb 2017 11:23:00 -0800</pubDate>
+      <link>http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way</link>
+      <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
       
-      <guid>http://ken.pepple.info/kubernetes/2017/02/09/kubernetes-the-easy-way</guid>
+      <guid>http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way</guid>
       <description>
 
 &lt;p&gt;Sometimes I don&amp;rsquo;t want to do things &lt;a href=&#34;https://github.com/kelseyhightower/kubernetes-the-hard-way&#34;&gt;&amp;ldquo;the hard way&amp;rdquo;&lt;/a&gt; &amp;ndash; I just need a testing environment. Kubernetes is one of those things when I&amp;rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster &amp;ndash; &lt;a href=&#34;https://github.com/kubernetes/kops&#34;&gt;If you are on a public cloud&lt;/a&gt;, not OpenStack. So I fired up my code editor and created a quick way to deploy simple Kubernetes clusters with &lt;a href=&#34;http://terraform.hashicorp.com&#34;&gt;terraform&lt;/a&gt; and &lt;a href=&#34;http://kubernetes.io/docs/getting-started-guides/kubeadm/&#34;&gt;kubeadm&lt;/a&gt;.&lt;/p&gt;
@@ -237,7 +237,7 @@ Handling connection for 4040
 
 &lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/weavescope.png&#34; width=&#34;700&#34;&gt;&lt;/p&gt;
 
-&lt;p&gt;To launch some actual applications on your new cluster, follow the &amp;ldquo;socks shop&amp;rdquo; example at &lt;a href=&#34;https://kubernetes.io/docs/getting-started-guides/kubeadm/#optional-installing-a-sample-application&#34;&gt;Installing a sample application
+&lt;p&gt;To launch some actual applications on your new cluster, follow the &amp;ldquo;socks shop&amp;rdquo; example in the Kubernetes docs at &lt;a href=&#34;https://kubernetes.io/docs/getting-started-guides/kubeadm/#optional-installing-a-sample-application&#34;&gt;Installing a sample application
 &lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;cleanup&#34;&gt;Cleanup&lt;/h2&gt;
