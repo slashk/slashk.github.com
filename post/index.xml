@@ -2,13 +2,269 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wander</title>
-    <link>http://ken.pepple.info/post/</link>
+    <link>http://ken.pepple.info/post/index.xml</link>
     <description>Recent content in Posts on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 16 Jun 2013 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Feb 2017 11:23:00 -0800</lastBuildDate>
     <atom:link href="http://ken.pepple.info/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kubernetes The Easy Way</title>
+      <link>http://ken.pepple.info/kubernetes/2017/02/09/kubernetes-the-easy-way</link>
+      <pubDate>Thu, 09 Feb 2017 11:23:00 -0800</pubDate>
+      
+      <guid>http://ken.pepple.info/kubernetes/2017/02/09/kubernetes-the-easy-way</guid>
+      <description>
+
+&lt;p&gt;Sometimes I don&amp;rsquo;t want to do things &lt;a href=&#34;https://github.com/kelseyhightower/kubernetes-the-hard-way&#34;&gt;&amp;ldquo;the hard way&amp;rdquo;&lt;/a&gt; &amp;ndash; I just need a testing environment. Kubernetes is one of those things when I&amp;rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster &amp;ndash; &lt;a href=&#34;https://github.com/kubernetes/kops&#34;&gt;If you are on a public cloud&lt;/a&gt;, not OpenStack. So I fired up my code editor and created a quick way to deploy simple Kubernetes clusters with &lt;a href=&#34;http://terraform.hashicorp.com&#34;&gt;terraform&lt;/a&gt; and &lt;a href=&#34;http://kubernetes.io/docs/getting-started-guides/kubeadm/&#34;&gt;kubeadm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This post provides the instructions and bootstrap scripts to create a Kubernetes development cluster on an OpenStack cloud with minimal dependencies (you will only needs to install &lt;code&gt;terraform&lt;/code&gt;, this repo and &lt;code&gt;kubectl&lt;/code&gt; on your laptop) to get a fully functional cluster running. At the end of the process, you should see a network environment like this in your OpenStack Horizon dashboard.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/openstack-network-final.png&#34; width=&#34;674&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;There are some limitations to this. Most notably, it is not highly available and requires Ubuntu 16.04 as an operating systems (althought &lt;code&gt;kubeadm&lt;/code&gt; supports other OSes). You can &lt;a href=&#34;https://kubernetes.io/docs/getting-started-guides/kubeadm/#limitations&#34;&gt;read about the other limitations of &lt;code&gt;kubeadm&lt;/code&gt; here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This will be a five step process:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install prerequisites on laptop&lt;/li&gt;
+&lt;li&gt;Download kubernetes terraform repository&lt;/li&gt;
+&lt;li&gt;Configure the terraform scripts for your cloud&lt;/li&gt;
+&lt;li&gt;Run terraform to create the cluster&lt;/li&gt;
+&lt;li&gt;Configure your laptop to use your new cluster&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;install-prerequisites&#34;&gt;Install Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;To start this process, you&amp;rsquo;ll need some software on your Mac (&lt;em&gt;yes, I said Mac. I&amp;rsquo;ve tailored to this here. It will work on other platforms, but there might be some minor differences&lt;/em&gt;). I usually install most of my software with &lt;a href=&#34;http://brew.sh/&#34;&gt;Homebrew&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ brew install kubectl terraform jq  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;ve installed three utilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;kubectl&lt;/code&gt; (&lt;em&gt;qube-cuttle&lt;/em&gt;) which is a CLI tool to interact with your Kubernetes cluster&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;terraform&lt;/code&gt; (&lt;em&gt;a tool by &lt;a href=&#34;https://www.hashicorp.com/&#34;&gt;Hashicorp&lt;/a&gt;&lt;/em&gt;) which provisions and manages cloud infrastructure (used to create OpenStack instances, networks and routers)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;jq&lt;/code&gt; which parses and formats JSON data on the command line (not really needed)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;download-repository&#34;&gt;Download Repository&lt;/h2&gt;
+
+&lt;p&gt;Once we have the requisite tools installed, we need to pull down the &lt;code&gt;terra-kubeadm-on-os&lt;/code&gt; github repository.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -o tf.zip https://github.com/slashk/terra-kubeadm-on-os/archive/master.zip
+$ unzip tf.zip
+$ cd terra-kubeadm-on-os-master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also do this by &lt;code&gt;git clone https://github.com/slashk/terra-kubeadm-on-os/&lt;/code&gt; if you would like.&lt;/p&gt;
+
+&lt;h2 id=&#34;configure-terraform&#34;&gt;Configure Terraform&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to configure the scripts for our OpenStack cloud. You&amp;rsquo;ll need to login to your OpenStack Horizon dashboard as we&amp;rsquo;ll need to lookup information in our account.&lt;/p&gt;
+
+&lt;p&gt;This set of scripts will create everything that we need to for our cluster:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Master and worker node instances&lt;/li&gt;
+&lt;li&gt;Tenant network and subnet to connect the instances&lt;/li&gt;
+&lt;li&gt;Router to connect the instances to Internet (or provider network)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To accomplish this, we need to tell Terraform a few details about our OpenStack cloud.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cp sample.tfvars terraform.tfvars
+$ vi terraform.tfvars
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;terraform.tfvars&lt;/code&gt; file uses a simple &lt;code&gt;variable = &amp;quot;value&amp;quot;&lt;/code&gt; format where you can customize it for your OpenStack cloud and preferences.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# Contained in your keystonerc file&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;region&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;RegionOne&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;user_name&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;ken&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;tenant_name&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;k8s&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;password&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;this.is.not.my.password&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;auth_url&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;http://10.0.2.201:5000/v2.0&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# use `openstack image list` to get id of Ubuntu 16.04 LTS image&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;image_id&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;6f5981a2-2e64-4381-ba68-e25a15c220e0&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# username of that image (ubuntu)&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;ssh_user_name&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;ubuntu&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# find with `openstack floating ip pool list`&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;pool&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;lab&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# Use `openstack flavor list` to find an appropriate flavor&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;master_flavor&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;kube-master&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;worker_flavor&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;kube-master&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# keyfile path on your laptop&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;ssh_key_file&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;~/.ssh/terraform&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# gateway of your external network&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;external_gateway&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;fdcb4758-44da-4d15-ad7d-d7fce1d973ce&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# customize to your cluster size&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;worker_count&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;2&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# kube_token can be any 6 digit.16 digit combination&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;kube_token&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;123456.0123456789012345&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# dns_nameservers is the DNS server for your new subnet&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;dns_nameservers&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;[&amp;quot;10.0.2.1&amp;quot;]&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# tenant_net_cidr is whatever CIDR to use for your new subnet&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;tenant_net_cidr&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;192.168.50.0/24&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;# a valid kubernetes version from the releases page at github&lt;/span&gt;
+&lt;span style=&#34;color: #7D9029&#34;&gt;kube_version&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;v1.5.2&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see, I&amp;rsquo;ve setup this to cluster for 1 master, 2 worker nodes running Kubernetes version 1.5.2 on nodes sized with the &lt;code&gt;kube-master&lt;/code&gt; flavor (that I specially created in my OpenStack cloud).&lt;/p&gt;
+
+&lt;h2 id=&#34;run-terraform&#34;&gt;Run Terraform&lt;/h2&gt;
+
+&lt;p&gt;With your configuration set, you just need to kick this off. I usually do a &lt;code&gt;terraform plan&lt;/code&gt; and give it a quick sanity test before letting it rip with a &lt;code&gt;terraform apply&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ terraform plan
+&amp;lt;&amp;lt; plan output&amp;gt;&amp;gt;
+
+$ terraform apply
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;hellip; And wait. On my cloud, it takes about 5-7 minutes to complete (mostly updating packages).&lt;/p&gt;
+
+&lt;p&gt;At the end, you should see something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;... snip ...
+openstack_compute_instance_v2.kube-worker.1: Creation complete
+
+Apply complete! Resources: 10 added, 0 changed, 0 destroyed.
+
+The state of your infrastructure has been saved to the path
+below. This state is required to modify and destroy your
+infrastructure, so keep it safe. To inspect the complete state
+use the `terraform show` command.
+
+State path: terraform.tfstate
+
+Outputs:
+
+master_private_ip = 192.168.50.3
+master_public_ip = 10.0.2.138
+sshkey = ~/.ssh/terraform
+token = 123456.0123456789012345
+username = ubuntu
+worker_private_ip = [
+    192.168.50.5,
+    192.168.50.4
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;configure-laptop&#34;&gt;Configure Laptop&lt;/h2&gt;
+
+&lt;p&gt;Now that the cluster is working, let&amp;rsquo;s setup our laptop for to use the new cluster. I&amp;rsquo;ve created two scripts (&lt;code&gt;post-install.sh&lt;/code&gt; and &lt;code&gt;commands.alias&lt;/code&gt;) to automate this process. The first one finishes up some configuration tasks on the cluster (configure networking, load dashboard and weavescope, etc.) and then transfers the &lt;code&gt;kubectl&lt;/code&gt; configuration back to your laptop. At the end of the run, it will do a sanity check to make sure everything is working:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./post-install.sh
+... snip ...
+Kubernetes master is running at https://10.0.2.138:6443
+KubeDNS is running at https://10.0.2.138:6443/api/v1/proxy/namespaces/kube-system/services/kube-dns
+
+To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
+Client Version: version.Info{Major:&amp;quot;1&amp;quot;, Minor:&amp;quot;4&amp;quot;, GitVersion:&amp;quot;v1.4.6&amp;quot;, GitCommit:&amp;quot;e569a27d02001e343cb68086bc06d47804f62af6&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;, BuildDate:&amp;quot;2016-11-12T05:22:15Z&amp;quot;, GoVersion:&amp;quot;go1.7.1&amp;quot;, Compiler:&amp;quot;gc&amp;quot;, Platform:&amp;quot;darwin/amd64&amp;quot;}
+Server Version: version.Info{Major:&amp;quot;1&amp;quot;, Minor:&amp;quot;5&amp;quot;, GitVersion:&amp;quot;v1.5.1&amp;quot;, GitCommit:&amp;quot;82450d03cb057bab0950214ef122b67c83fb11df&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;, BuildDate:&amp;quot;2016-12-14T00:52:01Z&amp;quot;, GoVersion:&amp;quot;go1.7.4&amp;quot;, Compiler:&amp;quot;gc&amp;quot;, Platform:&amp;quot;linux/amd64&amp;quot;}
+SCRIPT COMPLETE.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The next script (&lt;code&gt;$ source ./commands.alias&lt;/code&gt;) is just a set of convenience bash aliases:
+* &lt;code&gt;kc&lt;/code&gt; runs &lt;code&gt;kubectl&lt;/code&gt; with the newly transferred configuration file
+* &lt;code&gt;dashproxy&lt;/code&gt; which sets up a tunnel to access the Kubernetes Dashboard from your laptop
+* &lt;code&gt;scopeproxy&lt;/code&gt; which sets up a tunnel to access Weavescope to visualize your cluster&lt;/p&gt;
+
+&lt;h2 id=&#34;use-your-cluster&#34;&gt;Use Your Cluster&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s check a few things on the new cluster with our &lt;code&gt;kc&lt;/code&gt; alias (for &lt;code&gt;kubectl&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kc get nodes
+NAME            STATUS         AGE
+kube-master     Ready,master   4d
+kube-worker-0   Ready          4d
+kube-worker-1   Ready          4d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This shows the three nodes we&amp;rsquo;ve installed. A different form of the &lt;code&gt;get&lt;/code&gt; subcommand shows all our pods:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kc get pods -o wide --all-namespaces
+NAMESPACE     NAME                                    READY     STATUS    RESTARTS   AGE       IP             NODE
+default       weave-scope-agent-d6mkw                 1/1       Running   0          4d        192.168.50.3   kube-master
+default       weave-scope-agent-tf28q                 1/1       Running   0          4d        192.168.50.6   kube-worker-1
+default       weave-scope-agent-zq36h                 1/1       Running   0          4d        192.168.50.5   kube-worker-0
+default       weave-scope-app-1387651679-033vb        1/1       Running   0          4d        10.44.0.1      kube-worker-0
+kube-system   dummy-2088944543-fr2d4                  1/1       Running   0          4d        192.168.50.3   kube-master
+kube-system   etcd-kube-master                        1/1       Running   0          4d        192.168.50.3   kube-master
+kube-system   kube-apiserver-kube-master              1/1       Running   0          4d        192.168.50.3   kube-master
+kube-system   kube-controller-manager-kube-master     1/1       Running   0          4d        192.168.50.3   kube-master
+kube-system   kube-discovery-1769846148-dn0c7         1/1       Running   0          4d        192.168.50.3   kube-master
+kube-system   kube-dns-2924299975-s49zg               4/4       Running   0          4d        10.32.0.2      kube-master
+kube-system   kube-proxy-fsm1c                        1/1       Running   0          4d        192.168.50.5   kube-worker-0
+kube-system   kube-proxy-s9k7t                        1/1       Running   0          4d        192.168.50.6   kube-worker-1
+kube-system   kube-proxy-xcbcp                        1/1       Running   0          4d        192.168.50.3   kube-master
+kube-system   kube-scheduler-kube-master              1/1       Running   0          4d        192.168.50.3   kube-master
+kube-system   kubernetes-dashboard-3203831700-42qrk   1/1       Running   0          4d        10.36.0.1      kube-worker-1
+kube-system   weave-net-12gv6                         2/2       Running   0          4d        192.168.50.3   kube-master
+kube-system   weave-net-d2k67                         2/2       Running   0          4d        192.168.50.5   kube-worker-0
+kube-system   weave-net-pzrb5                         2/2       Running   1          4d        192.168.50.6   kube-worker-1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can continue to experiment with the &lt;code&gt;kubectl&lt;/code&gt; tool to examine and manipulate your cluster.&lt;/p&gt;
+
+&lt;p&gt;Two GUI management tools have also been installed on the cluster for you: &lt;a href=&#34;https://github.com/kubernetes/dashboard&#34;&gt;Kubernetes Dashboard&lt;/a&gt; and &lt;a href=&#34;https://www.weave.works/products/weave-scope/&#34;&gt;Weave Scope&lt;/a&gt;. You an access either over a tunnel to your Kubernetes control plane with the aliases you just installed.&lt;/p&gt;
+
+&lt;p&gt;To view the the Kubernetes dashboard, use the &lt;code&gt;dashproxy&lt;/code&gt; alias:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ dashproxy
+Forwarding from 127.0.0.1:9090 -&amp;gt; 9090
+Forwarding from [::1]:9090 -&amp;gt; 9090
+Handling connection for 9090
+Handling connection for 9090
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then navigate your browser to &lt;a href=&#34;http://localhost:9090/&#34;&gt;&lt;code&gt;http://localhost:9090/&lt;/code&gt;&lt;/a&gt; and you should see the dashboard.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/kube-dashboard.png&#34; alt=&#34;Kubernetes 1.5.1 Dashboard&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To try Weavescope, use the &lt;code&gt;scopeproxy&lt;/code&gt; alias:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ scopeproxy
+Forwarding from 127.0.0.1:4040 -&amp;gt; 4040
+Forwarding from [::1]:4040 -&amp;gt; 4040
+Handling connection for 4040
+Handling connection for 4040
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then navigate your browser to &lt;a href=&#34;http://localhost:4040/&#34;&gt;&lt;code&gt;http://localhost:4040/&lt;/code&gt;&lt;/a&gt; and you should see your new cluster layout.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://ken.pepple.info/images/weavescope.png&#34; width=&#34;700&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;To launch some actual applications on your new cluster, follow the &amp;ldquo;socks shop&amp;rdquo; example at &lt;a href=&#34;https://kubernetes.io/docs/getting-started-guides/kubeadm/#optional-installing-a-sample-application&#34;&gt;Installing a sample application
+&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;cleanup&#34;&gt;Cleanup&lt;/h2&gt;
+
+&lt;p&gt;To clean up your entire cluster (i.e. delete everything you just created), use the &lt;code&gt;terraform destroy&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ terraform destroy
+Do you really want to destroy?
+  Terraform will delete all your managed infrastructure.
+  There is no undo. Only &#39;yes&#39; will be accepted to confirm.
+
+  Enter a value: yes
+
+openstack_networking_router_v2.kube: Refreshing state... (ID: 08e02e39-6601-4a96-af3a-3fb1b9d8a044)
+openstack_compute_secgroup_v2.kube: Refreshing state... (ID: 9c9be179-edc3-4b13-ba38-7faa5338adbe)
+openstack_compute_keypair_v2.kube: Refreshing state... (ID: SSH keypair for kube instances)
+... snip ....
+openstack_networking_router_v2.kube: Destruction complete
+openstack_networking_network_v2.kube: Destruction complete
+
+Destroy complete! Resources: 10 destroyed.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Everything that has been created should now be gone (subnet, routers and all). If you get an error, try running the &lt;code&gt;terraform destroy&lt;/code&gt; command again.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Grizzly Architecture Revisit</title>

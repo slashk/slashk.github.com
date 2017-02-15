@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.18.1" />
 
   <title>Wander</title>
 
@@ -138,6 +138,8 @@
     
 
     
+
+    
     <li class="pure-menu-item">
       <a class="pure-menu-link" href="http://slideshare.net/ken-pepple" target="_blank"><i class="fa fa-slideshare fa-fw"></i>SlideShare</a>
     </li>
@@ -165,6 +167,10 @@
     <li class="pure-menu-item">
       <a class="pure-menu-link" href="https://github.com/slashk" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
     </li>
+    
+
+    
+
     
 
     
@@ -214,6 +220,55 @@
   
     <article>
   <header>
+    <h2><a href="http://ken.pepple.info/kubernetes/2017/02/09/kubernetes-the-easy-way">Kubernetes The Easy Way</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>09 Feb 2017</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/kubernetes">kubernetes</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/terraform">terraform</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/devops">devops</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/openstack">openstack</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  Sometimes I don&rsquo;t want to do things &ldquo;the hard way&rdquo; &ndash; I just need a testing environment. Kubernetes is one of those things when I&rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster &ndash; If you are on a public cloud, not OpenStack.
+  </p>
+
+  
+  <footer>
+    <a href="http://ken.pepple.info/kubernetes/2017/02/09/kubernetes-the-easy-way">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
     <h2><a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit">Grizzly Architecture Revisit</a></h2>
 
     <div class="post-meta">
@@ -244,9 +299,15 @@
   </header>
 
   <p>
-  Back in April, I gave a presentation in Portland at the OpenStack Summit on the architecture of OpenStack Grizzly. As the presentation was limited to 45 minutes, I said I would post a more in-depth article about it (similar to my last Folsom OpenStack Archtecture post) shortly. Unfortunately, work got in the way. I have finally made good on my promise and posted the full length article along with several clarifications over on my work blog at http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/.
+  Back in April, I gave a presentation in Portland at the OpenStack Summit on the architecture of OpenStack Grizzly. As the presentation was limited to 45 minutes, I said I would post a more in-depth article about it (similar to my last Folsom OpenStack Archtecture post) shortly.
+Unfortunately, work got in the way.
+I have finally made good on my promise and posted the full length article along with several clarifications over on my work blog at http://www.
   </p>
 
+  
+  <footer>
+    <a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
   
 </article>
 
@@ -283,7 +344,8 @@
   </header>
 
   <p>
-  As the Folsom release of OpenStack is due to be released this week, I&rsquo;ve taken the time to update my &ldquo;Intro to OpenStack Architecture 101&rdquo; for the official documentation. It merged into the repos yesterday and below is an expanded version of it. OpenStack Components There are currently seven core components of OpenStack: Compute, Object Storage, Identity, Dashboard, Block Storage, Network and Image Service. Let&rsquo;s look at each in turn: Object Store (codenamed &ldquo;Swift&rdquo;) allows you to store or retrieve files (but not mount directories like a fileserver).
+  As the Folsom release of OpenStack is due to be released this week, I&rsquo;ve taken the time to update my &ldquo;Intro to OpenStack Architecture 101&rdquo; for the official documentation. It merged into the repos yesterday and below is an expanded version of it.
+OpenStack Components There are currently seven core components of OpenStack: Compute, Object Storage, Identity, Dashboard, Block Storage, Network and Image Service. Let&rsquo;s look at each in turn:
   </p>
 
   
@@ -326,7 +388,8 @@
   </header>
 
   <p>
-  While it is still seven weeks until OpenStack &ldquo;Essex&rdquo; (2012.1) officially is released, release candidates are just around the corner. With this in mind, I thought it would be a good chance to revisit my earlier blog post on OpenStack Compute (&ldquo;Nova&rdquo;) architecture. This time around, instead of detailing the architecture of just a single service, I&rsquo;ll look at all the pieces of the OpenStack project working together. To level-set everyone&rsquo;s understanding, let&rsquo;s briefly review the OpenStack project components and history.
+  While it is still seven weeks until OpenStack &ldquo;Essex&rdquo; (2012.1) officially is released, release candidates are just around the corner. With this in mind, I thought it would be a good chance to revisit my earlier blog post on OpenStack Compute (&ldquo;Nova&rdquo;) architecture. This time around, instead of detailing the architecture of just a single service, I&rsquo;ll look at all the pieces of the OpenStack project working together.
+To level-set everyone&rsquo;s understanding, let&rsquo;s briefly review the OpenStack project components and history.
   </p>
 
   
@@ -369,7 +432,9 @@
   </header>
 
   <p>
-  You may have noticed that I have not posted anything in the last two months. And as you have probably guessed, it was because I was busy working on something else. That &ldquo;something else&rdquo; was writing Deploying OpenStack for O&rsquo;Reilly Media. The book is intended to provide an introduction to the OpenStack project (Glance, Swift and Nova) Cactus release, an architectural overview of each component and some best practices for their deployment.
+  You may have noticed that I have not posted anything in the last two months. And as you have probably guessed, it was because I was busy working on something else.
+That &ldquo;something else&rdquo; was writing Deploying OpenStack for O&rsquo;Reilly Media.
+The book is intended to provide an introduction to the OpenStack project (Glance, Swift and Nova) Cactus release, an architectural overview of each component and some best practices for their deployment.
   </p>
 
   
@@ -412,7 +477,8 @@
   </header>
 
   <p>
-  I just got back from the OpenStack Developers Summit and while I am still trying to compile my thoughts on the event, I thought I&rsquo;d dash off this little tidbit: A slight annoyance in administering (and troubleshooting) OpenStack Nova is identifying your installed version. This information is actually readily (i.e. programmatically) available within the code (and logged at the beginning of most logfiles), but we hadn&rsquo;t exposed it to administrators on the command line until Nova trunk revision #1036.
+  I just got back from the OpenStack Developers Summit and while I am still trying to compile my thoughts on the event, I thought I&rsquo;d dash off this little tidbit:
+A slight annoyance in administering (and troubleshooting) OpenStack Nova is identifying your installed version. This information is actually readily (i.e. programmatically) available within the code (and logged at the beginning of most logfiles), but we hadn&rsquo;t exposed it to administrators on the command line until Nova trunk revision #1036.
   </p>
 
   
@@ -455,55 +521,13 @@
   </header>
 
   <p>
-  NOTE: I&rsquo;ve updated and expanded this blog post for the Folsom release. Click here to read the updated version. One of the common refrains I hear from people getting started with OpenStack is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview.
+  NOTE: I&rsquo;ve updated and expanded this blog post for the Folsom release. Click here to read the updated version.
+One of the common refrains I hear from people getting started with OpenStack is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview.
   </p>
 
   
   <footer>
     <a href="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails">Auto Blogging with Rake &amp; Rails</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>26 Mar 2011</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/openstack">openstack</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every weekend all year long. Unfortunately, I don&rsquo;t have a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend.
-  </p>
-
-  
-  <footer>
-    <a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>

@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.18.1" />
 
   <title>OpenStack Nova Architecture &middot; Wander</title>
 
@@ -132,6 +132,8 @@
     
 
     
+
+    
     <li class="pure-menu-item">
       <a class="pure-menu-link" href="http://slideshare.net/ken-pepple" target="_blank"><i class="fa fa-slideshare fa-fw"></i>SlideShare</a>
     </li>
@@ -179,6 +181,10 @@
 
     
 
+    
+
+    
+
   </ul>
 </div>
 
@@ -204,6 +210,32 @@
   <h2></h2>
 </div>
 <div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>22 Apr 2011</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/openstack">openstack</a>
+    
+  </div>
+  
+  
+
+</div>
+
   <p><b>NOTE</b>: <i>I&rsquo;ve updated and expanded this blog post for the Folsom release. <a href="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/">Click here to read the updated version</a>.</i></p>
 
 <p>One of the common refrains I hear from people getting started with <a href="http://www.openstack.org/">OpenStack</a> is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview. Now that <a href="http://www.openstack.org/blog/2011/04/openstack-announces-cactus-release/">Cactus</a> (OpenStack’s third version) has been released, I thought I’d take advantage of the lull in development to write up a quick architectural overview from my point of view. Since OpenStack is a fairly broad topic, I’ll break my thoughts into several posts. Today’s post will deal with OpenStack Nova’s (compute cloud) high level architecture. </p>
@@ -308,6 +340,60 @@ Putting this all together we get a picture like this:</p>
 </ul>
 
 <p>As you can see, OpenStack Nova provides a fair basis for our mythical service provider, as long as we are willing to do some integration here and there. In my next post, I’ll dive deeper into OpenStack Nova with a discussion on deployment architecture choices.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails">Auto Blogging with Rake &amp; Rails</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version">Finding Your OpenStack Nova version</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'kenpepple';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 
 </div>
 
