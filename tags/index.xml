@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Wander</title>
+    <link>http://ken.pepple.info/tags/</link>
+    <description>Recent content in Tags on Wander</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 30 May 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ken.pepple.info/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cloud</title>
+      <link>http://ken.pepple.info/tags/cloud/</link>
+      <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://ken.pepple.info/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Devops</title>
+      <link>http://ken.pepple.info/tags/devops/</link>
+      <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
+      
+      <guid>http://ken.pepple.info/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Iphone</title>
+      <link>http://ken.pepple.info/tags/iphone/</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://ken.pepple.info/tags/iphone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>http://ken.pepple.info/tags/kubernetes/</link>
+      <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
+      
+      <guid>http://ken.pepple.info/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Openstack</title>
+      <link>http://ken.pepple.info/tags/openstack/</link>
+      <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
+      
+      <guid>http://ken.pepple.info/tags/openstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://ken.pepple.info/tags/python/</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://ken.pepple.info/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ruby</title>
+      <link>http://ken.pepple.info/tags/ruby/</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://ken.pepple.info/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Terraform</title>
+      <link>http://ken.pepple.info/tags/terraform/</link>
+      <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
+      
+      <guid>http://ken.pepple.info/tags/terraform/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

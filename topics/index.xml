@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Topics on Wander</title>
+    <link>http://ken.pepple.info/topics/</link>
+    <description>Recent content in Topics on Wander</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    
+	<atom:link href="http://ken.pepple.info/topics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
