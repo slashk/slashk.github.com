@@ -5,19 +5,19 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.31.1" />
 
   <title>Auto Blogging with Rake &amp; Rails &middot; Wander</title>
 
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="http://ken.pepple.info/css/blackburn.css">
 
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
@@ -39,8 +39,9 @@
   
 
   
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
   <script>hljs.initHighlightingOnLoad();</script>
   
 
@@ -71,12 +72,6 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
           <a class="pure-menu-link" href="http://ken.pepple.info/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
       
         </li>
@@ -90,6 +85,12 @@
       
         <li class="pure-menu-item">
           <a class="pure-menu-link" href="http://ken.pepple.info/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://ken.pepple.info/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
@@ -107,6 +108,8 @@
     <li class="pure-menu-item">
       <a class="pure-menu-link" href="https://twitter.com/ken_pepple" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
     </li>
+    
+
     
 
     
@@ -161,6 +164,8 @@
     <li class="pure-menu-item">
       <a class="pure-menu-link" href="https://github.com/slashk" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
     </li>
+    
+
     
 
     
@@ -241,12 +246,10 @@
 <p>The basic idea was to create a <code>cron</code> job that pulls a list of races (with a link for details) from my rails application&rsquo;s database, plot the events on map, add some text and then post it to my blog on Blogger. Most of this is pretty standard rails stuff, but I did need some help for the map and posting.</p>
 
 <p>For the maps, I used <a href="http://code.google.com/apis/maps/documentation/staticmaps/">Google Static Maps</a>. This allows you to embed a Google Maps image on your webpage just like a normal image. All you need to do it feed it the right parameters. For example, this HTML code:</p>
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #008000; font-weight: bold">img</span>
-<span style="color: #7D9029">alt</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;NorCal MTB Race Event Map&quot;</span>
-<span style="color: #7D9029">src</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&amp;zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284&quot;</span>
-/&gt;
-</pre></div>
-
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="font-weight:bold">img</span>
+<span style="color:#007f7f">alt</span>=<span style="color:#0ff;font-weight:bold">&#34;NorCal MTB Race Event Map&#34;</span>
+<span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&amp;zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284&#34;</span>
+/&gt;</code></pre></div>
 <p>Produces this map:</p>
 
 
@@ -273,64 +276,62 @@
 
 <p>I decided that this would be best implemented as a rake task, so I could full access to all the rails application environment (especially the database connection). Here is the complete rake task:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="background-color: #f0f0f0; padding: 0 5px 0 5px"> 1 </span>namespace <span style="color: #19177C">:blogger</span> <span style="color: #008000; font-weight: bold">do</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px"> 2 </span>  desc <span style="color: #BA2121">&quot;post weekend update to blogger&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px"> 3 </span>  task <span style="color: #19177C">:weekend_update</span>  <span style="color: #666666">=&gt;</span> <span style="color: #19177C">:environment</span> <span style="color: #008000; font-weight: bold">do</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px"> 4 </span>    <span style="color: #008000">require</span> <span style="color: #BA2121">&#39;blogger&#39;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px"> 5 </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px"> 6 </span>    <span style="color: #408080; font-style: italic"># preferences for blogger login</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px"> 7 </span>    username <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;sample@gmail.com&#39;</span> <span style="color: #408080; font-style: italic"># change this to your username</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px"> 8 </span>    password <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;xxx129304xxxx&#39;</span> <span style="color: #408080; font-style: italic"># change this to your password</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px"> 9 </span>    blog_id <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;123456&#39;</span> <span style="color: #408080; font-style: italic"># change this to your blogid</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">10 </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">11 </span>    <span style="color: #408080; font-style: italic"># my entry preferences</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">12 </span>    days_ahead <span style="color: #666666">=</span> <span style="color: #666666">5</span> <span style="color: #408080; font-style: italic"># how many days of events ?</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">13 </span>    blog_entry <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;For those of you making your weekend plans,</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">14 </span><span style="color: #BA2121">                  here is quick rundown of this weekend</span><span style="color: #BB6622; font-weight: bold">\&#39;</span><span style="color: #BA2121">s MTB racing schedule</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">15 </span><span style="color: #BA2121">                  for NorCal:</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">16 </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">17 </span>    <span style="color: #408080; font-style: italic"># google static map preferences</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">18 </span>    base_url <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;http://maps.google.com/maps/api/staticmap?&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">19 </span>    map_params <span style="color: #666666">=</span> <span style="color: #666666">[</span><span style="color: #BA2121">&quot;size=400x400&quot;</span>, <span style="color: #BA2121">&quot;maptype=roadmap&quot;</span>, <span style="color: #BA2121">&quot;sensor=false&quot;</span><span style="color: #666666">]</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">20 </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">21 </span>    <span style="color: #408080; font-style: italic"># find all events in the mtbcalendar.com db for this weekend</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">22 </span>    <span style="color: #19177C">@events</span> <span style="color: #666666">=</span> <span style="color: #880000">Event</span><span style="color: #666666">.</span>active<span style="color: #666666">.</span>find_tagged_with(
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">23 </span>        <span style="color: #BA2121">&quot;norcal&quot;</span>,
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">24 </span>        <span style="color: #19177C">:conditions</span> <span style="color: #666666">=&gt;</span> <span style="color: #666666">[</span><span style="color: #BA2121">&quot;start_date &gt;= CURRENT_DATE AND start_date &lt; ?&quot;</span>,
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">25 </span>                        days_ahead<span style="color: #666666">.</span>days<span style="color: #666666">.</span>from_now<span style="color: #666666">]</span>,
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">26 </span>        <span style="color: #19177C">:order</span> <span style="color: #666666">=&gt;</span> <span style="color: #BA2121">&quot;start_date asc&quot;</span>)
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">27 </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">28 </span>    <span style="color: #408080; font-style: italic"># loop through events adding place markers to the google static map URL</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">29 </span>    x <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">30 </span>    <span style="color: #19177C">@events</span><span style="color: #666666">.</span>each <span style="color: #008000; font-weight: bold">do</span> <span style="color: #666666">|</span>marker<span style="color: #666666">|</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">31 </span>      x <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">32 </span>      map_params <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">&quot;markers=color:blue|label:</span><span style="color: #BB6688; font-weight: bold">#{</span>x<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">|</span><span style="color: #BB6688; font-weight: bold">#{</span>marker<span style="color: #666666">.</span>lat<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">,</span><span style="color: #BB6688; font-weight: bold">#{</span>marker<span style="color: #666666">.</span>lng<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">33 </span>      blog_entry <span style="color: #666666">+=</span> <span style="color: #BA2121">&quot;</span><span style="color: #BB6688; font-weight: bold">#{</span>x<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">. [</span><span style="color: #BB6688; font-weight: bold">#{</span>marker<span style="color: #666666">.</span>name<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">](http://mtbcalendar.com/events/</span><span style="color: #BB6688; font-weight: bold">#{</span>marker<span style="color: #666666">.</span>id<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">)</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">34 </span><span style="color: #BA2121">                    (</span><span style="color: #BB6688; font-weight: bold">#{</span>marker<span style="color: #666666">.</span>start_date<span style="color: #666666">.</span>to_s(<span style="color: #19177C">:compact</span>)<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">35 </span>    <span style="color: #008000; font-weight: bold">end</span> <span style="color: #408080; font-style: italic"># marker loop</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">36 </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">37 </span>    <span style="color: #408080; font-style: italic"># add the google static map to post body</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">38 </span>    map_pic_url <span style="color: #666666">=</span> base_url <span style="color: #666666">+</span> map_params<span style="color: #666666">.</span>join(<span style="color: #BA2121">&#39;&amp;&#39;</span>)
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">39 </span>    blog_entry <span style="color: #666666">+=</span> <span style="color: #BA2121">&quot;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">![NorCal MTB Race Event Map](&quot;</span> <span style="color: #666666">+</span> map_pic_url <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;)&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">40 </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">41 </span>    <span style="color: #408080; font-style: italic"># create title for the post</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">42 </span>    blog_title <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;NorCal MTB Racing This Weekend:</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">43 </span><span style="color: #BA2121">                  </span><span style="color: #BB6688; font-weight: bold">#{</span><span style="color: #880000">Date</span><span style="color: #666666">.</span>today<span style="color: #666666">.</span>to_s(<span style="color: #19177C">:short</span>)<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121"> -</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">44 </span><span style="color: #BA2121">                  </span><span style="color: #BB6688; font-weight: bold">#{</span>days_ahead<span style="color: #666666">.</span>days<span style="color: #666666">.</span>from_now<span style="color: #666666">.</span>to_date<span style="color: #666666">.</span>to_s(<span style="color: #19177C">:short</span>)<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">,</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">45 </span><span style="color: #BA2121">                  </span><span style="color: #BB6688; font-weight: bold">#{</span><span style="color: #880000">Date</span><span style="color: #666666">.</span>today<span style="color: #666666">.</span>year<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">46 </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">47 </span>    <span style="color: #408080; font-style: italic"># login into blogger and post this draft</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">48 </span>    account     <span style="color: #666666">=</span> <span style="color: #880000">Blogger</span><span style="color: #666666">::</span><span style="color: #880000">Account</span><span style="color: #666666">.</span>new(username,password)
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">49 </span>    new_post    <span style="color: #666666">=</span> <span style="color: #880000">Blogger</span><span style="color: #666666">::</span><span style="color: #880000">Post</span><span style="color: #666666">.</span>new(<span style="color: #19177C">:title</span>      <span style="color: #666666">=&gt;</span> blog_title,
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">50 </span>                                    <span style="color: #19177C">:content</span>    <span style="color: #666666">=&gt;</span> blog_entry,
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">51 </span>                                    <span style="color: #19177C">:formatter</span>  <span style="color: #666666">=&gt;</span> <span style="color: #19177C">:rdiscount</span>,
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">52 </span>                                    <span style="color: #19177C">:draft</span>      <span style="color: #666666">=&gt;</span> <span style="color: #008000">true</span>)
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">53 </span>    account<span style="color: #666666">.</span>post(blog_id,new_post)
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">54 </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">55 </span>  <span style="color: #008000; font-weight: bold">end</span> <span style="color: #408080; font-style: italic"># task    </span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">56 </span><span style="color: #008000; font-weight: bold">end</span> <span style="color: #408080; font-style: italic"># namespace</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;"> 1</span>namespace <span style="color:#0ff;font-weight:bold">:blogger</span> <span style="color:#fff;font-weight:bold">do</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;"> 2</span>  desc <span style="color:#0ff;font-weight:bold">&#34;post weekend update to blogger&#34;</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;"> 3</span>  task <span style="color:#0ff;font-weight:bold">:weekend_update</span>  =&gt; <span style="color:#0ff;font-weight:bold">:environment</span> <span style="color:#fff;font-weight:bold">do</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;"> 4</span>    <span style="color:#fff;font-weight:bold">require</span> <span style="color:#0ff;font-weight:bold">&#39;blogger&#39;</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;"> 5</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;"> 6</span>    <span style="color:#007f7f"># preferences for blogger login</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;"> 7</span>    username = <span style="color:#0ff;font-weight:bold">&#39;sample@gmail.com&#39;</span> <span style="color:#007f7f"># change this to your username</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;"> 8</span>    password = <span style="color:#0ff;font-weight:bold">&#39;xxx129304xxxx&#39;</span> <span style="color:#007f7f"># change this to your password</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;"> 9</span>    blog_id = <span style="color:#0ff;font-weight:bold">&#39;123456&#39;</span> <span style="color:#007f7f"># change this to your blogid</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">10</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">11</span>    <span style="color:#007f7f"># my entry preferences</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">12</span>    days_ahead = <span style="color:#ff0;font-weight:bold">5</span> <span style="color:#007f7f"># how many days of events ?</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">13</span>    blog_entry = <span style="color:#0ff;font-weight:bold">&#34;For those of you making your weekend plans,
+</span><span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">14</span><span style="color:#0ff;font-weight:bold">                  here is quick rundown of this weekend</span><span style="color:#0ff;font-weight:bold">\&#39;</span><span style="color:#0ff;font-weight:bold">s MTB racing schedule
+</span><span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">15</span><span style="color:#0ff;font-weight:bold">                  for NorCal:</span><span style="color:#0ff;font-weight:bold">\n\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">16</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">17</span>    <span style="color:#007f7f"># google static map preferences</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">18</span>    base_url = <span style="color:#0ff;font-weight:bold">&#34;http://maps.google.com/maps/api/staticmap?&#34;</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">19</span>    map_params = [<span style="color:#0ff;font-weight:bold">&#34;size=400x400&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;maptype=roadmap&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;sensor=false&#34;</span>]
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">20</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">21</span>    <span style="color:#007f7f"># find all events in the mtbcalendar.com db for this weekend</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">22</span>    @events = Event.active.find_tagged_with(
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">23</span>        <span style="color:#0ff;font-weight:bold">&#34;norcal&#34;</span>,
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">24</span>        <span style="color:#0ff;font-weight:bold">:conditions</span> =&gt; [<span style="color:#0ff;font-weight:bold">&#34;start_date &gt;= CURRENT_DATE AND start_date &lt; ?&#34;</span>,
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">25</span>                        days_ahead.days.from_now],
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">26</span>        <span style="color:#0ff;font-weight:bold">:order</span> =&gt; <span style="color:#0ff;font-weight:bold">&#34;start_date asc&#34;</span>)
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">27</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">28</span>    <span style="color:#007f7f"># loop through events adding place markers to the google static map URL</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">29</span>    x = <span style="color:#ff0;font-weight:bold">0</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">30</span>    @events.each <span style="color:#fff;font-weight:bold">do</span> |marker|
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">31</span>      x += <span style="color:#ff0;font-weight:bold">1</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">32</span>      map_params &lt;&lt; <span style="color:#0ff;font-weight:bold">&#34;markers=color:blue|label:</span><span style="color:#0ff;font-weight:bold">#{</span>x<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">|</span><span style="color:#0ff;font-weight:bold">#{</span>marker.lat<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">,</span><span style="color:#0ff;font-weight:bold">#{</span>marker.lng<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">33</span>      blog_entry += <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">#{</span>x<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">. [</span><span style="color:#0ff;font-weight:bold">#{</span>marker.name<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">](http://mtbcalendar.com/events/</span><span style="color:#0ff;font-weight:bold">#{</span>marker.id<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">)
+</span><span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">34</span><span style="color:#0ff;font-weight:bold">                    (</span><span style="color:#0ff;font-weight:bold">#{</span>marker.start_date.to_s(<span style="color:#0ff;font-weight:bold">:compact</span>)<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">)</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">35</span>    <span style="color:#fff;font-weight:bold">end</span> <span style="color:#007f7f"># marker loop</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">36</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">37</span>    <span style="color:#007f7f"># add the google static map to post body</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">38</span>    map_pic_url = base_url + map_params.join(<span style="color:#0ff;font-weight:bold">&#39;&amp;&#39;</span>)
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">39</span>    blog_entry += <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">![NorCal MTB Race Event Map](&#34;</span> + map_pic_url + <span style="color:#0ff;font-weight:bold">&#34;)&#34;</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">40</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">41</span>    <span style="color:#007f7f"># create title for the post</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">42</span>    blog_title = <span style="color:#0ff;font-weight:bold">&#34;NorCal MTB Racing This Weekend:
+</span><span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">43</span><span style="color:#0ff;font-weight:bold">                  </span><span style="color:#0ff;font-weight:bold">#{</span>Date.today.to_s(<span style="color:#0ff;font-weight:bold">:short</span>)<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold"> -
+</span><span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">44</span><span style="color:#0ff;font-weight:bold">                  </span><span style="color:#0ff;font-weight:bold">#{</span>days_ahead.days.from_now.to_date.to_s(<span style="color:#0ff;font-weight:bold">:short</span>)<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">,
+</span><span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">45</span><span style="color:#0ff;font-weight:bold">                  </span><span style="color:#0ff;font-weight:bold">#{</span>Date.today.year<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">46</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">47</span>    <span style="color:#007f7f"># login into blogger and post this draft</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">48</span>    account     = Blogger::Account.new(username,password)
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">49</span>    new_post    = Blogger::Post.new(<span style="color:#0ff;font-weight:bold">:title</span>      =&gt; blog_title,
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">50</span>                                    <span style="color:#0ff;font-weight:bold">:content</span>    =&gt; blog_entry,
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">51</span>                                    <span style="color:#0ff;font-weight:bold">:formatter</span>  =&gt; <span style="color:#0ff;font-weight:bold">:rdiscount</span>,
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">52</span>                                    <span style="color:#0ff;font-weight:bold">:draft</span>      =&gt; <span style="color:#fff;font-weight:bold">true</span>)
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">53</span>    account.post(blog_id,new_post)
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">54</span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">55</span>  <span style="color:#fff;font-weight:bold">end</span> <span style="color:#007f7f"># task    </span>
+<span style="color:#727272;margin-right:0.4em;padding:00.4em00.4em;">56</span><span style="color:#fff;font-weight:bold">end</span> <span style="color:#007f7f"># namespace</span></code></pre></div>
 
 <p>Although I did this with a rake task, you could also make it just a regular ruby script. However, then you would need to handle all of the database login and queries yourself.</p>
 
@@ -339,13 +340,13 @@
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl"><i class="fa fa-chevron-left"></i></a>
+    <a href="http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl">Custom iPhone Notifications with Prowl</a>
+      <a href="http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/">Custom iPhone Notifications with Prowl</a>
     </nav>
     
   </div>
@@ -355,13 +356,13 @@
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture">OpenStack Nova Architecture</a>
+      <a href="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/">OpenStack Nova Architecture</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture"><i class="fa fa-chevron-right"></i></a>
+    <a href="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
@@ -405,6 +406,8 @@
   ga('send', 'pageview');
 
 </script>
+
+
 
 
 
