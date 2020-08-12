@@ -24,67 +24,6 @@
     </item>
     
     <item>
-      <title>private serverless platforms</title>
-      <link>http://ken.pepple.info/golang/2016/12/23/private-serverless-platforms/</link>
-      <pubDate>Fri, 23 Dec 2016 16:43:22 -0800</pubDate>
-      <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/golang/2016/12/23/private-serverless-platforms/</guid>
-      <description>IronFunctions https://github.com/iron-io/functions Fission https://github.com/fission/fission#performance-100msec-cold-start Effe https://github.com/siscia/effe OpenWhisk https://developer.ibm.com/openwhisk/</description>
-    </item>
-    
-    <item>
-      <title>Instrumenting Your Go App With Prometheus</title>
-      <link>http://ken.pepple.info/golang/2016/09/17/instrumenting-your-go-app-with-prometheus/</link>
-      <pubDate>Sat, 17 Sep 2016 17:40:25 -0700</pubDate>
-      <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/golang/2016/09/17/instrumenting-your-go-app-with-prometheus/</guid>
-      <description>Prometheus is the new hotness on the monitoring front for it&amp;rsquo;s ability to integrate and monitor easily into container environments that predominate microservice architectures.
-This article shows you how to add some quick and dirty Prometheus metrics to your Go application. This recipe adds in count, total duration and histogram of durations for any RESTful endpoint with go-restful. It requires the Prometheus Golang client.
-Install Prometheus Client To start, install the Prometheus Go client with:</description>
-    </item>
-    
-    <item>
-      <title>Adding Twelve Factors To Your Go Server</title>
-      <link>http://ken.pepple.info/golang/2016/09/03/adding-twelve-factors-to-your-go-server/</link>
-      <pubDate>Sat, 03 Sep 2016 09:47:43 -0700</pubDate>
-      <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/golang/2016/09/03/adding-twelve-factors-to-your-go-server/</guid>
-      <description>What is Twelve-Factor App?
-Is an architectural style for building RESTful applications that fits well with cloud and microservice philosophies.
-    Name Description     I Codebase One codebase tracked in revision control, many deploys   II Dependencies Explicitly declare and isolate dependencies   III Config Store config in the environment   IV Backing services Treat backing services as attached resources   V Build, release, run Strictly separate build and run stages   VI Processes Execute the app as one or more stateless processes   VII Port binding Export services via port binding   VIII  Concurrency Scale out via the process model   IX Disposability Maximize robustness with fast startup and graceful shutdown   X Dev/prod parity Keep development, staging, and production as similar as possible   XI Logs Treat logs as event streams   XII Admin processes Run admin/management tasks as one-off processes    For our purposes we will focus on III Config, VII Port Binding, IX Disposability and XI Logs.</description>
-    </item>
-    
-    <item>
-      <title>Simple RESTful Server in Go</title>
-      <link>http://ken.pepple.info/openstack/2016/08/23/simple-restful-server-in-go/</link>
-      <pubDate>Tue, 23 Aug 2016 06:46:38 -0700</pubDate>
-      <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2016/08/23/simple-restful-server-in-go/</guid>
-      <description> overview go-restful seems good, not far from net/http, kubernetes, lot of extras Basics of handlers/routes, server setup cool filters running Server adding Makefile for version, etc.  </description>
-    </item>
-    
-    <item>
-      <title>Go Vendoring and CircleCI</title>
-      <link>http://ken.pepple.info/golang/2016/08/13/go-vendoring-and-circleci/</link>
-      <pubDate>Sat, 13 Aug 2016 17:21:36 -0700</pubDate>
-      <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/golang/2016/08/13/go-vendoring-and-circleci/</guid>
-      <description>CircleCI is really nice but has some completely fubar’d support for Go. Chief among them, WHY WOULD YOU ADD TWO PATHS TO THE GOPATH? It also has no real support for godeps, glide or any other vendoring in Go 1.5+. Most of the blog posts that you will find on the web are out of date or plain wrong (especially the thoughtbot one).
-Here is a simple way to bend CircleCI to build and test your Go project.</description>
-    </item>
-    
-    <item>
-      <title>The Tenrec Rises: Deploying OpenStack, Havana Edition</title>
-      <link>http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/</link>
-      <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-      <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/</guid>
-      <description>During the summer of 2011, I wrote a book for O&amp;rsquo;Reilly. The &amp;ldquo;tenrec&amp;rdquo; book was meant to be a short 50 page treatise on a new open source project called OpenStack.
-Afterwards, I swore to never to write another book again. Three books was definitely enough.
-However, late last week I pushed the final change to the first half of the second edition of &amp;ldquo;Deploying OpenStack&amp;rdquo;. This release of the book is different from the first edition:</description>
-    </item>
-    
-    <item>
       <title>Grizzly Architecture Revisit</title>
       <link>http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/</link>
       <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>

@@ -282,8 +282,8 @@ if (!doNotTrack) {
 </article>
           
             <article class="post-preview">
-    <a href="http://ken.pepple.info/golang/2016/12/23/private-serverless-platforms/">
-        <h2 class="post-title">private serverless platforms</h2>
+    <a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/">
+        <h2 class="post-title">Grizzly Architecture Revisit</h2>
         
         
         
@@ -293,15 +293,15 @@ if (!doNotTrack) {
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on 23 Dec 2016
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 16 Jun 2013
   
-    &nbsp;(Last modified on 13 Feb 2017)
+    &nbsp;(Last modified on 19 Sep 2016)
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;8&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;78&nbsp;words
   
   
   
@@ -311,63 +311,17 @@ if (!doNotTrack) {
     </p>
     <div class="post-entry">
         
-        <p>IronFunctions  <a href="https://github.com/iron-io/functions">https://github.com/iron-io/functions</a>
-Fission    <a href="https://github.com/fission/fission#performance-100msec-cold-start">https://github.com/fission/fission#performance-100msec-cold-start</a>
-Effe   <a href="https://github.com/siscia/effe">https://github.com/siscia/effe</a>
-OpenWhisk  <a href="https://developer.ibm.com/openwhisk/">https://developer.ibm.com/openwhisk/</a></p>
-
-        
-    </div>
-
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="http://ken.pepple.info/golang/2016/09/17/instrumenting-your-go-app-with-prometheus/">
-        <h2 class="post-title">Instrumenting Your Go App With Prometheus</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on 17 Sep 2016
-  
-    &nbsp;(Last modified on 19 Sep 2016)
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;523&nbsp;words
-  
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        Prometheus is the new hotness on the monitoring front for it&rsquo;s ability to integrate and monitor easily into container environments that predominate microservice architectures.
-This article shows you how to add some quick and dirty Prometheus metrics to your Go application. This recipe adds in count, total duration and histogram of durations for any RESTful endpoint with go-restful. It requires the Prometheus Golang client.
-Install Prometheus Client To start, install the Prometheus Go client with:
-        <a href="http://ken.pepple.info/golang/2016/09/17/instrumenting-your-go-app-with-prometheus/" class="post-read-more">[Read More]</a>
+        Back in April, I gave a presentation in Portland at the OpenStack Summit on the architecture of OpenStack Grizzly. As the presentation was limited to 45 minutes, I said I would post a more in-depth article about it (similar to my last Folsom OpenStack Archtecture post) shortly.
+Unfortunately, work got in the way.
+I have finally made good on my promise and posted the full length article along with several clarifications over on my work blog at http://www.
+        <a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/" class="post-read-more">[Read More]</a>
         
     </div>
 
     
     <div class="blog-tags">
         
-        <a href="http://ken.pepple.info//tags/go/">go</a>&nbsp;
-        
-        <a href="http://ken.pepple.info//tags/golang/">golang</a>&nbsp;
-        
-        <a href="http://ken.pepple.info//tags/prometheus/">prometheus</a>&nbsp;
+        <a href="http://ken.pepple.info//tags/openstack/">openstack</a>&nbsp;
         
     </div>
     
@@ -375,8 +329,8 @@ Install Prometheus Client To start, install the Prometheus Go client with:
 </article>
           
             <article class="post-preview">
-    <a href="http://ken.pepple.info/golang/2016/09/03/adding-twelve-factors-to-your-go-server/">
-        <h2 class="post-title">Adding Twelve Factors To Your Go Server</h2>
+    <a href="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/">
+        <h2 class="post-title">OpenStack Folsom Architecture</h2>
         
         
         
@@ -386,7 +340,99 @@ Install Prometheus Client To start, install the Prometheus Go client with:
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on 03 Sep 2016
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 25 Sep 2012
+  
+    &nbsp;(Last modified on 19 Sep 2016)
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;12&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2528&nbsp;words
+  
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        As the Folsom release of OpenStack is due to be released this week, I&rsquo;ve taken the time to update my &ldquo;Intro to OpenStack Architecture 101&rdquo; for the official documentation. It merged into the repos yesterday and below is an expanded version of it.
+OpenStack Components There are currently seven core components of OpenStack: Compute, Object Storage, Identity, Dashboard, Block Storage, Network and Image Service. Let&rsquo;s look at each in turn:
+        <a href="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="http://ken.pepple.info//tags/openstack/">openstack</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/">
+        <h2 class="post-title">Revisiting OpenStack Architecture: Essex Edition</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 21 Feb 2012
+  
+    &nbsp;(Last modified on 19 Sep 2016)
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;9&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1808&nbsp;words
+  
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        While it is still seven weeks until OpenStack &ldquo;Essex&rdquo; (2012.1) officially is released, release candidates are just around the corner. With this in mind, I thought it would be a good chance to revisit my earlier blog post on OpenStack Compute (&ldquo;Nova&rdquo;) architecture. This time around, instead of detailing the architecture of just a single service, I&rsquo;ll look at all the pieces of the OpenStack project working together.
+To level-set everyone&rsquo;s understanding, let&rsquo;s briefly review the OpenStack project components and history.
+        <a href="http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="http://ken.pepple.info//tags/openstack/">openstack</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="http://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/">
+        <h2 class="post-title">OpenStack Has A Mascot: The &#34;Tenrec&#34; Book</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 05 Aug 2011
   
     &nbsp;(Last modified on 19 Sep 2016)
   
@@ -394,7 +440,7 @@ Install Prometheus Client To start, install the Prometheus Go client with:
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;249&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;373&nbsp;words
   
   
   
@@ -404,19 +450,17 @@ Install Prometheus Client To start, install the Prometheus Go client with:
     </p>
     <div class="post-entry">
         
-        What is Twelve-Factor App?
-Is an architectural style for building RESTful applications that fits well with cloud and microservice philosophies.
-    Name Description     I Codebase One codebase tracked in revision control, many deploys   II Dependencies Explicitly declare and isolate dependencies   III Config Store config in the environment   IV Backing services Treat backing services as attached resources   V Build, release, run Strictly separate build and run stages   VI Processes Execute the app as one or more stateless processes   VII Port binding Export services via port binding   VIII  Concurrency Scale out via the process model   IX Disposability Maximize robustness with fast startup and graceful shutdown   X Dev/prod parity Keep development, staging, and production as similar as possible   XI Logs Treat logs as event streams   XII Admin processes Run admin/management tasks as one-off processes    For our purposes we will focus on III Config, VII Port Binding, IX Disposability and XI Logs.
-        <a href="http://ken.pepple.info/golang/2016/09/03/adding-twelve-factors-to-your-go-server/" class="post-read-more">[Read More]</a>
+        You may have noticed that I have not posted anything in the last two months. And as you have probably guessed, it was because I was busy working on something else.
+That &ldquo;something else&rdquo; was writing Deploying OpenStack for O&rsquo;Reilly Media.
+The book is intended to provide an introduction to the OpenStack project (Glance, Swift and Nova) Cactus release, an architectural overview of each component and some best practices for their deployment.
+        <a href="http://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/" class="post-read-more">[Read More]</a>
         
     </div>
 
     
     <div class="blog-tags">
         
-        <a href="http://ken.pepple.info//tags/go/">go</a>&nbsp;
-        
-        <a href="http://ken.pepple.info//tags/golang/">golang</a>&nbsp;
+        <a href="http://ken.pepple.info//tags/openstack/">openstack</a>&nbsp;
         
     </div>
     
@@ -424,8 +468,8 @@ Is an architectural style for building RESTful applications that fits well with 
 </article>
           
             <article class="post-preview">
-    <a href="http://ken.pepple.info/openstack/2016/08/23/simple-restful-server-in-go/">
-        <h2 class="post-title">Simple RESTful Server in Go</h2>
+    <a href="http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/">
+        <h2 class="post-title">Finding Your OpenStack Nova version</h2>
         
         
         
@@ -435,15 +479,15 @@ Is an architectural style for building RESTful applications that fits well with 
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on 23 Aug 2016
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 30 Apr 2011
   
     &nbsp;(Last modified on 19 Sep 2016)
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;26&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;313&nbsp;words
   
   
   
@@ -453,66 +497,16 @@ Is an architectural style for building RESTful applications that fits well with 
     </p>
     <div class="post-entry">
         
-        <ul>
-<li>overview</li>
-<li>go-restful seems good, not far from net/http, kubernetes, lot of extras</li>
-<li>Basics of handlers/routes, server setup</li>
-<li>cool filters</li>
-<li>running Server</li>
-<li>adding Makefile for version, etc.</li>
-</ul>
-
-        
-    </div>
-
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="http://ken.pepple.info/golang/2016/08/13/go-vendoring-and-circleci/">
-        <h2 class="post-title">Go Vendoring and CircleCI</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on 13 Aug 2016
-  
-    &nbsp;(Last modified on 19 Sep 2016)
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;212&nbsp;words
-  
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        CircleCI is really nice but has some completely fubar’d support for Go. Chief among them, WHY WOULD YOU ADD TWO PATHS TO THE GOPATH? It also has no real support for godeps, glide or any other vendoring in Go 1.5+. Most of the blog posts that you will find on the web are out of date or plain wrong (especially the thoughtbot one).
-Here is a simple way to bend CircleCI to build and test your Go project.
-        <a href="http://ken.pepple.info/golang/2016/08/13/go-vendoring-and-circleci/" class="post-read-more">[Read More]</a>
+        I just got back from the OpenStack Developers Summit and while I am still trying to compile my thoughts on the event, I thought I&rsquo;d dash off this little tidbit:
+A slight annoyance in administering (and troubleshooting) OpenStack Nova is identifying your installed version. This information is actually readily (i.e. programmatically) available within the code (and logged at the beginning of most logfiles), but we hadn&rsquo;t exposed it to administrators on the command line until Nova trunk revision #1036.
+        <a href="http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/" class="post-read-more">[Read More]</a>
         
     </div>
 
     
     <div class="blog-tags">
         
-        <a href="http://ken.pepple.info//tags/go/">go</a>&nbsp;
-        
-        <a href="http://ken.pepple.info//tags/golang/">golang</a>&nbsp;
-        
-        <a href="http://ken.pepple.info//tags/cicd/">cicd</a>&nbsp;
+        <a href="http://ken.pepple.info//tags/openstack/">openstack</a>&nbsp;
         
     </div>
     
@@ -520,8 +514,8 @@ Here is a simple way to bend CircleCI to build and test your Go project.
 </article>
           
             <article class="post-preview">
-    <a href="http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/">
-        <h2 class="post-title">The Tenrec Rises: Deploying OpenStack, Havana Edition</h2>
+    <a href="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/">
+        <h2 class="post-title">OpenStack Nova Architecture</h2>
         
         
         
@@ -531,15 +525,15 @@ Here is a simple way to bend CircleCI to build and test your Go project.
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on 06 Nov 2013
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 22 Apr 2011
   
-    &nbsp;(Last modified on 19 Sep 2016)
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+    &nbsp;(Last modified on 13 Feb 2017)
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;183&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;11&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2240&nbsp;words
   
   
   
@@ -549,10 +543,9 @@ Here is a simple way to bend CircleCI to build and test your Go project.
     </p>
     <div class="post-entry">
         
-        During the summer of 2011, I wrote a book for O&rsquo;Reilly. The &ldquo;tenrec&rdquo; book was meant to be a short 50 page treatise on a new open source project called OpenStack.
-Afterwards, I swore to never to write another book again. Three books was definitely enough.
-However, late last week I pushed the final change to the first half of the second edition of &ldquo;Deploying OpenStack&rdquo;. This release of the book is different from the first edition:
-        <a href="http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/" class="post-read-more">[Read More]</a>
+        NOTE: I&rsquo;ve updated and expanded this blog post for the Folsom release. Click here to read the updated version.
+One of the common refrains I hear from people getting started with OpenStack is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview.
+        <a href="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/" class="post-read-more">[Read More]</a>
         
     </div>
 

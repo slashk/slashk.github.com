@@ -43,56 +43,6 @@
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/golang/2016/12/23/private-serverless-platforms/</loc>
-    <lastmod>2017-02-13T15:58:25-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ken.pepple.info/tags/go/</loc>
-    <lastmod>2016-09-19T23:57:22-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ken.pepple.info/tags/golang/</loc>
-    <lastmod>2016-09-19T23:57:22-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ken.pepple.info/golang/2016/09/17/instrumenting-your-go-app-with-prometheus/</loc>
-    <lastmod>2016-09-19T12:24:49-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ken.pepple.info/tags/prometheus/</loc>
-    <lastmod>2016-09-19T12:24:49-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ken.pepple.info/golang/2016/09/03/adding-twelve-factors-to-your-go-server/</loc>
-    <lastmod>2016-09-19T15:50:17-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ken.pepple.info/openstack/2016/08/23/simple-restful-server-in-go/</loc>
-    <lastmod>2016-09-19T15:50:17-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ken.pepple.info/tags/cicd/</loc>
-    <lastmod>2016-09-19T23:57:22-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ken.pepple.info/golang/2016/08/13/go-vendoring-and-circleci/</loc>
-    <lastmod>2016-09-19T23:57:22-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/</loc>
-    <lastmod>2016-09-19T12:24:49-07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/</loc>
     <lastmod>2016-09-19T12:24:49-07:00</lastmod>
   </url>

@@ -24,17 +24,6 @@
     </item>
     
     <item>
-      <title>The Tenrec Rises: Deploying OpenStack, Havana Edition</title>
-      <link>http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/</link>
-      <pubDate>Wed, 06 Nov 2013 00:00:00 +0000</pubDate>
-      <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/</guid>
-      <description>During the summer of 2011, I wrote a book for O&amp;rsquo;Reilly. The &amp;ldquo;tenrec&amp;rdquo; book was meant to be a short 50 page treatise on a new open source project called OpenStack.
-Afterwards, I swore to never to write another book again. Three books was definitely enough.
-However, late last week I pushed the final change to the first half of the second edition of &amp;ldquo;Deploying OpenStack&amp;rdquo;. This release of the book is different from the first edition:</description>
-    </item>
-    
-    <item>
       <title>Grizzly Architecture Revisit</title>
       <link>http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/</link>
       <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>
