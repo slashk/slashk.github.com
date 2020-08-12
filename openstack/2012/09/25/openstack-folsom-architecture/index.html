@@ -1,280 +1,315 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
 
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.31.1" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>OpenStack Folsom Architecture &middot; Wander</title>
-
+  <title>OpenStack Folsom Architecture - Wander</title>
+  <meta name="description" content="As the Folsom release of OpenStack is due to be released this week, I&rsquo;ve taken the time to update my &ldquo;Intro to OpenStack Architecture 101&rdquo; for the official documentation. It merged into the repos yesterday and below is an expanded version of it.
+OpenStack Components There are currently seven core components of OpenStack: Compute, Object Storage, Identity, Dashboard, Block Storage, Network and Image Service. Let&rsquo;s look at each in turn:">
+  <meta name="author" content="Ken Pepple"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Wander",
+    
+    "url": "http:\/\/ken.pepple.info\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/ken.pepple.info\/"
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="http://ken.pepple.info/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="http://ken.pepple.info/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="http://ken.pepple.info/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
   
   
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/openstack\/2012\/09\/25\/openstack-folsom-architecture\/",
+          "name": "Open stack folsom architecture"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ken Pepple"
+  },
+  "headline": "OpenStack Folsom Architecture",
+  "description" : "As the Folsom release of OpenStack is due to be released this week, I\u0026rsquo;ve taken the time to update my \u0026ldquo;Intro to OpenStack Architecture 101\u0026rdquo; for the official documentation. It merged into the repos yesterday and below is an expanded version of it.\nOpenStack Components There are currently seven core components of OpenStack: Compute, Object Storage, Identity, Dashboard, Block Storage, Network and Image Service. Let\u0026rsquo;s look at each in turn:",
+  "inLanguage" : "en",
+  "wordCount":  2528 ,
+  "datePublished" : "2012-09-25T00:00:00",
+  "dateModified" : "2012-09-25T00:00:00",
+  "image" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+  "keywords" : [ "openstack" ],
+  "mainEntityOfPage" : "http:\/\/ken.pepple.info\/openstack\/2012\/09\/25\/openstack-folsom-architecture\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/ken.pepple.info\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  
-  <script>hljs.initHighlightingOnLoad();</script>
-  
+<meta property="og:title" content="OpenStack Folsom Architecture" />
+<meta property="og:description" content="As the Folsom release of OpenStack is due to be released this week, I&rsquo;ve taken the time to update my &ldquo;Intro to OpenStack Architecture 101&rdquo; for the official documentation. It merged into the repos yesterday and below is an expanded version of it.
+OpenStack Components There are currently seven core components of OpenStack: Compute, Object Storage, Identity, Dashboard, Block Storage, Network and Image Service. Let&rsquo;s look at each in turn:">
+<meta property="og:image" content="http://ken.pepple.info/images/llama.jpg" />
+<meta property="og:url" content="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Wander" />
 
-  <link rel="shortcut icon" href="http://ken.pepple.info/img/favicon.ico" type="image/x-icon" />
-
-  
-  
-
-</head>
-
-
-<body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="http://ken.pepple.info/"><img src="http://ken.pepple.info/images/llama-small.png"></a>
+  <meta name="twitter:title" content="OpenStack Folsom Architecture" />
+  <meta name="twitter:description" content="As the Folsom release of OpenStack is due to be released this week, I&rsquo;ve taken the time to update my &ldquo;Intro to OpenStack Architecture 101&rdquo; for the official documentation. It merged …">
+  <meta name="twitter:image" content="http://ken.pepple.info/images/llama.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ken_pepple" />
+  <meta name="twitter:creator" content="@ken_pepple" />
+  <meta name="generator" content="Hugo 0.74.3" />
+  <link rel="alternate" href="http://ken.pepple.info/index.xml" type="application/rss+xml" title="Wander"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://ken.pepple.info/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://ken.pepple.info/css/syntax.css" /><link rel="stylesheet" href="http://ken.pepple.info/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
 
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/about/"><i class='fa fa-user fa-fw'></i>About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-    </ul>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-2210525-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://ken.pepple.info/">Wander</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="http://ken.pepple.info/post/">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="http://ken.pepple.info/tags/">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="http://ken.pepple.info/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="http://ken.pepple.info/">Home</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Wander" href="http://ken.pepple.info/">
+            <img class="avatar-img" src="http://ken.pepple.info/images/llama.jpg" alt="Wander" />
+          </a>
+        </div>
+      </div>
+    
+
   </div>
+</nav>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
 
-    
 
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/ken_pepple" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
-    
 
     
 
-    
 
-    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-    
+<div class="pswp__bg"></div>
 
+<div class="pswp__scroll-wrap">
     
-
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://slideshare.net/ken-pepple" target="_blank"><i class="fa fa-slideshare fa-fw"></i>SlideShare</a>
-    </li>
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/kenpepple" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/slashk" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
 </div>
 
 
-  <div>
-  <div class="small-print">
-    <small><a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png"></a></small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>OpenStack Folsom Architecture</h1>
-  <h2></h2>
-</div>
-<div class="content">
-
-  <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>25 Sep 2012</time>
-  </div>
-
-  
-
-  
-
   
   
   
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
     
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/openstack">openstack</a>
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>OpenStack Folsom Architecture</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 25 Sep 2012
+  
+    &nbsp;(Last modified on 19 Sep 2016)
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;12&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2528&nbsp;words
+  
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
     
-  </div>
-  
-  
-
-</div>
-
-  
-
-<p><em>As the Folsom release of OpenStack is due to be released this week, I&rsquo;ve taken the time to update my &ldquo;Intro to OpenStack Architecture 101&rdquo; for the official documentation. It <a href="https://review.openstack.org/#/c/13566/2">merged into the repos yesterday</a> and below is an <strong>expanded</strong> version of it.</em></p>
-
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p><em>As the Folsom release of OpenStack is due to be released this week, I&rsquo;ve taken the time to update my &ldquo;Intro to OpenStack Architecture 101&rdquo; for the official documentation. It <a href="https://review.openstack.org/#/c/13566/2">merged into the repos yesterday</a> and below is an <strong>expanded</strong> version of it.</em></p>
 <h2 id="openstack-components">OpenStack Components</h2>
-
 <p>There are currently seven core components of OpenStack: Compute, Object Storage,
 Identity, Dashboard, Block Storage, Network and Image Service. Let&rsquo;s look at
 each in turn:</p>
-
 <ul>
-<li>Object Store (codenamed &ldquo;<a href="http://swift.openstack.org">Swift</a>&rdquo;) allows you to
+<li>Object Store (codenamed &ldquo;<a href="http://swift.openstack.org">Swift</a>&quot;) allows you to
 store or retrieve files (but not mount directories like a fileserver). Several
 companies provide commercial storage services based on Swift. These include
 KT, Rackspace (from which Swift originated) and Internap. Swift is also used
 internally at many large companies to store their data.</li>
-<li>Image (codenamed &ldquo;<a href="http://glance.openstack.org">Glance</a>&rdquo;) provides a catalog
+<li>Image (codenamed &ldquo;<a href="http://glance.openstack.org">Glance</a>&quot;) provides a catalog
 and repository for virtual disk images. These disk images are mostly commonly
 used in OpenStack Compute. While this service is technically optional, any
 cloud of size will require it.</li>
-<li>Compute (codenamed &ldquo;<a href="http://nova.openstack.org/">Nova</a>&rdquo;) provides virtual
+<li>Compute (codenamed &ldquo;<a href="http://nova.openstack.org/">Nova</a>&quot;) provides virtual
 servers upon demand. <a href="http://www.rackspace.com">Rackspace</a> and
 <a href="https://www.hpcloud.com/">HP</a> provide commercial compute services built on
 Nova and it is used internally at companies like Mercado Libre and NASA (where
 it originated).</li>
-<li>Dashboard (codenamed &ldquo;<a href="http://horizon.openstack.org/">Horizon</a>&rdquo;) provides a
+<li>Dashboard (codenamed &ldquo;<a href="http://horizon.openstack.org/">Horizon</a>&quot;) provides a
 modular web-based user interface for all the OpenStack services. With this web
 GUI, you can perform most operations on your cloud like launching an instance,
 assigning IP addresses and setting access controls.</li>
-<li>Identity (codenamed &ldquo;<a href="http://keystone.openstack.org/">Keystone</a>&rdquo;) provides
+<li>Identity (codenamed &ldquo;<a href="http://keystone.openstack.org/">Keystone</a>&quot;) provides
 authentication and authorization for all the OpenStack services. It also
 provides a service catalog of services within a particular OpenStack
 cloud.</li>
-<li>Network (codenamed &ldquo;<a href="http://quantum.openstack.org/">Quantum</a>&rdquo;) provides
+<li>Network (codenamed &ldquo;<a href="http://quantum.openstack.org/">Quantum</a>&quot;) provides
 &ldquo;network connectivity as a service&rdquo; between interface devices managed by other
 OpenStack services (most likely Nova). The service works by allowing users to
 create their own networks and then attach interfaces to them. Quantum has a
@@ -286,22 +321,16 @@ service described below). Please note that this is block storage (or volumes)
 not filesystems like NFS or CIFS share. <strong>Cinder is new for the Folsom
 release</strong>.</li>
 </ul>
-
 <p>In addition to these core projects, there are also a number of &ldquo;incubation&rdquo; projects that are being considered for future inclusion in the OpenStack core.</p>
-
 <h2 id="comparison-against-aws">Comparison Against AWS</h2>
-
 <p>Although all of the OpenStack services are made to stand on their own, many users want some form of AWS compatibility for tools, APIs or just familiarity:</p>
-
 <ul>
 <li>Nova is conceptually similar to EC2. In fact, there is are a variety of ways to provide EC2 API compatibility to it.</li>
 <li>Swift is conceptually similar to S3. It implements a subset of the S3 API in WSGI middleware.</li>
 <li>Glance provides many of the same features as Amazon&rsquo;s AMI catalog.</li>
 <li>Cinder provides block services similar to EBS.</li>
 </ul>
-
 <h2 id="conceptual-architecture">Conceptual Architecture</h2>
-
 <p>The OpenStack project as a whole is designed to &ldquo;deliver(ing) a massively
 scalable cloud operating system.&rdquo; To achieve this, each of the constituent
 services are designed to work together to provide a complete Infrastructure as a
@@ -311,11 +340,8 @@ consume). While these APIs allow each of the services to use another service, it
 also allows an implementer to switch out any service as long as they maintain
 the API. These are (mostly) the same APIs that are available to end users of the
 cloud.</p>
-
 <p>Conceptually, you can picture the relationships between the services as so:</p>
-
 <p><a href="http://26a0ff8ca8ba32139f7d-db711c577a50b6bdc946ea71aaca027d.r97.cf1.rackcdn.com/openstack-conceptual-arch-folsom.jpg"><img src="http://26a0ff8ca8ba32139f7d-db711c577a50b6bdc946ea71aaca027d.r97.cf1.rackcdn.com/openstack-conceptual-arch-folsom.jpg" alt="OpenStack Folsom Conceptual Architecture" width="700px" /></a></p>
-
 <ul>
 <li>Dashboard (&ldquo;Horizon&rdquo;) provides a web front end to the other OpenStack services</li>
 <li>Compute (&ldquo;Nova&rdquo;) stores and retrieves virtual disks (&ldquo;images&rdquo;) and associated
@@ -326,15 +352,12 @@ metadata in Image (&ldquo;Glance&rdquo;)</li>
 Store(&ldquo;Swift&rdquo;)</li>
 <li>All the services authenticate with Identity (&ldquo;Keystone&rdquo;)</li>
 </ul>
-
 <p>This is a stylized and simplified view of the architecture, assuming that the
 implementer is using all of the services together in the most common
 configuration. It also only shows the &ldquo;operator&rdquo; side of the cloud &ndash; it does
 not picture how consumers of the cloud may actually use it. For example, many
 users will access object storage heavily (and directly).</p>
-
 <h2 id="logical-architecture">Logical Architecture</h2>
-
 <p>As you can imagine, the logical architecture is far more complicated than the
 conceptual architecture shown above. As with any service-oriented architecture,
 diagrams quickly become &ldquo;messy&rdquo; trying to illustrate all the possible
@@ -342,11 +365,8 @@ combinations of service communications. The diagram below, illustrates the most
 common architecture of an OpenStack-based cloud. However, as OpenStack supports
 a wide variety of technologies, it does not represent the only architecture
 possible.</p>
-
 <p><a href="http://26a0ff8ca8ba32139f7d-db711c577a50b6bdc946ea71aaca027d.r97.cf1.rackcdn.com/openstack-logical-arch-folsom.jpg"><img src="http://26a0ff8ca8ba32139f7d-db711c577a50b6bdc946ea71aaca027d.r97.cf1.rackcdn.com/openstack-logical-arch-folsom.jpg" alt="OpenStack Folsom Logical Architecture" width="700px" /></a></p>
-
 <p>This picture is consistent with the conceptual architecture above in that:</p>
-
 <ul>
 <li>End users can interact through a common web interface (Horizon) or directly to
 each service through their API</li>
@@ -355,19 +375,13 @@ Keystone)</li>
 <li>Individual services interact with each other through their public APIs (except
 where privileged administrator commands are necessary)</li>
 </ul>
-
 <p>In the sections below, we&rsquo;ll delve into the architecture for each of the
 services.</p>
-
 <h3 id="dashboard">Dashboard</h3>
-
 <p>Horizon is a modular <a href="https://www.djangoproject.com/">Django web application</a>
 that provides an end user and administrator interface to OpenStack services.</p>
-
 <p><img src="http://xip-1077754327103.http.internapcdn.net/xip-1077754327103/blog/horizon-screenshot.jpg" alt="OpenStack Horizon Screenshot" width="700px" /></p>
-
 <p>As with most web applications, the architecture is fairly simple:</p>
-
 <ul>
 <li>Horizon is usually deployed via <a href="http://code.google.com/p/modwsgi/">mod_wsgi</a>
 in Apache. The code itself is separated into a reusable python module with
@@ -376,19 +390,15 @@ most of the logic (interactions with various OpenStack APIs) and presentation
 <li>A database (configurable as to which one). As it relies mostly on the other
 services for data, it stores very little data of its own.</li>
 </ul>
-
 <p>From a network architecture point of view, this service will need to be customer
 accessible as well as be able to talk to each service&rsquo;s public APIs. If you wish
 to use the administrator functionality (i.e. for other services), it will also
 need connectivity to their Admin API endpoints (which <strong>should not</strong> be customer
 accessible).</p>
-
 <h3 id="compute">Compute</h3>
-
 <p>Nova is the most complicated and distributed component of OpenStack. A large
 number of processes cooperate to turn end user API requests into running virtual
 machines. Below is a list of these processes and their functions:</p>
-
 <ul>
 <li><code>nova-api</code> accepts and responds to end user compute API calls. It supports
 OpenStack Compute API, Amazon&rsquo;s EC2 API and a special Admin API (for
@@ -435,17 +445,13 @@ development work), MySQL and PostgreSQL.</li>
 instance&rsquo;s console through a proxy. This involves several daemons
 (<code>nova-console</code>, <code>nova-vncproxy</code> and <code>nova-consoleauth</code>).</li>
 </ul>
-
 <p>Nova interacts with many other OpenStack services: Keystone for authentication,
 Glance for images and Horizon for web interface. The Glance interactions are
 central. The API process can upload and query Glance while <code>nova-compute</code> will
 download images for use in launching images.</p>
-
 <h3 id="object-store">Object Store</h3>
-
 <p>The swift architecture is very distributed to prevent any single point of
 failure as well as to scale horizontally. It includes the following components:</p>
-
 <ul>
 <li>Proxy server (<code>swift-proxy-server</code>) accepts incoming requests via
 the OpenStack Object API or just raw HTTP. It accepts files to upload,
@@ -457,24 +463,18 @@ an optional cache (usually deployed with memcache) to improve performance.</li>
 object store service.</li>
 <li>Object servers manage actual objects (i.e. files) on the storage nodes.</li>
 </ul>
-
 <p>There are also a number of periodic process which run to perform housekeeping
 tasks on the large data store. The most important of these is the replication
 services, which ensures consistency and availability through the cluster. Other
 periodic processes include auditors, updaters and reapers.</p>
-
 <p>The object store can also serve static web pages and objects via HTTP. In fact, the diagrams in this blog post are being served out of Rackspace Cloud&rsquo;s Swift service.</p>
-
 <p>Authentication is handled through configurable WSGI middleware (which will
 usually be Keystone).</p>
-
 <h3 id="image-store">Image Store</h3>
-
 <p>The Glance architecture has stayed relatively stable since the Cactus release.
 The biggest architectural change has been the addition of authentication, which
 was added in the Diablo release. Just as a quick reminder, Glance has four main
 parts to it:</p>
-
 <ul>
 <li><code>glance-api</code> accepts Image API calls for image discovery, image retrieval and
 image storage.</li>
@@ -487,22 +487,17 @@ is shown as the image repository, but this is configurable. In addition to
 Swift, Glance supports normal filesystems, RADOS block devices, Amazon S3 and
 HTTP. Be aware that some of these choices are limited to read-only usage.</li>
 </ul>
-
 <p>There are also a number of periodic process which run on Glance to support
 caching. The most important of these is the replication services, which ensures
 consistency and availability through the cluster. Other periodic processes
 include auditors, updaters and reapers.</p>
-
 <p>As you can see from the diagram in the Conceptual Architecture section, Glance
 serves a central role to the overall IaaS picture. It accepts API requests for
 images (or image metadata) from end users or Nova components and can store its
 disk files in the object storage service, Swift.</p>
-
 <p>###Identity</p>
-
 <p>Keystone provides a single point of integration for OpenStack policy, catalog,
 token and authentication.</p>
-
 <ul>
 <li><code>keystone</code> handles API requests as well as providing configurable
 catalog, policy, token and identity services.</li>
@@ -510,12 +505,9 @@ catalog, policy, token and identity services.</li>
 use the particular service. Most support standard backends like LDAP or SQL,
 as well as Key Value Stores (KVS).</li>
 </ul>
-
 <p>Most people will use this as a point of customization for their current
 authentication services.</p>
-
 <h3 id="network">Network</h3>
-
 <p>Quantum provides &ldquo;network connectivity as a service&rdquo; between interface devices
 managed by other OpenStack services (most likely Nova). The service works by
 allowing users to create their own networks and then attach interfaces to them.
@@ -523,7 +515,6 @@ Like many of the OpenStack services, Quantum is highly configurable due to it&rs
 plug-in architecture. These plug-ins accommodate different networking equipment
 and software. As such, the architecture and deployment can vary dramatically. In
 the above architecture, a simple Linux networking plug-in is shown.</p>
-
 <ul>
 <li><code>quantum-server</code> accepts API requests and then routes them to the
 appropriate quantum plugin for action.</li>
@@ -541,17 +532,13 @@ agent.</li>
 information between the <code>quantum-server</code> and various agents as well as a
 database to store networking state for particular plugins.</li>
 </ul>
-
 <p>Quantum will interact mainly with Nova, where it will provide networks and
 connectivity for its instances.</p>
-
 <h3 id="block-storage">Block Storage</h3>
-
 <p>Cinder separates out the persistent block storage functionality that was
 previously part of Openstack Compute (in the form of <code>nova-volume</code>) into it&rsquo;s own
 service. The OpenStack Block Storage API allows for manipulation of volumes,
 volume types (similar to compute flavors) and volume snapshots.</p>
-
 <ul>
 <li><code>cinder-api</code> accepts API requests and routes them to cinder-volume
 for action.</li>
@@ -568,14 +555,10 @@ block storage provider node to create the volume on.</li>
 information between the cinder processes as well as a database to store volume
 state.</li>
 </ul>
-
 <p>Like Quantum, Cinder will mainly interact with Nova, providing volumes for its
 instances.</p>
-
 <h2 id="future-projects">Future Projects</h2>
-
 <p>A number of projects are in the work for future versions of OpenStack. They include:</p>
-
 <ul>
 <li><strong>Ceilometer</strong> is a metering project. The project offers metering information
 and the ability to code more ways to know what has happened on an OpenStack
@@ -589,81 +572,211 @@ implementing standards such as AWS CloudFormation.</li>
 </ul>
 
 
+        
+          <div class="blog-tags">
+            
+              <a href="http://ken.pepple.info//tags/openstack/">openstack</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2012%2f09%2f25%2fopenstack-folsom-architecture%2f&amp;text=OpenStack%20Folsom%20Architecture&amp;via=ken_pepple" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
   
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/">Revisiting OpenStack Architecture: Essex Edition</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/">Grizzly Architecture Revisit</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
-</div>
-
-
-
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fken.pepple.info%2fopenstack%2f2012%2f09%2f25%2fopenstack-folsom-architecture%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
   
-<div id="disqus_thread"></div>
-<script type="text/javascript">
+      
+      <li>
+        <a href="//reddit.com/submit?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2012%2f09%2f25%2fopenstack-folsom-architecture%2f&amp;title=OpenStack%20Folsom%20Architecture" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2012%2f09%2f25%2fopenstack-folsom-architecture%2f&amp;title=OpenStack%20Folsom%20Architecture" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2012%2f09%2f25%2fopenstack-folsom-architecture%2f&amp;title=OpenStack%20Folsom%20Architecture" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2012%2f09%2f25%2fopenstack-folsom-architecture%2f&amp;description=OpenStack%20Folsom%20Architecture" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
 
-(function() {
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/">Kubernetes The Easy Way</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/">The Tenrec Rises: Deploying OpenStack, Havana Edition</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/">Grizzly Architecture Revisit</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/">Revisiting OpenStack Architecture: Essex Edition</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/">OpenStack Has A Mascot: The &#34;Tenrec&#34; Book</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/" data-toggle="tooltip" data-placement="top" title="Revisiting OpenStack Architecture: Essex Edition">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/" data-toggle="tooltip" data-placement="top" title="Grizzly Architecture Revisit">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@pepple.info" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/slashk" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/ken_pepple" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/kenpepple" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="ken.pepple.info">Ken Pepple</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://ken.pepple.info/">Wander</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.3</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          &nbsp;&bull;&nbsp;[<a href="https://github.com/slashk/blog/tree/13f4d8b7f0dfd11fb092bb6b7a48d3db59effed7">13f4d8b7</a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://ken.pepple.info/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://ken.pepple.info/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
     
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'kenpepple';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-</div>
-
-</div>
-</div>
-<script src="http://ken.pepple.info/js/ui.js"></script>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-2210525-5', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-
-
-
-</body>
+  </body>
 </html>
 

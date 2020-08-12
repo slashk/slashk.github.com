@@ -1,411 +1,552 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
 
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.31.1" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Custom iPhone Notifications with Prowl &middot; Wander</title>
-
+  <title>Custom iPhone Notifications with Prowl - Wander</title>
+  <meta name="description" content="On of my favorite iPhone feature is push notifications. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called Prowl. Prowl is a Growl client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.
+To send yourself custom push notifications, you&rsquo;ll first need to buy Prowl for your iPhone (around USD$2.">
+  <meta name="author" content="Ken Pepple"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Wander",
+    
+    "url": "http:\/\/ken.pepple.info\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/ken.pepple.info\/"
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="http://ken.pepple.info/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="http://ken.pepple.info/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="http://ken.pepple.info/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
   
   
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/python\/2011\/03\/21\/custom-iphone-notifications-with-prowl\/",
+          "name": "Custom i phone notifications with prowl"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ken Pepple"
+  },
+  "headline": "Custom iPhone Notifications with Prowl",
+  "description" : "On of my favorite iPhone feature is push notifications. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I\u0026rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called Prowl. Prowl is a Growl client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.\nTo send yourself custom push notifications, you\u0026rsquo;ll first need to buy Prowl for your iPhone (around USD$2.",
+  "inLanguage" : "en",
+  "wordCount":  690 ,
+  "datePublished" : "2011-03-21T00:00:00",
+  "dateModified" : "2011-03-21T00:00:00",
+  "image" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+  "keywords" : [ "iphone, python, ruby" ],
+  "mainEntityOfPage" : "http:\/\/ken.pepple.info\/python\/2011\/03\/21\/custom-iphone-notifications-with-prowl\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/ken.pepple.info\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  
-  <script>hljs.initHighlightingOnLoad();</script>
-  
+<meta property="og:title" content="Custom iPhone Notifications with Prowl" />
+<meta property="og:description" content="On of my favorite iPhone feature is push notifications. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called Prowl. Prowl is a Growl client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.
+To send yourself custom push notifications, you&rsquo;ll first need to buy Prowl for your iPhone (around USD$2.">
+<meta property="og:image" content="http://ken.pepple.info/images/llama.jpg" />
+<meta property="og:url" content="http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Wander" />
 
-  <link rel="shortcut icon" href="http://ken.pepple.info/img/favicon.ico" type="image/x-icon" />
-
-  
-  
-
-</head>
-
-
-<body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="http://ken.pepple.info/"><img src="http://ken.pepple.info/images/llama-small.png"></a>
+  <meta name="twitter:title" content="Custom iPhone Notifications with Prowl" />
+  <meta name="twitter:description" content="On of my favorite iPhone feature is push notifications. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&rsquo;ve always wished I could write my own …">
+  <meta name="twitter:image" content="http://ken.pepple.info/images/llama.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ken_pepple" />
+  <meta name="twitter:creator" content="@ken_pepple" />
+  <meta name="generator" content="Hugo 0.74.3" />
+  <link rel="alternate" href="http://ken.pepple.info/index.xml" type="application/rss+xml" title="Wander"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://ken.pepple.info/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://ken.pepple.info/css/syntax.css" /><link rel="stylesheet" href="http://ken.pepple.info/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
 
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/about/"><i class='fa fa-user fa-fw'></i>About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-    </ul>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-2210525-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://ken.pepple.info/">Wander</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="http://ken.pepple.info/post/">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="http://ken.pepple.info/tags/">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="http://ken.pepple.info/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="http://ken.pepple.info/">Home</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Wander" href="http://ken.pepple.info/">
+            <img class="avatar-img" src="http://ken.pepple.info/images/llama.jpg" alt="Wander" />
+          </a>
+        </div>
+      </div>
+    
+
   </div>
+</nav>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
 
-    
 
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/ken_pepple" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
-    
 
     
 
-    
 
-    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-    
+<div class="pswp__bg"></div>
 
+<div class="pswp__scroll-wrap">
     
-
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://slideshare.net/ken-pepple" target="_blank"><i class="fa fa-slideshare fa-fw"></i>SlideShare</a>
-    </li>
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/kenpepple" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/slashk" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
 </div>
 
 
-  <div>
-  <div class="small-print">
-    <small><a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png"></a></small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>Custom iPhone Notifications with Prowl</h1>
-  <h2></h2>
-</div>
-<div class="content">
-
-  <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>21 Mar 2011</time>
-  </div>
-
-  
-
-  
-
   
   
   
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
     
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/iphone">iphone</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/python">python</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/ruby">ruby</a>
-    
-  </div>
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Custom iPhone Notifications with Prowl</h1>
+              
+              
+              
+              
+                <span class="post-meta">
   
   
-
-</div>
-
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 21 Mar 2011
   
+    &nbsp;(Last modified on 13 Feb 2017)
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;690&nbsp;words
+  
+  
+  
+</span>
 
-<p><img src="http://ken.pepple.info/images/prowl_empty.jpg" alt="" /></p>
 
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p><img src="http://ken.pepple.info/images/prowl_empty.jpg" alt=""></p>
 <p>On of my favorite iPhone feature is <a href="http://en.wikipedia.org/wiki/Apple_Push_Notification_Service">push notifications</a>. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called <a href="http://www.prowlapp.com/">Prowl</a>. Prowl is a <a href="http://growl.info/">Growl</a> client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.</p>
-
 <p>To send yourself custom push notifications, you&rsquo;ll first need to buy <a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=320876271">Prowl</a> for your iPhone (around USD$2.99). Once you&rsquo;ve downloaded and installed it on your iPhone, you need to <a href="https://www.prowlapp.com/api_settings.php">generate an API key</a>. With that completed, you are all set to receive Prowl alerts.</p>
-
 <p>Some desktop/server apps work with it out of the box (a semi-full list is at <a href="http://www.prowlapp.com/apps.php">http://www.prowlapp.com/apps.php</a>. Others like <a href="http://en.znc.in/wiki/Prowl">znc</a>, <a href="http://flexget.com/wiki/Plugins/prowl">flexget</a> or <a href="http://reluctanthacker.rollett.org/content/setting-nagios3-send-prowl-notifications">Nagios</a> require a plugin. To create you own custom alert, you&rsquo;ll need to write some scripting code. I prefer using Python or Ruby for this, but <a href="http://www.prowlapp.com/api.php#libraries">there are plenty of libraries available for other languages</a>.</p>
-
 <h3 id="prowl-api">Prowl API</h3>
-
 <p>The <a href="http://www.prowlapp.com/api.php">Prowl API</a> is very simple:</p>
-
 <ul>
 <li><code>add</code> (POST) which sends notifications to your iPhone</li>
 <li><code>verify</code> (GET) which checks the validity of your API key</li>
 </ul>
-
 <p>Just recently the API was updated to version 1.2 which added two new methods - <code>retrieve/token</code> (GET) and <code>retrieve/apikey</code> (GET) - which appeal mostly to website operators. They facilitate giving people your API key in a secure manner.</p>
-
 <p>While the API is very simple, and you could certainly use it from the command line with a tool like curl, most people will want to use a library for their favorite programming language. I use two of these libraries, Prowly for Ruby and ProwlPy for Python.</p>
-
 <h3 id="prowly-for-ruby">Prowly for Ruby</h3>
-
 <p>The <a href="http://raflabs.com/blogs/silence-is-foo/2010/06/30/prowly-a-ruby-api-wrapper-for-prowl-the-growl-client-for-the-iphone/">Prowly gem</a> was written by Rafael Magana to make the Prowl API a bit more Ruby-friendly. It is dead simple to use. First, install the gem:</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo gem install prowly</code></pre></div>
-<p>Then create a simple script like the one below:</p></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#fff;font-weight:bold">require</span> <span style="color:#0ff;font-weight:bold">&#39;prowly&#39;</span>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo gem install prowly
+</code></pre></div><p>Then create a simple script like the one below:</p></p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#24909d">require</span> <span style="color:#ed9d13">&#39;prowly&#39;</span>
 
-<span style="color:#007f7f"># your api key from https://www.prowlapp.com/api_settings.php</span>
-my_api_key = <span style="color:#0ff;font-weight:bold">&#34;1234567890123456789012345678901234567890&#34;</span>
+<span style="color:#999;font-style:italic"># your api key from https://www.prowlapp.com/api_settings.php</span>
+my_api_key = <span style="color:#ed9d13">&#34;1234567890123456789012345678901234567890&#34;</span>
 
-Prowly.notify <span style="color:#fff;font-weight:bold">do</span> |n|
+<span style="color:#40ffff">Prowly</span>.notify <span style="color:#6ab825;font-weight:bold">do</span> |n|
     n.apikey = my_api_key
-    n.priority = Prowly::Notification::Priority::MODERATE
-    n.application = <span style="color:#0ff;font-weight:bold">&#34;Prowly&#34;</span>
-    n.event = <span style="color:#0ff;font-weight:bold">&#34;Notification&#34;</span>
-    n.description = <span style="color:#0ff;font-weight:bold">&#34;Your server is under attack!!!&#34;</span>
-    n.url = <span style="color:#0ff;font-weight:bold">&#34;http://www.myserver.com&#34;</span> <span style="color:#007f7f"># requires API 1.2 support</span>
-<span style="color:#fff;font-weight:bold">end</span></code></pre></div>
-<p>That is basically all there is to it. Of course, you&rsquo;ll want your script to actually do something (check a stock, parse a RSS feed, etc.), but sending the prowl is really that simple. Prowly also includes a command line script to send notifications without any scripting.</p>
-
+    n.priority = <span style="color:#40ffff">Prowly</span>::<span style="color:#40ffff">Notification</span>::<span style="color:#40ffff">Priority</span>::<span style="color:#40ffff">MODERATE</span>
+    n.application = <span style="color:#ed9d13">&#34;Prowly&#34;</span>
+    n.event = <span style="color:#ed9d13">&#34;Notification&#34;</span>
+    n.description = <span style="color:#ed9d13">&#34;Your server is under attack!!!&#34;</span>
+    n.url = <span style="color:#ed9d13">&#34;http://www.myserver.com&#34;</span> <span style="color:#999;font-style:italic"># requires API 1.2 support</span>
+<span style="color:#6ab825;font-weight:bold">end</span>
+</code></pre></div><p>That is basically all there is to it. Of course, you&rsquo;ll want your script to actually do something (check a stock, parse a RSS feed, etc.), but sending the prowl is really that simple. Prowly also includes a command line script to send notifications without any scripting.</p>
 <p>Right now, the current gem has not been updated to use version 1.2 of the API. I&rsquo;ve put in a <a href="https://github.com/rafmagana/prowly/pull/1">pull request to get my upgrades merged in</a> but in the meantime you can clone the updated one from my gtihub repository at  <a href="https://github.com/slashk/prowly">https://github.com/slashk/prowly</a>.</p>
-
 <h3 id="prowlpy-for-python">ProwlPy for Python</h3>
-
 <p>A corresponding Python library is called ProwlPy and was written by Jacob Burch and Olivier Hervieu. It is very similar to the Prowly. To use it, install the python library (which doesn&rsquo;t appear to be on PyPi):</p></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone https://github.com/jacobb/prowlpy.git
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone https://github.com/jacobb/prowlpy.git
 ... snip ...
-$ <span style="color:#fff;font-weight:bold">cd</span> prowlpy
-$ python setup.py install</code></pre></div>
-<p>Then just create a simple script like the ruby one above:</p></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> prowlpy
+$ <span style="color:#24909d">cd</span> prowlpy
+$ python setup.py install
+</code></pre></div><p>Then just create a simple script like the ruby one above:</p></p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf;text-decoration:underline">prowlpy</span>
 
-<span style="color:#007f7f"># your api key from https://www.prowlapp.com/api_settings.php</span>
-my_api_key = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;1234567890123456789012345678901234567890&#39;</span> <span style="color:#007f7f"># your api key</span>
+<span style="color:#999;font-style:italic"># your api key from https://www.prowlapp.com/api_settings.php</span>
+my_api_key = <span style="color:#ed9d13">&#39;1234567890123456789012345678901234567890&#39;</span> <span style="color:#999;font-style:italic"># your api key</span>
 p = prowlpy.Prowl(my_api_key)
-<span style="color:#fff;font-weight:bold">try</span>:
-    p.add(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;ProwlPy&#39;</span>,
-          <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;Notification&#39;</span>,
-          <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;Your server is under attack&#39;</span>,
-          <span style="color:#ff0;font-weight:bold">1</span>,
+<span style="color:#6ab825;font-weight:bold">try</span>:
+    p.add(<span style="color:#ed9d13">&#39;ProwlPy&#39;</span>,
+          <span style="color:#ed9d13">&#39;Notification&#39;</span>,
+          <span style="color:#ed9d13">&#39;Your server is under attack&#39;</span>,
+          <span style="color:#3677a9">1</span>,
           None,
-          <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;http://www.myserver.com&#34;</span>)
-<span style="color:#fff;font-weight:bold">except</span> Exception,msg:
-    <span style="color:#fff;font-weight:bold">print</span> msg</code></pre></div>
-<p>I also upgraded this library to version 1.2 of the API and my changes have already been merged into the main repository at <a href="https://github.com/jacobb/prowlpy">https://github.com/slashk/prowly</a>.</p>
-
+          <span style="color:#ed9d13">&#34;http://www.myserver.com&#34;</span>)
+<span style="color:#6ab825;font-weight:bold">except</span> <span style="color:#bbb">Exception</span>,msg:
+    <span style="color:#6ab825;font-weight:bold">print</span> msg
+</code></pre></div><p>I also upgraded this library to version 1.2 of the API and my changes have already been merged into the main repository at <a href="https://github.com/jacobb/prowlpy"><a href="https://github.com/slashk/prowly">https://github.com/slashk/prowly</a></a>.</p>
 <h3 id="creating-your-own-prowl-notifiers">Creating Your Own Prowl Notifiers</h3>
-
 <p><img style="float: right;" src="http://ken.pepple.info/images/prowl_alert.jpg" /></p>
-
 <p>Once you&rsquo;ve grokked the basics of using the Prowl API, it&rsquo;s time to actually put it to use. To do that, you&rsquo;ll need to create your own script (with whatever logic you need), have it execute at common intervals (usually via <span class="code-inline">cron</span>) and then just wait for prowl notifications to roll in.</p>
-
 <p>To get you started, I&rsquo;ve created a repository of scripts that I use over at <a href="https://github.com/slashk/prowl-scripts">https://github.com/slashk/prowl-scripts</a>. There you&rsquo;ll see a few scripts to notify you of:</p>
-
 <ul>
 <li><a href="https://www.transmissionbt.com/">transmission bit torrent</a> download completions</li>
 <li>daily and monthly Google AdSense balances</li>
 <li><a href="http://www.woot.com/">woot!</a> deals</li>
 </ul>
-
 <p>I&rsquo;ll be adding more as I clean up my other scripts (weather, stock prices, steep and cheap, etc).</p>
 
 
+        
+          <div class="blog-tags">
+            
+              <a href="http://ken.pepple.info//tags/iphone/">iphone</a>&nbsp;
+            
+              <a href="http://ken.pepple.info//tags/python/">python</a>&nbsp;
+            
+              <a href="http://ken.pepple.info//tags/ruby/">ruby</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=http%3a%2f%2fken.pepple.info%2fpython%2f2011%2f03%2f21%2fcustom-iphone-notifications-with-prowl%2f&amp;text=Custom%20iPhone%20Notifications%20with%20Prowl&amp;via=ken_pepple" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
   
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/">Configurable Instance Types For OpenStack</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails/">Auto Blogging with Rake &amp; Rails</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
-</div>
-
-
-
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fken.pepple.info%2fpython%2f2011%2f03%2f21%2fcustom-iphone-notifications-with-prowl%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
   
-<div id="disqus_thread"></div>
-<script type="text/javascript">
+      
+      <li>
+        <a href="//reddit.com/submit?url=http%3a%2f%2fken.pepple.info%2fpython%2f2011%2f03%2f21%2fcustom-iphone-notifications-with-prowl%2f&amp;title=Custom%20iPhone%20Notifications%20with%20Prowl" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fken.pepple.info%2fpython%2f2011%2f03%2f21%2fcustom-iphone-notifications-with-prowl%2f&amp;title=Custom%20iPhone%20Notifications%20with%20Prowl" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fken.pepple.info%2fpython%2f2011%2f03%2f21%2fcustom-iphone-notifications-with-prowl%2f&amp;title=Custom%20iPhone%20Notifications%20with%20Prowl" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=http%3a%2f%2fken.pepple.info%2fpython%2f2011%2f03%2f21%2fcustom-iphone-notifications-with-prowl%2f&amp;description=Custom%20iPhone%20Notifications%20with%20Prowl" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
 
-(function() {
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/">Configurable Instance Types For OpenStack</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/" data-toggle="tooltip" data-placement="top" title="Configurable Instance Types For OpenStack">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake-rails/" data-toggle="tooltip" data-placement="top" title="Auto Blogging with Rake &amp; Rails">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@pepple.info" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/slashk" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/ken_pepple" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/kenpepple" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="ken.pepple.info">Ken Pepple</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://ken.pepple.info/">Wander</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.3</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          &nbsp;&bull;&nbsp;[<a href="https://github.com/slashk/blog/tree/eacfd33639449341954704d7558b7ade2d78d837">eacfd336</a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://ken.pepple.info/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://ken.pepple.info/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
     
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'kenpepple';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-</div>
-
-</div>
-</div>
-<script src="http://ken.pepple.info/js/ui.js"></script>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-2210525-5', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-
-
-
-</body>
+  </body>
 </html>
 

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Auto Blogging with Rake &amp; Rails - Wander</title>
+  <meta name="description" content="I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every weekend all year long. Unfortunately, I don&rsquo;t have a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend.">
+  <meta name="author" content="Ken Pepple"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Wander",
+    
+    "url": "http:\/\/ken.pepple.info\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/ken.pepple.info\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/ruby\/2011\/03\/26\/auto-blogging-with-rake-rails\/",
+          "name": "Auto blogging with rake \u0026 rails"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ken Pepple"
+  },
+  "headline": "Auto Blogging with Rake \u0026 Rails",
+  "description" : "I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every weekend all year long. Unfortunately, I don\u0026rsquo;t have a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend.",
+  "inLanguage" : "en",
+  "wordCount":  650 ,
+  "datePublished" : "2011-03-26T00:00:00",
+  "dateModified" : "2011-03-26T00:00:00",
+  "image" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+  "keywords" : [ "openstack" ],
+  "mainEntityOfPage" : "http:\/\/ken.pepple.info\/ruby\/2011\/03\/26\/auto-blogging-with-rake-rails\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/ken.pepple.info\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Auto Blogging with Rake &amp; Rails" />
+<meta property="og:description" content="I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every weekend all year long. Unfortunately, I don&rsquo;t have a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend.">
+<meta property="og:image" content="http://ken.pepple.info/images/llama.jpg" />
+<meta property="og:url" content="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake-rails/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Wander" />
+
+  <meta name="twitter:title" content="Auto Blogging with Rake &amp; Rails" />
+  <meta name="twitter:description" content="I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every …">
+  <meta name="twitter:image" content="http://ken.pepple.info/images/llama.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ken_pepple" />
+  <meta name="twitter:creator" content="@ken_pepple" />
+  <meta name="generator" content="Hugo 0.74.3" />
+  <link rel="alternate" href="http://ken.pepple.info/index.xml" type="application/rss+xml" title="Wander"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://ken.pepple.info/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://ken.pepple.info/css/syntax.css" /><link rel="stylesheet" href="http://ken.pepple.info/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-2210525-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://ken.pepple.info/">Wander</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="http://ken.pepple.info/post/">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="http://ken.pepple.info/tags/">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="http://ken.pepple.info/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="http://ken.pepple.info/">Home</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Wander" href="http://ken.pepple.info/">
+            <img class="avatar-img" src="http://ken.pepple.info/images/llama.jpg" alt="Wander" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Auto Blogging with Rake &amp; Rails</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 26 Mar 2011
+  
+    &nbsp;(Last modified on 19 Sep 2016)
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;650&nbsp;words
+  
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every weekend all year long. Unfortunately, I don&rsquo;t have a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend. You can see an example of what I wanted at <a href="http://norcalmtnbikeracing.blogspot.com/2011/03/norcal-mtb-racing-this-weekend-3-mar-8.html">NorCal MTB Racing blog</a>.</p>
+<p>The basic idea was to create a <code>cron</code> job that pulls a list of races (with a link for details) from my rails application&rsquo;s database, plot the events on map, add some text and then post it to my blog on Blogger. Most of this is pretty standard rails stuff, but I did need some help for the map and posting.</p>
+<p>For the maps, I used <a href="http://code.google.com/apis/maps/documentation/staticmaps/">Google Static Maps</a>. This allows you to embed a Google Maps image on your webpage just like a normal image. All you need to do it feed it the right parameters. For example, this HTML code:</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#6ab825;font-weight:bold">img</span>
+<span style="color:#bbb">alt</span>=<span style="color:#ed9d13">&#34;NorCal MTB Race Event Map&#34;</span>
+<span style="color:#bbb">src</span>=<span style="color:#ed9d13">&#34;https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&amp;zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284&#34;</span>
+/&gt;
+</code></pre></div><p>Produces this map:</p>
+
+<link rel="stylesheet" href="http://ken.pepple.info/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn&#43;Bridge,New&#43;York,NY&amp;zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284" alt="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn&#43;Bridge,New&#43;York,NY&amp;zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284"/>
+    </div>
+    <a href="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn&#43;Bridge,New&#43;York,NY&amp;zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284" itemprop="contentUrl"></a>
+      <figcaption><h4>NorCal MTB Map</h4>
+      </figcaption>
+  </figure>
+</div>
+
+<p>To post to Blogger, I used the <code>blogger gem</code> (<a href="http://blogger.rubyforge.org/">installation instructions</a>). There are other ruby gems out there that interface with Blogger, but this was by far the most straight forward. To use the gem, you need username, password and blog ID. I found my blog ID through an <a href="http://www.google.com/support/forum/p/blogger/thread?tid=44fc0d69e2a4f283&amp;hl=en">answer in the blogger support forum</a>:</p>
+<blockquote>
+<p><em>Got to your dashboard and click Settings for the blog you want the ID of. In the address bar you should then see something like this:</em>
+<a href="http://www.blogger.com/blog-options-basic.g?blogID=9101099271220909428">http://www.blogger.com/blog-options-basic.g?blogID=9101099271220909428</a>
+<em>The long number at the end of the URL is your blog&rsquo;s ID number.</em></p>
+</blockquote>
+<p>I decided that this would be best implemented as a rake task, so I could full access to all the rails application environment (especially the database connection). Here is the complete rake task:</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1</span>namespace <span style="color:#ed9d13">:blogger</span> <span style="color:#6ab825;font-weight:bold">do</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2</span>  desc <span style="color:#ed9d13">&#34;post weekend update to blogger&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3</span>  task <span style="color:#ed9d13">:weekend_update</span>  =&gt; <span style="color:#ed9d13">:environment</span> <span style="color:#6ab825;font-weight:bold">do</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4</span>    <span style="color:#24909d">require</span> <span style="color:#ed9d13">&#39;blogger&#39;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6</span>    <span style="color:#999;font-style:italic"># preferences for blogger login</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7</span>    username = <span style="color:#ed9d13">&#39;sample@gmail.com&#39;</span> <span style="color:#999;font-style:italic"># change this to your username</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8</span>    password = <span style="color:#ed9d13">&#39;xxx129304xxxx&#39;</span> <span style="color:#999;font-style:italic"># change this to your password</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9</span>    blog_id = <span style="color:#ed9d13">&#39;123456&#39;</span> <span style="color:#999;font-style:italic"># change this to your blogid</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11</span>    <span style="color:#999;font-style:italic"># my entry preferences</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12</span>    days_ahead = <span style="color:#3677a9">5</span> <span style="color:#999;font-style:italic"># how many days of events ?</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13</span>    blog_entry = <span style="color:#ed9d13">&#34;For those of you making your weekend plans,
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14</span><span style="color:#ed9d13">                  here is quick rundown of this weekend</span><span style="color:#ed9d13">\&#39;</span><span style="color:#ed9d13">s MTB racing schedule
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15</span><span style="color:#ed9d13">                  for NorCal:</span><span style="color:#ed9d13">\n\n</span><span style="color:#ed9d13">&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17</span>    <span style="color:#999;font-style:italic"># google static map preferences</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">18</span>    base_url = <span style="color:#ed9d13">&#34;http://maps.google.com/maps/api/staticmap?&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">19</span>    map_params = [<span style="color:#ed9d13">&#34;size=400x400&#34;</span>, <span style="color:#ed9d13">&#34;maptype=roadmap&#34;</span>, <span style="color:#ed9d13">&#34;sensor=false&#34;</span>]
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">20</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">21</span>    <span style="color:#999;font-style:italic"># find all events in the mtbcalendar.com db for this weekend</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">22</span>    @events = <span style="color:#40ffff">Event</span>.active.find_tagged_with(
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">23</span>        <span style="color:#ed9d13">&#34;norcal&#34;</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">24</span>        <span style="color:#ed9d13">:conditions</span> =&gt; [<span style="color:#ed9d13">&#34;start_date &gt;= CURRENT_DATE AND start_date &lt; ?&#34;</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">25</span>                        days_ahead.days.from_now],
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">26</span>        <span style="color:#ed9d13">:order</span> =&gt; <span style="color:#ed9d13">&#34;start_date asc&#34;</span>)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">27</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">28</span>    <span style="color:#999;font-style:italic"># loop through events adding place markers to the google static map URL</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">29</span>    x = <span style="color:#3677a9">0</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">30</span>    @events.each <span style="color:#6ab825;font-weight:bold">do</span> |marker|
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">31</span>      x += <span style="color:#3677a9">1</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">32</span>      map_params &lt;&lt; <span style="color:#ed9d13">&#34;markers=color:blue|label:</span><span style="color:#ed9d13">#{</span>x<span style="color:#ed9d13">}</span><span style="color:#ed9d13">|</span><span style="color:#ed9d13">#{</span>marker.lat<span style="color:#ed9d13">}</span><span style="color:#ed9d13">,</span><span style="color:#ed9d13">#{</span>marker.lng<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">33</span>      blog_entry += <span style="color:#ed9d13">&#34;</span><span style="color:#ed9d13">#{</span>x<span style="color:#ed9d13">}</span><span style="color:#ed9d13">. [</span><span style="color:#ed9d13">#{</span>marker.name<span style="color:#ed9d13">}</span><span style="color:#ed9d13">](http://mtbcalendar.com/events/</span><span style="color:#ed9d13">#{</span>marker.id<span style="color:#ed9d13">}</span><span style="color:#ed9d13">)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">34</span><span style="color:#ed9d13">                    (</span><span style="color:#ed9d13">#{</span>marker.start_date.to_s(<span style="color:#ed9d13">:compact</span>)<span style="color:#ed9d13">}</span><span style="color:#ed9d13">)</span><span style="color:#ed9d13">\n</span><span style="color:#ed9d13">&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">35</span>    <span style="color:#6ab825;font-weight:bold">end</span> <span style="color:#999;font-style:italic"># marker loop</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">36</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">37</span>    <span style="color:#999;font-style:italic"># add the google static map to post body</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">38</span>    map_pic_url = base_url + map_params.join(<span style="color:#ed9d13">&#39;&amp;&#39;</span>)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">39</span>    blog_entry += <span style="color:#ed9d13">&#34;</span><span style="color:#ed9d13">\n</span><span style="color:#ed9d13">![NorCal MTB Race Event Map](&#34;</span> + map_pic_url + <span style="color:#ed9d13">&#34;)&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">40</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">41</span>    <span style="color:#999;font-style:italic"># create title for the post</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">42</span>    blog_title = <span style="color:#ed9d13">&#34;NorCal MTB Racing This Weekend:
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">43</span><span style="color:#ed9d13">                  </span><span style="color:#ed9d13">#{</span><span style="color:#40ffff">Date</span>.today.to_s(<span style="color:#ed9d13">:short</span>)<span style="color:#ed9d13">}</span><span style="color:#ed9d13"> -
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">44</span><span style="color:#ed9d13">                  </span><span style="color:#ed9d13">#{</span>days_ahead.days.from_now.to_date.to_s(<span style="color:#ed9d13">:short</span>)<span style="color:#ed9d13">}</span><span style="color:#ed9d13">,
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">45</span><span style="color:#ed9d13">                  </span><span style="color:#ed9d13">#{</span><span style="color:#40ffff">Date</span>.today.year<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">46</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">47</span>    <span style="color:#999;font-style:italic"># login into blogger and post this draft</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">48</span>    account     = <span style="color:#40ffff">Blogger</span>::<span style="color:#40ffff">Account</span>.new(username,password)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">49</span>    new_post    = <span style="color:#40ffff">Blogger</span>::<span style="color:#40ffff">Post</span>.new(<span style="color:#ed9d13">:title</span>      =&gt; blog_title,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">50</span>                                    <span style="color:#ed9d13">:content</span>    =&gt; blog_entry,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">51</span>                                    <span style="color:#ed9d13">:formatter</span>  =&gt; <span style="color:#ed9d13">:rdiscount</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">52</span>                                    <span style="color:#ed9d13">:draft</span>      =&gt; <span style="color:#6ab825">true</span>)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">53</span>    account.post(blog_id,new_post)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">54</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">55</span>  <span style="color:#6ab825;font-weight:bold">end</span> <span style="color:#999;font-style:italic"># task    </span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">56</span><span style="color:#6ab825;font-weight:bold">end</span> <span style="color:#999;font-style:italic"># namespace</span></code></pre></div>
+<p>Although I did this with a rake task, you could also make it just a regular ruby script. However, then you would need to handle all of the database login and queries yourself.</p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="http://ken.pepple.info//tags/openstack/">openstack</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=http%3a%2f%2fken.pepple.info%2fruby%2f2011%2f03%2f26%2fauto-blogging-with-rake-rails%2f&amp;text=Auto%20Blogging%20with%20Rake%20%26%20Rails&amp;via=ken_pepple" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fken.pepple.info%2fruby%2f2011%2f03%2f26%2fauto-blogging-with-rake-rails%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=http%3a%2f%2fken.pepple.info%2fruby%2f2011%2f03%2f26%2fauto-blogging-with-rake-rails%2f&amp;title=Auto%20Blogging%20with%20Rake%20%26%20Rails" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fken.pepple.info%2fruby%2f2011%2f03%2f26%2fauto-blogging-with-rake-rails%2f&amp;title=Auto%20Blogging%20with%20Rake%20%26%20Rails" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fken.pepple.info%2fruby%2f2011%2f03%2f26%2fauto-blogging-with-rake-rails%2f&amp;title=Auto%20Blogging%20with%20Rake%20%26%20Rails" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=http%3a%2f%2fken.pepple.info%2fruby%2f2011%2f03%2f26%2fauto-blogging-with-rake-rails%2f&amp;description=Auto%20Blogging%20with%20Rake%20%26%20Rails" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/">Kubernetes The Easy Way</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/">The Tenrec Rises: Deploying OpenStack, Havana Edition</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/">Grizzly Architecture Revisit</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/">OpenStack Folsom Architecture</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/">Revisiting OpenStack Architecture: Essex Edition</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/" data-toggle="tooltip" data-placement="top" title="Custom iPhone Notifications with Prowl">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/" data-toggle="tooltip" data-placement="top" title="OpenStack Nova Architecture">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@pepple.info" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/slashk" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/ken_pepple" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/kenpepple" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="ken.pepple.info">Ken Pepple</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://ken.pepple.info/">Wander</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.3</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          &nbsp;&bull;&nbsp;[<a href="https://github.com/slashk/blog/tree/6f16d8b2fdc42294ea3861707321d628f7a2ea9d">6f16d8b2</a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://ken.pepple.info/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://ken.pepple.info/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

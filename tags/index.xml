@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Wander</title>
@@ -6,81 +6,119 @@
     <description>Recent content in Tags on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>info@pepple.info (Ken Pepple)</managingEditor>
+    <webMaster>info@pepple.info (Ken Pepple)</webMaster>
     <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 30 May 2009 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Feb 2017 11:23:00 -0800</lastBuildDate>
     
 	<atom:link href="http://ken.pepple.info/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Cloud</title>
-      <link>http://ken.pepple.info/tags/cloud/</link>
-      <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
-      
-      <guid>http://ken.pepple.info/tags/cloud/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Devops</title>
+      <title>devops</title>
       <link>http://ken.pepple.info/tags/devops/</link>
       <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
-      
+      <author>info@pepple.info (Ken Pepple)</author>
       <guid>http://ken.pepple.info/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Iphone</title>
-      <link>http://ken.pepple.info/tags/iphone/</link>
-      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
-      
-      <guid>http://ken.pepple.info/tags/iphone/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
+      <title>kubernetes</title>
       <link>http://ken.pepple.info/tags/kubernetes/</link>
       <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
-      
+      <author>info@pepple.info (Ken Pepple)</author>
       <guid>http://ken.pepple.info/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Openstack</title>
+      <title>openstack</title>
       <link>http://ken.pepple.info/tags/openstack/</link>
       <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
-      
+      <author>info@pepple.info (Ken Pepple)</author>
       <guid>http://ken.pepple.info/tags/openstack/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Python</title>
+      <title>terraform</title>
+      <link>http://ken.pepple.info/tags/terraform/</link>
+      <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/tags/terraform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>http://ken.pepple.info/tags/go/</link>
+      <pubDate>Sat, 17 Sep 2016 17:40:25 -0700</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>http://ken.pepple.info/tags/golang/</link>
+      <pubDate>Sat, 17 Sep 2016 17:40:25 -0700</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus</title>
+      <link>http://ken.pepple.info/tags/prometheus/</link>
+      <pubDate>Sat, 17 Sep 2016 17:40:25 -0700</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cicd</title>
+      <link>http://ken.pepple.info/tags/cicd/</link>
+      <pubDate>Sat, 13 Aug 2016 17:21:36 -0700</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/tags/cicd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iphone</title>
+      <link>http://ken.pepple.info/tags/iphone/</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/tags/iphone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
       <link>http://ken.pepple.info/tags/python/</link>
       <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
-      
+      <author>info@pepple.info (Ken Pepple)</author>
       <guid>http://ken.pepple.info/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Ruby</title>
+      <title>ruby</title>
       <link>http://ken.pepple.info/tags/ruby/</link>
       <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
-      
+      <author>info@pepple.info (Ken Pepple)</author>
       <guid>http://ken.pepple.info/tags/ruby/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Terraform</title>
-      <link>http://ken.pepple.info/tags/terraform/</link>
-      <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
-      
-      <guid>http://ken.pepple.info/tags/terraform/</guid>
+      <title>cloud</title>
+      <link>http://ken.pepple.info/tags/cloud/</link>
+      <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/tags/cloud/</guid>
       <description></description>
     </item>
     

@@ -1,283 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
 
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.31.1" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>OpenStack Nova Architecture &middot; Wander</title>
-
+  <title>OpenStack Nova Architecture - Wander</title>
+  <meta name="description" content="NOTE: I&rsquo;ve updated and expanded this blog post for the Folsom release. Click here to read the updated version.
+One of the common refrains I hear from people getting started with OpenStack is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview.">
+  <meta name="author" content="Ken Pepple"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Wander",
+    
+    "url": "http:\/\/ken.pepple.info\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/ken.pepple.info\/"
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="http://ken.pepple.info/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="http://ken.pepple.info/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="http://ken.pepple.info/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
   
   
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/openstack\/2011\/04\/22\/openstack-nova-architecture\/",
+          "name": "Open stack nova architecture"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ken Pepple"
+  },
+  "headline": "OpenStack Nova Architecture",
+  "description" : "NOTE: I\u0026rsquo;ve updated and expanded this blog post for the Folsom release. Click here to read the updated version.\nOne of the common refrains I hear from people getting started with OpenStack is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview.",
+  "inLanguage" : "en",
+  "wordCount":  2240 ,
+  "datePublished" : "2011-04-22T00:00:00",
+  "dateModified" : "2011-04-22T00:00:00",
+  "image" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+  "keywords" : [ "openstack" ],
+  "mainEntityOfPage" : "http:\/\/ken.pepple.info\/openstack\/2011\/04\/22\/openstack-nova-architecture\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/ken.pepple.info\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  
-  <script>hljs.initHighlightingOnLoad();</script>
-  
+<meta property="og:title" content="OpenStack Nova Architecture" />
+<meta property="og:description" content="NOTE: I&rsquo;ve updated and expanded this blog post for the Folsom release. Click here to read the updated version.
+One of the common refrains I hear from people getting started with OpenStack is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview.">
+<meta property="og:image" content="http://ken.pepple.info/images/llama.jpg" />
+<meta property="og:url" content="http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Wander" />
 
-  <link rel="shortcut icon" href="http://ken.pepple.info/img/favicon.ico" type="image/x-icon" />
-
-  
-  
-
-</head>
-
-
-<body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="http://ken.pepple.info/"><img src="http://ken.pepple.info/images/llama-small.png"></a>
+  <meta name="twitter:title" content="OpenStack Nova Architecture" />
+  <meta name="twitter:description" content="NOTE: I&rsquo;ve updated and expanded this blog post for the Folsom release. Click here to read the updated version.
+One of the common refrains I hear from people getting started with OpenStack is the …">
+  <meta name="twitter:image" content="http://ken.pepple.info/images/llama.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ken_pepple" />
+  <meta name="twitter:creator" content="@ken_pepple" />
+  <meta name="generator" content="Hugo 0.74.3" />
+  <link rel="alternate" href="http://ken.pepple.info/index.xml" type="application/rss+xml" title="Wander"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://ken.pepple.info/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://ken.pepple.info/css/syntax.css" /><link rel="stylesheet" href="http://ken.pepple.info/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
 
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/about/"><i class='fa fa-user fa-fw'></i>About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-    </ul>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-2210525-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://ken.pepple.info/">Wander</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="http://ken.pepple.info/post/">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="http://ken.pepple.info/tags/">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="http://ken.pepple.info/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="http://ken.pepple.info/">Home</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Wander" href="http://ken.pepple.info/">
+            <img class="avatar-img" src="http://ken.pepple.info/images/llama.jpg" alt="Wander" />
+          </a>
+        </div>
+      </div>
+    
+
   </div>
+</nav>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
 
-    
 
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/ken_pepple" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
-    
 
     
 
-    
 
-    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-    
+<div class="pswp__bg"></div>
 
+<div class="pswp__scroll-wrap">
     
-
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://slideshare.net/ken-pepple" target="_blank"><i class="fa fa-slideshare fa-fw"></i>SlideShare</a>
-    </li>
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/kenpepple" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/slashk" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
 </div>
 
 
-  <div>
-  <div class="small-print">
-    <small><a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png"></a></small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>OpenStack Nova Architecture</h1>
-  <h2></h2>
-</div>
-<div class="content">
-
-  <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>22 Apr 2011</time>
-  </div>
-
-  
-
-  
-
   
   
   
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
     
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/openstack">openstack</a>
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>OpenStack Nova Architecture</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 22 Apr 2011
+  
+    &nbsp;(Last modified on 13 Feb 2017)
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;11&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2240&nbsp;words
+  
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
     
-  </div>
-  
-  
-
-</div>
-
-  <p><b>NOTE</b>: <i>I&rsquo;ve updated and expanded this blog post for the Folsom release. <a href="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/">Click here to read the updated version</a>.</i></p>
-
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p><b>NOTE</b>: <i>I&rsquo;ve updated and expanded this blog post for the Folsom release. <a href="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/">Click here to read the updated version</a>.</i></p>
 <p>One of the common refrains I hear from people getting started with <a href="http://www.openstack.org/">OpenStack</a> is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview. Now that <a href="http://www.openstack.org/blog/2011/04/openstack-announces-cactus-release/">Cactus</a> (OpenStack’s third version) has been released, I thought I’d take advantage of the lull in development to write up a quick architectural overview from my point of view. Since OpenStack is a fairly broad topic, I’ll break my thoughts into several posts. Today’s post will deal with OpenStack Nova’s (compute cloud) high level architecture. </p>
-
 <p>Before we dive into the conceptual and logic architecture, let’s take a second to explain the OpenStack project: </p>
-
 <blockquote>
   <p>OpenStack is a collection of open source technologies delivering a massively scalable cloud operating system.</p>
 </blockquote>
-
 <p>You can think of it as software to power your own Infrastructure as a Service (IaaS) offering like <a href="http://aws.amazon.com">Amazon Web Services</a>. It currently encompasses three main projects:</p>
-
 <ul>
 <li><a href="https://launchpad.net/swift">Swift</a> which provides object/blob storage. This is roughly analogous to Rackspace Cloud Files (from which it is derived) or Amazon S3.</li>
 <li><a href="https://launchpad.net/glance">Glance</a> which provides discovery, storage and retrieval of virtual machine images for OpenStack Nova.</li>
 <li><a href="https://launchpad.net/nova">Nova</a> which provides virtual servers upon demand. This is similar to Rackspaces Cloud Servers or Amazon EC2.</li>
 </ul>
-
 <p>While these three projects provide the core of the cloud infrastructure, OpenStack is open and evolving — <a href="http://wiki.openstack.org/Projects">there will be more projects</a> (there are already related projects for <a href="https://launchpad.net/openstack-dashboard">web interfaces</a> and a <a href="http://wiki.openstack.org/QueueService">queue service</a>). With that brief introduction, let’s delve into a conceptual architecture and then examine how OpenStack Nova could map to it.  </p>
-
 <h1 id="cloudproviderconceptualarchitecture">Cloud Provider Conceptual Architecture</h1>
-
 <p>Imagine that we are going to build our own IaaS cloud and offer it to customers. To achieve this, we would need to provide several high level features:</p>
-
 <ol>
 <li>Allow application owners to register for our cloud services, view their usage and see their bill (basic customer relations management functionality)</li>
 <li>Allow Developers/DevOps folks to create and store custom images for their applications (basic build-time functionality)</li>
 <li>Allow DevOps/Developers to launch, monitor and terminate instances (basic run-time functionality)</li>
 <li>Allow the Cloud Operator to configure and operate the cloud infrastructure</li>
 </ol>
-
 <p>While there are certainly many, many other features that we would need to offer (especially if we were to follow are more complete industry framework like <a href="http://www.tmforum.org/BusinessProcessFramework/1647/home.html">eTOM</a>), these four get to the very heart of providing IaaS. Now assuming that you agree with these four top level features, you might put together a conceptual architecture that looks something like this:</p>
-
 <p><img id="iaasconceptualarchitecture" src="http://c204396.r96.cf1.rackcdn.com/nova-cactus-conceptual.gif" alt="IaaS Conceptual Architecture" title="" /></p>
-
 <p>In this model, I’ve imagined four sets of users (developers, devops, owners and operators) that need to interact with the cloud and then separated out the functionality needed for each. From there, I’ve followed a pretty common tiered approach to the architecture (presentation, logic and resources) with two orthogonal areas (integration and management). Let’s explore each a little further:    </p>
-
 <ul>
 <li><p>As with presentation layers in more typical application architectures, components here interact with users to accept and present information. In this layer, you will find web portals to provide graphical interfaces for non-developers and API endpoints for developers. For more advanced architectures, you might find load balancing, console proxies, security and naming services present here also.</p></li>
 <li><p>The logic tier would provide the intelligence and control functionality for our cloud. This tier would house orchestration (workflow for complex tasks), scheduling (determining mapping of jobs to resources), policy (quotas and such) , image registry (metadata about instance images), logging (events and metering).    </p></li>
@@ -285,33 +313,23 @@
 <li><p>As with any complex environment, we will need a management tier to operate the environment. This should include an API to access the cloud administration features as well as some forms of monitoring. It is likely that the monitoring functionality will take the form of integration into an existing tool. While I’ve highlighted monitoring and an admin API for our fictional provider, in a more complete architecture you would see a vast array of operational support functions like provisioning and configuration management.</p></li>
 <li><p>Finally, since this is a compute cloud, we will need actual compute, network and storage resources to provide to our customers. This tier provides these services, whether they be servers, network switches, network attached storage or other resources.</p></li>
 </ul>
-
 <p>With this model in place, let’s shift gears and look at OpenStack Nova’s logical architecture.</p>
-
 <h1 id="openstacknovalogicalarchitecture">OpenStack Nova Logical Architecture</h1>
-
 <p>Now that we’ve looked at a proposed conceptual architecture, let’s see how OpenStack Nova is logically architected. Since Cactus is the newest release, I will concentrate there (which means if you are viewing this after around July 2011, this will be out of date). There are several logical components of OpenStack Nova architecture but the majority of these components are custom written python daemons of two varieties:</p>
-
 <ul>
 <li>WSGI applications to receive and mediate API calls (<span class="code-inline">nova-api</span>, <span class="code-inline">glance-api</span>, etc.)</li>
 <li>Worker daemons to carry out orchestration tasks (<span class="code-inline">nova-compute</span>, <span class="code-inline">nova-network</span>, <span class="code-inline">nova-schedule</span>, etc.)</li>
 </ul>
-
 <p>However, there are two essential pieces of the logical architecture are neither custom written nor Python based: the messaging queue and the database. These two components facilitate the asynchronous orchestration of complex tasks through message passing and information sharing.
 Putting this all together we get a picture like this:</p>
-
 <p><img id="openstacknovalogicalarchitecture" src="http://c204396.r96.cf1.rackcdn.com/nova-cactus-logical.gif" alt="OpenStack Nova Logical Architecture" title="" /></p>
-
 <p>This complicated, but not overly informative, diagram as it can be summed up in three sentences:</p>
-
 <ul>
 <li>End users (DevOps, Developers and even other OpenStack components) talk to <span class="code-inline">nova-api</span> to interface with OpenStack Nova</li>
 <li>OpenStack Nova daemons exchange info through the queue (actions) and database (information) to carry out API requests</li>
 <li>OpenStack Glance is basically a completely separate infrastructure which OpenStack Nova interfaces through the Glance API</li>
 </ul>
-
 <p>Now that we see the overview of the processes and their interactions, let’s take a closer look at each component.</p>
-
 <ul>
 <li><p>The <span class="code-inline">nova-api</span> daemon is the heart of the OpenStack Nova. You may see it illustrated on many pictures of OpenStack Nova as API and “Cloud Controller”. While this is partly true, cloud controller is really just a class (specifically the CloudController in trunk/nova/api/ec2/cloud.py) within the <span class="code-inline">nova-api</span> daemon. It provides an endpoint for all API queries (either <a href="http://docs.rackspacecloud.com/api/">OpenStack API</a> or <a href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">EC2 API</a>), initiates most of the orchestration activities (such as running an instance) and also enforces some policy (mostly quota checks).</p></li>
 <li><p>The <span class="code-inline">nova-schedule</span> process is conceptually the simplest piece of code in OpenStack Nova: take a virtual machine instance request from the queue and determines where it should run (specifically, which compute server host it should run on). In practice however, I am sure this will grow to be the most complex as it needs to factor in current state of the entire cloud infrastructure and apply complicated algorithm to ensure efficient usage. To that end, <span class="code-inline">nova-schedule</span> implements a pluggable architecture that let’s you choose (or write) your own algorithm for scheduling. Currently, there are several to choose from (simple, chance, etc) and it is a area of hot development for the future releases of OpenStack Nova.</p></li>
@@ -323,17 +341,11 @@ Putting this all together we get a picture like this:</p>
 <li><p>OpenStack Glance is a separate project from OpenStack Nova, but as shown above, complimentary. While it is an optional part of the overall compute architecture, I can’t imagine that most OpenStack Nova installation will not be using it (or a complimentary product). There are three pieces to Glance: <span class="code-inline">glance-api</span>, <span class="code-inline">glance-registry</span> and the image store. As you can probably guess, <span class="code-inline">glance-api</span> accepts API calls, much like <span class="code-inline">nova-api</span>, and the actual image blobs are placed in the image store. The <span class="code-inline">glance-registry</span> stores and retrieves metadata about images. The image store can be a number of different object stores, including OpenStack Swift.</p></li>
 <li><p>Finally, another optional project that we will need for our fictional service provider is an user dashboard. I have picked the OpenStack Dashboard here, but there are also several other web front ends available for OpenStack Nova. The OpenStack Dashboard provides a web interface into OpenStack Nova to give application developers and devops staff  similar functionality to the API. It is currently implemented as a <a href="http://www.djangoproject.com/">Django</a> web application.</p></li>
 </ul>
-
 <p>This logical architecture represents just one way to architect OpenStack Nova. With it’s pluggable architecture, we could easily swap out OpenStack Glance with another image service or use another dashboard. In the coming releases of OpenStack, expect to see more modularization of the code especially in the network and volume areas.</p>
-
 <h1 id="novaconceptualmapping">Nova Conceptual Mapping</h1>
-
 <p>Now that we’ve seen a conceptual architecture for a fictional cloud provider and examined the logical architecture of OpenStack Nova, it is fairly easy to map the OpenStack components to the conceptual areas to see what we are lacking:</p>
-
 <p><img id="openstacknovaconceptualcoverage" src="http://c204396.r96.cf1.rackcdn.com/nova-cactus-conceptual-coverage.gif" alt="OpenStack Nova conceptual coverage" title="" /></p>
-
 <p>As you can see from the illustration, I’ve overlaid logical components of OpenStack Nova, Glance and Dashboard to denote functional coverage. For each of the overlays, I’ve added the name of the logical component within the project that provides the functionality. While all of these judgements are highly subjective, you can see that we have a majority coverage of the functional areas with a few notable exceptions:</p>
-
 <ul>
 <li><p>The largest gap in our functional coverage is logging and billing. At the moment, OpenStack Nova doesn’t have a billing component that can mediate logging events, rate the logs and create/present bills. That being said, most service providers will already have one (or <em>many</em>) of these so the focus is really on the logging and integration with billing. This could be remedied in a variety of ways: augmentations of the code (which should happen in the next release “Diablo”), integration with commercial products or services (perhaps <a href="http://www.zuora.com/">Zuora</a>) or custom log parsing. </p></li>
 <li><p>Identity is also a point which will likely need to be augmented. Unless we are running a stock LDAP for our identity system, we will need to integrate our solution with OpenStack Nova. Having said that, this is true of almost all cloud solutions.</p></li>
@@ -343,85 +355,214 @@ Putting this all together we get a picture like this:</p>
 <li><p>Policy is an extremely important area but very provider specific. Everything from quotas (which are supported) to quality of service (QoS) to privacy controls can fall under this. I’ve given OpenStack Nova partial coverage here, but that might vary depending on the intricacies of the providers needs. For the record, OpenStack Nova Cactus provides quotas for instances (number and cores used), volumes (size and number), floating IP addresses and metadata.</p></li>
 <li><p>Scheduling within OpenStack Nova is fairly rudimentary for larger installations today. The pluggable scheduler supports chance (random host assignment), simple (least loaded) and zone (random nodes within an availability zone). As within most areas on this list, this will be greatly augmented in Diablo. In development are distributed schedulers and schedulers that understand heterogeneous hosts (for support of GPUs and differing CPU architectures).</p></li>
 </ul>
-
 <p>As you can see, OpenStack Nova provides a fair basis for our mythical service provider, as long as we are willing to do some integration here and there. In my next post, I’ll dive deeper into OpenStack Nova with a discussion on deployment architecture choices.</p>
 
 
+        
+          <div class="blog-tags">
+            
+              <a href="http://ken.pepple.info//tags/openstack/">openstack</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2011%2f04%2f22%2fopenstack-nova-architecture%2f&amp;text=OpenStack%20Nova%20Architecture&amp;via=ken_pepple" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
   
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake--rails/">Auto Blogging with Rake &amp; Rails</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/">Finding Your OpenStack Nova version</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
-</div>
-
-
-
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fken.pepple.info%2fopenstack%2f2011%2f04%2f22%2fopenstack-nova-architecture%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
   
-<div id="disqus_thread"></div>
-<script type="text/javascript">
+      
+      <li>
+        <a href="//reddit.com/submit?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2011%2f04%2f22%2fopenstack-nova-architecture%2f&amp;title=OpenStack%20Nova%20Architecture" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2011%2f04%2f22%2fopenstack-nova-architecture%2f&amp;title=OpenStack%20Nova%20Architecture" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2011%2f04%2f22%2fopenstack-nova-architecture%2f&amp;title=OpenStack%20Nova%20Architecture" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=http%3a%2f%2fken.pepple.info%2fopenstack%2f2011%2f04%2f22%2fopenstack-nova-architecture%2f&amp;description=OpenStack%20Nova%20Architecture" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
 
-(function() {
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/">Kubernetes The Easy Way</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/">The Tenrec Rises: Deploying OpenStack, Havana Edition</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/">Grizzly Architecture Revisit</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/">OpenStack Folsom Architecture</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/">Revisiting OpenStack Architecture: Essex Edition</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake-rails/" data-toggle="tooltip" data-placement="top" title="Auto Blogging with Rake &amp; Rails">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/" data-toggle="tooltip" data-placement="top" title="Finding Your OpenStack Nova version">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@pepple.info" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/slashk" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/ken_pepple" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/kenpepple" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="ken.pepple.info">Ken Pepple</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://ken.pepple.info/">Wander</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.3</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          &nbsp;&bull;&nbsp;[<a href="https://github.com/slashk/blog/tree/eacfd33639449341954704d7558b7ade2d78d837">eacfd336</a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://ken.pepple.info/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://ken.pepple.info/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
     
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'kenpepple';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-</div>
-
-</div>
-</div>
-<script src="http://ken.pepple.info/js/ui.js"></script>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-2210525-5', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-
-
-
-</body>
+  </body>
 </html>
 

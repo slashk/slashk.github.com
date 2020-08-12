@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on Wander</title>
+    <link>http://ken.pepple.info/tags/go/</link>
+    <description>Recent content in go on Wander</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>info@pepple.info (Ken Pepple)</managingEditor>
+    <webMaster>info@pepple.info (Ken Pepple)</webMaster>
+    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 17 Sep 2016 17:40:25 -0700</lastBuildDate>
+    
+	<atom:link href="http://ken.pepple.info/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Instrumenting Your Go App With Prometheus</title>
+      <link>http://ken.pepple.info/golang/2016/09/17/instrumenting-your-go-app-with-prometheus/</link>
+      <pubDate>Sat, 17 Sep 2016 17:40:25 -0700</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/golang/2016/09/17/instrumenting-your-go-app-with-prometheus/</guid>
+      <description>Prometheus is the new hotness on the monitoring front for it&amp;rsquo;s ability to integrate and monitor easily into container environments that predominate microservice architectures.
+This article shows you how to add some quick and dirty Prometheus metrics to your Go application. This recipe adds in count, total duration and histogram of durations for any RESTful endpoint with go-restful. It requires the Prometheus Golang client.
+Install Prometheus Client To start, install the Prometheus Go client with:</description>
+    </item>
+    
+    <item>
+      <title>Adding Twelve Factors To Your Go Server</title>
+      <link>http://ken.pepple.info/golang/2016/09/03/adding-twelve-factors-to-your-go-server/</link>
+      <pubDate>Sat, 03 Sep 2016 09:47:43 -0700</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/golang/2016/09/03/adding-twelve-factors-to-your-go-server/</guid>
+      <description>What is Twelve-Factor App?
+Is an architectural style for building RESTful applications that fits well with cloud and microservice philosophies.
+    Name Description     I Codebase One codebase tracked in revision control, many deploys   II Dependencies Explicitly declare and isolate dependencies   III Config Store config in the environment   IV Backing services Treat backing services as attached resources   V Build, release, run Strictly separate build and run stages   VI Processes Execute the app as one or more stateless processes   VII Port binding Export services via port binding   VIII  Concurrency Scale out via the process model   IX Disposability Maximize robustness with fast startup and graceful shutdown   X Dev/prod parity Keep development, staging, and production as similar as possible   XI Logs Treat logs as event streams   XII Admin processes Run admin/management tasks as one-off processes    For our purposes we will focus on III Config, VII Port Binding, IX Disposability and XI Logs.</description>
+    </item>
+    
+    <item>
+      <title>Go Vendoring and CircleCI</title>
+      <link>http://ken.pepple.info/golang/2016/08/13/go-vendoring-and-circleci/</link>
+      <pubDate>Sat, 13 Aug 2016 17:21:36 -0700</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/golang/2016/08/13/go-vendoring-and-circleci/</guid>
+      <description>CircleCI is really nice but has some completely fubar’d support for Go. Chief among them, WHY WOULD YOU ADD TWO PATHS TO THE GOPATH? It also has no real support for godeps, glide or any other vendoring in Go 1.5+. Most of the blog posts that you will find on the web are out of date or plain wrong (especially the thoughtbot one).
+Here is a simple way to bend CircleCI to build and test your Go project.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,264 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
 
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.31.1" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Kubernetes The Easy Way &middot; Wander</title>
-
+  <title>Kubernetes The Easy Way - Wander</title>
+  <meta name="description" content="Sometimes I don&rsquo;t want to do things &ldquo;the hard way&rdquo; &ndash; I just need a testing environment. Kubernetes is one of those things when I&rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster &ndash; If you are on a public cloud, not OpenStack.">
+  <meta name="author" content="Ken Pepple"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Wander",
+    
+    "url": "http:\/\/ken.pepple.info\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/ken.pepple.info\/"
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="http://ken.pepple.info/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="http://ken.pepple.info/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="http://ken.pepple.info/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
   
   
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/ken.pepple.info\/kubernetes\/2017\/02\/14\/kubernetes-the-easy-way\/",
+          "name": "Kubernetes the easy way"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ken Pepple"
+  },
+  "headline": "Kubernetes The Easy Way",
+  "description" : "Sometimes I don\u0026rsquo;t want to do things \u0026ldquo;the hard way\u0026rdquo; \u0026ndash; I just need a testing environment. Kubernetes is one of those things when I\u0026rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster \u0026ndash; If you are on a public cloud, not OpenStack.",
+  "inLanguage" : "en",
+  "wordCount":  1475 ,
+  "datePublished" : "2017-02-14T11:23:00",
+  "dateModified" : "2017-02-14T11:23:00",
+  "image" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+  "keywords" : [ "kubernetes, terraform, devops, openstack" ],
+  "mainEntityOfPage" : "http:\/\/ken.pepple.info\/kubernetes\/2017\/02\/14\/kubernetes-the-easy-way\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/ken.pepple.info\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/ken.pepple.info\/images\/llama.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  
-  <script>hljs.initHighlightingOnLoad();</script>
-  
+<meta property="og:title" content="Kubernetes The Easy Way" />
+<meta property="og:description" content="Sometimes I don&rsquo;t want to do things &ldquo;the hard way&rdquo; &ndash; I just need a testing environment. Kubernetes is one of those things when I&rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster &ndash; If you are on a public cloud, not OpenStack.">
+<meta property="og:image" content="http://ken.pepple.info/images/llama.jpg" />
+<meta property="og:url" content="http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Wander" />
 
-  <link rel="shortcut icon" href="http://ken.pepple.info/img/favicon.ico" type="image/x-icon" />
-
-  
-  
-
-</head>
-
-
-<body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="http://ken.pepple.info/"><img src="http://ken.pepple.info/images/llama-small.png"></a>
+  <meta name="twitter:title" content="Kubernetes The Easy Way" />
+  <meta name="twitter:description" content="Sometimes I don&rsquo;t want to do things &ldquo;the hard way&rdquo; &ndash; I just need a testing environment. Kubernetes is one of those things when I&rsquo;m developing applications. So when I …">
+  <meta name="twitter:image" content="http://ken.pepple.info/images/llama.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ken_pepple" />
+  <meta name="twitter:creator" content="@ken_pepple" />
+  <meta name="generator" content="Hugo 0.74.3" />
+  <link rel="alternate" href="http://ken.pepple.info/index.xml" type="application/rss+xml" title="Wander"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://ken.pepple.info/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://ken.pepple.info/css/syntax.css" /><link rel="stylesheet" href="http://ken.pepple.info/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
 
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/about/"><i class='fa fa-user fa-fw'></i>About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://ken.pepple.info/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-    </ul>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-2210525-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://ken.pepple.info/">Wander</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="http://ken.pepple.info/post/">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="http://ken.pepple.info/tags/">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="http://ken.pepple.info/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="http://ken.pepple.info/">Home</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Wander" href="http://ken.pepple.info/">
+            <img class="avatar-img" src="http://ken.pepple.info/images/llama.jpg" alt="Wander" />
+          </a>
+        </div>
+      </div>
+    
+
   </div>
+</nav>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
 
-    
 
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/ken_pepple" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
-    
 
     
 
-    
 
-    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-    
+<div class="pswp__bg"></div>
 
+<div class="pswp__scroll-wrap">
     
-
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://slideshare.net/ken-pepple" target="_blank"><i class="fa fa-slideshare fa-fw"></i>SlideShare</a>
-    </li>
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/kenpepple" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/slashk" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
 </div>
 
 
-  <div>
-  <div class="small-print">
-    <small><a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png"></a></small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>Kubernetes The Easy Way</h1>
-  <h2></h2>
-</div>
-<div class="content">
-
-  <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>14 Feb 2017</time>
-  </div>
-
-  
-
-  
-
   
   
   
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
     
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/kubernetes">kubernetes</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/terraform">terraform</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/devops">devops</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://ken.pepple.info/tags/openstack">openstack</a>
-    
-  </div>
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Kubernetes The Easy Way</h1>
+              
+              
+              
+              
+                <span class="post-meta">
   
   
-
-</div>
-
+  <i class="fas fa-calendar"></i>&nbsp;Posted on 14 Feb 2017
   
+    &nbsp;(Last modified on 12 Aug 2020)
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1475&nbsp;words
+  
+  
+  
+</span>
 
-<p>Sometimes I don&rsquo;t want to do things <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;the hard way&rdquo;</a> &ndash; I just need a testing environment. Kubernetes is one of those things when I&rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster &ndash; <a href="https://github.com/kubernetes/kops">If you are on a public cloud</a>, not OpenStack. So I fired up my code editor and created a quick way to deploy simple Kubernetes clusters with <a href="http://terraform.hashicorp.com">terraform</a> and <a href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">kubeadm</a>.</p>
 
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Sometimes I don&rsquo;t want to do things <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;the hard way&rdquo;</a> &ndash; I just need a testing environment. Kubernetes is one of those things when I&rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster &ndash; <a href="https://github.com/kubernetes/kops">If you are on a public cloud</a>, not OpenStack. So I fired up my code editor and created a quick way to deploy simple Kubernetes clusters with <a href="http://terraform.hashicorp.com">terraform</a> and <a href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">kubeadm</a>.</p>
 <p>This post provides the instructions and bootstrap scripts to create a Kubernetes development cluster on an OpenStack cloud with minimal dependencies (you will only needs to install <code>terraform</code>, this repo and <code>kubectl</code> on your laptop) to get a fully functional cluster running. At the end of the process, you should see a network environment like this in your OpenStack Horizon dashboard.</p>
-
-<p><img src="http://ken.pepple.info/images/openstack-network-final.png" width="674"></p>
-
+<img src="http://ken.pepple.info/images/openstack-network-final.png" width="674">
 <p>There are some limitations to this. Most notably, it is not highly available and requires Ubuntu 16.04 as an operating systems (althought <code>kubeadm</code> supports other OSes). You can <a href="https://kubernetes.io/docs/getting-started-guides/kubeadm/#limitations">read about the other limitations of <code>kubeadm</code> here</a>.</p>
-
 <p>This will be a five step process:</p>
-
 <ol>
 <li>Install prerequisites on laptop</li>
 <li>Download kubernetes terraform repository</li>
@@ -266,98 +291,72 @@
 <li>Run terraform to create the cluster</li>
 <li>Configure your laptop to use your new cluster</li>
 </ol>
-
 <h2 id="install-prerequisites">Install Prerequisites</h2>
-
 <p>To start this process, you&rsquo;ll need some software on your Mac (<em>yes, I said Mac. I&rsquo;ve tailored to this here. It will work on other platforms, but there might be some minor differences</em>). I usually install most of my software with <a href="http://brew.sh/">Homebrew</a>.</p>
-
-<pre><code>$ brew install kubectl terraform jq  
-</code></pre>
-
-<p>I&rsquo;ve installed three utilities:</p>
-
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install kubectl terraform jq  
+</code></pre></div><p>I&rsquo;ve installed three utilities:</p>
 <ul>
 <li><code>kubectl</code> (<em>qube-cuttle</em>) which is a CLI tool to interact with your Kubernetes cluster</li>
 <li><code>terraform</code> (<em>a tool by <a href="https://www.hashicorp.com/">Hashicorp</a></em>) which provisions and manages cloud infrastructure (used to create OpenStack instances, networks and routers)</li>
 <li><code>jq</code> which parses and formats JSON data on the command line (not really needed)</li>
 </ul>
-
 <h2 id="download-repository">Download Repository</h2>
-
-<p>Once we have the requisite tools installed, we need to pull down the <code>terra-kubeadm-on-os</code> github repository.</p>
-
-<pre><code>$ curl -o tf.zip https://github.com/slashk/terra-kubeadm-on-os/archive/master.zip
+<p>Once we have the requisite tools installed, we need to pull down the <code>terra-kubeadm-on-os</code> github repository (<a href="https://github.com/slashk/terra-kubeadm-on-os/">link</a>).</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -o tf.zip https://github.com/slashk/terra-kubeadm-on-os/archive/master.zip
 $ unzip tf.zip
-$ cd terra-kubeadm-on-os-master
-</code></pre>
-
-<p>You can also do this by <code>git clone https://github.com/slashk/terra-kubeadm-on-os/</code> if you would like.</p>
-
+$ <span style="color:#24909d">cd</span> terra-kubeadm-on-os-master
+</code></pre></div><p>You can also do this by <code>git clone https://github.com/slashk/terra-kubeadm-on-os/</code> if you would like.</p>
 <h2 id="configure-terraform">Configure Terraform</h2>
-
 <p>Next, we need to configure the scripts for our OpenStack cloud. You&rsquo;ll need to login to your OpenStack Horizon dashboard as we&rsquo;ll need to lookup information in our account.</p>
-
 <p>This set of scripts will create everything that we need to for our cluster:</p>
-
 <ul>
 <li>Master and worker node instances</li>
 <li>Tenant network and subnet to connect the instances</li>
 <li>Router to connect the instances to Internet (or provider network)</li>
 </ul>
-
 <p>To accomplish this, we need to tell Terraform a few details about our OpenStack cloud.</p>
-
-<pre><code>$ cp sample.tfvars terraform.tfvars
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cp sample.tfvars terraform.tfvars
 $ vi terraform.tfvars
-</code></pre>
-
-<p>The <code>terraform.tfvars</code> file uses a simple <code>variable = &quot;value&quot;</code> format where you can customize it for your OpenStack cloud and preferences.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#007f7f"># Contained in your keystonerc file</span>
-<span style="color:#007f7f">region</span> = <span style="color:#0ff;font-weight:bold">&#34;RegionOne&#34;</span>
-<span style="color:#007f7f">user_name</span> = <span style="color:#0ff;font-weight:bold">&#34;ken&#34;</span>
-<span style="color:#007f7f">tenant_name</span> = <span style="color:#0ff;font-weight:bold">&#34;k8s&#34;</span>
-<span style="color:#007f7f">password</span> = <span style="color:#0ff;font-weight:bold">&#34;this.is.not.my.password&#34;</span>
-<span style="color:#007f7f">auth_url</span> = <span style="color:#0ff;font-weight:bold">&#34;http://10.0.2.201:5000/v2.0&#34;</span>
-<span style="color:#007f7f"># use `openstack image list` to get id of Ubuntu 16.04 LTS image</span>
-<span style="color:#007f7f">image_id</span> = <span style="color:#0ff;font-weight:bold">&#34;6f5981a2-2e64-4381-ba68-e25a15c220e0&#34;</span>
-<span style="color:#007f7f"># username of that image (ubuntu)</span>
-<span style="color:#007f7f">ssh_user_name</span> = <span style="color:#0ff;font-weight:bold">&#34;ubuntu&#34;</span>
-<span style="color:#007f7f"># find with `openstack floating ip pool list`</span>
-<span style="color:#007f7f">pool</span> = <span style="color:#0ff;font-weight:bold">&#34;lab&#34;</span>
-<span style="color:#007f7f"># Use `openstack flavor list` to find an appropriate flavor</span>
-<span style="color:#007f7f">master_flavor</span> = <span style="color:#0ff;font-weight:bold">&#34;kube-master&#34;</span>
-<span style="color:#007f7f">worker_flavor</span> = <span style="color:#0ff;font-weight:bold">&#34;kube-master&#34;</span>
-<span style="color:#007f7f"># keyfile path on your laptop</span>
-<span style="color:#007f7f">ssh_key_file</span> = <span style="color:#0ff;font-weight:bold">&#34;~/.ssh/terraform&#34;</span>
-<span style="color:#007f7f"># gateway of your external network</span>
-<span style="color:#007f7f">external_gateway</span> = <span style="color:#0ff;font-weight:bold">&#34;fdcb4758-44da-4d15-ad7d-d7fce1d973ce&#34;</span>
-<span style="color:#007f7f"># customize to your cluster size</span>
-<span style="color:#007f7f">worker_count</span> = <span style="color:#0ff;font-weight:bold">&#34;2&#34;</span>
-<span style="color:#007f7f"># kube_token can be any 6 digit.16 digit combination</span>
-<span style="color:#007f7f">kube_token</span> = <span style="color:#0ff;font-weight:bold">&#34;123456.0123456789012345&#34;</span>
-<span style="color:#007f7f"># dns_nameservers is the DNS server for your new subnet</span>
-<span style="color:#007f7f">dns_nameservers</span> = <span style="color:#0ff;font-weight:bold">[&#34;10.0.2.1&#34;]</span>
-<span style="color:#007f7f"># tenant_net_cidr is whatever CIDR to use for your new subnet</span>
-<span style="color:#007f7f">tenant_net_cidr</span> = <span style="color:#0ff;font-weight:bold">&#34;192.168.50.0/24&#34;</span>
-<span style="color:#007f7f"># a valid kubernetes version from the releases page at github</span>
-<span style="color:#007f7f">kube_version</span> = <span style="color:#0ff;font-weight:bold">&#34;v1.5.2&#34;</span></code></pre></div>
-<p>As you can see, I&rsquo;ve setup this to cluster for 1 master, 2 worker nodes running Kubernetes version 1.5.2 on nodes sized with the <code>kube-master</code> flavor (that I specially created in my OpenStack cloud).</p>
-
+</code></pre></div><p>The <code>terraform.tfvars</code> file uses a simple <code>variable = &quot;value&quot;</code> format where you can customize it for your OpenStack cloud and preferences.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#999;font-style:italic"># Contained in your keystonerc file</span>
+<span style="color:#bbb">region</span> = <span style="color:#ed9d13">&#34;RegionOne&#34;</span>
+<span style="color:#bbb">user_name</span> = <span style="color:#ed9d13">&#34;ken&#34;</span>
+<span style="color:#bbb">tenant_name</span> = <span style="color:#ed9d13">&#34;k8s&#34;</span>
+<span style="color:#bbb">password</span> = <span style="color:#ed9d13">&#34;this.is.not.my.password&#34;</span>
+<span style="color:#bbb">auth_url</span> = <span style="color:#ed9d13">&#34;http://10.0.2.201:5000/v2.0&#34;</span>
+<span style="color:#999;font-style:italic"># use `openstack image list` to get id of Ubuntu 16.04 LTS image</span>
+<span style="color:#bbb">image_id</span> = <span style="color:#ed9d13">&#34;6f5981a2-2e64-4381-ba68-e25a15c220e0&#34;</span>
+<span style="color:#999;font-style:italic"># username of that image (ubuntu)</span>
+<span style="color:#bbb">ssh_user_name</span> = <span style="color:#ed9d13">&#34;ubuntu&#34;</span>
+<span style="color:#999;font-style:italic"># find with `openstack floating ip pool list`</span>
+<span style="color:#bbb">pool</span> = <span style="color:#ed9d13">&#34;lab&#34;</span>
+<span style="color:#999;font-style:italic"># Use `openstack flavor list` to find an appropriate flavor</span>
+<span style="color:#bbb">master_flavor</span> = <span style="color:#ed9d13">&#34;kube-master&#34;</span>
+<span style="color:#bbb">worker_flavor</span> = <span style="color:#ed9d13">&#34;kube-master&#34;</span>
+<span style="color:#999;font-style:italic"># keyfile path on your laptop</span>
+<span style="color:#bbb">ssh_key_file</span> = <span style="color:#ed9d13">&#34;~/.ssh/terraform&#34;</span>
+<span style="color:#999;font-style:italic"># gateway of your external network</span>
+<span style="color:#bbb">external_gateway</span> = <span style="color:#ed9d13">&#34;fdcb4758-44da-4d15-ad7d-d7fce1d973ce&#34;</span>
+<span style="color:#999;font-style:italic"># customize to your cluster size</span>
+<span style="color:#bbb">worker_count</span> = <span style="color:#ed9d13">&#34;2&#34;</span>
+<span style="color:#999;font-style:italic"># kube_token can be any 6 digit.16 digit combination</span>
+<span style="color:#bbb">kube_token</span> = <span style="color:#ed9d13">&#34;123456.0123456789012345&#34;</span>
+<span style="color:#999;font-style:italic"># dns_nameservers is the DNS server for your new subnet</span>
+<span style="color:#bbb">dns_nameservers</span> = <span style="color:#ed9d13">[&#34;10.0.2.1&#34;]</span>
+<span style="color:#999;font-style:italic"># tenant_net_cidr is whatever CIDR to use for your new subnet</span>
+<span style="color:#bbb">tenant_net_cidr</span> = <span style="color:#ed9d13">&#34;192.168.50.0/24&#34;</span>
+<span style="color:#999;font-style:italic"># a valid kubernetes version from the releases page at github</span>
+<span style="color:#bbb">kube_version</span> = <span style="color:#ed9d13">&#34;v1.5.2&#34;</span>
+</code></pre></div><p>As you can see, I&rsquo;ve setup this to cluster for 1 master, 2 worker nodes running Kubernetes version 1.5.2 on nodes sized with the <code>kube-master</code> flavor (that I specially created in my OpenStack cloud).</p>
 <h2 id="run-terraform">Run Terraform</h2>
-
 <p>With your configuration set, you just need to kick this off. I usually do a <code>terraform plan</code> and give it a quick sanity test before letting it rip with a <code>terraform apply</code>.</p>
-
-<pre><code>$ terraform plan
-&lt;&lt; plan output&gt;&gt;
-
-$ terraform apply
-</code></pre>
-
-<p>&hellip; And wait. On my cloud, it takes about 5-7 minutes to complete (mostly updating packages).</p>
-
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ terraform plan
+<span style="color:#ed9d13">&lt;&lt; plan output&gt;&gt;
+</span><span style="color:#ed9d13">
+</span><span style="color:#ed9d13">$ terraform appl</span>y
+</code></pre></div><p>&hellip; And wait. On my cloud, it takes about 5-7 minutes to complete (mostly updating packages).</p>
 <p>At the end, you should see something like this:</p>
-
-<pre><code>... snip ...
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">... snip ...
 openstack_compute_instance_v2.kube-worker.1: Creation complete
 
 Apply complete! Resources: 10 added, 0 changed, 0 destroyed.
@@ -380,189 +379,298 @@ worker_private_ip = [
     192.168.50.5,
     192.168.50.4
 ]
-</code></pre>
-
-<h2 id="configure-laptop">Configure Laptop</h2>
-
+</code></pre></div><h2 id="configure-laptop">Configure Laptop</h2>
 <p>Now that the cluster is working, let&rsquo;s setup our laptop for to use the new cluster. I&rsquo;ve created two scripts (<code>post-install.sh</code> and <code>commands.alias</code>) to automate this process. The first one finishes up some configuration tasks on the cluster (configure networking, load dashboard and weavescope, etc.) and then transfers the <code>kubectl</code> configuration back to your laptop. At the end of the run, it will do a sanity check to make sure everything is working:</p>
-
-<pre><code>$ ./post-install.sh
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./post-install.sh
 ... snip ...
 Kubernetes master is running at https://10.0.2.138:6443
 KubeDNS is running at https://10.0.2.138:6443/api/v1/proxy/namespaces/kube-system/services/kube-dns
 
-To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-Client Version: version.Info{Major:&quot;1&quot;, Minor:&quot;4&quot;, GitVersion:&quot;v1.4.6&quot;, GitCommit:&quot;e569a27d02001e343cb68086bc06d47804f62af6&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;2016-11-12T05:22:15Z&quot;, GoVersion:&quot;go1.7.1&quot;, Compiler:&quot;gc&quot;, Platform:&quot;darwin/amd64&quot;}
-Server Version: version.Info{Major:&quot;1&quot;, Minor:&quot;5&quot;, GitVersion:&quot;v1.5.1&quot;, GitCommit:&quot;82450d03cb057bab0950214ef122b67c83fb11df&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;2016-12-14T00:52:01Z&quot;, GoVersion:&quot;go1.7.4&quot;, Compiler:&quot;gc&quot;, Platform:&quot;linux/amd64&quot;}
+To further debug and diagnose cluster problems, use <span style="color:#ed9d13">&#39;kubectl cluster-info dump&#39;</span>.
+Client Version: version.Info{Major:<span style="color:#ed9d13">&#34;1&#34;</span>, Minor:<span style="color:#ed9d13">&#34;4&#34;</span>, GitVersion:<span style="color:#ed9d13">&#34;v1.4.6&#34;</span>, GitCommit:<span style="color:#ed9d13">&#34;e569a27d02001e343cb68086bc06d47804f62af6&#34;</span>, GitTreeState:<span style="color:#ed9d13">&#34;clean&#34;</span>, BuildDate:<span style="color:#ed9d13">&#34;2016-11-12T05:22:15Z&#34;</span>, GoVersion:<span style="color:#ed9d13">&#34;go1.7.1&#34;</span>, Compiler:<span style="color:#ed9d13">&#34;gc&#34;</span>, Platform:<span style="color:#ed9d13">&#34;darwin/amd64&#34;</span>}
+Server Version: version.Info{Major:<span style="color:#ed9d13">&#34;1&#34;</span>, Minor:<span style="color:#ed9d13">&#34;5&#34;</span>, GitVersion:<span style="color:#ed9d13">&#34;v1.5.1&#34;</span>, GitCommit:<span style="color:#ed9d13">&#34;82450d03cb057bab0950214ef122b67c83fb11df&#34;</span>, GitTreeState:<span style="color:#ed9d13">&#34;clean&#34;</span>, BuildDate:<span style="color:#ed9d13">&#34;2016-12-14T00:52:01Z&#34;</span>, GoVersion:<span style="color:#ed9d13">&#34;go1.7.4&#34;</span>, Compiler:<span style="color:#ed9d13">&#34;gc&#34;</span>, Platform:<span style="color:#ed9d13">&#34;linux/amd64&#34;</span>}
 SCRIPT COMPLETE.
-</code></pre>
-
-<p>The next script (<code>$ source ./commands.alias</code>) is just a set of convenience bash aliases:
-* <code>kc</code> runs <code>kubectl</code> with the newly transferred configuration file
-* <code>dashproxy</code> which sets up a tunnel to access the Kubernetes Dashboard from your laptop
-* <code>scopeproxy</code> which sets up a tunnel to access Weavescope to visualize your cluster</p>
-
+</code></pre></div><p>The next script (<code>$ source ./commands.alias</code>) is just a set of convenience bash aliases:</p>
+<ul>
+<li><code>kc</code> runs <code>kubectl</code> with the newly transferred configuration file</li>
+<li><code>dashproxy</code> which sets up a tunnel to access the Kubernetes Dashboard from your laptop</li>
+<li><code>scopeproxy</code> which sets up a tunnel to access Weavescope to visualize your cluster</li>
+</ul>
 <h2 id="use-your-cluster">Use Your Cluster</h2>
-
 <p>Let&rsquo;s check a few things on the new cluster with our <code>kc</code> alias (for <code>kubectl</code>):</p>
-
-<pre><code>$ kc get nodes
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kc get nodes
 NAME            STATUS         AGE
 kube-master     Ready,master   4d
 kube-worker-0   Ready          4d
 kube-worker-1   Ready          4d
-</code></pre>
-
-<p>This shows the three nodes we&rsquo;ve installed. A different form of the <code>get</code> subcommand shows all our pods:</p>
-
-<pre><code>$ kc get pods -o wide --all-namespaces
+</code></pre></div><p>This shows the three nodes we&rsquo;ve installed. A different form of the <code>get</code> subcommand shows all our pods:</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kc get pods -o wide --all-namespaces
 NAMESPACE     NAME                                    READY     STATUS    RESTARTS   AGE       IP             NODE
-default       weave-scope-agent-d6mkw                 1/1       Running   0          4d        192.168.50.3   kube-master
-default       weave-scope-agent-tf28q                 1/1       Running   0          4d        192.168.50.6   kube-worker-1
-default       weave-scope-agent-zq36h                 1/1       Running   0          4d        192.168.50.5   kube-worker-0
-default       weave-scope-app-1387651679-033vb        1/1       Running   0          4d        10.44.0.1      kube-worker-0
-kube-system   dummy-2088944543-fr2d4                  1/1       Running   0          4d        192.168.50.3   kube-master
-kube-system   etcd-kube-master                        1/1       Running   0          4d        192.168.50.3   kube-master
-kube-system   kube-apiserver-kube-master              1/1       Running   0          4d        192.168.50.3   kube-master
-kube-system   kube-controller-manager-kube-master     1/1       Running   0          4d        192.168.50.3   kube-master
-kube-system   kube-discovery-1769846148-dn0c7         1/1       Running   0          4d        192.168.50.3   kube-master
-kube-system   kube-dns-2924299975-s49zg               4/4       Running   0          4d        10.32.0.2      kube-master
-kube-system   kube-proxy-fsm1c                        1/1       Running   0          4d        192.168.50.5   kube-worker-0
-kube-system   kube-proxy-s9k7t                        1/1       Running   0          4d        192.168.50.6   kube-worker-1
-kube-system   kube-proxy-xcbcp                        1/1       Running   0          4d        192.168.50.3   kube-master
-kube-system   kube-scheduler-kube-master              1/1       Running   0          4d        192.168.50.3   kube-master
-kube-system   kubernetes-dashboard-3203831700-42qrk   1/1       Running   0          4d        10.36.0.1      kube-worker-1
-kube-system   weave-net-12gv6                         2/2       Running   0          4d        192.168.50.3   kube-master
-kube-system   weave-net-d2k67                         2/2       Running   0          4d        192.168.50.5   kube-worker-0
-kube-system   weave-net-pzrb5                         2/2       Running   1          4d        192.168.50.6   kube-worker-1
-</code></pre>
-
-<p>You can continue to experiment with the <code>kubectl</code> tool to examine and manipulate your cluster.</p>
-
+default       weave-scope-agent-d6mkw                 1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.3   kube-master
+default       weave-scope-agent-tf28q                 1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.6   kube-worker-1
+default       weave-scope-agent-zq36h                 1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.5   kube-worker-0
+default       weave-scope-app-1387651679-033vb        1/1       Running   <span style="color:#3677a9">0</span>          4d        10.44.0.1      kube-worker-0
+kube-system   dummy-2088944543-fr2d4                  1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.3   kube-master
+kube-system   etcd-kube-master                        1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.3   kube-master
+kube-system   kube-apiserver-kube-master              1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.3   kube-master
+kube-system   kube-controller-manager-kube-master     1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.3   kube-master
+kube-system   kube-discovery-1769846148-dn0c7         1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.3   kube-master
+kube-system   kube-dns-2924299975-s49zg               4/4       Running   <span style="color:#3677a9">0</span>          4d        10.32.0.2      kube-master
+kube-system   kube-proxy-fsm1c                        1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.5   kube-worker-0
+kube-system   kube-proxy-s9k7t                        1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.6   kube-worker-1
+kube-system   kube-proxy-xcbcp                        1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.3   kube-master
+kube-system   kube-scheduler-kube-master              1/1       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.3   kube-master
+kube-system   kubernetes-dashboard-3203831700-42qrk   1/1       Running   <span style="color:#3677a9">0</span>          4d        10.36.0.1      kube-worker-1
+kube-system   weave-net-12gv6                         2/2       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.3   kube-master
+kube-system   weave-net-d2k67                         2/2       Running   <span style="color:#3677a9">0</span>          4d        192.168.50.5   kube-worker-0
+kube-system   weave-net-pzrb5                         2/2       Running   <span style="color:#3677a9">1</span>          4d        192.168.50.6   kube-worker-1
+</code></pre></div><p>You can continue to experiment with the <code>kubectl</code> tool to examine and manipulate your cluster.</p>
 <p>Two GUI management tools have also been installed on the cluster for you: <a href="https://github.com/kubernetes/dashboard">Kubernetes Dashboard</a> and <a href="https://www.weave.works/products/weave-scope/">Weave Scope</a>. You an access either over a tunnel to your Kubernetes control plane with the aliases you just installed.</p>
-
 <p>To view the the Kubernetes dashboard, use the <code>dashproxy</code> alias:</p>
-
-<pre><code>$ dashproxy
-Forwarding from 127.0.0.1:9090 -&gt; 9090
-Forwarding from [::1]:9090 -&gt; 9090
-Handling connection for 9090
-Handling connection for 9090
-</code></pre>
-
-<p>Then navigate your browser to <a href="http://localhost:9090/"><code>http://localhost:9090/</code></a> and you should see the dashboard.</p>
-
-<p><img src="http://ken.pepple.info/images/kube-dashboard.png" alt="Kubernetes 1.5.1 Dashboard" /></p>
-
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ dashproxy
+Forwarding from 127.0.0.1:9090 -&gt; <span style="color:#3677a9">9090</span>
+Forwarding from [::1]:9090 -&gt; <span style="color:#3677a9">9090</span>
+Handling connection <span style="color:#6ab825;font-weight:bold">for</span> <span style="color:#3677a9">9090</span>
+Handling connection <span style="color:#6ab825;font-weight:bold">for</span> <span style="color:#3677a9">9090</span>
+</code></pre></div><p>Then navigate your browser to <a href="http://localhost:9090/"><code>http://localhost:9090/</code></a> and you should see the dashboard.</p>
+<p><img src="http://ken.pepple.info/images/kube-dashboard.png" alt="Kubernetes 1.5.1 Dashboard"></p>
 <p>To try Weavescope, use the <code>scopeproxy</code> alias:</p>
-
-<pre><code>$ scopeproxy
-Forwarding from 127.0.0.1:4040 -&gt; 4040
-Forwarding from [::1]:4040 -&gt; 4040
-Handling connection for 4040
-Handling connection for 4040
-</code></pre>
-
-<p>Then navigate your browser to <a href="http://localhost:4040/"><code>http://localhost:4040/</code></a> and you should see your new cluster layout.</p>
-
-<p><img src="http://ken.pepple.info/images/weavescope.png" width="700"></p>
-
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ scopeproxy
+Forwarding from 127.0.0.1:4040 -&gt; <span style="color:#3677a9">4040</span>
+Forwarding from [::1]:4040 -&gt; <span style="color:#3677a9">4040</span>
+Handling connection <span style="color:#6ab825;font-weight:bold">for</span> <span style="color:#3677a9">4040</span>
+Handling connection <span style="color:#6ab825;font-weight:bold">for</span> <span style="color:#3677a9">4040</span>
+</code></pre></div><p>Then navigate your browser to <a href="http://localhost:4040/"><code>http://localhost:4040/</code></a> and you should see your new cluster layout.</p>
+<img src="http://ken.pepple.info/images/weavescope.png" width="700">
 <p>To launch some actual applications on your new cluster, follow the &ldquo;socks shop&rdquo; example in the Kubernetes docs at <a href="https://kubernetes.io/docs/getting-started-guides/kubeadm/#optional-installing-a-sample-application">Installing a sample application
 </a>.</p>
-
 <h2 id="cleanup">Cleanup</h2>
-
 <p>To clean up your entire cluster (i.e. delete everything you just created), use the <code>terraform destroy</code> command.</p>
-
-<pre><code>$ terraform destroy
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ terraform destroy
 Do you really want to destroy?
   Terraform will delete all your managed infrastructure.
-  There is no undo. Only 'yes' will be accepted to confirm.
+  There is no undo. Only <span style="color:#ed9d13">&#39;yes&#39;</span> will be accepted to confirm.
 
   Enter a value: yes
 
 openstack_networking_router_v2.kube: Refreshing state... (ID: 08e02e39-6601-4a96-af3a-3fb1b9d8a044)
 openstack_compute_secgroup_v2.kube: Refreshing state... (ID: 9c9be179-edc3-4b13-ba38-7faa5338adbe)
-openstack_compute_keypair_v2.kube: Refreshing state... (ID: SSH keypair for kube instances)
+openstack_compute_keypair_v2.kube: Refreshing state... (ID: SSH keypair <span style="color:#6ab825;font-weight:bold">for</span> kube instances)
 ... snip ....
-openstack_networking_router_v2.kube: Destruction complete
-openstack_networking_network_v2.kube: Destruction complete
+openstack_networking_router_v2.kube: Destruction <span style="color:#24909d">complete</span>
+openstack_networking_network_v2.kube: Destruction <span style="color:#24909d">complete</span>
 
-Destroy complete! Resources: 10 destroyed.
-</code></pre>
-
-<p>Everything that has been created should now be gone (subnet, routers and all). If you get an error, try running the <code>terraform destroy</code> command again.</p>
+Destroy complete! Resources: <span style="color:#3677a9">10</span> destroyed.
+</code></pre></div><p>Everything that has been created should now be gone (subnet, routers and all). If you get an error, try running the <code>terraform destroy</code> command again.</p>
 
 
+        
+          <div class="blog-tags">
+            
+              <a href="http://ken.pepple.info//tags/kubernetes/">kubernetes</a>&nbsp;
+            
+              <a href="http://ken.pepple.info//tags/terraform/">terraform</a>&nbsp;
+            
+              <a href="http://ken.pepple.info//tags/devops/">devops</a>&nbsp;
+            
+              <a href="http://ken.pepple.info//tags/openstack/">openstack</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=http%3a%2f%2fken.pepple.info%2fkubernetes%2f2017%2f02%2f14%2fkubernetes-the-easy-way%2f&amp;text=Kubernetes%20The%20Easy%20Way&amp;via=ken_pepple" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
   
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/">Grizzly Architecture Revisit</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-  </div>
-</div>
-
-
-
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fken.pepple.info%2fkubernetes%2f2017%2f02%2f14%2fkubernetes-the-easy-way%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
   
-<div id="disqus_thread"></div>
-<script type="text/javascript">
+      
+      <li>
+        <a href="//reddit.com/submit?url=http%3a%2f%2fken.pepple.info%2fkubernetes%2f2017%2f02%2f14%2fkubernetes-the-easy-way%2f&amp;title=Kubernetes%20The%20Easy%20Way" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fken.pepple.info%2fkubernetes%2f2017%2f02%2f14%2fkubernetes-the-easy-way%2f&amp;title=Kubernetes%20The%20Easy%20Way" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fken.pepple.info%2fkubernetes%2f2017%2f02%2f14%2fkubernetes-the-easy-way%2f&amp;title=Kubernetes%20The%20Easy%20Way" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=http%3a%2f%2fken.pepple.info%2fkubernetes%2f2017%2f02%2f14%2fkubernetes-the-easy-way%2f&amp;description=Kubernetes%20The%20Easy%20Way" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
 
-(function() {
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="http://ken.pepple.info/openstack/2013/11/06/the-tenrec-rises-deploying-openstack-havana-edition/">The Tenrec Rises: Deploying OpenStack, Havana Edition</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/">Grizzly Architecture Revisit</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/">OpenStack Folsom Architecture</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/">Revisiting OpenStack Architecture: Essex Edition</a></li>
+                
+                    <li><a href="http://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/">OpenStack Has A Mascot: The &#34;Tenrec&#34; Book</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://ken.pepple.info/golang/2016/12/23/private-serverless-platforms/" data-toggle="tooltip" data-placement="top" title="private serverless platforms">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@pepple.info" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/slashk" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/ken_pepple" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/kenpepple" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="ken.pepple.info">Ken Pepple</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://ken.pepple.info/">Wander</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.3</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          &nbsp;&bull;&nbsp;[<a href="https://github.com/slashk/blog/tree/c4d37034fac0f2845d65a0b9cb823319bb923f98">c4d37034</a>]
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://ken.pepple.info/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://ken.pepple.info/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
     
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'kenpepple';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-</div>
-
-</div>
-</div>
-<script src="http://ken.pepple.info/js/ui.js"></script>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-2210525-5', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-
-
-
-</body>
+  </body>
 </html>
 

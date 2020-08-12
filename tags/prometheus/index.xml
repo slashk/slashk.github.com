@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>prometheus on Wander</title>
+    <link>http://ken.pepple.info/tags/prometheus/</link>
+    <description>Recent content in prometheus on Wander</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>info@pepple.info (Ken Pepple)</managingEditor>
+    <webMaster>info@pepple.info (Ken Pepple)</webMaster>
+    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 17 Sep 2016 17:40:25 -0700</lastBuildDate>
+    
+	<atom:link href="http://ken.pepple.info/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Instrumenting Your Go App With Prometheus</title>
+      <link>http://ken.pepple.info/golang/2016/09/17/instrumenting-your-go-app-with-prometheus/</link>
+      <pubDate>Sat, 17 Sep 2016 17:40:25 -0700</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/golang/2016/09/17/instrumenting-your-go-app-with-prometheus/</guid>
+      <description>Prometheus is the new hotness on the monitoring front for it&amp;rsquo;s ability to integrate and monitor easily into container environments that predominate microservice architectures.
+This article shows you how to add some quick and dirty Prometheus metrics to your Go application. This recipe adds in count, total duration and histogram of durations for any RESTful endpoint with go-restful. It requires the Prometheus Golang client.
+Install Prometheus Client To start, install the Prometheus Go client with:</description>
+    </item>
+    
+  </channel>
+</rss>

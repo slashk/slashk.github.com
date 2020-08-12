@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cicd on Wander</title>
+    <link>http://ken.pepple.info/tags/cicd/</link>
+    <description>Recent content in cicd on Wander</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>info@pepple.info (Ken Pepple)</managingEditor>
+    <webMaster>info@pepple.info (Ken Pepple)</webMaster>
+    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 13 Aug 2016 17:21:36 -0700</lastBuildDate>
+    
+	<atom:link href="http://ken.pepple.info/tags/cicd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go Vendoring and CircleCI</title>
+      <link>http://ken.pepple.info/golang/2016/08/13/go-vendoring-and-circleci/</link>
+      <pubDate>Sat, 13 Aug 2016 17:21:36 -0700</pubDate>
+      <author>info@pepple.info (Ken Pepple)</author>
+      <guid>http://ken.pepple.info/golang/2016/08/13/go-vendoring-and-circleci/</guid>
+      <description>CircleCI is really nice but has some completely fubar’d support for Go. Chief among them, WHY WOULD YOU ADD TWO PATHS TO THE GOPATH? It also has no real support for godeps, glide or any other vendoring in Go 1.5+. Most of the blog posts that you will find on the web are out of date or plain wrong (especially the thoughtbot one).
+Here is a simple way to bend CircleCI to build and test your Go project.</description>
+    </item>
+    
+  </channel>
+</rss>
