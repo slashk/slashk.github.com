@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>terraform on Wander</title>
-    <link>http://ken.pepple.info/tags/terraform/</link>
+    <link>https://ken.pepple.info/tags/terraform/</link>
     <description>Recent content in terraform on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>info@pepple.info (Ken Pepple)</managingEditor>
     <webMaster>info@pepple.info (Ken Pepple)</webMaster>
-    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <copyright>2013-2020</copyright>
     <lastBuildDate>Tue, 14 Feb 2017 11:23:00 -0800</lastBuildDate>
     
-	<atom:link href="http://ken.pepple.info/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ken.pepple.info/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kubernetes The Easy Way</title>
-      <link>http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</link>
+      <link>https://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</link>
       <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</guid>
+      <guid>https://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</guid>
       <description>Sometimes I don&amp;rsquo;t want to do things &amp;ldquo;the hard way&amp;rdquo; &amp;ndash; I just need a testing environment. Kubernetes is one of those things when I&amp;rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster &amp;ndash; If you are on a public cloud, not OpenStack.</description>
     </item>
     

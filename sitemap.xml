@@ -3,132 +3,132 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://ken.pepple.info/tags/devops/</loc>
+    <loc>https://ken.pepple.info/tags/devops/</loc>
     <lastmod>2020-08-12T11:28:43-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/tags/kubernetes/</loc>
+    <loc>https://ken.pepple.info/tags/kubernetes/</loc>
     <lastmod>2020-08-12T11:28:43-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</loc>
+    <loc>https://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</loc>
     <lastmod>2020-08-12T11:28:43-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/tags/openstack/</loc>
+    <loc>https://ken.pepple.info/tags/openstack/</loc>
     <lastmod>2020-08-12T11:28:43-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/post/</loc>
+    <loc>https://ken.pepple.info/post/</loc>
     <lastmod>2020-08-12T11:28:43-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/tags/</loc>
+    <loc>https://ken.pepple.info/tags/</loc>
     <lastmod>2020-08-12T11:28:43-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/tags/terraform/</loc>
+    <loc>https://ken.pepple.info/tags/terraform/</loc>
     <lastmod>2020-08-12T11:28:43-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/</loc>
+    <loc>https://ken.pepple.info/</loc>
     <lastmod>2020-08-12T11:28:43-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/</loc>
+    <loc>https://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/</loc>
     <lastmod>2016-09-19T12:24:49-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/</loc>
+    <loc>https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/</loc>
     <lastmod>2016-09-19T14:24:53-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/</loc>
+    <loc>https://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/</loc>
     <lastmod>2016-09-19T12:24:49-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/</loc>
+    <loc>https://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/</loc>
     <lastmod>2016-09-19T15:50:17-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/</loc>
+    <loc>https://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/</loc>
     <lastmod>2016-09-19T12:24:49-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/</loc>
+    <loc>https://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/</loc>
     <lastmod>2017-02-13T12:51:12-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake-rails/</loc>
+    <loc>https://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake-rails/</loc>
     <lastmod>2016-09-19T12:24:49-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</loc>
+    <loc>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</loc>
     <lastmod>2017-02-13T12:51:12-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/tags/iphone/</loc>
+    <loc>https://ken.pepple.info/tags/iphone/</loc>
     <lastmod>2017-02-13T12:51:12-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/tags/python/</loc>
+    <loc>https://ken.pepple.info/tags/python/</loc>
     <lastmod>2017-02-13T12:51:12-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/tags/ruby/</loc>
+    <loc>https://ken.pepple.info/tags/ruby/</loc>
     <lastmod>2017-02-13T12:51:12-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/</loc>
+    <loc>https://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/</loc>
     <lastmod>2017-02-13T12:51:12-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper/</loc>
+    <loc>https://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper/</loc>
     <lastmod>2017-02-13T12:51:12-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/tags/cloud/</loc>
+    <loc>https://ken.pepple.info/tags/cloud/</loc>
     <lastmod>2016-09-19T23:43:40-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</loc>
+    <loc>https://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</loc>
     <lastmod>2016-09-19T23:43:40-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</loc>
+    <loc>https://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</loc>
     <lastmod>2016-09-19T12:24:49-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/about/</loc>
-    <lastmod>2020-08-12T11:28:30-07:00</lastmod>
+    <loc>https://ken.pepple.info/about/</loc>
+    <lastmod>2020-08-12T15:28:43-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ken.pepple.info/topics/</loc>
+    <loc>https://ken.pepple.info/topics/</loc>
   </url>
   
 </urlset>

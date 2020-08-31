@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>iphone on Wander</title>
-    <link>http://ken.pepple.info/tags/iphone/</link>
+    <link>https://ken.pepple.info/tags/iphone/</link>
     <description>Recent content in iphone on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>info@pepple.info (Ken Pepple)</managingEditor>
     <webMaster>info@pepple.info (Ken Pepple)</webMaster>
-    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <copyright>2013-2020</copyright>
     <lastBuildDate>Mon, 21 Mar 2011 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ken.pepple.info/tags/iphone/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ken.pepple.info/tags/iphone/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Custom iPhone Notifications with Prowl</title>
-      <link>http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</link>
+      <link>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</link>
       <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</guid>
+      <guid>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</guid>
       <description>On of my favorite iPhone feature is push notifications. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&amp;rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called Prowl. Prowl is a Growl client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.
 To send yourself custom push notifications, you&amp;rsquo;ll first need to buy Prowl for your iPhone (around USD$2.</description>
     </item>

@@ -2,87 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Wander</title>
-    <link>http://ken.pepple.info/tags/</link>
+    <link>https://ken.pepple.info/tags/</link>
     <description>Recent content in Tags on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>info@pepple.info (Ken Pepple)</managingEditor>
     <webMaster>info@pepple.info (Ken Pepple)</webMaster>
-    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <copyright>2013-2020</copyright>
     <lastBuildDate>Tue, 14 Feb 2017 11:23:00 -0800</lastBuildDate>
     
-	<atom:link href="http://ken.pepple.info/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ken.pepple.info/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>devops</title>
-      <link>http://ken.pepple.info/tags/devops/</link>
+      <link>https://ken.pepple.info/tags/devops/</link>
       <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/tags/devops/</guid>
+      <guid>https://ken.pepple.info/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>http://ken.pepple.info/tags/kubernetes/</link>
+      <link>https://ken.pepple.info/tags/kubernetes/</link>
       <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/tags/kubernetes/</guid>
+      <guid>https://ken.pepple.info/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>openstack</title>
-      <link>http://ken.pepple.info/tags/openstack/</link>
+      <link>https://ken.pepple.info/tags/openstack/</link>
       <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/tags/openstack/</guid>
+      <guid>https://ken.pepple.info/tags/openstack/</guid>
       <description></description>
     </item>
     
     <item>
       <title>terraform</title>
-      <link>http://ken.pepple.info/tags/terraform/</link>
+      <link>https://ken.pepple.info/tags/terraform/</link>
       <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/tags/terraform/</guid>
+      <guid>https://ken.pepple.info/tags/terraform/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iphone</title>
-      <link>http://ken.pepple.info/tags/iphone/</link>
+      <link>https://ken.pepple.info/tags/iphone/</link>
       <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/tags/iphone/</guid>
+      <guid>https://ken.pepple.info/tags/iphone/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>http://ken.pepple.info/tags/python/</link>
+      <link>https://ken.pepple.info/tags/python/</link>
       <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/tags/python/</guid>
+      <guid>https://ken.pepple.info/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ruby</title>
-      <link>http://ken.pepple.info/tags/ruby/</link>
+      <link>https://ken.pepple.info/tags/ruby/</link>
       <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/tags/ruby/</guid>
+      <guid>https://ken.pepple.info/tags/ruby/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cloud</title>
-      <link>http://ken.pepple.info/tags/cloud/</link>
+      <link>https://ken.pepple.info/tags/cloud/</link>
       <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/tags/cloud/</guid>
+      <guid>https://ken.pepple.info/tags/cloud/</guid>
       <description></description>
     </item>
     

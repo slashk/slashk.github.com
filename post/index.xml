@@ -2,33 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Wander</title>
-    <link>http://ken.pepple.info/post/</link>
+    <link>https://ken.pepple.info/post/</link>
     <description>Recent content in Posts on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>info@pepple.info (Ken Pepple)</managingEditor>
     <webMaster>info@pepple.info (Ken Pepple)</webMaster>
-    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <copyright>2013-2020</copyright>
     <lastBuildDate>Tue, 14 Feb 2017 11:23:00 -0800</lastBuildDate>
     
-	<atom:link href="http://ken.pepple.info/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ken.pepple.info/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kubernetes The Easy Way</title>
-      <link>http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</link>
+      <link>https://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</link>
       <pubDate>Tue, 14 Feb 2017 11:23:00 -0800</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</guid>
+      <guid>https://ken.pepple.info/kubernetes/2017/02/14/kubernetes-the-easy-way/</guid>
       <description>Sometimes I don&amp;rsquo;t want to do things &amp;ldquo;the hard way&amp;rdquo; &amp;ndash; I just need a testing environment. Kubernetes is one of those things when I&amp;rsquo;m developing applications. So when I needed a development cluster for my newest app, I wanted something fast, easy and without a lot of dependencies. Luckily, the latest releases of Kubernetes has made great strides in reducing the time between wanting a Kubernetes cluster and actually using a Kubernetes cluster &amp;ndash; If you are on a public cloud, not OpenStack.</description>
     </item>
     
     <item>
       <title>Grizzly Architecture Revisit</title>
-      <link>http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/</link>
+      <link>https://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/</link>
       <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/</guid>
+      <guid>https://ken.pepple.info/openstack/2013/06/16/grizzly-architecture-revisit/</guid>
       <description>Back in April, I gave a presentation in Portland at the OpenStack Summit on the architecture of OpenStack Grizzly. As the presentation was limited to 45 minutes, I said I would post a more in-depth article about it (similar to my last Folsom OpenStack Archtecture post) shortly.
 Unfortunately, work got in the way.
 I have finally made good on my promise and posted the full length article along with several clarifications over on my work blog at http://www.</description>
@@ -36,30 +36,30 @@ I have finally made good on my promise and posted the full length article along 
     
     <item>
       <title>OpenStack Folsom Architecture</title>
-      <link>http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/</link>
+      <link>https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/</link>
       <pubDate>Tue, 25 Sep 2012 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/</guid>
+      <guid>https://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/</guid>
       <description>As the Folsom release of OpenStack is due to be released this week, I&amp;rsquo;ve taken the time to update my &amp;ldquo;Intro to OpenStack Architecture 101&amp;rdquo; for the official documentation. It merged into the repos yesterday and below is an expanded version of it.
 OpenStack Components There are currently seven core components of OpenStack: Compute, Object Storage, Identity, Dashboard, Block Storage, Network and Image Service. Let&amp;rsquo;s look at each in turn:</description>
     </item>
     
     <item>
       <title>Revisiting OpenStack Architecture: Essex Edition</title>
-      <link>http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/</link>
+      <link>https://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/</link>
       <pubDate>Tue, 21 Feb 2012 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/</guid>
+      <guid>https://ken.pepple.info/openstack/2012/02/21/revisiting-openstack-architecture-essex-edition/</guid>
       <description>While it is still seven weeks until OpenStack &amp;ldquo;Essex&amp;rdquo; (2012.1) officially is released, release candidates are just around the corner. With this in mind, I thought it would be a good chance to revisit my earlier blog post on OpenStack Compute (&amp;ldquo;Nova&amp;rdquo;) architecture. This time around, instead of detailing the architecture of just a single service, I&amp;rsquo;ll look at all the pieces of the OpenStack project working together.
 To level-set everyone&amp;rsquo;s understanding, let&amp;rsquo;s briefly review the OpenStack project components and history.</description>
     </item>
     
     <item>
       <title>OpenStack Has A Mascot: The &#34;Tenrec&#34; Book</title>
-      <link>http://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/</link>
+      <link>https://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/</link>
       <pubDate>Fri, 05 Aug 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/</guid>
+      <guid>https://ken.pepple.info/openstack/2011/08/05/openstack-has-a-mascot-the-tenrec-book/</guid>
       <description>You may have noticed that I have not posted anything in the last two months. And as you have probably guessed, it was because I was busy working on something else.
 That &amp;ldquo;something else&amp;rdquo; was writing Deploying OpenStack for O&amp;rsquo;Reilly Media.
 The book is intended to provide an introduction to the OpenStack project (Glance, Swift and Nova) Cactus release, an architectural overview of each component and some best practices for their deployment.</description>
@@ -67,77 +67,77 @@ The book is intended to provide an introduction to the OpenStack project (Glance
     
     <item>
       <title>Finding Your OpenStack Nova version</title>
-      <link>http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/</link>
+      <link>https://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/</link>
       <pubDate>Sat, 30 Apr 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/</guid>
+      <guid>https://ken.pepple.info/openstack/2011/04/30/finding-your-openstack-nova-version/</guid>
       <description>I just got back from the OpenStack Developers Summit and while I am still trying to compile my thoughts on the event, I thought I&amp;rsquo;d dash off this little tidbit:
 A slight annoyance in administering (and troubleshooting) OpenStack Nova is identifying your installed version. This information is actually readily (i.e. programmatically) available within the code (and logged at the beginning of most logfiles), but we hadn&amp;rsquo;t exposed it to administrators on the command line until Nova trunk revision #1036.</description>
     </item>
     
     <item>
       <title>OpenStack Nova Architecture</title>
-      <link>http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/</link>
+      <link>https://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/</link>
       <pubDate>Fri, 22 Apr 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/</guid>
+      <guid>https://ken.pepple.info/openstack/2011/04/22/openstack-nova-architecture/</guid>
       <description>NOTE: I&amp;rsquo;ve updated and expanded this blog post for the Folsom release. Click here to read the updated version.
 One of the common refrains I hear from people getting started with OpenStack is the lack of good introductory architectural overviews of the project. I was confronted by the same problem when I first started with the project - it was easy to get the low level code and API documentation but it was very difficult to find a “lay of the land”-type overview.</description>
     </item>
     
     <item>
       <title>Auto Blogging with Rake &amp; Rails</title>
-      <link>http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake-rails/</link>
+      <link>https://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake-rails/</link>
       <pubDate>Sat, 26 Mar 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake-rails/</guid>
+      <guid>https://ken.pepple.info/ruby/2011/03/26/auto-blogging-with-rake-rails/</guid>
       <description>I have a long running blog that I struggle to keep current. The blog centers on mountain bike racing scene here in Northern California, so the content needs to stay timely as there are races every weekend all year long. Unfortunately, I don&amp;rsquo;t have a lot of free time to devote to it. Long story short, I wanted to automatically create a post every Thursday morning to let people know what races were being held that weekend.</description>
     </item>
     
     <item>
       <title>Custom iPhone Notifications with Prowl</title>
-      <link>http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</link>
+      <link>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</link>
       <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</guid>
+      <guid>https://ken.pepple.info/python/2011/03/21/custom-iphone-notifications-with-prowl/</guid>
       <description>On of my favorite iPhone feature is push notifications. However, only a few applications use these well (ESPN ScoreCenter, AP mobile, Twitter, etc.) and I&amp;rsquo;ve always wished I could write my own without creating a full blown iPhone application. Enter a simple application called Prowl. Prowl is a Growl client for iOS that pushes notifications to your iPhone, iPod touch or iPad with a simple API.
 To send yourself custom push notifications, you&amp;rsquo;ll first need to buy Prowl for your iPhone (around USD$2.</description>
     </item>
     
     <item>
       <title>Configurable Instance Types For OpenStack</title>
-      <link>http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/</link>
+      <link>https://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/</link>
       <pubDate>Thu, 03 Mar 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/</guid>
+      <guid>https://ken.pepple.info/openstack/2011/03/03/configurable-instance-types-for-openstack/</guid>
       <description>Over the past three weeks, new Nova core developer Josh Kearney (congrats @jk0) and I have been working on adding runtime configuration of instance types (read the full specification) to the OpenStack Nova compute service. Instance types (or &amp;ldquo;flavors&amp;rdquo; as Rackspace calls them) are resources granted to virtual machines (&amp;ldquo;instances&amp;rdquo;) in the Nova cloud. In more specific terms, this is the size of the instance (vCPUs, RAM, Storage, etc.) that you will be launching.</description>
     </item>
     
     <item>
       <title>OpenStack Development with virtualenvwrapper</title>
-      <link>http://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper/</link>
+      <link>https://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper/</link>
       <pubDate>Mon, 24 Jan 2011 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper/</guid>
+      <guid>https://ken.pepple.info/openstack/2011/01/24/openstack-development-with-virtualenvwrapper/</guid>
       <description>Coming from the ruby/ruby on rails world, i’ve been a bit lost when it comes to the python development process used in the openstack project. One of the biggest hurdles has been the usage of virtualenv in the workflow. Basically, virtualenv lets you create a stable configuration of python libraries (eggs) much like freezing gems in your rails application. The pitfalls here is that you need to integrate it’s usage into your development flow (activate/deactivate environments), it can take some time to recreate environments if you use a lot of eggs (like nova does) and it seems pretty fragile (it lives in repo and takes some chicanery to avoid duplicating in each bzr branch).</description>
     </item>
     
     <item>
       <title>Speaking at CommunityOne</title>
-      <link>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</link>
+      <link>https://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</link>
       <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</guid>
+      <guid>https://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</guid>
       <description>Over the past few weeks, Scott Mattoon, John Stanford and I have been documenting infrastructure patterns to help application developers architect for cloud computing environments as part of a larger program around enabling cloud computing for our customers. It&amp;rsquo;s been an interesting project, as cloud computing is both very new, but based on some very old concepts.
 On Monday, we will be presenting our work in progress at CommunityOne West in San Francisco&amp;rsquo;s Moscone Center.</description>
     </item>
     
     <item>
       <title>Open Group Beijing Kickoff</title>
-      <link>http://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</link>
+      <link>https://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</link>
       <pubDate>Tue, 26 May 2009 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</guid>
+      <guid>https://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</guid>
       <description>I had a great opportunity to revisit China, part of my old region (and now part of my new global responsibility), as part of The Open Group&amp;rsquo;s kickoff last week.
  The Open Group, which recently established a franchise in China with Kingdee, is a vendor-neutral and technology-neutral consortium, which drives the creation of Boundaryless Information Flow™ that will enable access to integrated information within and between enterprises based on open standards and global interoperability.</description>
     </item>

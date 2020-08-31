@@ -2,34 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cloud on Wander</title>
-    <link>http://ken.pepple.info/tags/cloud/</link>
+    <link>https://ken.pepple.info/tags/cloud/</link>
     <description>Recent content in cloud on Wander</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>info@pepple.info (Ken Pepple)</managingEditor>
     <webMaster>info@pepple.info (Ken Pepple)</webMaster>
-    <copyright>&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34;&gt;&lt;/a&gt;</copyright>
+    <copyright>2013-2020</copyright>
     <lastBuildDate>Sat, 30 May 2009 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://ken.pepple.info/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ken.pepple.info/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Speaking at CommunityOne</title>
-      <link>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</link>
+      <link>https://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</link>
       <pubDate>Sat, 30 May 2009 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</guid>
+      <guid>https://ken.pepple.info/cloud/2009/05/30/speaking-at-communityone/</guid>
       <description>Over the past few weeks, Scott Mattoon, John Stanford and I have been documenting infrastructure patterns to help application developers architect for cloud computing environments as part of a larger program around enabling cloud computing for our customers. It&amp;rsquo;s been an interesting project, as cloud computing is both very new, but based on some very old concepts.
 On Monday, we will be presenting our work in progress at CommunityOne West in San Francisco&amp;rsquo;s Moscone Center.</description>
     </item>
     
     <item>
       <title>Open Group Beijing Kickoff</title>
-      <link>http://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</link>
+      <link>https://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</link>
       <pubDate>Tue, 26 May 2009 00:00:00 +0000</pubDate>
       <author>info@pepple.info (Ken Pepple)</author>
-      <guid>http://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</guid>
+      <guid>https://ken.pepple.info/cloud/2009/05/26/open-group-beijing-kickoff/</guid>
       <description>I had a great opportunity to revisit China, part of my old region (and now part of my new global responsibility), as part of The Open Group&amp;rsquo;s kickoff last week.
  The Open Group, which recently established a franchise in China with Kingdee, is a vendor-neutral and technology-neutral consortium, which drives the creation of Boundaryless Information Flow™ that will enable access to integrated information within and between enterprises based on open standards and global interoperability.</description>
     </item>
